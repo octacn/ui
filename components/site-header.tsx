@@ -2,8 +2,8 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/config";
 import { GitHubLink } from "./github-icon";
 import { ModeSwitcher } from "./mode-switcher";
-import { Separator } from "@/registry/components/separator";
-import { Button } from "@/registry/components/button";
+import { Separator } from "@/registry/ui/separator";
+import { Button } from "@/registry/ui/button";
 import { Icons } from "./icons";
 import { MainNav } from "@/registry/src/headers/main-nav";
 

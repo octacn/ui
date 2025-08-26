@@ -1,5 +1,5 @@
-import MaxWidthWrapper from "@/registry/components/max-width-wrapper";
-import { ThemeProvider } from "@/registry/components/theme-provider";
+import MaxWidthWrapper from "@/registry/ui/max-width-wrapper";
+import { ThemeProvider } from "@/registry/ui/theme-provider";
 import { Geist, Geist_Mono } from "next/font/google";
 import type { Metadata } from "next";
 import "../styles/globals.css";

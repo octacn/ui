@@ -1,5 +1,5 @@
-import { Skeleton } from "@/registry/components/skeleton";
-import { Button } from "@/registry/components/button";
+import { Skeleton } from "@/registry/ui/skeleton";
+import { Button } from "@/registry/ui/button";
 import { Icons } from "@/components/icons";
 import * as React from "react";
 import Link from "next/link";

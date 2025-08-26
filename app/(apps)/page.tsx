@@ -1,6 +1,6 @@
 import { ModeSwitcher } from "@/components/mode-switcher";
 import { routes } from "@/data/routes";
-import { Button } from "@/registry/components/button";
+import { Button } from "@/registry/ui/button";
 import Link from "next/link";
 import React from "react";
 

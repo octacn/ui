@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 // import { source } from "@/lib/source";
 import { cn } from "@/lib/utils";
-import { Button } from "@/registry/components/button";
+import { Button } from "@/registry/ui/button";
 // import { Button } from "@/registry/new-york-v4/ui/button";
 // import {
 //   Popover,

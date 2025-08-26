@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useTheme } from "next-themes";
 
-import { Button } from "@/registry/components/button";
+import { Button } from "@/registry/ui/button";
 import { useMetaColor } from "@/hooks/meta-colors";
 
 export function ModeSwitcher() {
