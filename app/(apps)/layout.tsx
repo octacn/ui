@@ -3,5 +3,9 @@ export default function HomeLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="bg-red-500">{children}</div>;
+  return (
+    <div>
+      {children}
+    </div>
+  );
 }
