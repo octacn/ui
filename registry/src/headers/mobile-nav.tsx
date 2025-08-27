@@ -4,15 +4,10 @@ import * as React from "react";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
-// import { source } from "@/lib/source";
+import { source } from "@/lib/source";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/ui/button";
-// import { Button } from "@/registry/new-york-v4/ui/button";
-// import {
-//   Popover,
-//   PopoverContent,
-//   PopoverTrigger,
-// } from "@/registry/new-york-v4/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover";
 
 export function MobileNav({
   tree,
@@ -89,12 +84,12 @@ export function MobileNav({
                       {group.name}
                     </div>
                     <div className="flex flex-col gap-3">
-                      {group.children.map((item) => {
+                      {group.children!.map((item) => {
                         if (item.type === "page") {
                           return (
                             <MobileLink
                               key={`${item.url}-${index}`}
-                              href={item.url}
+                              href={item.url || ""}
                               onOpenChange={setOpen}
                             >
                               {item.name}

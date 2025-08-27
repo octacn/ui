@@ -16,6 +16,10 @@ import { Badge } from "@/registry/ui/badge";
 import { DocsTableOfContents } from "@/components/docs-toc";
 import { DocsCopyPage } from "@/components/docs-copy-page";
 
+interface PageProps {
+  params: Promise<{ slug?: string[] }>;
+}
+
 export const revalidate = false;
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -24,9 +28,7 @@ export function generateStaticParams() {
   return source.generateParams();
 }
 
-export async function generateMetadata(props: {
-  params: Promise<{ slug?: string[] }>;
-}) {
+export async function generateMetadata(props: PageProps) {
   const params = await props.params;
   const page = source.getPage(params.slug);
 
@@ -72,11 +74,9 @@ export async function generateMetadata(props: {
   };
 }
 
-export default async function Page(props: {
-  params: Promise<{ slug?: string[] }>;
-}) {
+export default async function Page(props: PageProps) {
   const params = await props.params;
-  const page = source.getPage(params.slug)
+  const page = source.getPage(params.slug);
   if (!page) {
     notFound();
   }
@@ -104,7 +104,7 @@ export default async function Page(props: {
                 </h1>
                 <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
                   <DocsCopyPage
-                    page={doc.content}
+                    page={doc.content as string}
                     url={absoluteUrl(page.url)}
                   />
                   {neighbours.previous && (
