@@ -1,4 +1,4 @@
-declare module 'fumadocs-core/source' {
+declare module "fumadocs-core/source" {
   /** Convenience: async or sync */
   export type Awaitable<T> = T | Promise<T>;
 
@@ -88,10 +88,16 @@ declare module 'fumadocs-core/source' {
 
   /** Tree of pages for navigation */
   export interface PageTree {
+    /** Unique internal identifier (added by fumadocs) */
+    $id?: string;
+    /** Display name of the group/page */
     name: string;
+    /** URL path if type === "page" */
     url?: string;
+    /** Recursive children if type === "folder" */
     children?: PageTree[];
-    type: 'folder' | 'page';
+    /** Whether it’s a folder or single page */
+    type: "folder" | "page";
   }
 
   /** Parameter object for Next.js dynamic routes */
@@ -127,8 +133,7 @@ declare module 'fumadocs-core/source' {
   ): Source<TPage>;
 }
 
-
-declare module 'fumadocs-mdx' {
+declare module "fumadocs-mdx" {
   /** A generic key/value map used by createMDXSource */
   export type MDXMap = Record<string, unknown>;
 
@@ -146,7 +151,7 @@ declare module 'fumadocs-mdx' {
   export function createMDXSource(map: MDXMap, options?: MDXOptions): unknown;
 }
 
-declare module 'fumadocs-core/server' {
+declare module "fumadocs-core/server" {
   export interface Neighbour {
     name: string;
     url: string;
@@ -162,18 +167,17 @@ declare module 'fumadocs-core/server' {
    * The promise form allows implementations that perform I/O.
    */
   export function findNeighbour(
-    tree: import('fumadocs-core/source').PageTree,
+    tree: import("fumadocs-core/source").PageTree,
     url: string
   ): Promise<Neighbours>;
 }
 
-
-declare module '*.mdx' {
+declare module "*.mdx" {
   const MDXComponent: (props: Record<string, unknown>) => React.ReactElement;
   export default MDXComponent;
 }
 
-declare module '*.json' {
+declare module "*.json" {
   const value: unknown;
   export default value;
 }

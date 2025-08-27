@@ -1,42 +1,18 @@
 import { siteConfig } from "@/lib/config";
+import Link from "next/link";
 
 export function SiteFooter() {
   return (
-    <footer className="group-has-[.section-soft]/body:bg-surface/40 3xl:fixed:bg-transparent group-has-[.docs-nav]/body:pb-20 group-has-[.docs-nav]/body:sm:pb-0 dark:bg-transparent">
-      <div className="container-wrapper px-4 xl:px-6">
-        <div className="flex h-(--footer-height) items-center justify-between">
-          <div className="text-muted-foreground w-full px-1 text-center text-xs leading-loose sm:text-sm">
-            Built by{" "}
-            <a
-              href={siteConfig.links.twitter}
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              Sahilkumardev
-            </a>{" "}
-            By
-            <a
-              href="https://vercel.com/new?utm_source=shadcn_site&utm_medium=web&utm_campaign=docs_cta_deploy_now_callout"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              ❤️
-            </a>
-            . The source code is available on{" "}
-            <a
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              GitHub
-            </a>
-            .
-          </div>
-        </div>
-      </div>
-    </footer>
+    <div className="text-muted-foreground w-full px-1 text-center font-mono cursor-default py-1.5">
+      Built by{" "}
+      <Link
+        href={siteConfig.links.twitter}
+        target="_blank"
+        rel="noreferrer"
+        className="hover:underline underline-offset-4 hover:text-white/90"
+      >
+        Sahilkumardev
+      </Link>
+    </div>
   );
 }

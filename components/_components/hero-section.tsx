@@ -4,7 +4,7 @@ import React from "react";
 
 export const HeroSection = () => {
   return (
-    <div>
+    <div className="min-h-screen">
       HeroSection
       <div className="flex gap-5">
         {routes.map((route, idx) => (
