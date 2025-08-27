@@ -23,7 +23,7 @@ export function SiteHeader() {
         "bg-background/50 backdrop-blur-lg sticky top-0 z-50 w-full py-3 border-b"
       )}
     >
-      <div className="container-wrapper 3xl:fixed:px-0 px-6">
+      <div className="container-wrapper 3xl:fixed:px-0 px-7">
         <div className="3xl:fixed:container flex items-center gap-2 **:data-[slot=separator]:!h-4">
           <MobileNav
             tree={pageTree}

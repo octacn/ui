@@ -4,6 +4,8 @@ const Page = () => {
   return (
      <div>
       example page
+ 
+      
      </div>
   );
 };

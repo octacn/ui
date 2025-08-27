@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-import { cn } from "@/lib/utils";
 import { Button } from "@/registry/ui/button";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export function MainNav({
   items,
@@ -18,7 +17,7 @@ export function MainNav({
   return (
     <nav className={cn("items-center gap-0.5", className)} {...props}>
       {items.map((item) => (
-        <Button key={item.href} variant="ghost" asChild size="sm">
+        <Button key={item.href} variant="ghost" asChild size="sm" className="font-mono">
           <Link
             href={item.href}
             className={cn(pathname === item.href && "text-primary")}
