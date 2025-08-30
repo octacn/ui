@@ -4,6 +4,12 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --color-1: oklch(0.63 0.24 29);
+  --color-2: oklch(0.63 0.24 303);
+  --color-3: oklch(0.63 0.24 249);
+  --color-4: oklch(0.63 0.24 236);
+  --color-5: oklch(0.63 0.24 134);
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -75,6 +81,41 @@
 }
 
 @theme inline {
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+
+  @keyframes rainbow {
+    0% {
+      background-position: 0%;
+    }
+
+    100% {
+      background-position: 200%;
+    }
+  }
+
+  --animate-infinity-scroll: infinity-scroll var(--duration) infinite linear;
+  --animate-infinity-scroll-vertical: infinity-scroll-vertical var(--duration) linear infinite;
+
+  @keyframes infinity-scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
+  @keyframes infinity-scroll-vertical {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -117,6 +158,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

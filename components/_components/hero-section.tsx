@@ -1,7 +1,9 @@
 import { InteractiveHoverBadge } from "@/registry/src/badges/interactive-hover-badge";
+import { RainbowButton } from "@/registry/src/buttons/rainbow-button";
+import { ShinyButton } from "@/registry/src/buttons/shiny-button";
 import { Cover } from "@/registry/src/cover";
 import { Highlighter } from "@/registry/src/highlighter";
-import { H1, H2 } from "@/registry/ui/typography";
+import { ArrowRight } from "lucide-react";
 import React from "react";
 
 export const HeroSection = () => {
@@ -26,15 +28,15 @@ export const HeroSection = () => {
             </Highlighter>
           </Cover>
         </h2>
+        
+        <div className="flex items-center justify-center flex-wrap gap-9 mt-6">
+          <RainbowButton className="font-mono" size={"lg"}>
+            Browser Components
+            <ArrowRight />
+          </RainbowButton>
+          <ShinyButton className="font-mono">Browse Templates </ShinyButton>
+        </div>
       </div>
-
-      {/* <div className="flex gap-5">
-        {routes.map((route, idx) => (
-          <Link href={route.name} key={idx}>
-            {route.name}
-          </Link>
-        ))}
-      </div> */}
     </div>
   );
 };

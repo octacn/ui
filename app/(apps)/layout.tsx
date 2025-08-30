@@ -18,7 +18,7 @@ export default function HomeLayout({
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="relative ">
+    <div className="relative px-16">
       <div>
         <ShootingStars />
         <StarsBackground />

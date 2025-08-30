@@ -42,7 +42,7 @@ export function ExampleSection({
   return (
     <div className={cn("flex items-center", className)} {...props}>
       <ScrollArea className="max-w-[96%] md:max-w-[600px] lg:max-w-none">
-        <div className="flex items-center">
+        <div className="flex items-center gap-6">
           <ExampleLink
             example={{ name: "Examples", href: "/", code: "", hidden: false }}
             isActive={pathname === "/"}
@@ -76,7 +76,7 @@ function ExampleLink({
     <Link
       href={example.href}
       key={example.href}
-      className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 items-center justify-center px-4 text-center text-base font-medium transition-colors"
+      className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 items-center justify-center text-center font-mono tracking-wide transition-colors"
       data-active={isActive}
     >
       {example.name}
