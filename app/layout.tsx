@@ -1,17 +1,18 @@
 import MaxWidthWrapper from "@/registry/ui/max-width-wrapper";
 import { ThemeProvider } from "@/registry/ui/theme-provider";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Space_Grotesk } from "next/font/google";
 import type { Metadata } from "next";
-import "../styles/globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import "@/styles/globals.css";
+// import "@/styles/new-globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const spaceGrotesk = Space_Grotesk({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
@@ -29,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${spaceGrotesk.variable} antialiased`}
         cz-shortcut-listen="true"
       >
         <ThemeProvider
@@ -39,8 +40,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <MaxWidthWrapper>
-            <SiteHeader  />
-              {children}
+            <SiteHeader />
+            {children}
             <SiteFooter />
           </MaxWidthWrapper>
         </ThemeProvider>

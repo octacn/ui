@@ -29,24 +29,24 @@ export function DocsSidebar({
     >
       <SidebarContent className="no-scrollbar px-2 pb-12">
         <div className="h-(--top-spacing) shrink-0" />
-        {tree.children.map((item) => (
+        {tree.children!.map((item) => (
           <SidebarGroup key={item.$id}>
-            <SidebarGroupLabel className="text-muted-foreground font-medium">
+            <SidebarGroupLabel className="text-muted-foreground font-mono text-sm" >
               {item.name}
             </SidebarGroupLabel>
-            <SidebarGroupContent>
+            <SidebarGroupContent className="font-normal font-mono">
               {item.type === "folder" && (
                 <SidebarMenu className="gap-0.5">
-                  {item.children.map((item) => {
+                  {item.children!.map((item) => {
                     return (
                       item.type === "page" && (
                         <SidebarMenuItem key={item.url}>
                           <SidebarMenuButton
                             asChild
                             isActive={item.url === pathname}
-                            className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
+                            className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:text-orange-500"
                           >
-                            <Link href={item.url}>{item.name}</Link>
+                            <Link href={item.url!}>{item.name}</Link>
                           </SidebarMenuButton>
                         </SidebarMenuItem>
                       )
