@@ -198,7 +198,7 @@ export const mdxComponents = {
     return (
       <figcaption
         className={cn(
-          "text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70",
+          "text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70 ",
           className
         )}
         {...props}
@@ -293,7 +293,7 @@ export const mdxComponents = {
   ),
   Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => {
     return (
-      <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
+      <Tabs className={cn("relative mt-6 w-full bg-red-200", className)} {...props} />
     );
   },
   TabsList: ({
