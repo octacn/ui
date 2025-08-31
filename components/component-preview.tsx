@@ -1,10 +1,11 @@
-import Image from "next/image"
+import Image from "next/image";
 
-import { ComponentPreviewTabs } from "@/components/component-preview-tabs"
-import { ComponentSource } from "@/components/component-source"
-import { Index } from "@/registry/__index__"
+import { ComponentPreviewTabs } from "@/components/component-preview-tabs";
+import { ComponentSource } from "@/components/component-source";
+import { ComponentType, Index } from "@/registry/registry-items";
 
-export function ComponentPreview({
+export async function ComponentPreview({
+  src,
   name,
   type,
   className,
@@ -12,13 +13,14 @@ export function ComponentPreview({
   hideCode = false,
   ...props
 }: React.ComponentProps<"div"> & {
-  name: string
-  align?: "center" | "start" | "end"
-  description?: string
-  hideCode?: boolean
-  type?: "block" | "component" | "example"
+  src: string;
+  name: string;
+  align?: "center" | "start" | "end";
+  description?: string;
+  hideCode?: boolean;
+  type?: "block" | "component" | "example";
 }) {
-  const Component = Index[name]?.component
+  const Component = Index[name as ComponentType]?.component;
 
   if (!Component) {
     return (
@@ -27,9 +29,9 @@ export function ComponentPreview({
         <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
           {name}
         </code>{" "}
-        not found in registry.
+        not founded in registry.
       </p>
-    )
+    );
   }
 
   if (type === "block") {
@@ -53,7 +55,7 @@ export function ComponentPreview({
           <iframe src={`/view/${name}`} className="size-full" />
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -62,8 +64,8 @@ export function ComponentPreview({
       align={align}
       hideCode={hideCode}
       component={<Component />}
-      source={<ComponentSource name={name} collapsible={false} />}
+      source={<ComponentSource src={src} name={name} collapsible={false} />}
       {...props}
     />
-  )
+  );
 }
