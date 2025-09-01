@@ -2,10 +2,12 @@
   "root": true,
   "pages": [
     "(root)",
-    "changelog",
+    "templates",
+    "blocks",
+    "backgrounds",
+    "buttons",
+    "cards",
     "components",
-    "installation",
-    "dark-mode",
-    "registry"
+    "installation"
   ]
 }

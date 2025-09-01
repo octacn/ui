@@ -81,7 +81,10 @@ export default async function Page(props: PageProps) {
     notFound();
   }
 
+  console.log(page);
+
   const doc = page.data;
+  const path = page.path;
 
   const MDX = doc.body;
   const neighbours = await findNeighbour(source.pageTree, page.url);
@@ -103,7 +106,7 @@ export default async function Page(props: PageProps) {
                   {doc.title}
                 </h1>
                 <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
-                  <DocsEditButton />
+                  <DocsEditButton path={path} />
                   {neighbours.previous && (
                     <Button
                       variant="secondary"

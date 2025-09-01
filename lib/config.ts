@@ -22,21 +22,13 @@ export const siteConfig = {
       label: "Blocks",
     },
     {
-      href: "/charts/area",
-      label: "Charts",
-    },
-    {
       href: "/themes",
       label: "Themes",
     },
-    {
-      href: "/colors",
-      label: "Colors",
-    },
   ],
-}
+};
 
 export const META_THEME_COLORS = {
   light: "#ffffff",
   dark: "#09090b",
-}
+};

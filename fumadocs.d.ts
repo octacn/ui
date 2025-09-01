@@ -76,6 +76,7 @@ declare module "fumadocs-core/source" {
   export interface Page<T extends PageData = PageData> {
     data: T;
     url: string;
+    path: string;
     file: {
       /** Filename with extension, e.g. "intro.mdx" */
       name: string;
