@@ -7,7 +7,7 @@ import Link from "next/link";
 export function DocsEditButton({ path }: { path: string }) {
   return (
     <Link
-      href={`https://github.com/fuma-nama/fumadocs/blob/main/content/docs/${path}`}
+      href={`https://github.com/shadwui/new-lib/blob/main/content/docs/${path}`}
       target="_blank"
     >
       <Button
