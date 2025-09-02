@@ -3,11 +3,11 @@
   "pages": [
     "(root)",
     "templates",
-    "blocks",
     "backgrounds",
     "buttons",
     "cards",
     "components",
+    "shadcn-components",
     "installation"
   ]
 }

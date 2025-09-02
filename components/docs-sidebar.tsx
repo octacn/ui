@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import type { source } from "@/lib/source"
+import type { source } from "@/lib/source";
 import {
   Sidebar,
   SidebarContent,
@@ -13,25 +13,25 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/registry/ui/sidebar"
+} from "@/registry/ui/sidebar";
 
 export function DocsSidebar({
   tree,
   ...props
 }: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <Sidebar
-      className="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--header-height)-var(--footer-height))] bg-transparent lg:flex"
+      className="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--footer-height)+2rem)] bg-transparent lg:flex"
       collapsible="none"
       {...props}
     >
-      <SidebarContent className="no-scrollbar px-2 pb-12">
+      <SidebarContent className="px-2 pb-12 no-scrollbar">
         <div className="h-(--top-spacing) shrink-0" />
         {tree.children!.map((item) => (
           <SidebarGroup key={item.$id}>
-            <SidebarGroupLabel className="text-muted-foreground font-mono text-sm" >
+            <SidebarGroupLabel className="text-muted-foreground font-mono text-sm">
               {item.name}
             </SidebarGroupLabel>
             <SidebarGroupContent className="font-normal font-mono">
@@ -50,7 +50,7 @@ export function DocsSidebar({
                           </SidebarMenuButton>
                         </SidebarMenuItem>
                       )
-                    )
+                    );
                   })}
                 </SidebarMenu>
               )}
@@ -59,5 +59,5 @@ export function DocsSidebar({
         ))}
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }

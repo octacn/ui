@@ -81,8 +81,6 @@ export default async function Page(props: PageProps) {
     notFound();
   }
 
-  console.log(page);
-
   const doc = page.data;
   const path = page.path;
 
@@ -191,11 +189,11 @@ export default async function Page(props: PageProps) {
           )}
         </div>
       </div>
-      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height)-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0" />
 
         {doc.toc?.length ? (
-          <div className="no-scrollbar overflow-y-auto px-8">
+          <div className="no-scrollbar overflow-y-auto px-6">
             <DocsTableOfContents toc={doc.toc} />
             <div className="h-12" />
           </div>

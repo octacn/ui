@@ -1,40 +1,66 @@
 ---
 title: Next.js
-description: Install and configure shadcn/ui for Next.js.
+description: Adding dark mode to your next app.
 ---
 
 <Steps>
 
-### Create project
+## Install next-themes
 
-Run the `init` command to create a new Next.js project or to setup an existing one:
-
-```bash
-npx shadcn@latest init
-```
-
-Choose between a Next.js project or a Monorepo.
-
-### Add Components
-
-You can now start adding components to your project.
+Start by installing `next-themes`:
 
 ```bash
-npx shadcn@latest add button
+npm install next-themes
 ```
 
-The command above will add the `Button` component to your project. You can then import it like this:
+## Create a theme provider
 
-```tsx {1,6} showLineNumbers title="app/page.tsx"
-import { Button } from "@/components/ui/button"
+```tsx title="components/theme-provider.tsx" showLineNumbers
+"use client"
 
-export default function Home() {
+import * as React from "react"
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+
+export function ThemeProvider({
+  children,
+  ...props
+}: React.ComponentProps<typeof NextThemesProvider>) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+}
+```
+
+## Wrap your root layout
+
+Add the `ThemeProvider` to your root layout and add the `suppressHydrationWarning` prop to the `html` tag.
+
+```tsx {1,6,9-14,16} title="app/layout.tsx" showLineNumbers
+import { ThemeProvider } from "@/components/theme-provider"
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <div>
-      <Button>Click me</Button>
-    </div>
+    <>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </>
   )
 }
 ```
+
+## Add a mode toggle
+
+Place a mode toggle on your site to toggle between light and dark mode.
+
+<ComponentPreview name="mode-toggle" className="[&_.preview]:items-start" />
 
 </Steps>

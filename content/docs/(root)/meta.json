@@ -5,6 +5,9 @@
     "[Installation](/docs/installation)",
     "[Dark Mode](/docs/dark-mode)",
     "typography",
-    "changelog"
+    "changelog",
+    "[templates](/docs/templates)",
+    "[blocks](/docs/blocks)",
+    "[shadcn components](/docs/shadcn-components)"
   ]
 }
