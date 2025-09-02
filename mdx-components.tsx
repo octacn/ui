@@ -13,6 +13,7 @@ import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
 import { ComponentsList } from "@/components/components-list";
 import { CopyButton } from "@/components/copy-button";
+import { ImageCard } from "@/components/image-card";
 
 import {
   Accordion,
@@ -20,18 +21,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/registry/ui/accordion";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/ui/alert";
 import { AspectRatio } from "@/registry/ui/aspect-ratio";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/ui/tabs";
 import { Button } from "@/registry/ui/button";
 
 export const mdxComponents = {
@@ -293,7 +285,10 @@ export const mdxComponents = {
   ),
   Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => {
     return (
-      <Tabs className={cn("relative mt-6 w-full bg-red-200", className)} {...props} />
+      <Tabs
+        className={cn("relative mt-6 w-full bg-red-200", className)}
+        {...props}
+      />
     );
   },
   TabsList: ({
@@ -349,6 +344,7 @@ export const mdxComponents = {
   ComponentPreview,
   ComponentSource,
   CodeCollapsibleWrapper,
+  ImageCard,
   ComponentsList,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
