@@ -163,6 +163,8 @@ declare module "fumadocs-core/server" {
     next?: Neighbour;
   }
 
+  export function getGithubLastEdit({});
+
   /**
    * Find the previous/next neighbours for a given URL within a tree.
    * The promise form allows implementations that perform I/O.
