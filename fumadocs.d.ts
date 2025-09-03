@@ -94,9 +94,9 @@ declare module "fumadocs-core/source" {
     /** Display name of the group/page */
     name: string;
     /** URL path if type === "page" */
-    url?: string;
+    url: string;
     /** Recursive children if type === "folder" */
-    children?: PageTree[];
+    children: PageTree[];
     /** Whether it’s a folder or single page */
     type: "folder" | "page";
   }
