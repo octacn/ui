@@ -1,3 +1,27 @@
-export const newPages = ["/docs/templates/marketing"];
+/**
+ * Give a badge for sidebar pages
+ */
 
-export const proPages = ["/docs/typography"];
+export const newPages = [
+  /**
+   * Documentation for components and templates
+   */
+  "/docs/templates/marketing",
+
+  /**
+   * documentation for blocks
+   */
+  "/blocks-docs/changelog",
+];
+
+export const proPages = [
+  /**
+   * Documentation for components and templates
+   */
+  "/docs/typography",
+
+  /**
+   * documentation for blocks
+   */
+  "/blocks-docs",
+];

@@ -179,6 +179,8 @@
   --color-code-foreground: var(--code-foreground);
   --color-code-highlight: var(--code-highlight);
   --color-code-number: var(--code-number);
+
+  --font-inter: var(--font-inter)
 }
 
 @layer base {

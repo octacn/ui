@@ -41,3 +41,17 @@ export const docs = defineDocs({
     }),
   },
 });
+
+export const blocksDocs = defineDocs({
+  dir: "content/blocks-docs",
+  docs: {
+    schema: frontmatterSchema.extend({
+      links: z
+        .object({
+          doc: z.string().optional(),
+          api: z.string().optional(),
+        })
+        .optional(),
+    }),
+  },
+});

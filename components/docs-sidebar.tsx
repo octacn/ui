@@ -33,10 +33,10 @@ export function DocsSidebar({
         <div className="h-(--top-spacing) shrink-0" />
         {tree.children.map((item) => (
           <SidebarGroup key={item.$id}>
-            <SidebarGroupLabel className="text-muted-foreground font-mono text-sm">
+            <SidebarGroupLabel className="text-muted-foreground font-inter text-sm tracking-wide">
               {item.name}
             </SidebarGroupLabel>
-            <SidebarGroupContent className="font-normal font-mono">
+            <SidebarGroupContent>
               {item.type === "folder" && (
                 <SidebarMenu className="gap-0.5">
                   {item.children.map((item) => {
@@ -52,7 +52,7 @@ export function DocsSidebar({
                           <SidebarMenuButton
                             asChild
                             isActive={item.url === pathname}
-                            className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:text-orange-500"
+                            className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] overflow-visible border border-transparent text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:text-orange-500 font-mono capitalize w-fit"
                           >
                             <Link href={item.url}>{item.name}</Link>
                           </SidebarMenuButton>

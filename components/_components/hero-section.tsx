@@ -30,7 +30,7 @@ export const HeroSection = () => {
         </h2>
         
         <div className="flex items-center justify-center flex-wrap gap-9 mt-6">
-          <RainbowButton className="font-mono" size={"lg"}>
+          <RainbowButton className="font-inter" size={"lg"}>
             Browser Components
             <ArrowRight />
           </RainbowButton>

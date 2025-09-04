@@ -1,6 +1,6 @@
 import MaxWidthWrapper from "@/registry/ui/max-width-wrapper";
 import { ThemeProvider } from "@/registry/ui/theme-provider";
-import { Geist, Space_Grotesk } from "next/font/google";
+import { Geist, Inter, Space_Grotesk } from "next/font/google";
 import { META_THEME_COLORS } from "@/lib/config";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -15,6 +15,11 @@ const geistSans = Geist({
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -52,7 +57,7 @@ export default function RootLayout({
           "text-foreground group/body overscroll-none font-sans antialiased",
           "[--footer-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
           "[--header-height:calc(var(--spacing)*14)]",
-          `${geistSans.variable} ${spaceGrotesk.variable}`
+          `${geistSans.variable} ${spaceGrotesk.variable} ${inter.variable}`
         )}
         cz-shortcut-listen="true"
       >
