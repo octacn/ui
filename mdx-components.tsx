@@ -12,6 +12,8 @@ import { CodeTabs } from "@/components/code-tabs";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
 import { ComponentsList } from "@/components/components-list";
+import { TechStackIcon } from "@/components/tech-stack-icon";
+import { ImageCarousel } from "@/components/image-carousel";
 import { CopyButton } from "@/components/copy-button";
 import { ImageCard } from "@/components/image-card";
 
@@ -345,6 +347,8 @@ export const mdxComponents = {
   ComponentSource,
   CodeCollapsibleWrapper,
   ImageCard,
+  ImageCarousel,
+  TechStackIcon,
   ComponentsList,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
