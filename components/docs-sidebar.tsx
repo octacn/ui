@@ -14,6 +14,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/registry/ui/sidebar";
+import { Badge } from "@/registry/ui/badge";
+import { newPages, proPages } from "@/lib/page-type";
 
 export function DocsSidebar({
   tree,
@@ -29,7 +31,7 @@ export function DocsSidebar({
     >
       <SidebarContent className="px-2 pb-12 no-scrollbar">
         <div className="h-(--top-spacing) shrink-0" />
-        {tree.children!.map((item) => (
+        {tree.children.map((item) => (
           <SidebarGroup key={item.$id}>
             <SidebarGroupLabel className="text-muted-foreground font-mono text-sm">
               {item.name}
@@ -37,17 +39,33 @@ export function DocsSidebar({
             <SidebarGroupContent className="font-normal font-mono">
               {item.type === "folder" && (
                 <SidebarMenu className="gap-0.5">
-                  {item.children!.map((item) => {
+                  {item.children.map((item) => {
+                    const isNew = newPages.includes(item.url);
+                    const isPro = proPages.includes(item.url);
+
                     return (
                       item.type === "page" && (
-                        <SidebarMenuItem key={item.url}>
+                        <SidebarMenuItem
+                          key={item.url}
+                          className="flex items-center justify-between"
+                        >
                           <SidebarMenuButton
                             asChild
                             isActive={item.url === pathname}
                             className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:text-orange-500"
                           >
-                            <Link href={item.url!}>{item.name}</Link>
+                            <Link href={item.url}>{item.name}</Link>
                           </SidebarMenuButton>
+                          {isNew && (
+                            <Badge className="capitalize bg-yellow-500 text-black py-0.5 rounded-md tracking-wide font-semibold">
+                              new
+                            </Badge>
+                          )}
+                          {isPro && (
+                            <Badge className="capitalize bg-green-500 text-black py-0.5 rounded-md tracking-wide font-semibold">
+                              Pro
+                            </Badge>
+                          )}
                         </SidebarMenuItem>
                       )
                     );
