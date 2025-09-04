@@ -2,6 +2,8 @@
   "title": "Get Started",
   "pages": [
     "index",
-    "changelog"
+    "changelog",
+    "blocks",
+    "[templates](/docs/templates)"
   ]
 }

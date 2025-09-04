@@ -7,7 +7,7 @@
     "typography",
     "changelog",
     "[templates](/docs/templates)",
-    "[blocks](/docs/blocks)",
-    "[shadcn components](/docs/shadcn-components)"
+    "blocks",
+    "[components](/docs/components)"
   ]
 }

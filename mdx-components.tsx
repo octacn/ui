@@ -9,6 +9,7 @@ import { Callout } from "@/components/callout";
 import { CodeBlockCommand } from "@/components/code-block-command";
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
 import { CodeTabs } from "@/components/code-tabs";
+import { ImageCardWrapper } from "@/components/image-card-wrapper";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
 import { ComponentsList } from "@/components/components-list";
@@ -346,6 +347,7 @@ export const mdxComponents = {
   ComponentPreview,
   ComponentSource,
   CodeCollapsibleWrapper,
+  ImageCardWrapper,
   ImageCard,
   ImageCarousel,
   TechStackIcon,
