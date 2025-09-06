@@ -16,7 +16,6 @@ export async function ComponentPreview({
   src: string;
   name: string;
   align?: "center" | "start" | "end";
-  description?: string;
   hideCode?: boolean;
   type?: "block" | "component" | "example";
 }) {

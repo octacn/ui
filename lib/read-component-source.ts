@@ -37,8 +37,6 @@
 //   }
 // };
 
-
-
 // lib/read-component-source.ts
 import { promises as fs } from "fs";
 import path from "path";
@@ -49,12 +47,12 @@ export const readComponentSource = async (
 ) => {
   // Handle different path formats
   let normalizedPath = sourcePath;
-  
+
   // Remove @/ prefix if present
   if (normalizedPath.startsWith("@/")) {
     normalizedPath = normalizedPath.replace(/^@\//, "");
   }
-  
+
   // Ensure we're looking in the registry directory
   if (!normalizedPath.startsWith("registry/")) {
     normalizedPath = `registry/${normalizedPath}`;
@@ -71,11 +69,17 @@ export const readComponentSource = async (
     return source;
   } catch (error) {
     console.error(`Error reading file ${filePath}:`, error);
-    
+
     // Try alternative paths
     const alternativePaths = [
       path.join(process.cwd(), "components", "ui", `${componentName}.tsx`),
-      path.join(process.cwd(), "src", "components", "ui", `${componentName}.tsx`),
+      path.join(
+        process.cwd(),
+        "src",
+        "components",
+        "ui",
+        `${componentName}.tsx`
+      ),
       path.join(process.cwd(), normalizedPath, `${componentName}.ts`),
       path.join(process.cwd(), normalizedPath, `index.tsx`),
     ];
@@ -85,36 +89,14 @@ export const readComponentSource = async (
         console.log(`Trying alternative path: ${altPath}`);
         const source = await fs.readFile(altPath, "utf8");
         return source;
-      } catch  {
+      } catch {
         // Continue to next alternative
       }
     }
-    
+
     return null;
   }
 };
-
-// export const readComponentPath = async (
-//   sourcePath: string,
-//   componentName: string
-// ) => {
-//   try {
-//     // Normalize the import path
-//     let importPath = sourcePath;
-//     if (!importPath.startsWith("@/")) {
-//       importPath = `@/${importPath}`;
-//     }
-    
-//     const Component = (
-//       await import(`${importPath}/${componentName}`)
-//     ).default;
-//     return Component;
-//   } catch (error) {
-//     console.error(`Error importing component from ${sourcePath}:`, error);
-//     return null;
-//   }
-// };
-
 
 export const readComponentPath = async (
   sourcePath: string,

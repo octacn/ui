@@ -23,22 +23,22 @@ function createText<T extends HTMLElement>(
   return Comp;
 }
 
-// ---------------------------------------------
-// Headings
-// ---------------------------------------------
+/**
+ * Heading Are as Follow `H1, H2, H3, H4, H5, H6`
+ */
 export const H1 = createText<HTMLHeadingElement>(
   "h1",
-  "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl"
+  "scroll-m-20 text-4xl font-extrabold tracking-tight text-balance"
 );
 
 export const H2 = createText<HTMLHeadingElement>(
   "h2",
-  "scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0"
+  "scroll-m-20 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
 );
 
 export const H3 = createText<HTMLHeadingElement>(
   "h3",
-  "scroll-m-20 text-2xl tracking-tight"
+  "scroll-m-20 text-2xl font-semibold tracking-tight"
 );
 
 export const H4 = createText<HTMLHeadingElement>(
@@ -56,10 +56,13 @@ export const H6 = createText<HTMLHeadingElement>(
   "scroll-m-20 text-base tracking-tight"
 );
 
-// ---------------------------------------------
-// Paragraph & helpers
-// ---------------------------------------------
-export const P = createText<HTMLParagraphElement>("p", "leading-7");
+/**
+ * Paragraph & helpers Are as Follow p, Lead, Large, Small, Muted, BlackQuote, InlineCode, Kbd
+ */
+export const P = createText<HTMLParagraphElement>(
+  "p",
+  "leading-7 [&:not(:first-child)]:mt-6"
+);
 
 export const Lead = createText<HTMLParagraphElement>(
   "p",
@@ -93,9 +96,9 @@ export const Kbd = createText<HTMLElement>(
   "rounded border bg-muted px-1.5 py-0.5 font-mono text-[0.8rem]"
 );
 
-// ---------------------------------------------
-// Lists & rules
-// ---------------------------------------------
+/**
+ * Lists & rules Are as Follow Ul, Ol, Li, Hr, Prose
+ */
 export const UL: React.FC<React.HTMLAttributes<HTMLUListElement>> = ({
   className,
   ...props

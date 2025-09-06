@@ -1,125 +1,9 @@
-// import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
-// import { getIconForLanguageExtension } from "@/components/icons";
-// import { readComponentPath, readComponentSource } from "@/lib/read-component-source";
-// import { CopyButton } from "@/components/copy-button";
-// import { highlightCode } from "@/lib/highlight-code";
-// import { cn } from "@/lib/utils";
-// import * as React from "react";
-
-// export async function ComponentSource({
-//   name,
-//   src,
-//   title,
-//   language,
-//   collapsible = true,
-//   className,
-// }: React.ComponentProps<"div"> & {
-//   name?: string;
-//   src?: string;
-//   title?: string;
-//   language?: string;
-//   collapsible?: boolean;
-// }) {
-//   // if (!name && !src) {
-//   //   return null
-//   // }
-
-//   // let code: string | undefined
-
-//   // if (name) {
-//   //   const item = await getRegistryItem(name)
-//   //   code = item?.files?.[0]?.content
-//   // }
-
-//   // if (src) {
-//   //   const file = await fs.readFile(path.join(process.cwd(), src), "utf-8")
-//   //   code = file
-//   // }
-
-//   // if (!code) {
-//   //   return null
-//   // }
-
-//   // const Component = await readComponentPath(sourcePath!, componentName!);
-  
-//   if (!src || !name) {
-//     return (
-//       <div>
-//         No Source Path {src} and Component Name Defined{name}
-//       </div>
-//     );
-//   }
-  
-//   const resolvedPath = src.toLowerCase();
-  
-//   const code = await readComponentSource(resolvedPath, name.toLowerCase()) as string;
-//   // const code = await readComponentPath(resolvedPath, name.toLowerCase());
-
-//   const lang = language ?? title?.split(".").pop() ?? "tsx";
-//   const highlightedCode = await highlightCode(code, lang);
-
-//   if (!collapsible) {
-//     return (
-//       <div className={cn("relative", className)}>
-//         <ComponentCode
-//           code={code}
-//           highlightedCode={highlightedCode}
-//           language={lang}
-//           title={title}
-//         />
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <CodeCollapsibleWrapper className={className}>
-//       <ComponentCode
-//         code={code}
-//         highlightedCode={highlightedCode}
-//         language={lang}
-//         title={title}
-//       />
-//     </CodeCollapsibleWrapper>
-//   );
-// }
-
-// function ComponentCode({
-//   code,
-//   highlightedCode,
-//   language,
-//   title,
-// }: {
-//   code: string;
-//   highlightedCode: string;
-//   language: string;
-//   title: string | undefined;
-// }) {
-//   return (
-//     <figure data-rehype-pretty-code-figure="" className="[&>pre]:max-h-96">
-//       {title && (
-//         <figcaption
-//           data-rehype-pretty-code-title=""
-//           className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
-//           data-language={language}
-//         >
-//           {getIconForLanguageExtension(language)}
-//           {title}
-//         </figcaption>
-//       )}
-//       <CopyButton value={code} />
-//       <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
-//     </figure>
-//   );
-// }
-
-
-// components/ComponentSource.tsx
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
 import { getIconForLanguageExtension } from "@/components/icons";
 import { readComponentSource } from "@/lib/read-component-source";
 import { CopyButton } from "@/components/copy-button";
 import { highlightCode } from "@/lib/highlight-code";
-import { cn } from "@/lib/utils";
+import { cn, convertRegistryPaths } from "@/lib/utils";
 import * as React from "react";
 
 export async function ComponentSource({
@@ -137,24 +21,28 @@ export async function ComponentSource({
   language?: string;
   collapsible?: boolean;
 }) {
-  // Validate required props
   if (!src || !name) {
     return (
       <div className="border border-red-200 bg-red-50 p-4 rounded-md">
         <p className="text-red-700">
-         {"Error: Both 'src' ({src || 'missing'}) and 'name' ({name || 'missing'}) props are required."}
+          {
+            "Error: Both 'src' ({src || 'missing'}) and 'name' ({name || 'missing'}) props are required."
+          }
         </p>
         <p className="text-sm text-red-600 mt-2">
-         {"Usage: &lt;ComponentSource name='Button' src='ui' title='Button.tsx' /&gt;"}
+          {
+            "Usage: &lt;ComponentSource name='Button' src='ui' title='Button.tsx' /&gt;"
+          }
         </p>
       </div>
     );
   }
 
   try {
-    // Read the component source code
-    const code = await readComponentSource(src, name);
-    
+    const sourceCode = await readComponentSource(src, name);
+
+    const code = convertRegistryPaths(sourceCode as string);
+
     if (!code) {
       return (
         <div className="border border-yellow-200 bg-yellow-50 p-4 rounded-md">
@@ -168,13 +56,10 @@ export async function ComponentSource({
       );
     }
 
-    // Determine language for syntax highlighting
     const lang = language ?? title?.split(".").pop() ?? "tsx";
-    
-    // Highlight the code
+
     const highlightedCode = await highlightCode(code, lang);
 
-    // Render the component
     if (!collapsible) {
       return (
         <div className={cn("relative", className)} {...props}>
@@ -203,7 +88,8 @@ export async function ComponentSource({
     return (
       <div className="border border-red-200 bg-red-50 p-4 rounded-md">
         <p className="text-red-700">
-          Error loading component source: {error instanceof Error ? error.message : 'Unknown error'}
+          Error loading component source:{" "}
+          {error instanceof Error ? error.message : "Unknown error"}
         </p>
       </div>
     );
