@@ -15,6 +15,7 @@ import Link from "next/link";
 import { Badge } from "@/registry/ui/badge";
 import { DocsTableOfContents } from "@/components/docs-toc";
 import { DocsEditButton } from "@/components/docs-edit-button";
+import { OpenInAgency } from "@/components/open-in-agency";
 // import { getGithubLastEdit } from "fumadocs-core/server";
 // import { LastEditTime } from "@/components/last-edit-time";
 
@@ -208,6 +209,9 @@ export default async function Page(props: PageProps) {
             <div className="h-12" />
           </div>
         ) : null}
+        <div className="flex flex-1 flex-col gap-12 px-6">
+          <OpenInAgency />
+        </div>
       </div>
     </div>
   );
