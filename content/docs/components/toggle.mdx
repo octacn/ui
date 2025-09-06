@@ -1,18 +1,13 @@
 ---
-title: Collapsible
-description: A vertically stacked set of interactive headings that each reveal a section of content.
+title: Toggle
+description: A two-state button that can be either on or off.
 component: true
 links:
-  doc: https://www.radix-ui.com/docs/primitives/components/accordion
-  api: https://www.radix-ui.com/docs/primitives/components/accordion#view-all 
+  doc: https://www.radix-ui.com/docs/primitives/components/toggle
+  api: https://www.radix-ui.com/docs/primitives/components/toggle#api-reference
 ---
 
-<ComponentPreview
-  name="Button"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
-  description="An accordion with three items"
-  src="ui"
-/>
+<ComponentPreview name="toggle-demo" description="A toggle component." />
 
 ## Installation
 
@@ -22,11 +17,10 @@ links:
   <TabsTrigger value="cli">CLI</TabsTrigger>
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
-
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add accordion
+npx shadcn@latest add toggle
 ```
 
 </TabsContent>
@@ -38,12 +32,12 @@ npx shadcn@latest add accordion
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @radix-ui/react-accordion
+npm install @radix-ui/react-toggle
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="accordion" title="components/ui/accordion.tsx" />
+<ComponentSource name="toggle" title="components/ui/toggle.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -55,22 +49,45 @@ npm install @radix-ui/react-accordion
 
 ## Usage
 
-```tsx showLineNumbers
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+```tsx
+import { Toggle } from "@/components/ui/toggle"
 ```
 
-```tsx showLineNumbers
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Is it accessible?</AccordionTrigger>
-    <AccordionContent>
-      Yes. It adheres to the WAI-ARIA design pattern.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
+```tsx
+<Toggle>Toggle</Toggle>
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreview name="toggle-demo" description="A toggle component." />
+
+### Outline
+
+<ComponentPreview
+  name="toggle-outline"
+  description="A toggle component using the outline variant."
+/>
+
+### With Text
+
+<ComponentPreview
+  name="toggle-with-text"
+  description="A toggle component with text."
+/>
+
+### Small
+
+<ComponentPreview name="toggle-sm" description="A small toggle component." />
+
+### Large
+
+<ComponentPreview name="toggle-lg" description="A large toggle component." />
+
+### Disabled
+
+<ComponentPreview
+  name="toggle-disabled"
+  description="A disabled toggle component."
+/>

@@ -1,18 +1,10 @@
 ---
-title: Accordion
-description: A vertically stacked set of interactive headings that each reveal a section of content.
+title: Card
+description: Displays a card with header, content, and footer.
 component: true
-links:
-  doc: https://www.radix-ui.com/docs/primitives/components/accordion
-  api: https://www.radix-ui.com/docs/primitives/components/accordion#view-all 
 ---
 
-<ComponentPreview
-  name="Button"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
-  description="An accordion with three items"
-  src="ui"
-/>
+<ComponentPreview name="card-demo" description="A card with a form" />
 
 ## Installation
 
@@ -22,11 +14,10 @@ links:
   <TabsTrigger value="cli">CLI</TabsTrigger>
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
-
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add accordion
+npx shadcn@latest add card
 ```
 
 </TabsContent>
@@ -35,15 +26,9 @@ npx shadcn@latest add accordion
 
 <Steps>
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install @radix-ui/react-accordion
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="accordion" title="components/ui/accordion.tsx" />
+<ComponentSource name="card" title="components/ui/card.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -57,20 +42,28 @@ npm install @radix-ui/react-accordion
 
 ```tsx showLineNumbers
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 ```
 
 ```tsx showLineNumbers
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Is it accessible?</AccordionTrigger>
-    <AccordionContent>
-      Yes. It adheres to the WAI-ARIA design pattern.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card Description</CardDescription>
+    <CardAction>Card Action</CardAction>
+  </CardHeader>
+  <CardContent>
+    <p>Card Content</p>
+  </CardContent>
+  <CardFooter>
+    <p>Card Footer</p>
+  </CardFooter>
+</Card>
 ```

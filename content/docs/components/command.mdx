@@ -1,18 +1,21 @@
 ---
-title: Collapsible
-description: A vertically stacked set of interactive headings that each reveal a section of content.
+title: Command
+description: Fast, composable, unstyled command menu for React.
 component: true
 links:
-  doc: https://www.radix-ui.com/docs/primitives/components/accordion
-  api: https://www.radix-ui.com/docs/primitives/components/accordion#view-all 
+  doc: https://cmdk.paco.me
 ---
 
 <ComponentPreview
-  name="Button"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
-  description="An accordion with three items"
-  src="ui"
+  name="command-demo"
+  align="start"
+  className="[&_.preview>div]:max-w-[450px]"
+  description="A command menu"
 />
+
+## About
+
+The `<Command />` component uses the [`cmdk`](https://cmdk.paco.me) component by [pacocoursey](https://twitter.com/pacocoursey).
 
 ## Installation
 
@@ -22,11 +25,10 @@ links:
   <TabsTrigger value="cli">CLI</TabsTrigger>
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
-
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add accordion
+npx shadcn@latest add command
 ```
 
 </TabsContent>
@@ -38,12 +40,12 @@ npx shadcn@latest add accordion
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @radix-ui/react-accordion
+npm install cmdk
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="accordion" title="components/ui/accordion.tsx" />
+<ComponentSource name="command" title="components/ui/command.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -57,20 +59,80 @@ npm install @radix-ui/react-accordion
 
 ```tsx showLineNumbers
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@/components/ui/command"
 ```
 
 ```tsx showLineNumbers
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Is it accessible?</AccordionTrigger>
-    <AccordionContent>
-      Yes. It adheres to the WAI-ARIA design pattern.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
+<Command>
+  <CommandInput placeholder="Type a command or search..." />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
+      <CommandItem>Calendar</CommandItem>
+      <CommandItem>Search Emoji</CommandItem>
+      <CommandItem>Calculator</CommandItem>
+    </CommandGroup>
+    <CommandSeparator />
+    <CommandGroup heading="Settings">
+      <CommandItem>Profile</CommandItem>
+      <CommandItem>Billing</CommandItem>
+      <CommandItem>Settings</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
 ```
+
+## Examples
+
+### Dialog
+
+<ComponentPreview
+  name="command-dialog"
+  description="A command menu in a dialog"
+/>
+
+To show the command menu in a dialog, use the `<CommandDialog />` component.
+
+```tsx showLineNumbers title="components/example-command-menu.tsx"
+export function CommandMenu() {
+  const [open, setOpen] = React.useState(false)
+
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        setOpen((open) => !open)
+      }
+    }
+    document.addEventListener("keydown", down)
+    return () => document.removeEventListener("keydown", down)
+  }, [])
+
+  return (
+    <CommandDialog open={open} onOpenChange={setOpen}>
+      <CommandInput placeholder="Type a command or search..." />
+      <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandGroup heading="Suggestions">
+          <CommandItem>Calendar</CommandItem>
+          <CommandItem>Search Emoji</CommandItem>
+          <CommandItem>Calculator</CommandItem>
+        </CommandGroup>
+      </CommandList>
+    </CommandDialog>
+  )
+}
+```
+
+### Combobox
+
+You can use the `<Command />` component as a combobox. See the [Combobox](/docs/components/combobox) page for more information.

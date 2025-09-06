@@ -1,17 +1,16 @@
 ---
-title: Accordion
-description: A vertically stacked set of interactive headings that each reveal a section of content.
+title: Aspect Ratio
+description: Displays content within a desired ratio.
 component: true
 links:
-  doc: https://www.radix-ui.com/docs/primitives/components/accordion
-  api: https://www.radix-ui.com/docs/primitives/components/accordion#view-all 
+  doc: https://www.radix-ui.com/docs/primitives/components/aspect-ratio
+  api: https://www.radix-ui.com/docs/primitives/components/aspect-ratio#api-reference
 ---
 
 <ComponentPreview
-  name="Button"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
-  description="An accordion with three items"
-  src="ui"
+  name="aspect-ratio-demo"
+  title="Aspect Ratio"
+  description="A component that displays an image with a 16:9 aspect ratio."
 />
 
 ## Installation
@@ -22,11 +21,10 @@ links:
   <TabsTrigger value="cli">CLI</TabsTrigger>
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
-
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add accordion
+npx shadcn@latest add aspect-ratio
 ```
 
 </TabsContent>
@@ -38,12 +36,12 @@ npx shadcn@latest add accordion
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @radix-ui/react-accordion
+npm install @radix-ui/react-aspect-ratio
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="accordion" title="components/ui/accordion.tsx" />
+<ComponentSource name="aspect-ratio" title="components/ui/aspect-ratio.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -56,21 +54,11 @@ npm install @radix-ui/react-accordion
 ## Usage
 
 ```tsx showLineNumbers
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 ```
 
 ```tsx showLineNumbers
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Is it accessible?</AccordionTrigger>
-    <AccordionContent>
-      Yes. It adheres to the WAI-ARIA design pattern.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
+<AspectRatio ratio={16 / 9}>
+  <Image src="..." alt="Image" className="rounded-md object-cover" />
+</AspectRatio>
 ```

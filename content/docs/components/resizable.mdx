@@ -1,18 +1,20 @@
 ---
-title: Collapsible
-description: A vertically stacked set of interactive headings that each reveal a section of content.
+title: Resizable
+description: Accessible resizable panel groups and layouts with keyboard support.
 component: true
 links:
-  doc: https://www.radix-ui.com/docs/primitives/components/accordion
-  api: https://www.radix-ui.com/docs/primitives/components/accordion#view-all 
+  doc: https://github.com/bvaughn/react-resizable-panels
+  api: https://github.com/bvaughn/react-resizable-panels/tree/main/packages/react-resizable-panels
 ---
 
 <ComponentPreview
-  name="Button"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
-  description="An accordion with three items"
-  src="ui"
+  name="resizable-demo"
+  description="A group of resizable horizontal and vertical panels."
 />
+
+## About
+
+The `Resizable` component is built on top of [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels) by [bvaughn](https://github.com/bvaughn).
 
 ## Installation
 
@@ -22,11 +24,10 @@ links:
   <TabsTrigger value="cli">CLI</TabsTrigger>
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
-
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add accordion
+npx shadcn@latest add resizable
 ```
 
 </TabsContent>
@@ -38,12 +39,12 @@ npx shadcn@latest add accordion
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @radix-ui/react-accordion
+npm install react-resizable-panels
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="accordion" title="components/ui/accordion.tsx" />
+<ComponentSource name="resizable" title="components/ui/resizable.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -57,20 +58,72 @@ npm install @radix-ui/react-accordion
 
 ```tsx showLineNumbers
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
 ```
 
 ```tsx showLineNumbers
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Is it accessible?</AccordionTrigger>
-    <AccordionContent>
-      Yes. It adheres to the WAI-ARIA design pattern.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
+<ResizablePanelGroup direction="horizontal">
+  <ResizablePanel>One</ResizablePanel>
+  <ResizableHandle />
+  <ResizablePanel>Two</ResizablePanel>
+</ResizablePanelGroup>
+```
+
+## Examples
+
+### Vertical
+
+Use the `direction` prop to set the direction of the resizable panels.
+
+<ComponentPreview
+  name="resizable-vertical"
+  description="A group of resizable vertical panels."
+/>
+
+```tsx showLineNumbers {9}
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
+
+export default function Example() {
+  return (
+    <ResizablePanelGroup direction="vertical">
+      <ResizablePanel>One</ResizablePanel>
+      <ResizableHandle />
+      <ResizablePanel>Two</ResizablePanel>
+    </ResizablePanelGroup>
+  )
+}
+```
+
+### Handle
+
+You can set or hide the handle by using the `withHandle` prop on the `ResizableHandle` component.
+
+<ComponentPreview
+  name="resizable-handle"
+  description="A group of resizable panels with a handle."
+/>
+
+```tsx showLineNumbers {11}
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
+
+export default function Example() {
+  return (
+    <ResizablePanelGroup direction="horizontal">
+      <ResizablePanel>One</ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel>Two</ResizablePanel>
+    </ResizablePanelGroup>
+  )
+}
 ```
