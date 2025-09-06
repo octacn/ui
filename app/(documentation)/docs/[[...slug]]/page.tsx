@@ -48,6 +48,7 @@ export async function generateMetadata(props: PageProps) {
   return {
     title: doc.title,
     description: doc.description,
+    metadataBase: new URL("https://yourdomain.com"), // TODO:- Change it after
     openGraph: {
       title: doc.title,
       description: doc.description,

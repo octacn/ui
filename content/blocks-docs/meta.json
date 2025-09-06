@@ -2,8 +2,10 @@
   "root": true,
   "pages": [
     "(root)",
-    "/footers",
-    "/backgrounds",
-    "/headers"
+    "headers",
+    "hero",
+    "call-to-action",
+    "forms",
+    "footers"
   ]
 }
