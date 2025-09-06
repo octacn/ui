@@ -15,8 +15,8 @@ import Link from "next/link";
 import { Badge } from "@/registry/ui/badge";
 import { DocsTableOfContents } from "@/components/docs-toc";
 import { DocsEditButton } from "@/components/docs-edit-button";
-import { getGithubLastEdit } from "fumadocs-core/server";
-import { LastEditTime } from "@/components/last-edit-time";
+// import { getGithubLastEdit } from "fumadocs-core/server";
+// import { LastEditTime } from "@/components/last-edit-time";
 
 interface PageProps {
   params: Promise<{ slug?: string[] }>;
@@ -91,11 +91,11 @@ export default async function Page(props: PageProps) {
 
   const links = doc.links;
 
-  const time = await getGithubLastEdit({
-    owner: "shadwui",
-    repo: "new-lib",
-    path: `content/blocks-doc/${page.path}`,
-  });
+  // const time = await getGithubLastEdit({
+  //   owner: "shadwui",
+  //   repo: "new-lib",
+  //   path: `content/blocks-docs/${page.path}`,
+  // });
 
   return (
     <div
@@ -170,7 +170,7 @@ export default async function Page(props: PageProps) {
             <MDX components={mdxComponents} />
           </div>
 
-          <LastEditTime time={time} />
+          {/* <LastEditTime time={time} /> */}
         </div>
         <div className="mx-auto hidden h-16 w-full max-w-3xl items-center gap-2 px-4 sm:flex md:px-0">
           {neighbours.previous && (

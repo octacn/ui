@@ -9,7 +9,7 @@ export const LastEditTime = ({ time }: { time: string }) => {
   });
 
   return (
-    <H4 className="flex items-center gap-2 text-base text-muted-foreground">
+    <H4 className="flex items-center gap-2 text-base text-muted-foreground font-inter" >
       Last updated on {date}
     </H4>
   );

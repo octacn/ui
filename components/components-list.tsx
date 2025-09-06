@@ -16,7 +16,7 @@ export function ComponentsList() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20 text-lg font-medium font-mono">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20 text-base/normal font-inter tracking-wide">
       {list.map((component, idx) => (
         <div key={component.$id} className="flex gap-1">
           {1 + idx}.
