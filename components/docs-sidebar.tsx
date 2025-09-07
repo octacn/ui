@@ -15,7 +15,7 @@ import {
   SidebarMenuItem,
 } from "@/registry/ui/sidebar";
 import { Badge } from "@/registry/ui/badge";
-import { newPages, proPages } from "@/lib/page-type";
+import { newPages, proPages, comingSoonPages } from "@/lib/page-type";
 
 export function DocsSidebar({
   tree,
@@ -42,6 +42,9 @@ export function DocsSidebar({
                   {item.children.map((item) => {
                     const isNew = newPages.includes(item.url);
                     const isPro = proPages.includes(item.url);
+                    const isComingSoonPages = comingSoonPages.includes(
+                      item.url
+                    );
 
                     return (
                       item.type === "page" && (
@@ -57,13 +60,18 @@ export function DocsSidebar({
                             <Link href={item.url}>{item.name}</Link>
                           </SidebarMenuButton>
                           {isNew && (
-                            <Badge className="capitalize bg-yellow-500 text-black py-0.5 rounded-md tracking-wide font-semibold">
+                            <Badge className="capitalize bg-yellow-500 text-black py-0.5 rounded-md tracking-wide font-semibold select-none">
                               new
                             </Badge>
                           )}
                           {isPro && (
-                            <Badge className="capitalize bg-green-500 text-black py-0.5 rounded-md tracking-wide font-semibold">
+                            <Badge className="capitalize bg-green-500 text-black py-0.5 rounded-md tracking-wide font-semibold select-none">
                               Pro
+                            </Badge>
+                          )}
+                          {isComingSoonPages && (
+                            <Badge variant={"secondary"} className="bg-transparent capitalize text-muted-foreground tracking-wide font-semibold select-none font-inter italic">
+                              Coming Soon
                             </Badge>
                           )}
                         </SidebarMenuItem>

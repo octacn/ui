@@ -25,3 +25,10 @@ export const proPages = [
    */
   "/blocks-docs",
 ];
+
+
+export const comingSoonPages = [
+  "/docs/templates",
+
+  "/docs/changelog",
+]
