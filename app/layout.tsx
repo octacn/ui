@@ -2,8 +2,6 @@ import MaxWidthWrapper from "@/registry/ui/max-width-wrapper";
 import { ThemeProvider } from "@/registry/ui/theme-provider";
 import { Geist, Inter, Space_Grotesk } from "next/font/google";
 import { META_THEME_COLORS } from "@/lib/config";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
@@ -68,9 +66,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <MaxWidthWrapper>
-            <SiteHeader />
             {children}
-            <SiteFooter />
           </MaxWidthWrapper>
         </ThemeProvider>
       </body>
