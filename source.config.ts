@@ -55,3 +55,18 @@ export const blocksDocs = defineDocs({
     }),
   },
 });
+
+
+export const authDocs = defineDocs({
+  dir: "content/auth-docs",
+  docs: {
+    schema: frontmatterSchema.extend({
+      links: z
+        .object({
+          doc: z.string().optional(),
+          api: z.string().optional(),
+        })
+        .optional(),
+    }),
+  },
+});

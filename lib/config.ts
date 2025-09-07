@@ -26,6 +26,10 @@ export const siteConfig = {
       label: "Blocks",
     },
     {
+      href: "/auth-docs",
+      label: "Authentication",
+    },
+    {
       href: "/themes",
       label: "Themes",
     },
