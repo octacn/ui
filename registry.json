@@ -13,7 +13,7 @@
       "description": "A simple button of component.",
       "files": [
         {
-          "path": "registry/components/button.tsx",
+          "path": "registry/ui/button.tsx",
           "type": "registry:component"
         }
       ]

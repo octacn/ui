@@ -1,8 +1,9 @@
 import * as React from "react"
+
 import { registryItemFileSchema } from "@/schema/shadcn"
 import { z } from "zod"
-
 import { highlightCode } from "@/lib/highlight-code"
+
 import {
   createFileTreeForRegistryItemFiles,
   getRegistryItem,
@@ -11,7 +12,7 @@ import { cn } from "@/lib/utils"
 import { BlockViewer } from "@/components/block-viewer"
 import { ComponentPreview } from "@/components/component-preview"
 
-export async function BlockDisplay({ name }: { name: string }) {
+export async function BlockDisplay({ name = "footer-01" }: { name?: string }) {
   const item = await getCachedRegistryItem(name)
 
   if (!item?.files) {
@@ -27,6 +28,7 @@ export async function BlockDisplay({ name }: { name: string }) {
     <BlockViewer item={item} tree={tree} highlightedFiles={highlightedFiles}>
       <ComponentPreview
         name={item.name}
+        src=""
         hideCode
         className={cn(
           "my-0 **:[.preview]:h-auto **:[.preview]:p-4 **:[.preview>.p-6]:p-0",

@@ -30,8 +30,8 @@ export const siteConfig = {
       label: "Authentication",
     },
     {
-      href: "/themes",
-      label: "Themes",
+      href: "/blocks",
+      label: "Blocks",
     },
   ],
 };
