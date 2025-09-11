@@ -1,23 +1,19 @@
-import { cn } from "@/lib/utils"
-import * as React from "react"
+import { ComponentPreview } from "@/components/component-preview";
+import { getComponentData } from "@/lib/get-component";
+import { notFound } from "next/navigation";
 
-export const revalidate = false
-export const dynamic = "force-static"
-export const dynamicParams = false
- 
+interface PreviewPageProps {
+  searchParams?: Promise<{ name: string; src: string }>;
+}
 
-export default async function PreviewPage({
-  params,
-}: {
-  params: Promise<{
-    slug: string
-  }>
-}) {
-  const { slug } = await params
+export default async function PreviewPage({ searchParams }: PreviewPageProps) {
+  const params = await searchParams;
+  const name = params?.name;
+  const src = params?.src;
 
-  return (
-      <div className={cn("")}>
-       Preview Page with slugs {slug}
-      </div>
-  )
+  if (!name || !src) return notFound();
+
+  const data = await getComponentData(name, src);
+
+  return <ComponentPreview name={data.name} src={data.src} hideCode />;
 }

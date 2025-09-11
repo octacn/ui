@@ -8,7 +8,7 @@ const Page = () => {
       <CardHeader className="text-center">Example Card</CardHeader>
       <CardContent>
         <ComponentSource
-          name="Button"
+          name="button"
           src="ui"
           title="Button.tsx"
           language="tsx"

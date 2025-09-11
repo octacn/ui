@@ -1,10 +1,12 @@
-import { BlockDisplay } from "@/components/block-display";
+"use client"
+
+import { BlockDisplay } from "@/components/block-display"; 
 import React from "react";
 
 const Page = () => {
   return (
     <div>
-      <BlockDisplay />
+      <BlockDisplay/>
     </div>
   );
 };

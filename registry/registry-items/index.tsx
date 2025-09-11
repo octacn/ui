@@ -11,10 +11,12 @@ import React from "react";
 import { BlockquoteDemo } from "@/registry/demo/typography/typography-blockquote";
 import { InlineCodeDemo } from "@/registry/demo/typography/typography-inline-code";
 import { PDemo } from "@/registry/demo/typography/typography-p";
+import { Loading } from "@/registry/src/loaders/loading";
 
 export const ComponentRegistry = {
-  Button,
-  Card,
+  loading: Loading,
+  button: Button,
+  card: Card,
   "typography-demo": TypographyDemo,
   "typography-h1": H1Demo,
   "typography-h2": H2Demo,
@@ -35,8 +37,9 @@ export interface types {
 }
 
 export const Index: Record<ComponentType, types> = {
-  Button: { component: Button },
-  Card: { component: Card },
+  loading: { component: Loading },
+  button: { component: Button },
+  card: { component: Card },
   "typography-demo": { component: TypographyDemo },
   "typography-h1": { component: H1Demo },
   "typography-h2": { component: H2Demo },
@@ -48,3 +51,7 @@ export const Index: Record<ComponentType, types> = {
   "typography-inline-code": { component: InlineCodeDemo },
   "typography-p": { component: PDemo },
 };
+
+export const itemPath =  {
+  button: "ui/button"
+}
