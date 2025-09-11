@@ -5,18 +5,19 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { getIconForLanguageExtension } from "@/components/icons";
 
-import { Callout } from "@/components/callout";
-import { CodeBlockCommand } from "@/components/code-block-command";
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
-import { CodeTabs } from "@/components/code-tabs";
+import { CodeBlockCommand } from "@/components/code-block-command";
 import { ImageCardWrapper } from "@/components/image-card-wrapper";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
 import { ComponentsList } from "@/components/components-list";
 import { TechStackIcon } from "@/components/tech-stack-icon";
 import { ImageCarousel } from "@/components/image-carousel";
+import { BlockDisplay } from "@/components/block-display";
 import { CopyButton } from "@/components/copy-button";
 import { ImageCard } from "@/components/image-card";
+import { CodeTabs } from "@/components/code-tabs";
+import { Callout } from "@/components/callout";
 
 import {
   Accordion,
@@ -352,6 +353,7 @@ export const mdxComponents = {
   ImageCarousel,
   TechStackIcon,
   ComponentsList,
+  BlockDisplay,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn("font-medium underline underline-offset-4", className)}
