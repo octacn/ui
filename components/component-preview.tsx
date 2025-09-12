@@ -1,13 +1,11 @@
-import Image from "next/image";
-
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs";
 import { ComponentSource } from "@/components/component-source";
 import { ComponentType, Index } from "@/registry/registry-items";
+import Image from "next/image";
 
 export async function ComponentPreview({
   src,
   name,
-  type,
   className,
   align = "center",
   hideCode = false,
@@ -17,7 +15,6 @@ export async function ComponentPreview({
   name: string;
   align?: "center" | "start" | "end";
   hideCode?: boolean;
-  type?: "block" | "component" | "example";
 }) {
   const Component = Index[name as ComponentType]?.component;
 
@@ -33,30 +30,6 @@ export async function ComponentPreview({
     );
   }
 
-  if (type === "block") {
-    return (
-      <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border md:-mx-1">
-        <Image
-          src={`/r/styles/new-york-v4/${name}-light.png`}
-          alt={name}
-          width={1440}
-          height={900}
-          className="bg-background absolute top-0 left-0 z-20 w-[970px] max-w-none sm:w-[1280px] md:hidden dark:hidden md:dark:hidden"
-        />
-        <Image
-          src={`/r/styles/new-york-v4/${name}-dark.png`}
-          alt={name}
-          width={1440}
-          height={900}
-          className="bg-background absolute top-0 left-0 z-20 hidden w-[970px] max-w-none sm:w-[1280px] md:hidden dark:block md:dark:hidden"
-        />
-        <div className="bg-background absolute inset-0 hidden w-[1600px] md:block">
-          <iframe src={`/view/${name}`} className="size-full" />
-        </div>
-      </div>
-    );
-  }
-
   return (
     <ComponentPreviewTabs
       className={className}
@@ -66,5 +39,29 @@ export async function ComponentPreview({
       source={<ComponentSource src={src} name={name} collapsible={false} />}
       {...props}
     />
+  );
+}
+
+export function ComponentImagePreview({ name }: { name: string }) {
+  return (
+    <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border md:-mx-1">
+      <Image
+        src={`/r/style/images/${name}-light.png`}
+        alt={name}
+        width={1440}
+        height={900}
+        className="bg-background absolute top-0 left-0 z-20 w-[970px] max-w-none sm:w-[1280px] md:hidden dark:hidden md:dark:hidden"
+      />
+      <Image
+        src={`/r/style/images/${name}-dark.png`}
+        alt={name}
+        width={1440}
+        height={900}
+        className="bg-background absolute top-0 left-0 z-20 hidden w-[970px] max-w-none sm:w-[1280px] md:hidden dark:block md:dark:hidden"
+      />
+      <div className="bg-background absolute inset-0 hidden w-[1600px] md:block">
+        <iframe src={`/view/${name}`} className="size-full" />
+      </div>
+    </div>
   );
 }

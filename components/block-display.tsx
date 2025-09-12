@@ -1,5 +1,6 @@
 import { readComponentSource } from "@/lib/read-component-source";
 import { getIconForLanguageExtension } from "@/components/icons";
+import { BlockViewerProps } from "@/types/block-viewer";
 import { CopyButton } from "@/components/copy-button";
 import { highlightCode } from "@/lib/highlight-code";
 import { convertRegistryPaths } from "@/lib/utils";
@@ -10,30 +11,34 @@ import {
   BlockViewerToolbar,
   BlockViewerView,
 } from "@/components/block-viewer";
+import { ComponentImagePreview } from "./component-preview";
 
-export function BlockDisplay({
-  children,
+export const BlockDisplay = React.memo(function BlockDisplay({
   title,
-}: {
-  children: React.ReactNode;
-  title?: string;
-}) {
+  name,
+  src,
+  slug,
+  npm,
+  path,
+}: BlockViewerProps) {
   return (
-    <BlockViewer title={title}>
+    <BlockViewer
+      title={title}
+      npm={npm}
+      name={name}
+      src={src}
+      slug={slug}
+      path={path}
+    >
       <BlockViewerToolbar />
       <BlockViewerView />
-      <BlockViewerCode
-        srcCode={"ui"}
-        title="components/header.tsx"
-        name={"button"}
-      />
-
+      <BlockViewerCode srcCode={src} title={path} name={name} />
       <BlockViewerMobile>
-        {children}
+        <ComponentImagePreview name={name} />
       </BlockViewerMobile>
     </BlockViewer>
   );
-}
+});
 
 async function BlockViewerCode({
   srcCode,
@@ -44,10 +49,14 @@ async function BlockViewerCode({
   srcCode: string;
   title: string | undefined;
 }) {
+  // console.log("====================================");
+  // console.log(name, srcCode, title);
+  // console.log("====================================");
+
   const sourceCode = await readComponentSource(srcCode, name);
   const code = convertRegistryPaths(sourceCode as string);
 
-  if (!code) {
+  if (!code || !sourceCode) {
     return (
       <div className="border border-yellow-200 bg-yellow-50 p-4 rounded-md">
         <p className="text-yellow-700">
@@ -61,7 +70,6 @@ async function BlockViewerCode({
   }
 
   const lang = "tsx";
-
   const highlightedCode = await highlightCode(code, lang);
 
   return (

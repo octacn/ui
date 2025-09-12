@@ -1,6 +1,23 @@
 "use client";
 
+import { ToggleGroup, ToggleGroupItem } from "@/registry/ui/toggle-group";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { Tabs, TabsList, TabsTrigger } from "@/registry/ui/tabs";
+import { useBlockViewerState } from "@/hooks/use-block-viewer";
+import { PreviewButton } from "@/components/preview-button";
+import { Separator } from "@/registry/ui/separator";
+import { Button } from "@/registry/ui/button";
 import * as React from "react";
+
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/registry/ui/resizable";
+import {
+  BlockViewerContext as BlockViewerContextType,
+  BlockViewerProps,
+} from "@/types/block-viewer";
 import {
   Check,
   Monitor,
@@ -9,43 +26,33 @@ import {
   Tablet,
   Terminal,
 } from "lucide-react";
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 
-import { Button } from "@/registry/ui/button";
+const BlockViewerContext = React.createContext<BlockViewerContextType | null>(
+  null
+);
 
-import { Separator } from "@/registry/ui/separator";
-
-import { Tabs, TabsList, TabsTrigger } from "@/registry/ui/tabs";
-import { ToggleGroup, ToggleGroupItem } from "@/registry/ui/toggle-group";
-import { ImperativePanelHandle } from "react-resizable-panels";
-import { PreviewButton } from "./preview-button";
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/registry/ui/resizable";
-
-type BlockViewerContext = {
-  view: "code" | "preview";
-  setView: (view: "code" | "preview") => void;
-  resizablePanelRef: React.RefObject<ImperativePanelHandle | null> | null;
-  iframeKey?: number;
-  setIframeKey?: React.Dispatch<React.SetStateAction<number>>;
-  title?: string;
-  setTitle?: (title: string) => void;
-};
-
-function BlockViewer({
+const BlockViewer = React.memo(function BlockViewer({
   children,
   title,
-}: {
-  children: React.ReactNode;
-  title?: string;
-}) {
-  return <BlockViewerProvider title={title}>{children}</BlockViewerProvider>;
-}
-
-const BlockViewerContext = React.createContext<BlockViewerContext | null>(null);
+  name,
+  path,
+  slug,
+  src,
+  npm,
+}: BlockViewerProps) {
+  return (
+    <BlockViewerProvider
+      title={title}
+      name={name}
+      src={src}
+      slug={slug}
+      npm={npm}
+      path={path}
+    >
+      {children}
+    </BlockViewerProvider>
+  );
+});
 
 function useBlockViewer() {
   const context = React.useContext(BlockViewerContext);
@@ -57,50 +64,49 @@ function useBlockViewer() {
   return context;
 }
 
-function BlockViewerProvider({
+const BlockViewerProvider = React.memo(function BlockViewerProvider({
   children,
-  title: initialTitle,
-}: {
-  children: React.ReactNode;
-  title?: string;
-}) {
-  const [view, setView] = React.useState<BlockViewerContext["view"]>("preview");
-  const resizablePanelRef = React.useRef<ImperativePanelHandle>(null);
-  const [iframeKey, setIframeKey] = React.useState(0);
-  const [title, setTitle] = React.useState<BlockViewerContext["title"]>(
-    initialTitle || "Untitled Block"
-  );
+  title,
+  name,
+  src,
+  slug,
+  npm,
+  path,
+}: BlockViewerProps) {
+  const contextValue = useBlockViewerState({
+    title,
+    name,
+    src,
+    slug,
+    npm,
+    path,
+  });
 
   return (
-    <BlockViewerContext.Provider
-      value={{
-        view,
-        setView,
-        resizablePanelRef,
-        iframeKey,
-        setIframeKey,
-        title,
-        setTitle,
-      }}
-    >
+    <BlockViewerContext.Provider value={contextValue}>
       <div
-        data-view={view}
+        data-view={contextValue.view}
         className="group/block-view-wrapper flex min-w-0 scroll-mt-24 flex-col-reverse items-stretch gap-4 overflow-hidden md:flex-col"
-        style={
-          {
-            "--height": "456px",
-          } as React.CSSProperties
-        }
+        style={{ "--height": "456px" } as React.CSSProperties}
       >
         {children}
       </div>
     </BlockViewerContext.Provider>
   );
-}
+});
 
 function BlockViewerToolbar() {
-  const { setView, view, resizablePanelRef, setIframeKey, title } =
-    useBlockViewer();
+  const {
+    setView,
+    view,
+    resizablePanelRef,
+    setIframeKey,
+    title,
+    name,
+    src,
+    slug,
+    npm,
+  } = useBlockViewer();
   const { copyToClipboard, isCopied } = useCopyToClipboard();
 
   return (
@@ -140,7 +146,7 @@ function BlockViewerToolbar() {
               <Smartphone />
             </ToggleGroupItem>
             <Separator orientation="vertical" className="!h-4" />
-            <PreviewButton name="button" src="ui" slug="/preview/ui/button" />
+            <PreviewButton name={name} src={src} slug={slug} />
             <Separator orientation="vertical" className="!h-4" />
             <Button
               size="icon"
@@ -164,13 +170,11 @@ function BlockViewerToolbar() {
           className="w-fit gap-1 px-2 shadow-none max-w-50"
           size="sm"
           onClick={() => {
-            copyToClipboard(`npx shadcn@latest add header-01.json`);
+            copyToClipboard(`npx shadcn@latest add ${npm}`);
           }}
         >
           {isCopied ? <Check /> : <Terminal />}
-          <span className="truncate">
-            npx shadcn add header-01 0192 1092 j12 1 j2 1 2j
-          </span>
+          <span className="truncate">npx shadcn add {npm}</span>
         </Button>
       </div>
     </div>
@@ -205,12 +209,13 @@ function BlockViewerView() {
 }
 
 function BlockViewerMobile({ children }: { children: React.ReactNode }) {
+  const { name, path } = useBlockViewer();
   return (
     <div className="flex flex-col gap-2 lg:hidden">
       <div className="flex items-center gap-2 px-2">
-        <div className="line-clamp-1 text-sm font-medium">desc</div>
+        <div className="line-clamp-1 text-sm font-medium">{name}</div>
         <div className="text-muted-foreground ml-auto shrink-0 font-mono text-xs">
-          name
+          {path}
         </div>
       </div>
       {children}
@@ -219,7 +224,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
 }
 
 function BlockViewerIframe() {
-  const { iframeKey } = useBlockViewer();
+  const { iframeKey, slug, name, src } = useBlockViewer();
 
   const handleLoad = (event: React.SyntheticEvent<HTMLIFrameElement>) => {
     const iframe = event.currentTarget;
@@ -238,7 +243,7 @@ function BlockViewerIframe() {
   return (
     <iframe
       key={iframeKey}
-      src={`/preview/ui/button?name=button&src=ui`}
+      src={`${slug}?name=${name}&src=${src}`}
       loading="lazy"
       onLoad={handleLoad}
       className="relative z-20 w-full h-full"

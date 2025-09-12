@@ -1,12 +1,14 @@
 import { BlockDisplay } from "@/components/block-display";
+import { configs } from "@/registry/__index__";
 import React from "react";
 
 const Page = () => {
   return (
-    <div>
-      <BlockDisplay title="header hai">
-        <div className="bg-red-500 p-10 border">text-center</div>
-      </BlockDisplay>
+    <div className="px-10 py-10 space-y-3">
+      <BlockDisplay {...configs.button} />
+
+      <h1>Card</h1>
+      <BlockDisplay {...configs.card} />
     </div>
   );
 };
