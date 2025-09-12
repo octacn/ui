@@ -2,13 +2,14 @@
   "name": "new-lib",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
     "registry:build": "shadcn build",
-    "build:registry:internal": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-registry.mts",
+    "build:registry:internal": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "postinstall": "fumadocs-mdx"
   },
@@ -49,6 +50,7 @@
     "react-icons": "^5.5.0",
     "react-resizable-panels": "^3.0.5",
     "rehype-pretty-code": "^0.14.1",
+    "rimraf": "^6.0.1",
     "rough-notation": "^0.5.1",
     "shadcn": "2.10.0",
     "shiki": "^3.11.0",

@@ -33,6 +33,10 @@ export const siteConfig = {
       href: "/blocks",
       label: "Blocks",
     },
+    {
+      href: "/svg",
+      label: "Test-Block",
+    },
   ],
 };
 

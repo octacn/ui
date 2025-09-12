@@ -1,8 +1,12 @@
-import { TechStackIcon } from "@/components/tech-stack-icon";
+import { BlockDisplay } from "@/components/block/block-display";
 import React from "react";
 
 const Page = () => {
-  return <TechStackIcon technologies={["nextjs", "react"]} />;
+  return (
+    <div>
+      <BlockDisplay name={"header-01"} />
+    </div>
+  );
 };
 
 export default Page;

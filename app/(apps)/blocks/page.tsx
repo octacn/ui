@@ -1,5 +1,5 @@
 import { BlockDisplay } from "@/components/block-display";
-import { configs } from "@/registry/__index__";
+import { configs } from "@/registry/registry-items/__index__";
 import React from "react";
 
 const Page = () => {
