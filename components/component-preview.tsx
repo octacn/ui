@@ -46,18 +46,18 @@ export function ComponentImagePreview({ name }: { name: string }) {
   return (
     <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border md:-mx-1">
       <Image
-        src={`/r/style/images/${name}-light.png`}
+        src={`/images/${name}-light.png`}
         alt={name}
         width={1440}
         height={900}
-        className="bg-background absolute top-0 left-0 z-20 w-[970px] max-w-none sm:w-[1280px] md:hidden dark:hidden md:dark:hidden"
+        className="bg-background absolute top-0 left-0 z-20 md:hidden dark:hidden md:dark:hidden"
       />
       <Image
-        src={`/r/style/images/${name}-dark.png`}
+        src={`/images/${name}-dark.png`}
         alt={name}
         width={1440}
         height={900}
-        className="bg-background absolute top-0 left-0 z-20 hidden w-[970px] max-w-none sm:w-[1280px] md:hidden dark:block md:dark:hidden"
+        className="bg-background absolute top-0 left-0 z-20 hidden md:hidden dark:block md:dark:hidden"
       />
       <div className="bg-background absolute inset-0 hidden w-[1600px] md:block">
         <iframe src={`/view/${name}`} className="size-full" />
