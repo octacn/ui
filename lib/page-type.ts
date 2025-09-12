@@ -28,7 +28,5 @@ export const proPages = [
 
 
 export const comingSoonPages = [
-  "/docs/templates",
-
   "/docs/changelog",
 ]
