@@ -8,12 +8,8 @@ const REGISTRY_PATH = path.join(process.cwd(), "public/images");
 // Each block has an id (used for filename) and a url (with path + query)
 const blocks = [
   {
-    id: "card",
-    url: "http://localhost:3000/preview/ui/card?name=card&src=ui",
-  },
-  {
-    id: "button",
-    url: "http://localhost:3000/preview/ui/button?name=button&src=ui",
+    id: "header-01",
+    url: "http://localhost:3000/preview/header-01",
   },
 ];
 

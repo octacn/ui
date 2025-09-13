@@ -113,7 +113,7 @@ function BlockViewerProvider({
       <div
         id={item.name}
         data-view={view}
-        className="group/block-view-wrapper flex min-w-0 scroll-mt-24 flex-col-reverse items-stretch gap-4 overflow-hidden md:flex-col"
+        className="group/block-view-wrapper flex min-w-0 scroll-mt-24 flex-col-reverse items-stretch gap-3 overflow-hidden md:flex-col"
         style={
           {
             "--height": "456px",
@@ -132,7 +132,7 @@ function BlockViewerToolbar() {
   const { copyToClipboard, isCopied } = useCopyToClipboard();
 
   return (
-    <div className="hidden w-full items-center gap-2 pl-2 md:pr-6 lg:flex">
+    <div className="hidden w-full items-center gap-2 pl-1 md:pr-5 lg:flex">
       <Tabs
         value={view}
         onValueChange={(value) => setView(value as "preview" | "code")}
@@ -178,7 +178,7 @@ function BlockViewerToolbar() {
               asChild
               title="Open in New Tab"
             >
-              <Link href={`/view/${item.name}`} target="_blank">
+              <Link href={`/preview/${item.name}`} target="_blank">
                 <span className="sr-only">Open in New Tab</span>
                 <Fullscreen />
               </Link>
@@ -220,28 +220,27 @@ function BlockViewerToolbar() {
 function BlockViewerIframe({ className }: { className?: string }) {
   const { item, iframeKey } = useBlockViewer();
 
-  const handleLoad = (event: React.SyntheticEvent<HTMLIFrameElement>) => {
-    const iframe = event.currentTarget;
-    const doc = iframe.contentDocument || iframe.contentWindow?.document;
-    if (doc) {
-      const style = doc.createElement("style");
-      style.textContent = `
-        html { background: red; }
-        html::-webkit-scrollbar { display: none; }
-        html { scrollbar-width: none; -ms-overflow-style: none; }
-      `;
-      doc.head.appendChild(style);
-    }
-  };
+  // const handleLoad = (event: React.SyntheticEvent<HTMLIFrameElement>) => {
+  //   const iframe = event.currentTarget;
+  //   const doc = iframe.contentDocument || iframe.contentWindow?.document;
+  //   if (doc) {
+  //     const style = doc.createElement("style");
+  //     style.textContent = `
+  //       html { background: red; }
+  //       html::-webkit-scrollbar { display: none; }
+  //       html { scrollbar-width: none; -ms-overflow-style: none; }
+  //     `;
+  //     doc.head.appendChild(style);
+  //   }
+  // };
 
   return (
     <iframe
       key={iframeKey}
-      src={`/view/${item.name}`}
+      src={`/preview/${item.name}`}
       // height={item.meta?.iframeHeight ?? 930}
       loading="lazy"
       //  onLoad={handleLoad}
-
       className={cn("relative z-20 w-full h-full no-scrollbar", className)}
     />
   );
@@ -261,7 +260,7 @@ function BlockViewerView() {
         >
           <ResizablePanel
             ref={resizablePanelRef}
-            className="bg-background relative aspect-[4/2.5] overflow-hidden rounded-lg border md:aspect-auto md:rounded-xl"
+            className="bg-background relative aspect-[4/2.5] overflow-hidden rounded-lg border md:aspect-auto md:rounded-lg"
             defaultSize={100}
             minSize={30}
           >
@@ -275,41 +274,37 @@ function BlockViewerView() {
   );
 }
 
-function BlockViewerMobile({ children }: { children: React.ReactNode }) {
+function BlockViewerMobile() {
   const { item } = useBlockViewer();
 
   return (
     <div className="flex flex-col gap-2 lg:hidden">
       <div className="flex items-center gap-2 px-2">
-        <div className="line-clamp-1 text-sm font-medium">
+        <div className="line-clamp-1 text-sm font-inter truncate max-w-72">
           {item.description}
         </div>
-        <div className="text-muted-foreground ml-auto shrink-0 font-mono text-xs">
+        <div className="text-muted-foreground ml-auto shrink-0 font-mono text-sm truncate line-clamp-1 max-w-20">
           {item.name}
         </div>
       </div>
-      {item.meta?.mobile === "component" ? (
-        children
-      ) : (
-        <div className="overflow-hidden rounded-xl border">
-          <Image
-            src={`/r/styles/new-york-v4/${item.name}-light.png`}
-            alt={item.name}
-            data-block={item.name}
-            width={1440}
-            height={900}
-            className="object-cover dark:hidden"
-          />
-          <Image
-            src={`/r/styles/new-york-v4/${item.name}-dark.png`}
-            alt={item.name}
-            data-block={item.name}
-            width={1440}
-            height={900}
-            className="hidden object-cover dark:block"
-          />
-        </div>
-      )}
+      <div className="overflow-hidden rounded-lg border">
+        <Image
+          src={`/images/${item.name}-light.png`}
+          alt={item.name}
+          data-block={item.name}
+          width={1440}
+          height={900}
+          className="object-cover dark:hidden"
+        />
+        <Image
+          src={`/images/${item.name}-dark.png`}
+          alt={item.name}
+          data-block={item.name}
+          width={1440}
+          height={900}
+          className="hidden object-cover dark:block"
+        />
+      </div>
     </div>
   );
 }
@@ -328,7 +323,7 @@ function BlockViewerCode() {
   const language = file.path.split(".").pop() ?? "tsx";
 
   return (
-    <div className="bg-code text-code-foreground mr-[14px] flex overflow-hidden rounded-xl border group-data-[view=preview]/block-view-wrapper:hidden md:h-(--height)">
+    <div className="hidden bg-code text-code-foreground mr-[14px] lg:flex overflow-hidden rounded-lg border group-data-[view=preview]/block-view-wrapper:hidden md:h-(--height)">
       <div className="w-48">
         <BlockViewerFileTree />
       </div>
@@ -479,11 +474,8 @@ function BlockViewer({
   item,
   tree,
   highlightedFiles,
-  children,
   ...props
-}: Pick<BlockViewerContext, "item" | "tree" | "highlightedFiles"> & {
-  children: React.ReactNode;
-}) {
+}: Pick<BlockViewerContext, "item" | "tree" | "highlightedFiles">) {
   return (
     <BlockViewerProvider
       item={item}
@@ -494,7 +486,7 @@ function BlockViewer({
       <BlockViewerToolbar />
       <BlockViewerView />
       <BlockViewerCode />
-      <BlockViewerMobile>{children}</BlockViewerMobile>
+      <BlockViewerMobile />
     </BlockViewerProvider>
   );
 }
