@@ -4,7 +4,6 @@ import { MainNav } from "@/registry/src/headers/main-nav";
 import { CommandMenu } from "@/components/command-menu";
 import { GitHubLink } from "@/components/github-icon";
 import { Separator } from "@/registry/ui/separator";
-import { Button } from "@/registry/ui/button";
 import { Icons } from "@/components/icons";
 import { siteConfig } from "@/lib/config";
 import { getColors } from "@/lib/colors";
@@ -24,23 +23,19 @@ export function SiteHeader() {
       )}
     >
       <div className="container-wrapper 3xl:fixed:px-0 px-7">
-        <div className="3xl:fixed:container flex items-center gap-2 **:data-[slot=separator]:!h-4">
+        <div className="3xl:fixed:container flex items-center gap-1.5 **:data-[slot=separator]:!h-4">
           <MobileNav
             tree={pageTree}
             items={siteConfig.navItems}
             className="flex lg:hidden"
           />
-          <Button
-            asChild
-            variant="ghost"
-            size="icon"
-            className="hidden size-8 lg:flex"
-          >
-            <Link href="/">
-              <Icons.logo className="size-5" />
+          <button className="lg:flex py-0 flex h-10 items-center justify-center hover:bg-input/50 px-2 rounded-sm hover:cursor-default select-none">
+            <Link href="/" className="hover:cursor-default select-none">
+              <Icons.nameLogo className="size-30" />
               <span className="sr-only">{siteConfig.name}</span>
             </Link>
-          </Button>
+          </button>
+
           <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">

@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name: "shadcn/ui",
-  url: "https://ui.shadcn.com",
-  ogImage: "https://ui.shadcn.com/og.jpg",
+  name: "octacn/ui",
+  url: "https://ui.octacn.com",
+  ogImage: "https://ui.octacn.com/og.jpg",
   description:
     "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
   links: {
@@ -27,15 +27,15 @@ export const siteConfig = {
     },
     {
       href: "/auth-docs",
-      label: "Authentication",
+      label: "Auth",
+    },
+    {
+      href: "/illustration",
+      label: "Illustration",
     },
     {
       href: "/blocks",
-      label: "Blocks",
-    },
-    {
-      href: "/svg",
-      label: "Test-Block",
+      label: "Test-Route",
     },
   ],
 };
