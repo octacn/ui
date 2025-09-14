@@ -9,7 +9,7 @@ import { CtaSection } from "@/components/_components/cta-section";
 import { PageNav } from "@/components/page-nav";
 import { TextHoverEffect } from "@/registry/src/text/text-hover-effect";
 
-export default function RoutesLayout({
+export default function HeroLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -22,16 +22,16 @@ export default function RoutesLayout({
       </>
       <div>
         {/* <HeroSection /> */}
-        <FaqSection />
 
         {/* <PageNav className="hidden md:flex">
         <ExampleSection className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
         </PageNav> */}
         {/* {children}
       <LogoSection />
-      <TestimonialsSection />
       <CtaSection /> */}
 
+        <TestimonialsSection />
+        <FaqSection />
         <TextHoverEffect text="Octacn" />
       </div>
     </main>

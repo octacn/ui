@@ -1,10 +1,10 @@
-import { H2 } from "@/registry/ui/typography";
-import React from "react";
-
 import { InfinityScroll } from "@/registry/src/components/infinity-scroll";
+import { Box, BoxWrapper } from "@/components/box";
+import { Heading } from "@/components/heading";
+import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
-
-
+import React from "react";
+import Image from "next/image";
 
 export const testimonials = [
   {
@@ -45,52 +45,65 @@ export const testimonials = [
   },
 ];
 
-
 const firstRow = testimonials.slice(0, testimonials.length / 2);
 const secondRow = testimonials.slice(testimonials.length / 2);
 const thirdRow = testimonials.slice(testimonials.length / 3);
 
 export const TestimonialsSection = () => {
   return (
-    <section className="my-20">
-      <H2 className="text-center my-5">Used Our By these company </H2>
-      <div className="relative h-[500px] w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden">
-        <InfinityScroll pauseOnHover vertical className="[--duration:20s]">
-          {firstRow.map((testimonial) => (
-            <TestimonialCard key={testimonial.username} {...testimonial} />
-          ))}
-        </InfinityScroll>
+    <BoxWrapper>
+      <Heading
+        heading="Trusted by Developers"
+        description="See how Octacn UI helps developers ship faster and build better UIs."
+      />
 
-        <div className="hidden md:block">
+      <Box className="">
+        <div className="relative h-[500px] md:h-[700px] w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden gap-4">
           <InfinityScroll
-            reverse
             pauseOnHover
             vertical
-            className="[--duration:22s] "
+            className="[--duration:20s] [--gap:2rem]"
           >
-            {secondRow.map((testimonial) => (
+            {firstRow.map((testimonial) => (
               <TestimonialCard key={testimonial.username} {...testimonial} />
             ))}
           </InfinityScroll>
-        </div>
 
-        <div className="hidden lg:block">
-          <InfinityScroll pauseOnHover vertical className="[--duration:24s] ">
-            {thirdRow.map((testimonial) => (
-              <TestimonialCard key={testimonial.username} {...testimonial} />
-            ))}
-          </InfinityScroll>
-        </div>
+          <div className="hidden md:block">
+            <InfinityScroll
+              reverse
+              pauseOnHover
+              vertical
+              className="[--duration:22s] [--gap:2rem]"
+            >
+              {secondRow.map((testimonial) => (
+                <TestimonialCard key={testimonial.username} {...testimonial} />
+              ))}
+            </InfinityScroll>
+          </div>
 
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background" />
-      </div>
-    </section>
+          <div className="hidden lg:block">
+            <InfinityScroll
+              pauseOnHover
+              vertical
+              className="[--duration:24s] [--gap:2rem]"
+            >
+              {thirdRow.map((testimonial) => (
+                <TestimonialCard key={testimonial.username} {...testimonial} />
+              ))}
+            </InfinityScroll>
+          </div>
+
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background" />
+        </div>
+      </Box>
+    </BoxWrapper>
   );
 };
 
 export const TestimonialCard = ({
-  img,
+  // img,
   name,
   username,
   body,
@@ -103,30 +116,31 @@ export const TestimonialCard = ({
   return (
     <figure
       className={cn(
-        "relative h-full cursor-default overflow-hidden rounded-xl border px-4 py-3 pb-5",
-        // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-        // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+        "relative h-fit cursor-default select-none overflow-hidden rounded-xl border px-5 py-5 pb-4 md:px-8 md:py-6 md:pb-5",
+        "bg-surface space-y-4"
       )}
     >
-      <div className="flex flex-row items-center gap-2 font-mono">
-        {/* // TODO :- Image change to <Image /> */}
-        <img
+      <Icons.google className="absolute top-5 right-5 size-4" />
+
+      <div className="flex flex-row items-center gap-2">
+        <Image
           className="rounded-full"
-          width="32"
-          height="32"
+          width="36"
+          height="36"
           alt="user"
-          src={img}
+          src={"/avatar.png"}
         />
         <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
+          <figcaption className="text-sm font-medium font-inter tracking-wide text-foreground/90">
             {name}
           </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username}</p>
+          <p className="text-xs font-medium font-inter text-muted-foreground">
+            {username}
+          </p>
         </div>
       </div>
-      <blockquote className="mt-1.5 text-base leading-5">{body}</blockquote>
+
+      <blockquote className="text-base font-inter leading-5">{body}</blockquote>
     </figure>
   );
 };

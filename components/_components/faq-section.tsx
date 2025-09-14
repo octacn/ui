@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/registry/ui/accordion";
+import { Heading } from "@/components/heading";
+import { Box, BoxWrapper } from "@/components/box";
 
 export const faqItems = [
   {
@@ -43,49 +44,77 @@ export const faqItems = [
 
 export const FaqSection = () => {
   return (
-    <section>
- 
-      <div className="mx-auto max-w-5xl px-4 md:px-6">
-        <div className="mx-auto max-w-xl text-center">
-          <h2 className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-muted-foreground mt-4 text-balance">
-            Discover quick and comprehensive answers to common questions about
-            our platform, services, and features.
-          </p>
-        </div>
+    <BoxWrapper>
+      <Heading
+        heading="Frequently Asked Questions"
+        description="Discover quick and comprehensive answers to common questions about our platform, services, and features"
+      />
 
-        <div className="mx-auto mt-12 max-w-xl">
-          <Accordion
-            type="single"
-            collapsible
-            className="bg-card ring-muted w-full rounded-2xl border px-8 py-3 shadow-sm ring-4 dark:ring-0"
-          >
-            {faqItems.map((item) => (
-              <AccordionItem
-                key={item.id}
-                value={item.id}
-                className="border-dashed"
-              >
-                <AccordionTrigger className="cursor-pointer text-base hover:no-underline">
-                  {item.question}
-                </AccordionTrigger>
-                <AccordionContent>
-                  <p className="text-base">{item.answer}</p>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-
-          <p className="text-muted-foreground mt-6 px-8">
-            Can&apos;t find what you&apos;re looking for? Contact our{" "}
-            <Link href="#" className="text-primary font-medium hover:underline">
-              customer support team
-            </Link>
-          </p>
-        </div>
-      </div>
-    </section>
+      <Box className="max-w-2xl mx-auto">
+        <Accordion
+          type="single"
+          collapsible
+          className="space-y-5"
+          defaultValue="item-1"
+        >
+          {faqItems.map((item) => (
+            <AccordionItem
+              key={item.id}
+              value={item.id}
+              className="bg-surface rounded-md border last:border-b"
+            >
+              <AccordionTrigger className="text-lg hover:no-underline font-inter font-medium tracking-wide px-4 py-3 hover:cursor-pointer">
+                {item.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-base font-inter border-dashed text-muted-foreground border-t px-4 py-3">
+                {item.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </Box>
+    </BoxWrapper>
   );
 };
+
+// <div className="mx-auto max-w-5xl px-4 md:px-6">
+//       <div className="mx-auto max-w-xl text-center">
+//         <h2 className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl">
+//           Frequently Asked Questions
+//         </h2>
+//         <p className="text-muted-foreground mt-4 text-balance">
+//           Discover quick and comprehensive answers to common questions about
+//           our platform, services, and features.
+//         </p>
+//       </div>
+
+//       <div className="mx-auto mt-12 max-w-xl">
+// <Accordion
+//   type="single"
+//   collapsible
+//   className="bg-card ring-muted w-full rounded-2xl border px-8 py-3 shadow-sm ring-4 dark:ring-0"
+// >
+//           {faqItems.map((item) => (
+// <AccordionItem
+//   key={item.id}
+//   value={item.id}
+//   className="border-dashed"
+// >
+// <AccordionTrigger className="cursor-pointer text-base hover:no-underline">
+//   {item.question}
+// </AccordionTrigger>
+//               <AccordionContent>
+//                 <p className="text-base">{item.answer}</p>
+//               </AccordionContent>
+//             </AccordionItem>
+//           ))}
+//         </Accordion>
+
+//         <p className="text-muted-foreground mt-6 px-8">
+//           Can&apos;t find what you&apos;re looking for? Contact our{" "}
+//           <Link href="#" className="text-primary font-medium hover:underline">
+//             customer support team
+//           </Link>
+//         </p>
+//       </div>
+//     </div>

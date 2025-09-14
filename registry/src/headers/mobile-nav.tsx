@@ -31,25 +31,28 @@ export function MobileNav({
           )}
         >
           <div className="relative flex h-8 w-4 items-center justify-center">
-            <div className="relative size-4">
+            <div className="relative size-5">
               <span
                 className={cn(
                   "bg-foreground absolute left-0 block h-0.5 w-4 transition-all duration-100",
-                  open ? "top-[0.4rem] -rotate-45" : "top-1"
+                  open ? "top-[0.4rem] -rotate-45" : "top-0.5"
                 )}
               />
               <span
                 className={cn(
                   "bg-foreground absolute left-0 block h-0.5 w-4 transition-all duration-100",
-                  open ? "top-[0.4rem] rotate-45" : "top-2.5"
+                  open ? "top-[0.4rem] rotate-45" : "top-2"
+                )}
+              />
+              <span
+                className={cn(
+                  "bg-foreground absolute left-0 block h-0.5 w-4 transition-all duration-100",
+                  open ? "top-[0.4rem] rotate-45" : "top-3.5"
                 )}
               />
             </div>
             <span className="sr-only">Toggle Menu</span>
           </div>
-          <span className="flex h-8 items-center text-lg leading-none font-medium">
-            Menu
-          </span>
         </Button>
       </PopoverTrigger>
       <PopoverContent
@@ -76,15 +79,15 @@ export function MobileNav({
             </div>
           </div>
           <div className="flex flex-col gap-8">
-            {tree?.children?.map((group, index) => {
+            {tree?.children.map((group, index) => {
               if (group.type === "folder") {
                 return (
                   <div key={index} className="flex flex-col gap-4">
-                    <div className="text-muted-foreground text-sm font-medium">
+                    <div className="text-muted-foreground text-sm font-inter font-medium">
                       {group.name}
                     </div>
-                    <div className="flex flex-col gap-3">
-                      {group.children!.map((item) => {
+                    <div className="flex flex-col gap-2">
+                      {group.children.map((item) => {
                         if (item.type === "page") {
                           return (
                             <MobileLink
@@ -128,7 +131,7 @@ function MobileLink({
         router.push(href.toString());
         onOpenChange?.(false);
       }}
-      className={cn("text-2xl font-medium", className)}
+      className={cn("text-lg font-inter font-medium", className)}
       {...props}
     >
       {children}

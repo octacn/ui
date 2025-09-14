@@ -22,16 +22,11 @@ export function SiteHeader() {
         "bg-background/50 backdrop-blur-lg sticky top-0 z-50 w-full py-3 border-b"
       )}
     >
-      <div className="container-wrapper 3xl:fixed:px-0 px-7">
+      <div className="container-wrapper 3xl:fixed:px-0 pl-3 pr-5 md:px-7">
         <div className="3xl:fixed:container flex items-center gap-1.5 **:data-[slot=separator]:!h-4">
-          <MobileNav
-            tree={pageTree}
-            items={siteConfig.navItems}
-            className="flex lg:hidden"
-          />
           <button className="lg:flex py-0 flex h-10 items-center justify-center hover:bg-input/50 px-2 rounded-sm hover:cursor-default select-none">
             <Link href="/" className="hover:cursor-default select-none">
-              <Icons.nameLogo className="size-30" />
+              <Icons.nameLogo className="size-30 h-10" />
               <span className="sr-only">{siteConfig.name}</span>
             </Link>
           </button>
@@ -54,6 +49,12 @@ export function SiteHeader() {
             <Separator orientation="vertical" />
             <ModeSwitcher />
           </div>
+          <Separator orientation="vertical" className="lg:hidden block mr-2" />
+          <MobileNav
+            tree={pageTree}
+            items={siteConfig.navItems}
+            className="flex lg:hidden"
+          />
         </div>
       </div>
     </header>

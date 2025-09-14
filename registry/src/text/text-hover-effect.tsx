@@ -35,7 +35,7 @@ export const TextHoverEffect = ({
       ref={svgRef}
       width="100%"
       height="100%"
-      viewBox="0 -6 300 70"
+      viewBox="0 -10 300 70"
       xmlns="http://www.w3.org/2000/svg"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -106,7 +106,7 @@ export const TextHoverEffect = ({
         dominantBaseline="middle"
         strokeWidth="0.3"
         fill="url(#gradientTextFill)"
-        className="dark:stroke-neutral-800 stroke-neutral-200 font-[helvetica] text-7xl font-bold"
+        className="dark:stroke-neutral-800 stroke-0 stroke-neutral-200 font-[helvetica] text-7xl font-bold"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         animate={{
           strokeDashoffset: 0,
