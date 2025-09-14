@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@/lib/utils";
+
 import React, {
   useState,
   useEffect,
@@ -22,7 +22,6 @@ interface StarBackgroundProps {
   twinkleProbability?: number;
   minTwinkleSpeed?: number;
   maxTwinkleSpeed?: number;
-  className?: string;
 }
 
 export const StarsBackground: React.FC<StarBackgroundProps> = ({
@@ -31,7 +30,6 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
   twinkleProbability = 0.7,
   minTwinkleSpeed = 0.5,
   maxTwinkleSpeed = 1,
-  className,
 }) => {
   const [stars, setStars] = useState<StarProps[]>([]);
   const canvasRef: RefObject<HTMLCanvasElement | null> =
@@ -139,7 +137,7 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
   return (
     <canvas
       ref={canvasRef}
-      className={cn("h-full w-full absolute inset-0 -z-10", className)}
+      className="h-full w-full top-0 inset-0 -z-10 fixed"
     />
   );
 };

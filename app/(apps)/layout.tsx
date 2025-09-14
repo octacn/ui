@@ -6,15 +6,11 @@ export default function HomeLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <Layout>{children}</Layout>;
-}
-
-const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <>
+    <div className="relative">
       <SiteHeader />
       {children}
       <SiteFooter />
-    </>
+    </div>
   );
-};
+}

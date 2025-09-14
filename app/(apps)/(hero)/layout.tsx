@@ -7,6 +7,7 @@ import { HeroSection } from "@/components/_components/hero-section";
 import { FaqSection } from "@/components/_components/faq-section";
 import { CtaSection } from "@/components/_components/cta-section";
 import { PageNav } from "@/components/page-nav";
+import { TextHoverEffect } from "@/registry/src/text/text-hover-effect";
 
 export default function RoutesLayout({
   children,
@@ -14,20 +15,25 @@ export default function RoutesLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="relative px-16">
-      <div>
+    <main>
+      <>
         <ShootingStars />
         <StarsBackground />
-      </div>
-      <HeroSection />
-      <PageNav className="hidden md:flex">
+      </>
+      <div>
+        {/* <HeroSection /> */}
+        <FaqSection />
+
+        {/* <PageNav className="hidden md:flex">
         <ExampleSection className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
-      </PageNav>
-      {children}
+        </PageNav> */}
+        {/* {children}
       <LogoSection />
       <TestimonialsSection />
-      <FaqSection />
-      <CtaSection />
-    </div>
+      <CtaSection /> */}
+
+        <TextHoverEffect text="Octacn" />
+      </div>
+    </main>
   );
 }
