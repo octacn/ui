@@ -1,26 +1,51 @@
 import { cn } from "@/lib/utils";
+import { Button } from "@/registry/ui/button";
 import React from "react";
+import { Icons } from "./icons";
+import Link from "next/link";
 
-export const Heading = ({
+export function Heading({
   heading,
-  description,
   className,
+  description,
 }: {
   heading: string;
-  description: string;
   className?: string;
-}) => {
+  description: string;
+}) {
   return (
     <div
       className={cn(
-        "flex items-center justify-center flex-col gap-y-2 md:gap-y-3",
+        "flex items-start justify-center flex-col gap-y-1 font-inter",
         className
       )}
     >
-      <h1 className="font-inter md:text-4xl font-semibold tracking-wide leading-6 md:leading-10 text-2xl">{heading}</h1>
-      <p className="text-muted-foreground font-inter max-w-md leading-5 md:leading-6 text-center tracking-wide text-sm md:text-base">
+      <h1 className="md:text-3xl font-semibold tracking-wide text-2xl">
+        {heading}
+      </h1>
+      <p className="text-muted-foreground tracking-wide text-sm md:text-base max-w-2xl">
         {description}
       </p>
     </div>
   );
-};
+}
+
+export function SectionLink() {
+  return (
+    <Link href={"/"} target="_blank">
+      <Button className="text-base transition-all duration-300 hover:translate-y-[-2px]">
+        View All
+        <Icons.ArrowRight />
+      </Button>
+    </Link>
+  );
+}
+
+export function HeadingWithLink({ ...props }) {
+  return (
+    <div className="flex items-center justify-between">
+      <Heading heading={props.title} description={props.description} />
+      <SectionLink />
+    </div>
+  );
+}

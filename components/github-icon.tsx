@@ -1,9 +1,9 @@
 import { Skeleton } from "@/registry/ui/skeleton";
 import { Button } from "@/registry/ui/button";
 import { Icons } from "@/components/icons";
+import { siteConfig } from "@/lib/config";
 import * as React from "react";
 import Link from "next/link";
-import { siteConfig } from "@/lib/config";
 
 export function GitHubLink() {
   return (
@@ -19,16 +19,17 @@ export function GitHubLink() {
 }
 
 export async function StarsCount() {
-  const data = await fetch("https://api.github.com/repos/shadcn-ui/ui", {
-    next: { revalidate: 86400 },
-  });
-  const json = await data.json();
+  // const data = await fetch("https://api.github.com/repos/shadcn-ui/ui", {
+  //   next: { revalidate: 86400 },
+  // });
+  // const json = await data.json();
 
   return (
-    <span className="text-muted-foreground w-8 text-xs tabular-nums">
-      {json.stargazers_count >= 1000
+    <span className="text-muted-foreground w-8 text-xs font-inter">
+      {/* {json.stargazers_count >= 1000
         ? `${(json.stargazers_count / 1000).toFixed(1)}k`
-        : json.stargazers_count.toLocaleString()}
+        : json.stargazers_count.toLocaleString()} */}
+      0.0k
     </span>
   );
 }

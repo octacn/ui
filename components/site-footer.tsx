@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Separator } from "@/registry/ui/separator";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import { Badge } from "@/registry/ui/badge";
+import { TextHoverEffect } from "@/registry/src/text/text-hover-effect";
 
 const footerNavigation = [
   {
@@ -64,7 +65,7 @@ export function SiteFooter() {
     <footer className="bg-code">
       <div className="before:bg-[linear-gradient(to_bottom,--theme(--color-border/.3),--theme(--color-border)_200px,--theme(--color-border)_calc(100%-200px),--theme(--color-border/.3))] before:absolute before:inset-x-0 before:-top-0 before:h-px relative w-full" />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-12">
         <section className="pb-6 sm:pb-8 lg:pb-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             <div className="space-y-4">
@@ -124,6 +125,7 @@ export function SiteFooter() {
             © 2025 Octacn Labs LLC. All Rights Reserved.
           </p>
         </section>
+        <TextHoverEffect text="Octacn" />
       </div>
     </footer>
   );
@@ -147,7 +149,7 @@ export default function ExternalLink({
     >
       <span>{text}</span>
       <RiArrowRightUpLine
-        className="text-muted-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -translate-y-0.5"
+        className="text-muted-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         aria-hidden="true"
         size={16}
       />

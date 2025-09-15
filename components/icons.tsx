@@ -347,6 +347,58 @@ export const Icons = {
       ></path>
     </svg>
   ),
+  nextjs: (props: IconProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993" />
+      <path d="M15 12v-3" />
+    </svg>
+  ),
+  motion: (props: IconProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M12 12l-8 -8v16l16 -16v16l-4 -4" />
+      <path d="M20 12l-8 8l-4 -4" />
+    </svg>
+  ),
+  ArrowRight: (props: IconProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="lucide lucide-arrow-right-icon lucide-arrow-right"
+      {...props}
+    >
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </svg>
+  ),
 };
 
 export function getIconForLanguageExtension(language: string) {
