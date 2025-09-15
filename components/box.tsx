@@ -1,29 +1,54 @@
+import { Separator } from "@/registry/ui/separator";
+import ExternalLink from "@/components/site-footer";
 import { cn } from "@/lib/utils";
 import React from "react";
 
-interface BoxProps  {
+interface BoxProps {
   children: React.ReactNode;
   className?: string;
 }
 
-export function Box({
-  className,
-  children,
-}: BoxProps) {
+interface CodePreviewBoxProps extends BoxProps {
+  link: string;
+  title: string;
+}
+
+export function Box({ className, children }: BoxProps) {
   return (
-    <section className={cn("pt-6 md:pt-10", className)}>
+    <section className={cn("pt-6 md:pt-10", className)}>{children}</section>
+  );
+}
+
+export function BoxWrapper({ className, children }: BoxProps) {
+  return (
+    <section className={cn("pt-12 lg:pt-24 px-4 lg:px-24", className)}>
       {children}
     </section>
   );
 }
 
-export function BoxWrapper({
-  className,
+export function CodePreviewBox({
   children,
-}: BoxProps) {
+  className,
+  link,
+  title,
+}: CodePreviewBoxProps) {
   return (
-    <section className={cn("pt-12 lg:pt-24 px-4 lg:px-24", className)}>
-      {children}
+    <section
+      className={cn(
+        "border border-dashed bg-surface rounded-lg hidden md:block overflow-hidden",
+        className
+      )}
+    >
+      <div className="px-4 py-3.5 flex items-center justify-between gap-x-8">
+        <h4 className="font-inter font-medium truncate text-base text-muted-foreground capitalize tracking-wide">
+          {title}
+        </h4>
+        <ExternalLink text="View Docs" href={link} />
+      </div>
+
+      <Separator />
+      <div className="px-6 py-2">{children}</div>
     </section>
-  )
+  );
 }

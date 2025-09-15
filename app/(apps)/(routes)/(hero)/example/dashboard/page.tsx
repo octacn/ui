@@ -1,22 +1,14 @@
-import { ComponentPreview } from "@/components/component-preview";
-import { Card, CardContent, CardHeader } from "@/registry/ui/card";
-import React from "react";
+import { Loading } from "@/registry/src/loaders/loading";
+import React, { Suspense } from "react";
 
-const Page = () => {
+export default function Page() {
   return (
-    <Card className="bg-muted">
-      <CardHeader className="text-center">Dashboard Card</CardHeader>
-      <CardContent>
-        <ComponentPreview
-          src="ui"
-          name="Button"
-          className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
-          description="An accordion with three items"
-          align="start"
-        />
-      </CardContent>
-    </Card>
+    <Suspense fallback={<Loading />}>
+      <Dashboard />
+    </Suspense>
   );
-};
+}
 
-export default Page;
+function Dashboard() {
+  return <div>Dashboard</div>;
+}

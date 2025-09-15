@@ -14,7 +14,7 @@ export const InteractiveHoverBadge = React.forwardRef<
       ref={ref}
       variant={"outline"}
       className={cn(
-        "group relative cursor-pointer overflow-hidden bg-background rounded-full text-sm font-mono px-5 py-1.5",
+        "group relative cursor-pointer overflow-hidden bg-background rounded-full text-sm font-inter px-5 py-1.5",
         className
       )}
       {...props}

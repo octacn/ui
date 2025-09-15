@@ -16,20 +16,22 @@ export default function HeroLayout({
 }>) {
   return (
     <main>
-      <>
-        <ShootingStars />
-        <StarsBackground />
-      </>
+      <></>
+      {/* <StarsBackground /> */}
+      <ShootingStars />
       <div>
-        {/* <HeroSection /> */}
+        {/*
+        <LogoSection />
+        <CtaSection />
+        */}
 
-        {/* <PageNav className="hidden md:flex">
-        <ExampleSection className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
-        </PageNav> */}
-        {/* {children}
-      <LogoSection />
-      <CtaSection /> */}
-
+        <HeroSection />
+        <section className="px-10">
+          <PageNav className="hidden md:flex">
+            <ExampleSection className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
+          </PageNav>
+          {children}
+        </section>
         <TestimonialsSection />
         <FaqSection />
         <TextHoverEffect text="Octacn" />

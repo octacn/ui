@@ -129,7 +129,7 @@ export function SiteFooter() {
   );
 }
 
-function ExternalLink({
+export default function ExternalLink({
   text,
   href,
   isExternal = false,
@@ -140,7 +140,7 @@ function ExternalLink({
 }) {
   return (
     <Link
-      className="group inline-flex items-center gap-0.5 text-sm text-muted-foreground hover:text-foreground font-inter tracking-wider leading-4 transition-colors duration-200"
+      className="group whitespace-nowrap inline-flex items-center gap-0.5 text-sm text-muted-foreground hover:text-foreground font-inter tracking-wider leading-4 transition-colors duration-200"
       href={href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}

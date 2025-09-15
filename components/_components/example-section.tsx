@@ -8,28 +8,24 @@ import { ScrollArea, ScrollBar } from "@/registry/ui/scroll-area";
 
 const examples = [
   {
+    name: "Blocks",
+    href: "/example/blocks",
+  },
+  {
     name: "Dashboard",
     href: "/example/dashboard",
-    code: "https://github.com/shadcn/ui/tree/main/apps/v4/app/(app)/examples/dashboard",
-    hidden: false,
   },
   {
-    name: "Tasks",
-    href: "/example/tasks",
-    code: "https://github.com/shadcn/ui/tree/main/apps/v4/app/(app)/examples/tasks",
-    hidden: false,
+    name: "Typography",
+    href: "/example/typography",
   },
-  {
-    name: "Playground",
-    href: "/example/playground",
-    code: "https://github.com/shadcn/ui/tree/main/apps/v4/app/(app)/examples/playground",
-    hidden: false,
-  },
+  // {
+  //   name: "Playground",
+  //   href: "/example/playground",
+  // },
   {
     name: "Authentication",
     href: "/example/authentication",
-    code: "https://github.com/shadcn/ui/tree/main/apps/v4/app/(app)/examples/authentication",
-    hidden: false,
   },
 ];
 
@@ -44,7 +40,7 @@ export function ExampleSection({
       <ScrollArea className="max-w-[96%] md:max-w-[600px] lg:max-w-none">
         <div className="flex items-center gap-6">
           <ExampleLink
-            example={{ name: "Examples", href: "/", code: "", hidden: false }}
+            example={{ name: "Examples", href: "/" }}
             isActive={pathname === "/"}
           />
           {examples.map((example) => (
@@ -68,15 +64,11 @@ function ExampleLink({
   example: (typeof examples)[number];
   isActive: boolean;
 }) {
-  if (example.hidden) {
-    return null;
-  }
-
   return (
     <Link
       href={example.href}
       key={example.href}
-      className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 items-center justify-center text-center font-mono tracking-wide transition-colors"
+      className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 items-center justify-center text-center font-inter font-normal tracking-wide transition-colors"
       data-active={isActive}
     >
       {example.name}
