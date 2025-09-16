@@ -1,15 +1,19 @@
 "use client";
 
+import { Box, BoxWrapper } from "@/components/box";
+import { OpenInAgency } from "../open-in-agency";
+import { Heading } from "@/components/heading";
+import { Button } from "@/registry/ui/button";
+import { Input } from "@/registry/ui/input";
+import { Label } from "@/registry/ui/label";
 import {
   Accordion,
-  AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  AccordionContent,
 } from "@/registry/ui/accordion";
-import { Heading } from "@/components/heading";
-import { Box, BoxWrapper } from "@/components/box";
 
-export const faqItems = [
+const faqItems = [
   {
     id: "item-1",
     question: "How long does shipping take?",
@@ -42,79 +46,119 @@ export const faqItems = [
   },
 ];
 
-export const FaqSection = () => {
+export default function FaqSection() {
   return (
-    <BoxWrapper>
+    <BoxWrapper className="pb-10">
       <Heading
         heading="Frequently Asked Questions"
         description="Discover quick and comprehensive answers to common questions about our platform, services, and features"
       />
 
-      <Box className="max-w-2xl mx-auto">
-        <Accordion
-          type="single"
-          collapsible
-          className="space-y-5"
-          defaultValue="item-1"
-        >
-          {faqItems.map((item) => (
-            <AccordionItem
-              key={item.id}
-              value={item.id}
-              className="bg-surface rounded-md border last:border-b"
-            >
-              <AccordionTrigger className="text-lg hover:no-underline font-inter font-medium tracking-wide px-4 py-3 hover:cursor-pointer">
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-base font-inter border-dashed text-muted-foreground border-t px-4 py-3">
-                {item.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+      <Box className="grid grid-cols-1 md:grid-cols-2 gap-x-14">
+        <AccordionQuestion />
+        <div className="relative w-full h-full hidden md:block">
+          <div className="w-full h-full border bg-surface rounded-xl">
+            <ContactForm />
+          </div>
+
+          <div className="absolute top-0 right-0 border-l-[20px] border-b-[20px] border-background rounded-bl-xl rounded-tr-xl w-72 shadow-[-1px_1px_0_0_#e5e5e5] dark:shadow-[-1px_1px_0_0_#262626]">
+            <div className="bg-background w-2 h-2 absolute bottom-0" />
+            <OpenInAgency className="rounded-tl-none rounded-br-none" />
+          </div>
+        </div>
       </Box>
     </BoxWrapper>
   );
-};
+}
 
-// <div className="mx-auto max-w-5xl px-4 md:px-6">
-//       <div className="mx-auto max-w-xl text-center">
-//         <h2 className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl">
-//           Frequently Asked Questions
-//         </h2>
-//         <p className="text-muted-foreground mt-4 text-balance">
-//           Discover quick and comprehensive answers to common questions about
-//           our platform, services, and features.
-//         </p>
-//       </div>
+function AccordionQuestion() {
+  return (
+    <Accordion
+      type="single"
+      collapsible
+      className="space-y-5"
+      defaultValue="item-1"
+    >
+      {faqItems.map((item) => (
+        <AccordionItem
+          key={item.id}
+          value={item.id}
+          className="bg-surface rounded-md border last:border-b"
+        >
+          <AccordionTrigger className="text-lg hover:no-underline font-inter font-medium tracking-wide px-4 py-3 hover:cursor-pointer">
+            {item.question}
+          </AccordionTrigger>
+          <AccordionContent className="text-base font-inter border-dashed text-muted-foreground border-t px-4 py-3">
+            {item.answer}
+          </AccordionContent>
+        </AccordionItem>
+      ))}
+    </Accordion>
+  );
+}
 
-//       <div className="mx-auto mt-12 max-w-xl">
-// <Accordion
-//   type="single"
-//   collapsible
-//   className="bg-card ring-muted w-full rounded-2xl border px-8 py-3 shadow-sm ring-4 dark:ring-0"
-// >
-//           {faqItems.map((item) => (
-// <AccordionItem
-//   key={item.id}
-//   value={item.id}
-//   className="border-dashed"
-// >
-// <AccordionTrigger className="cursor-pointer text-base hover:no-underline">
-//   {item.question}
-// </AccordionTrigger>
-//               <AccordionContent>
-//                 <p className="text-base">{item.answer}</p>
-//               </AccordionContent>
-//             </AccordionItem>
-//           ))}
-//         </Accordion>
+function ContactForm() {
+  return (
+    <div className="px-8 py-6">
+      <h4 className="font-inter text-foreground/90 text-xl underline underline-offset-6 decoration-1">
+        Contact From
+      </h4>
 
-//         <p className="text-muted-foreground mt-6 px-8">
-//           Can&apos;t find what you&apos;re looking for? Contact our{" "}
-//           <Link href="#" className="text-primary font-medium hover:underline">
-//             customer support team
-//           </Link>
-//         </p>
-//       </div>
-//     </div>
+      <div className="mt-5 grid grid-cols-2">
+        <div className="space-y-4">
+          <div>
+            <Label
+              htmlFor={"email"}
+              className="font-inter text-sm font-normal tracking-wide mb-1.5"
+            >
+              Email
+            </Label>
+            <Input
+              id={"email"}
+              placeholder="Email"
+              type="email"
+              className="focus-visible:border-orange-500 focus-visible:ring-0"
+            />
+          </div>
+
+          <div>
+            <Label
+              htmlFor={"email"}
+              className="font-inter text-sm font-normal tracking-wide mb-1.5"
+            >
+              Email
+            </Label>
+            <Input
+              id={"email"}
+              placeholder="Email"
+              type="email"
+              className="focus-visible:border-orange-500 focus-visible:ring-0"
+            />
+          </div>
+
+          <div>
+            <Label
+              htmlFor={"email"}
+              className="font-inter text-sm font-normal tracking-wide mb-1.5"
+            >
+              Email
+            </Label>
+            <Input
+              id={"email"}
+              placeholder="Email"
+              type="email"
+              className="focus-visible:border-orange-500 focus-visible:ring-0"
+            />
+          </div>
+        </div>
+      </div>
+
+      <Button
+        className="w-full mt-6 font-inter text-base tracking-wide"
+        size={"lg"}
+      >
+        Submit
+      </Button>
+    </div>
+  );
+}

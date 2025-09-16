@@ -149,7 +149,7 @@ export default function ExternalLink({
     >
       <span>{text}</span>
       <RiArrowRightUpLine
-        className="text-muted-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+        className="text-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         aria-hidden="true"
         size={16}
       />
@@ -162,7 +162,7 @@ function NavigationLinksGrid() {
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 lg:gap-10">
       {footerNavigation.map((section) => (
         <div key={section.title}>
-          <h4 className="text-sm sm:text-base font-inter tracking-wider font-medium text-foreground underline underline-offset-4 mb-1.5">
+          <h4 className="text-sm sm:text-base font-inter tracking-wider text-foreground/90 underline underline-offset-5 decoration-1 mb-1.5">
             {section.title}
           </h4>
           {section.links.map((link) => (

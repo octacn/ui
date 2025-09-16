@@ -53,7 +53,7 @@ export default function PremiumShowcase() {
       originalPrice: 35,
       currentPrice: 26,
       description:
-        "Complete e-commerce UI kit with everything you need to build a stunning online store. Features product cards, shopping carts, checkout flows, user accounts, and payment integrations. Optimized for mobile commerce with touch-friendly interactions, fast loading times, and conversion-focused design patterns that drive sales.",
+        "Complete e-commerce UI kit with everything you need to build a stunning online store. Features product Productcards, shopping carts, checkout flows, user accounts, and payment integrations. Optimized for mobile commerce with touch-friendly interactions, fast loading times, and conversion-focused design patterns that drive sales.",
       imageUrl: "/images/temp-2.avif",
       href: "/products/",
     },
@@ -87,14 +87,14 @@ export default function PremiumShowcase() {
       />
       <Box className="relative grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {products.map((product, idx) => (
-          <Cards key={idx} {...product} />
+          <ProductCards key={idx} {...product} />
         ))}
       </Box>
     </BoxWrapper>
   );
 }
 
-function Cards({
+function ProductCards({
   title,
   blocksCount,
   originalPrice,

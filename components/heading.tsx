@@ -1,8 +1,8 @@
-import { cn } from "@/lib/utils";
+import HoverAnimation from "@/components/animation/hover-animation";
 import { Button } from "@/registry/ui/button";
+import { Icons } from "@/components/icons";
+import { cn } from "@/lib/utils";
 import React from "react";
-import { Icons } from "./icons";
-import Link from "next/link";
 
 export function Heading({
   heading,
@@ -23,7 +23,7 @@ export function Heading({
       <h1 className="md:text-3xl font-semibold tracking-wide text-2xl">
         {heading}
       </h1>
-      <p className="text-muted-foreground tracking-wide text-sm md:text-base max-w-2xl">
+      <p className="text-muted-foreground tracking-wide text-sm md:text-base max-w-4xl">
         {description}
       </p>
     </div>
@@ -32,12 +32,12 @@ export function Heading({
 
 export function SectionLink() {
   return (
-    <Link href={"/"} target="_blank">
-      <Button className="text-base transition-all duration-300 hover:translate-y-[-2px]">
+    <HoverAnimation href={"/"} target="_blank">
+      <Button className="text-base">
         View All
         <Icons.ArrowRight />
       </Button>
-    </Link>
+    </HoverAnimation>
   );
 }
 
