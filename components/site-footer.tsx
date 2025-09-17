@@ -1,10 +1,17 @@
-import { Icons } from "@/components/icons";
-import { siteConfig } from "@/lib/config";
-import Link from "next/link";
+import { TextHoverEffect } from "@/registry/src/text/text-hover-effect";
+import HoverAnimation from "@/components/animation/hover-animation";
 import { Separator } from "@/registry/ui/separator";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import { Badge } from "@/registry/ui/badge";
-import { TextHoverEffect } from "@/registry/src/text/text-hover-effect";
+import { Icons } from "@/components/icons";
+import { siteConfig } from "@/lib/config";
+import Link from "next/link";
+
+interface SocialMediaLink {
+  href: string;
+  label: string;
+  icon: React.ReactNode;
+}
 
 const footerNavigation = [
   {
@@ -16,6 +23,14 @@ const footerNavigation = [
       { label: "Dialog", href: "/" },
       { label: "Input", href: "/" },
       { label: "Select", href: "/" },
+    ],
+  },
+  {
+    title: "Pro Components",
+    links: [
+      { label: "Hover Card", href: "/" },
+      { label: "Interactive Button", href: "/" },
+      { label: "File Uploader", href: "/" },
     ],
   },
   {
@@ -32,32 +47,43 @@ const footerNavigation = [
   {
     title: "Blocks",
     links: [
-      { label: "Documentation", href: "/" },
-      { label: "Examples", href: "/" },
-      { label: "Changelog", href: "/" },
-      { label: "Roadmap", href: "/" },
-      { label: "Support", href: "/" },
-      { label: "FAQ", href: "/" },
-    ],
-  },
-  {
-    title: "Pages",
-    links: [
-      { label: "About", href: "/" },
-      { label: "Blog", href: "/" },
-      { label: "Careers", href: "/" },
-      { label: "Contact", href: "/" },
-      { label: "Privacy", href: "/" },
-      { label: "Terms", href: "/" },
+      { label: "Hero", href: "/" },
+      { label: "Header", href: "/" },
+      { label: "Footer", href: "/" },
+      { label: "Pricing", href: "/" },
+      { label: "Accordion", href: "/" },
+      { label: "Form", href: "/" },
     ],
   },
 ];
 
-const socialMediaLinks = [
-  { label: "Github", href: siteConfig.links.github },
-  { label: "Twitter", href: siteConfig.links.twitter },
-  { label: "Instagram", href: "/" },
-  { label: "LinkedIn", href: "/" },
+const socialMediaLinks: SocialMediaLink[] = [
+  {
+    label: "Github",
+    href: siteConfig.links.github,
+    icon: <Icons.gitHub className="hover:text-muted-foreground h-6 w-6" />,
+  },
+  {
+    label: "Twitter",
+    href: siteConfig.links.twitter,
+    icon: (
+      <Icons.twitter className="text-blue-400 hover:text-muted-foreground" />
+    ),
+  },
+  {
+    label: "Instagram",
+    href: "/",
+    icon: (
+      <Icons.instagram className="text-red-300 hover:text-muted-foreground" />
+    ),
+  },
+  {
+    label: "LinkedIn",
+    href: "/",
+    icon: (
+      <Icons.linkedin className="text-blue-400 hover:text-muted-foreground " />
+    ),
+  },
 ];
 
 export function SiteFooter() {
@@ -85,27 +111,25 @@ export function SiteFooter() {
                 Octacn UI.
               </p>
 
-              <div className="text-foreground/90 font-inter text-sm tracking-wider space-y-1">
-                <p>
-                  A product by{" "}
-                  <span className="text-muted-foreground">Octacn</span>
-                </p>
-                <p>
-                  Building in public at{" "}
-                  <span className="text-muted-foreground">@sahilkumardev</span>
-                </p>
-              </div>
+              <p className="text-foreground/90 font-inter text-base tracking-wider">
+                A product by{" "}
+                <Link
+                  href="/"
+                  target="_blank"
+                  className="text-muted-foreground hover:text-orange-400"
+                >
+                  @SahilKumarDev
+                </Link>
+              </p>
             </div>
 
             <div className="flex flex-col items-start lg:items-end justify-start lg:justify-end">
-              <div className="flex flex-wrap gap-x-3 gap-y-2 lg:flex-col lg:gap-y-1.5 lg:items-end">
-                {socialMediaLinks.map((link) => (
-                  <ExternalLink
-                    key={link.label}
-                    text={link.label}
-                    href={link.href}
-                    isExternal
-                  />
+              <h4 className="text-sm sm:text-base font-inter tracking-wider text-foreground/90 mb-2.5">
+                Social Media
+              </h4>
+              <div className="flex items-center gap-4">
+                {socialMediaLinks.map((item) => (
+                  <SocialMediaIcons key={item.label} {...item} />
                 ))}
               </div>
             </div>
@@ -165,13 +189,25 @@ function NavigationLinksGrid() {
           <h4 className="text-sm sm:text-base font-inter tracking-wider text-foreground/90 underline underline-offset-5 decoration-1 mb-1.5">
             {section.title}
           </h4>
-          {section.links.map((link) => (
-            <div key={link.label}>
+          {section.links.map((link, idx) => (
+            <div key={idx}>
               <ExternalLink text={link.label} href={link.href} />
             </div>
           ))}
         </div>
       ))}
     </div>
+  );
+}
+
+function SocialMediaIcons({ href, label, icon }: SocialMediaLink) {
+  return (
+    <HoverAnimation
+      className="w-7 h-7 rounded flex items-center justify-center"
+      href={href}
+      aria-label={label}
+    >
+      {icon}
+    </HoverAnimation>
   );
 }
