@@ -16,8 +16,19 @@ export function convertRegistryPaths(content: string) {
       .replace(/@\/registry\/ui/g, "@/components/ui")
 
       // Registry src path
-      .replace(/@\/registry\/src\/components\/ui/g, "@/components/ui")
+      .replace(/@\/registry\/src\/components/g, "@/components/ui")
       .replace(/@\/registry\/src\/hooks/g, "@/hooks")
       .replace(/@\/registry\/src\/lib/g, "@/lib")
   );
+}
+
+export function hasRegistryPaths(content: string): boolean {
+  return (
+    content.includes("@/registry/ui") ||
+    content.includes("@/registry/src")
+  );
+}
+
+export function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

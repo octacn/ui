@@ -1,8 +1,9 @@
 import { exec } from "child_process";
 import { promises as fs } from "fs";
-import path from "path";
 import { rimraf } from "rimraf";
+import path from "path";
 
+import { convertRegistryPaths, hasRegistryPaths, sleep } from "../lib/utils";
 import { registry } from "../registry/index";
 
 async function buildRegistryIndex() {
@@ -22,7 +23,7 @@ export const Index: Record<string, any> = {`;
     }
 
     const componentPath = item.files?.[0]?.path
-      ? `@/registry/ui/${item.files[0].path}`
+      ? `@/registry/${item.files[0].path}`
       : "";
 
     index += `
@@ -32,7 +33,7 @@ export const Index: Record<string, any> = {`;
     type: "${item.type}",
     registryDependencies: ${JSON.stringify(item.registryDependencies)},
     files: [${item.files?.map((file) => {
-      const filePath = `registry/new-york-v4/${
+      const filePath = `registry/${
         typeof file === "string" ? file : file.path
       }`;
       const resolvedFilePath = path.resolve(filePath);
@@ -76,7 +77,7 @@ async function buildRegistryJsonFile() {
       const files = item.files?.map((file) => {
         return {
           ...file,
-          path: `registry/new-york-v4/${file.path}`,
+          path: `registry/${file.path}`,
         };
       });
 
@@ -94,98 +95,112 @@ async function buildRegistryJsonFile() {
     JSON.stringify(fixedRegistry, null, 2)
   );
 
-  // 3. Copy the registry.json to the www/public/r/styles/new-york-v4 directory.
+  // 3. Copy the registry.json to the registry.json directory.
   await fs.cp(
     path.join(process.cwd(), "registry.json"),
-    path.join(
-      process.cwd(),
-      "../www/public/r/styles/new-york-v4/registry.json"
-    ),
+    path.join(process.cwd(), "../registry.json"),
     { recursive: true }
   );
 }
 
-async function buildRegistry() {
-  return new Promise((resolve, reject) => {
-    // Use local shadcn copy.
-    const process = exec(
-      `node ../../packages/shadcn/dist/index.js build registry.json --output ../www/public/r/styles/new-york-v4`
-    );
-
-    // exec(
-    //   `pnpm dlx shadcn build registry.json --output ../www/public/r/styles/new-york-v4`
-    // )
-
-    process.on("exit", (code) => {
-      if (code === 0) {
-        resolve(undefined);
-      } else {
-        reject(new Error(`Process exited with code ${code}`));
-      }
-    });
-  });
-}
-
 async function syncRegistry() {
-  // Store the current registry content
+  // --- 1. Backup registry/__index__.tsx
   const registryDir = path.join(process.cwd(), "registry");
   const registryIndexPath = path.join(registryDir, "__index__.tsx");
-  let registryContent = null;
+  let registryContent: string | null = null;
 
   try {
     registryContent = await fs.readFile(registryIndexPath, "utf8");
   } catch {
-    // File might not exist yet, that's ok
+    console.log("🗂️ registry/__index__.tsx not found");
   }
 
-  // 1. Call pnpm registry:build for www.
-  await exec("pnpm --filter=www registry:build");
+  // --- 2. Build registry
+  await exec("pnpm registry:build");
 
-  // 2. Copy the www/public/r directory to v4/public/r.
-  rimraf.sync(path.join(process.cwd(), "public/r"));
-  await fs.cp(
-    path.resolve(process.cwd(), "../www/public/r"),
-    path.resolve(process.cwd(), "public/r"),
-    { recursive: true }
-  );
-
-  // 3. Restore the registry content if we had it
+  // --- 3. Restore __index__.tsx if we had it
   if (registryContent) {
     await fs.writeFile(registryIndexPath, registryContent, "utf8");
   }
 }
 
-async function buildBlocksIndex() {
-  const blocks = await getAllBlocks(["registry:block"]);
+async function updateRegistryPath() {
+  const rDir = path.join(process.cwd(), "public", "r");
+  const files = await fs.readdir(rDir);
 
-  const payload = blocks.map((block) => ({
-    name: block.name,
-    description: block.description,
-    categories: block.categories,
-  }));
+  const updatedFiles: string[] = [];
+  const skippedFiles: string[] = [];
 
-  rimraf.sync(path.join(process.cwd(), "registry/__blocks__.json"));
-  await fs.writeFile(
-    path.join(process.cwd(), "registry/__blocks__.json"),
-    JSON.stringify(payload, null, 2)
+  for (const fileName of files) {
+    if (!fileName.endsWith(".json")) continue;
+
+    const filePath = path.join(rDir, fileName);
+
+    // Read JSON
+    const content = await fs.readFile(filePath, "utf-8");
+    const data = JSON.parse(content);
+
+    let shouldUpdate = false;
+
+    if (Array.isArray(data.files)) {
+      data.files = data.files.map((file: any) => {
+        if (
+          typeof file.content === "string" &&
+          hasRegistryPaths(file.content)
+        ) {
+          shouldUpdate = true;
+          file.content = convertRegistryPaths(file.content);
+        }
+        return file;
+      });
+    }
+
+    if (shouldUpdate) {
+      await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
+      updatedFiles.push(filePath);
+    } else {
+      skippedFiles.push(filePath);
+    }
+  }
+
+  // Log all updated first
+  updatedFiles.forEach((f) => console.log("✅ Updated imports in:", f));
+  console.log(
+    "========================================================================="
+  );
+  // Then log skipped
+  skippedFiles.forEach((f) =>
+    console.log("⏩ Skipped (no registry paths):", f)
   );
 }
 
 try {
   console.log("🗂️ Building registry/__index__.tsx...");
   await buildRegistryIndex();
+  console.log("🥳 Completed registry/__index__.tsx...");
 
-  // console.log("🗂️ Building registry/__blocks__.json...");
-  // await buildBlocksIndex();
+  console.log("--------------------------------------");
 
-  // console.log("💅 Building registry.json...");
-  // await buildRegistryJsonFile();
+  console.log("💅 Building registry.json...");
+  await buildRegistryJsonFile();
+  console.log("🥳 Completed Building registry.json...");
 
-  // console.log("🏗️ Building registry...");
-  // await buildRegistry();
+  console.log("--------------------------------------");
 
-  // console.log("🔄 Syncing registry...");
-  // await syncRegistry();
+  console.log("🔄 Syncing registry...");
+  await syncRegistry();
+  console.log("🥳 Completed Syncing registry...");
+
+  console.log("--------------------------------------");
+
+  console.log("⏳ Waiting 5 seconds before updating registry paths...");
+  await sleep(5000);
+
+  console.log("--------------------------------------");
+
+  console.log("🔄 updateRegistryPath registry...");
+  await updateRegistryPath();
+  console.log("🥳 Completed updateRegistryPath registry...");
 } catch (error) {
   console.error(error);
   process.exit(1);
