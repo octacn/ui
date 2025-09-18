@@ -2,7 +2,7 @@ import { registryItemSchema, type Registry } from "@/schema/shadcn";
 import { z } from "zod";
 
 import { ui } from "@/registry/registry-items/ui";
-import { components } from "./registry-items/components";
+import { componentsDemo } from "./registry-items/components-demo";
 // import { blocks } from "@/registry/registry-items/blocks";
 
 // const APP_STYLE = {
@@ -27,7 +27,7 @@ export const registry = {
     //   ...APP_STYLE,
     // },
     ...ui,
-    ...components,
+    ...componentsDemo,
     // ...blocks,
   ]),
 } satisfies Registry;

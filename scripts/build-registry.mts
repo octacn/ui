@@ -18,7 +18,9 @@ import * as React from "react"
 export const Index: Record<string, any> = {`;
 
   for (const item of registry.items) {
-    const resolveFiles = item.files?.map((file) => `registry/${file.path}`);
+    const resolveFiles = item.files?.map(
+      (file: any) => `registry/${file.path}`
+    );
     if (!resolveFiles) {
       continue;
     }
@@ -33,7 +35,7 @@ export const Index: Record<string, any> = {`;
     description: "${item.description ?? ""}",
     type: "${item.type}",
     registryDependencies: ${JSON.stringify(item.registryDependencies)},
-    files: [${item.files?.map((file) => {
+    files: [${item.files?.map((file: any) => {
       const filePath = `registry/${
         typeof file === "string" ? file : file.path
       }`;
@@ -74,8 +76,8 @@ async function buildRegistryJsonFile() {
   // 1. Fix the path for registry items.
   const fixedRegistry = {
     ...registry,
-    items: registry.items.map((item) => {
-      const files = item.files?.map((file) => {
+    items: registry.items.map((item: any) => {
+      const files = item.files?.map((file: any) => {
         return {
           ...file,
           path: `registry/${file.path}`,
@@ -221,7 +223,9 @@ try {
 
   console.log("--------------------------------------");
 
-  console.log("⏳ Waiting more 3 seconds before building registry/__blocks__.json...");
+  console.log(
+    "⏳ Waiting more 3 seconds before building registry/__blocks__.json..."
+  );
   await sleep(3000);
 
   console.log("🗂️ Building registry/__blocks__.json...");

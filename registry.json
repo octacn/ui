@@ -697,11 +697,12 @@
     },
     {
       "name": "accordion-demo",
-      "type": "registry:ui",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/demo/components/accordion-demo.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/demo.tsx"
         }
       ]
     }

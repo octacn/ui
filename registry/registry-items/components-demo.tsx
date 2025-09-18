@@ -1,9 +1,9 @@
 import { type Registry } from "@/schema/shadcn";
 
-export const components: Registry["items"] = [
+export const componentsDemo: Registry["items"] = [
   {
     name: "accordion-demo",
-    type: "registry:ui",
+    type: "registry:block",
     files: [
       {
         path: "demo/components/accordion-demo.tsx",
