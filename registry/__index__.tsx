@@ -837,12 +837,12 @@ export const Index: Record<string, any> = {
   "accordion-demo": {
     name: "accordion-demo",
     description: "",
-    type: "registry:ui",
+    type: "registry:block",
     registryDependencies: undefined,
     files: [{
       path: "registry/demo/components/accordion-demo.tsx",
       type: "registry:ui",
-      target: ""
+      target: "components/demo.tsx"
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/demo/components/accordion-demo.tsx")

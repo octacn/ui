@@ -9,7 +9,6 @@ import FaqSection from "@/components/_components/faq-section";
 import { PageNav } from "@/components/page-nav";
 import { BoxWrapper } from "@/components/box";
 
-
 export default function HeroLayout({
   children,
 }: Readonly<{
@@ -21,11 +20,11 @@ export default function HeroLayout({
       <>
         <HeroSection />
         <LogoSection />
-        <BoxWrapper className="lg:pt-6">
+        <BoxWrapper className="lg:pt-6 pt-0">
           <PageNav className="hidden md:flex">
             <ExampleSection className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
           </PageNav>
-          {children}
+          <div className="hidden md:block">{children}</div>
         </BoxWrapper>
         <PremiumShowcase />
         <TestimonialsSection />

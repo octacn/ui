@@ -8,6 +8,7 @@ export const components: Registry["items"] = [
       {
         path: "demo/components/accordion-demo.tsx",
         type: "registry:ui",
+        target: "components/demo.tsx",
       },
     ],
   },

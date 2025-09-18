@@ -20,7 +20,7 @@ export function Heading({
         className
       )}
     >
-      <h1 className="md:text-3xl font-semibold tracking-wide text-2xl">
+      <h1 className="md:text-3xl font-semibold tracking-wide text-xl">
         {heading}
       </h1>
       <p className="text-muted-foreground tracking-wide text-sm md:text-base max-w-4xl">
@@ -32,7 +32,7 @@ export function Heading({
 
 export function SectionLink() {
   return (
-    <HoverAnimation href={"/"} target="_blank">
+    <HoverAnimation href={"/"} target="_blank" className="hidden md:block">
       <Button className="text-base">
         View All
         <Icons.ArrowRight />

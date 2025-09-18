@@ -8,7 +8,6 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "registry:build": "shadcn build",
     "build:registry:internal": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "postinstall": "fumadocs-mdx"

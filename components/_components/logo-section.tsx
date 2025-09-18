@@ -16,41 +16,35 @@ export default function LogoSection() {
     </section>
   );
 }
-
 function LogoCard() {
   const techStackItems = [
     {
-      icon: (
-        <Icons.nextjs className="h-4 w-4 flex-shrink-0 stroke-1 text-neutral-500 md:h-10 md:w-10" />
-      ),
+      icon: Icons.nextjs,
       name: "Next.js",
     },
     {
-      icon: (
-        <Icons.react className="h-4 w-4 flex-shrink-0 stroke-1 text-neutral-500 md:h-10 md:w-10" />
-      ),
+      icon: Icons.react,
       name: "React",
     },
     {
-      icon: (
-        <Icons.tailwind className="h-4 w-4 flex-shrink-0 stroke-1 text-neutral-500 md:h-10 md:w-10" />
-      ),
+      icon: Icons.tailwind,
       name: "Tailwind CSS",
     },
     {
-      icon: (
-        <Icons.motion className="h-4 w-4 flex-shrink-0 stroke-1 text-neutral-500 md:h-10 md:w-10" />
-      ),
+      icon: Icons.motion,
       name: "Motion",
     },
   ];
 
   return (
     <div className="no-visible-scrollbar relative flex flex-wrap items-center justify-center gap-4 mt-3">
-      {techStackItems.map(({ icon, name }) => (
-        <div key={name} className="mr-4 flex items-center space-x-2">
-          {icon}
-          <span className="flex-shrink-0 text-sm font-semibold text-neutral-500">
+      {techStackItems.map(({ icon: Icon, name }) => (
+        <div
+          key={name}
+          className="mr-4 flex items-center space-x-1.5 text-neutral-500"
+        >
+          <Icon className="size-10 flex-shrink-0 stroke-1" />
+          <span className="flex-shrink-0 text-base font-inter font-medium">
             {name}
           </span>
         </div>

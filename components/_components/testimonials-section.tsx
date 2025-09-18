@@ -7,6 +7,7 @@ import { BoxWrapper } from "@/components/box";
 import { Icons } from "@/components/icons";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { Button } from "@/registry/ui/button";
 
 export interface ImageData {
   src: string;
@@ -68,27 +69,85 @@ export default function TestimonialsSection() {
 }
 
 const GradientTestimonials = () => {
+  const [visibleCount, setVisibleCount] = React.useState(7);
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const testimonialsToShow = [
+    testimonials[4],
+    testimonials[3],
+    testimonials[1],
+    testimonials[2],
+    testimonials[4],
+    testimonials[1],
+    testimonials[3],
+    testimonials[2],
+    testimonials[4],
+    testimonials[1],
+    testimonials[3],
+    testimonials[2],
+    testimonials[2],
+    testimonials[4],
+    testimonials[1],
+    testimonials[3],
+    // Add more if needed
+  ].filter(Boolean);
+
+  const handleLoadMore = () => {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setVisibleCount((prev) => Math.min(prev + 6, testimonialsToShow.length));
+      setIsLoading(false);
+    }, 500);
+  };
+
+  const hasMoreToLoad = visibleCount < testimonialsToShow.length;
+
+  const featuredTestimonial = testimonialsToShow[0];
+  const gridTestimonials = testimonialsToShow.slice(1, visibleCount);
+
   return (
-    <BoxWrapper className="bg-gradient-to-b from-white/20 to-[125%] pt-10 ring-1 ring-gray-900/5 sm:pt-32 dark:from-gray-500/20 dark:ring-gray-950/5 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05)] shadow-inner-[0_1px_0_rgba(255,255,255,0.1)] overflow-hidden pb-20 mt-16">
-      <div className="grid grid-cols-2 gap-8">
+    <BoxWrapper className="bg-gradient-to-b from-white/20 to-[125%] pt-10 ring-1 ring-gray-900/5 sm:pt-32 dark:from-gray-500/20 dark:ring-gray-950/5 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05)] shadow-inner-[0_1px_0_rgba(255,255,255,0.1)] overflow-hidden pb-6 md:pb-20 mt-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <Heading
           heading="Premium Components showcase"
           description="These are the best components that you can buy with the best features and prices."
         />
 
-        {testimonials[4] && <TestimonialsCard {...testimonials[4]} />}
+        {featuredTestimonial && <TestimonialsCard {...featuredTestimonial} />}
       </div>
-      <div className="grid grid-cols-3 gap-8 items-start mt-8">
-        {testimonials[3] && <TestimonialsCard {...testimonials[3]} />}
-        {testimonials[1] && <TestimonialsCard {...testimonials[1]} />}
-        {testimonials[2] && <TestimonialsCard {...testimonials[2]} />}
-        {testimonials[3] && <TestimonialsCard {...testimonials[3]} />}
-        {testimonials[1] && <TestimonialsCard {...testimonials[1]} />}
-        {testimonials[3] && <TestimonialsCard {...testimonials[3]} />}
-        {testimonials[1] && <TestimonialsCard {...testimonials[1]} />}
-        {testimonials[4] && <TestimonialsCard {...testimonials[4]} />}
-        {testimonials[2] && <TestimonialsCard {...testimonials[2]} />}
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start mt-8">
+        {gridTestimonials.map((testimonial, index) => (
+          <div
+            key={`testimonial-${index}`}
+            className="animate-in fade-in duration-500"
+            style={{ animationDelay: `${(index % 6) * 100}ms` }}
+          >
+            <TestimonialsCard {...testimonial} />
+          </div>
+        ))}
       </div>
+
+      {hasMoreToLoad && (
+        <div className="flex justify-center mt-12">
+          <Button
+            onClick={handleLoadMore}
+            disabled={isLoading}
+            variant="outline"
+            size="lg"
+          >
+            {isLoading ? (
+              <>
+                <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin mr-2" />
+                Loading...
+              </>
+            ) : (
+              <>Load more</>
+            )}
+          </Button>
+        </div>
+      )}
     </BoxWrapper>
   );
 };

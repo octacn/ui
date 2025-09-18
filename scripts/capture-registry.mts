@@ -2,28 +2,23 @@ import { existsSync } from "fs";
 import path from "path";
 import puppeteer from "puppeteer";
 
-const REGISTRY_PATH = path.join(process.cwd(), "public/images");
+import { getAllBlockIds } from "../lib/blocks";
 
-// Example block definitions
-// Each block has an id (used for filename) and a url (with path + query)
-const blocks = [
-  {
-    id: "header-01",
-    url: "http://localhost:3000/preview/header-01",
-  },
-];
+const REGISTRY_PATH = path.join(process.cwd(), "public/images/blocks");
 
 // ----------------------------------------------------------------------------
 // Capture screenshots.
 // ----------------------------------------------------------------------------
 async function captureScreenshots() {
-  const pendingBlocks = blocks.filter((block) => {
-    const lightPath = path.join(REGISTRY_PATH, `${block.id}-light.png`);
-    const darkPath = path.join(REGISTRY_PATH, `${block.id}-dark.png`);
+  const blockIds = await getAllBlockIds();
+  const blocks = blockIds.filter((block) => {
+    // Check if screenshots already exist
+    const lightPath = path.join(REGISTRY_PATH, `${block}-light.png`);
+    const darkPath = path.join(REGISTRY_PATH, `${block}-dark.png`);
     return !existsSync(lightPath) || !existsSync(darkPath);
   });
 
-  if (pendingBlocks.length === 0) {
+  if (blocks.length === 0) {
     console.log("✨ All screenshots exist, nothing to capture");
     return;
   }
@@ -36,23 +31,27 @@ async function captureScreenshots() {
     },
   });
 
-  for (const block of pendingBlocks) {
-    const page = await browser.newPage();
-    await page.goto(block.url, { waitUntil: "networkidle2" });
+  for (const block of blocks) {
+    const pageUrl = `http://localhost:3000/preview/${block}`;
 
-    console.log(`- Capturing ${block.id}...`);
+    const page = await browser.newPage();
+    await page.goto(pageUrl, {
+      waitUntil: "networkidle2",
+    });
+
+    console.log(`- Capturing ${block}...`);
 
     for (const theme of ["light", "dark"]) {
       const screenshotPath = path.join(
         REGISTRY_PATH,
-        `${block.id}${theme === "dark" ? "-dark" : "-light"}.png`
+        `${block}${theme === "dark" ? "-dark" : "-light"}.png`
       );
 
       if (existsSync(screenshotPath)) {
         continue;
       }
 
-      // Set theme and reload
+      // Set theme and reload page
       await page.evaluate((currentTheme) => {
         localStorage.setItem("theme", currentTheme);
       }, theme);
@@ -60,14 +59,16 @@ async function captureScreenshots() {
       await page.reload({ waitUntil: "networkidle2" });
 
       // Wait for animations to complete
-      if (block.id.startsWith("chart") || block.id.startsWith("dashboard")) {
+      if (block.startsWith("chart") || block.startsWith("dashboard")) {
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }
 
       // Hide Tailwind indicator
       await page.evaluate(() => {
         const indicator = document.querySelector("[data-tailwind-indicator]");
-        if (indicator) indicator.remove();
+        if (indicator) {
+          indicator.remove();
+        }
       });
 
       await page.screenshot({ path: screenshotPath as `${string}.png` });

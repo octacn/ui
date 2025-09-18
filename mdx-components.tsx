@@ -13,7 +13,7 @@ import { ComponentSource } from "@/components/component-source";
 import { ComponentsList } from "@/components/components-list";
 import { TechStackIcon } from "@/components/tech-stack-icon";
 import { ImageCarousel } from "@/components/image-carousel";
-import { BlockDisplay } from "@/components/block/block-display";
+import { BlockDisplay } from "@/components/block-display";
 import { CopyButton } from "@/components/copy-button";
 import { ImageCard } from "@/components/image-card";
 import { CodeTabs } from "@/components/code-tabs";

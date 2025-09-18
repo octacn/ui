@@ -4,6 +4,7 @@ import { rimraf } from "rimraf";
 import path from "path";
 
 import { convertRegistryPaths, hasRegistryPaths, sleep } from "../lib/utils";
+import { getAllBlocks } from "../lib/blocks";
 import { registry } from "../registry/index";
 
 async function buildRegistryIndex() {
@@ -174,6 +175,22 @@ async function updateRegistryPath() {
   );
 }
 
+async function buildBlocksIndex() {
+  const blocks = await getAllBlocks(["registry:block"]);
+
+  const payload = blocks.map((block) => ({
+    name: block.name,
+    description: block.description,
+    categories: block.categories,
+  }));
+
+  rimraf.sync(path.join(process.cwd(), "registry/__blocks__.json"));
+  await fs.writeFile(
+    path.join(process.cwd(), "registry/__blocks__.json"),
+    JSON.stringify(payload, null, 2)
+  );
+}
+
 try {
   console.log("🗂️ Building registry/__index__.tsx...");
   await buildRegistryIndex();
@@ -201,6 +218,17 @@ try {
   console.log("🔄 updateRegistryPath registry...");
   await updateRegistryPath();
   console.log("🥳 Completed updateRegistryPath registry...");
+
+  console.log("--------------------------------------");
+
+  console.log("⏳ Waiting more 3 seconds before building registry/__blocks__.json...");
+  await sleep(3000);
+
+  console.log("🗂️ Building registry/__blocks__.json...");
+  await buildBlocksIndex();
+  console.log("🥳 Completed Building registry/__blocks__.json...");
+
+  console.log("🥳 Completed all process check the changes...");
 } catch (error) {
   console.error(error);
   process.exit(1);
