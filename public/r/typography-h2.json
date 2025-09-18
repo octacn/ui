@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-h2",
+  "type": "registry:example",
+  "files": [
+    {
+      "path": "registry/demo/components/typography-h2.tsx",
+      "content": "import { H2 } from \"@/components/ui/typography\";\r\nimport React from \"react\";\r\n\r\nexport const H2Demo = () => {\r\n  return (\r\n     <H2>\r\n      Taxing Laughter: The Joke Tax Chronicles.\r\n    </H2>\r\n  )\r\n}\r\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -110,18 +110,17 @@ async function syncRegistry() {
   // --- 1. Backup registry/__index__.tsx
   const registryDir = path.join(process.cwd(), "registry");
   const registryIndexPath = path.join(registryDir, "__index__.tsx");
-  let registryContent: string | null = null;
+  let registryContent = null;
 
   try {
     registryContent = await fs.readFile(registryIndexPath, "utf8");
   } catch {
     console.log("🗂️ registry/__index__.tsx not found");
   }
-
-  // --- 2. Build registry
+  // 1. Call pnpm registry:build for www.
   await exec("pnpm registry:build");
 
-  // --- 3. Restore __index__.tsx if we had it
+  // 3. Restore the registry content if we had it
   if (registryContent) {
     await fs.writeFile(registryIndexPath, registryContent, "utf8");
   }

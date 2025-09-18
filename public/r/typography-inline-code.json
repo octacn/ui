@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-inline-code",
+  "type": "registry:example",
+  "files": [
+    {
+      "path": "registry/demo/components/typography-inline-code.tsx",
+      "content": "import { InlineCode } from \"@/components/ui/typography\";\r\nimport React from \"react\";\r\n\r\nexport const InlineCodeDemo = () => {\r\n  return (\r\n     <InlineCode>\r\n      npm run dev\r\n    </InlineCode>\r\n  )\r\n}\r\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-h6",
+  "type": "registry:example",
+  "files": [
+    {
+      "path": "registry/demo/components/typography-h6.tsx",
+      "content": "import { H6 } from \"@/components/ui/typography\";\r\nimport React from \"react\";\r\n\r\nexport const H6Demo = () => {\r\n  return (\r\n     <H6>\r\n      Taxing Laughter: The Joke Tax Chronicles.\r\n    </H6>\r\n  )\r\n}\r\n",
+      "type": "registry:example"
+    }
+  ]
+}

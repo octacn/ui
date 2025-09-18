@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-demo",
+  "type": "registry:example",
+  "files": [
+    {
+      "path": "registry/demo/components/typography-demo.tsx",
+      "content": "import { H1, H2, H3, H4, H5, H6 } from \"@/components/ui/typography\";\nimport React from \"react\";\n\nexport const TypographyDemo = () => {\n  return (\n    <div className=\"font-inter space-y-2\">\n      <H1>This is h1 Heading</H1>\n      <H2>This is h2 Heading</H2>\n      <H3>This is h3 Heading</H3>\n      <H4>This is h4 Heading</H4>\n      <H5>This is h5 Heading</H5>\n      <H6>This is h6 Heading</H6>\n    </div>\n  );\n};\n",
+      "type": "registry:example"
+    }
+  ]
+}
