@@ -4,10 +4,16 @@ import { IconEdit } from "@tabler/icons-react";
 import { Button } from "@/registry/ui/button";
 import Link from "next/link";
 
-export function DocsEditButton({ path }: { path: string }) {
+export function DocsEditButton({
+  path,
+  docs = "docs",
+}: {
+  path: string;
+  docs?: "docs" | "auth-docs" | "blocks-docs";
+}) {
   return (
     <Link
-      href={`https://github.com/shadwui/new-lib/blob/main/content/docs/${path}`}
+      href={`https://github.com/shadwui/new-lib/blob/main/content/${docs}/${path}`}
       target="_blank"
     >
       <Button
