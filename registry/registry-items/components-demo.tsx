@@ -440,6 +440,16 @@ export const componentsDemo: Registry["items"] = [
       },
     ],
   },
+   {
+    name: "chart-bar-interactive",
+    type: "registry:example",
+    files: [
+      {
+        path: "demo/components/chart-bar-interactive.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
   {
     name: "chart-bar-demo-grid",
     type: "registry:example",

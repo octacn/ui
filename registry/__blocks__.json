@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "name": "sidebar-07",
+    "description": "A sidebar that collapses to icons.",
+    "categories": [
+      "sidebar",
+      "dashboard"
+    ]
+  }
+]

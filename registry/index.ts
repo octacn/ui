@@ -2,8 +2,8 @@ import { registryItemSchema, type Registry } from "@/schema/shadcn";
 import { z } from "zod";
 
 import { ui } from "@/registry/registry-items/ui";
-import { componentsDemo } from "./registry-items/components-demo";
-// import { blocks } from "@/registry/registry-items/blocks";
+import { componentsDemo } from "@/registry/registry-items/components-demo";
+import { sidebarDemo } from "@/registry/registry-items/sidebars-demo";
 
 // const APP_STYLE = {
 //   type: "registry:style",
@@ -28,6 +28,7 @@ export const registry = {
     // },
     ...ui,
     ...componentsDemo,
+    ...sidebarDemo,
     // ...blocks,
   ]),
 } satisfies Registry;
