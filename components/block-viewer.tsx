@@ -239,8 +239,8 @@ function BlockViewerIframe({ className }: { className?: string }) {
       key={iframeKey}
       src={`/preview/${item.name}`}
       // height={item.meta?.iframeHeight ?? 930}
-      loading="lazy"
       //  onLoad={handleLoad}
+      loading="lazy"
       className={cn("relative z-20 w-full h-full no-scrollbar", className)}
     />
   );

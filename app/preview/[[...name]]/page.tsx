@@ -1,31 +1,7 @@
-// import { ComponentPreview } from "@/components/component-preview";
-// import { getComponentData } from "@/lib/get-component";
-// import { notFound } from "next/navigation";
-
-// interface PreviewPageProps {
-//   searchParams?: Promise<{ name: string; src: string }>;
-// }
-
-// export default async function PreviewPage({ searchParams }: PreviewPageProps) {
-//   const params = await searchParams;
-//   const name = params?.name;
-//   const src = params?.src;
-
-//   if (!name || !src) return notFound();
-
-//   const data = await getComponentData(name, src);
-
-//   return <ComponentPreview name={data.name} src={data.src} hideCode />;
-// }
-
 import * as React from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// import { z } from "zod";
-// import { registryItemSchema } from "@/schema/shadcn";
-// import { siteConfig } from "@/lib/config";
-// import { absoluteUrl, cn } from "@/lib/utils";
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry";
 import { cn } from "@/lib/utils";
 
@@ -80,24 +56,6 @@ export async function generateMetadata({
     // },
   };
 }
-
-// export async function generateStaticParams() {
-//   const { Index } = await import("@/registry/__index__");
-//   const index = z.record(registryItemSchema).parse(Index);
-
-//   return Object.values(index)
-//     .filter((block) =>
-//       [
-//         "registry:block",
-//         "registry:component",
-//         "registry:example",
-//         "registry:internal",
-//       ].includes(block.type)
-//     )
-//     .map((block) => ({
-//       name: block.name,
-//     }));
-// }
 
 export default async function PreviewPage({
   params,
