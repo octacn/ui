@@ -1,5 +1,5 @@
 import { CodePreviewBox } from "@/components/box";
-import { ImageUploader } from "@/registry/src/components/image-uploader";
+import { ImageUploader } from "@/registry/src/components/file-uploader";
 import { Loading } from "@/registry/src/loaders/loading";
 import React, { Suspense } from "react";
 

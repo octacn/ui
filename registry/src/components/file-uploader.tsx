@@ -30,7 +30,7 @@ interface ImageUploaderProps {
   onPublish?: (files: File[]) => void;
 }
 
-export const ImageUploader: React.FC<ImageUploaderProps> = ({
+export const FileUploader: React.FC<ImageUploaderProps> = ({
   maxFiles = 10,
   maxSize = 20 * 1024 * 1024,
   onUploadComplete,
@@ -153,8 +153,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
   };
 
   return (
-    // <Card className={cn("max-w-sm w-sm bg-surface", className)}>
-    <Card className={cn("", className)}>
+    <Card className={cn("max-w-sm w-sm bg-surface", className)}>
       <CardHeader {...getRootProps()}>
         <motion.div
           className={cn(

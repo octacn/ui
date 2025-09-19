@@ -696,6 +696,32 @@
       ]
     },
     {
+      "name": "utils",
+      "type": "registry:lib",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "file-uploader",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/src/components/file-uploader.tsx",
+          "type": "registry:component",
+          "target": "components/file-uploader.tsx"
+        }
+      ]
+    },
+    {
       "name": "accordion-demo",
       "type": "registry:example",
       "registryDependencies": [

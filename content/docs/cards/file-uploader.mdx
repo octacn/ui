@@ -1,0 +1,84 @@
+---
+title: File Uploader
+description: A drag-and-drop file uploader component with preview, smooth animations, and progress tracking.
+---
+
+
+<ComponentPreview
+  name="file-uploader"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[630px] **:[pre]:h-[630px]"
+  description="An accordion with three items"
+  align="start"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://ui.octacn.com/r/file-uploader.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion clsx tailwind-merge react-dropzone
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="utils" title="lib/utils.ts" />
+<ComponentSource name="file-uploader" title="components/file-uploader.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { FileUploader } from "@/components/file-uploader";
+```
+
+```tsx showLineNumbers
+const handleUploadComplete = (files: File[]) => {
+  console.log("Upload complete:", files)
+}
+
+const handleCancel = () => {
+  console.log("Upload cancelled")
+}
+
+const handlePublish = (files: File[]) => {
+  console.log("Publishing files:", files)
+}
+
+```
+
+```tsx showLineNumbers
+<ImageUploader
+  maxFiles={10}
+  maxSize={20 * 1024 * 1024} // 20MB
+  onUploadComplete={handleUploadComplete}
+  onCancel={handleCancel}
+  onPublish={handlePublish}
+/>
+```
+
