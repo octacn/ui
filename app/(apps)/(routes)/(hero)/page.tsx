@@ -1,5 +1,5 @@
 import { CodePreviewBox } from "@/components/box";
-import { ImageUploader } from "@/registry/src/components/file-uploader";
+import { FileUploader } from "@/registry/src/components/file-uploader";
 import { Loading } from "@/registry/src/loaders/loading";
 import React, { Suspense } from "react";
 
@@ -30,7 +30,7 @@ function HeroPage() {
         1
       </CodePreviewBox>
 
-      <ImageUploader className="md:col-start-7 md:row-start-1 md:col-span-4 md:row-span-6 bg-surface" />
+      <FileUploader className="md:col-start-7 md:row-start-1 md:col-span-4 md:row-span-6 bg-surface" />
 
       <CodePreviewBox
         link=""
