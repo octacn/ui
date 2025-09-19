@@ -4,10 +4,10 @@
     "(root)",
     "templates",
     "backgrounds",
-    "buttons",
     "cards",
+    "buttons",
+    "text-components",
     "components",
-    "shadcn-components",
     "installation",
     "links"
   ]

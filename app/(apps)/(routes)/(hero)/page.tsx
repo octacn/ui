@@ -1,4 +1,5 @@
 import { CodePreviewBox } from "@/components/box";
+import { ImageUploader } from "@/registry/src/components/image-uploader";
 import { Loading } from "@/registry/src/loaders/loading";
 import React, { Suspense } from "react";
 
@@ -29,13 +30,7 @@ function HeroPage() {
         1
       </CodePreviewBox>
 
-      <CodePreviewBox
-        link=""
-        title="Number hai 2"
-        className="md:col-start-7 md:row-start-1 md:col-span-4 md:row-span-6"
-      >
-        2
-      </CodePreviewBox>
+      <ImageUploader className="md:col-start-7 md:row-start-1 md:col-span-4 md:row-span-6 bg-surface" />
 
       <CodePreviewBox
         link=""

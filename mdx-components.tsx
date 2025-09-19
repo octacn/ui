@@ -10,7 +10,10 @@ import { CodeBlockCommand } from "@/components/code-block-command";
 import { ImageCardWrapper } from "@/components/image-card-wrapper";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
-import { ComponentsList } from "@/components/components-list";
+import {
+  ComponentsList,
+  FullComponentsList,
+} from "@/components/components-list";
 import { TechStackIcon } from "@/components/tech-stack-icon";
 import { ImageCarousel } from "@/components/image-carousel";
 import { BlockDisplay } from "@/components/block-display";
@@ -353,6 +356,7 @@ export const mdxComponents = {
   ImageCarousel,
   TechStackIcon,
   ComponentsList,
+  FullComponentsList,
   BlockDisplay,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
