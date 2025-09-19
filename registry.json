@@ -722,6 +722,16 @@
       ]
     },
     {
+      "name": "file-uploader-demo",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/demo/cards/file-uploader-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "accordion-demo",
       "type": "registry:example",
       "registryDependencies": [

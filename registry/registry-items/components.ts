@@ -12,4 +12,14 @@ export const components: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "file-uploader-demo",
+    type: "registry:component",
+    files: [
+      {
+        path: "demo/cards/file-uploader-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

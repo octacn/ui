@@ -870,6 +870,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "file-uploader-demo": {
+    name: "file-uploader-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/demo/cards/file-uploader-demo.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/demo/cards/file-uploader-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "accordion-demo": {
     name: "accordion-demo",
     description: "",
