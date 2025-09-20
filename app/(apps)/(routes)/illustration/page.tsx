@@ -1,10 +1,13 @@
+import { BlockDisplay } from "@/components/block-display";
+import { BoxWrapper } from "@/components/box";
 import React from "react";
 
 const Page = () => {
   return (
-    <div>
+    <BoxWrapper className="pb-10">
       <h1>Illustration Page</h1>
-    </div>
+      <BlockDisplay name="header-01" />
+    </BoxWrapper>
   );
 };
 

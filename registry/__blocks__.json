@@ -1,5 +1,12 @@
 [
   {
+    "name": "header-01",
+    "description": "A responsive header block with navigation.",
+    "categories": [
+      "header"
+    ]
+  },
+  {
     "name": "sidebar-07",
     "description": "A sidebar that collapses to icons.",
     "categories": [

@@ -116,7 +116,7 @@ function BlockViewerProvider({
         className="group/block-view-wrapper flex min-w-0 scroll-mt-24 flex-col-reverse items-stretch gap-3 overflow-hidden md:flex-col"
         style={
           {
-            "--height": "456px",
+            "--height": item.meta?.iframeHeight ?? "450px",
           } as React.CSSProperties
         }
       >
@@ -206,7 +206,7 @@ function BlockViewerToolbar() {
           className="w-fit gap-1 px-2 shadow-none max-w-50"
           size="sm"
           onClick={() => {
-            copyToClipboard(`npx shadcn@latest add ${item.name}`);
+            copyToClipboard(`npx shadcn@latest add https://ui.octacn.com/r/${item.name}.json`);
           }}
         >
           {isCopied ? <Check /> : <Terminal />}
@@ -220,26 +220,11 @@ function BlockViewerToolbar() {
 function BlockViewerIframe({ className }: { className?: string }) {
   const { item, iframeKey } = useBlockViewer();
 
-  // const handleLoad = (event: React.SyntheticEvent<HTMLIFrameElement>) => {
-  //   const iframe = event.currentTarget;
-  //   const doc = iframe.contentDocument || iframe.contentWindow?.document;
-  //   if (doc) {
-  //     const style = doc.createElement("style");
-  //     style.textContent = `
-  //       html { background: red; }
-  //       html::-webkit-scrollbar { display: none; }
-  //       html { scrollbar-width: none; -ms-overflow-style: none; }
-  //     `;
-  //     doc.head.appendChild(style);
-  //   }
-  // };
-
   return (
     <iframe
       key={iframeKey}
       src={`/preview/${item.name}`}
-      // height={item.meta?.iframeHeight ?? 930}
-      //  onLoad={handleLoad}
+      height={item.meta?.iframeHeight ?? 930}
       loading="lazy"
       className={cn("relative z-20 w-full h-full no-scrollbar", className)}
     />
@@ -262,7 +247,7 @@ function BlockViewerView() {
             ref={resizablePanelRef}
             className="bg-background relative aspect-[4/2.5] overflow-hidden rounded-lg border md:aspect-auto md:rounded-lg"
             defaultSize={100}
-            minSize={30}
+            minSize={40}
           >
             <BlockViewerIframe />
           </ResizablePanel>

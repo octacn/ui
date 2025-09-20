@@ -3,51 +3,32 @@ import { type Registry } from "@/schema/shadcn";
 export const blocks: Registry["items"] = [
   {
     name: "header-01",
-    description: "A sidebar in a popover.",
+    description: "A responsive header block with navigation.",
     type: "registry:block",
-    registryDependencies: [
-      "sidebar",
-      "breadcrumb",
-      "separator",
-      "popover",
-      "collapsible",
-      "dropdown-menu",
-    ],
+    dependencies: ["lucide-react"],
+    registryDependencies: ["sheet", "utils", "button"],
     files: [
       {
-        path: "blocks/sidebar-10/page.tsx",
-        type: "registry:page",
-        target: "app/dashboard/page.tsx",
+        path: "src/headers/header-01.tsx",
+        type: "registry:block",
+        target: "components/header.tsx",
       },
       {
-        path: "blocks/sidebar-10/components/app-sidebar.tsx",
+        path: "ui/sheet.tsx",
         type: "registry:component",
+        target: "components/ui/sheet.tsx",
       },
       {
-        path: "blocks/sidebar-10/components/nav-actions.tsx",
+        path: "ui/button.tsx",
         type: "registry:component",
+        target: "components/ui/button.tsx",
       },
       {
-        path: "blocks/sidebar-10/components/nav-favorites.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "blocks/sidebar-10/components/nav-main.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "blocks/sidebar-10/components/nav-secondary.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "blocks/sidebar-10/components/nav-workspaces.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "blocks/sidebar-10/components/team-switcher.tsx",
-        type: "registry:component",
+        path: "lib/utils.ts",
+        type: "registry:lib",
+        target: "lib/utils.ts",
       },
     ],
-    categories: ["sidebar", "dashboard"],
+    categories: ["header"],
   },
 ];

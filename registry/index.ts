@@ -6,6 +6,7 @@ import { componentsDemo } from "@/registry/registry-items/components-demo";
 import { sidebarDemo } from "@/registry/registry-items/sidebars-demo";
 import { components } from "@/registry/registry-items/components";
 import { lib } from "@/registry/registry-items/lib";
+import { blocks } from "@/registry/registry-items/blocks";
 
 // const APP_STYLE = {
 //   type: "registry:style",
@@ -30,9 +31,9 @@ export const registry = {
     // },
     ...ui,
     ...lib,
+    ...blocks,
     ...components,
     ...componentsDemo,
     ...sidebarDemo,
-    // ...blocks,
   ]),
 } satisfies Registry;

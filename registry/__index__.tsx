@@ -852,6 +852,36 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "header-01": {
+    name: "header-01",
+    description: "A responsive header block with navigation.",
+    type: "registry:block",
+    registryDependencies: ["sheet","utils","button"],
+    files: [{
+      path: "registry/src/headers/header-01.tsx",
+      type: "registry:block",
+      target: "components/header.tsx"
+    },{
+      path: "registry/ui/sheet.tsx",
+      type: "registry:component",
+      target: "components/ui/sheet.tsx"
+    },{
+      path: "registry/ui/button.tsx",
+      type: "registry:component",
+      target: "components/ui/button.tsx"
+    },{
+      path: "registry/lib/utils.ts",
+      type: "registry:lib",
+      target: "lib/utils.ts"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/src/headers/header-01.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["header"],
+    meta: undefined,
+  },
   "file-uploader": {
     name: "file-uploader",
     description: "",
