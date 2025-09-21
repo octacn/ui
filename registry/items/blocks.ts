@@ -31,4 +31,19 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["header"],
   },
+  {
+    name: "pricing-01",
+    description: "A Pricing section of three section.",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["card", "utils", "button"],
+    files: [
+      {
+        path: "blocks/pricing-01.tsx",
+        type: "registry:block",
+        target: "components/pricing.tsx",
+      },
+    ],
+    categories: ["pricing"],
+  },
 ];

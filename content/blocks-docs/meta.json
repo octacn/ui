@@ -3,6 +3,7 @@
   "pages": [
     "(root)",
     "headers",
+    "pricings",
     "hero",
     "call-to-action",
     "forms",

@@ -882,6 +882,24 @@ export const Index: Record<string, any> = {
     categories: ["header"],
     meta: undefined,
   },
+  "pricing-01": {
+    name: "pricing-01",
+    description: "A Pricing section of three section.",
+    type: "registry:block",
+    registryDependencies: ["card","utils","button"],
+    files: [{
+      path: "registry/blocks/pricing-01.tsx",
+      type: "registry:block",
+      target: "components/pricing.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/blocks/pricing-01.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["pricing"],
+    meta: undefined,
+  },
   "file-uploader": {
     name: "file-uploader",
     description: "",
@@ -3544,6 +3562,28 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
+    meta: undefined,
+  },
+  "pricing-01-demo": {
+    name: "pricing-01-demo",
+    description: "A Pricing Demo of three section.",
+    type: "registry:block",
+    registryDependencies: ["card","utils","button"],
+    files: [{
+      path: "registry/demo/blocks/pricing-01-demo.tsx",
+      type: "registry:block",
+      target: "components/pricing-demo.tsx"
+    },{
+      path: "registry/blocks/pricing-01.tsx",
+      type: "registry:block",
+      target: "components/pricing-01.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/demo/blocks/pricing-01-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["pricing"],
     meta: undefined,
   },
   "sidebar-demo": {

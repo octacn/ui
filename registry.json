@@ -749,6 +749,29 @@
       ]
     },
     {
+      "name": "pricing-01",
+      "type": "registry:block",
+      "description": "A Pricing section of three section.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "card",
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/pricing-01.tsx",
+          "type": "registry:block",
+          "target": "components/pricing.tsx"
+        }
+      ],
+      "categories": [
+        "pricing"
+      ]
+    },
+    {
       "name": "file-uploader",
       "type": "registry:component",
       "files": [
@@ -2665,6 +2688,34 @@
           "path": "registry/demo/ui/typography-small.tsx",
           "type": "registry:example"
         }
+      ]
+    },
+    {
+      "name": "pricing-01-demo",
+      "type": "registry:block",
+      "description": "A Pricing Demo of three section.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "card",
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/pricing-01-demo.tsx",
+          "type": "registry:block",
+          "target": "components/pricing-demo.tsx"
+        },
+        {
+          "path": "registry/blocks/pricing-01.tsx",
+          "type": "registry:block",
+          "target": "components/pricing-01.tsx"
+        }
+      ],
+      "categories": [
+        "pricing"
       ]
     },
     {

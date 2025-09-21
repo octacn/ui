@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-01",
+  "type": "registry:block",
+  "description": "A Pricing section of three section.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "card",
+    "utils",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/blocks/pricing-01.tsx",
+      "content": "\"use client\";\r\n\r\nimport { Card, CardContent, CardFooter, CardHeader } from \"@/components/ui/card\";\r\nimport { Button } from \"@/components/ui/button\";\r\nimport { useEffect, useState } from \"react\";\r\nimport { CheckCircle2 } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst ACCENT = \"#C6FF3A\";\r\ntype Currency = \"INR\" | \"USD\";\r\n\r\ninterface PricingPlan {\r\n  id: string;\r\n  name: string;\r\n  prices: Record<Currency, string>;\r\n  features: string[];\r\n  deliveryTime: string;\r\n  description?: string;\r\n  isPopular?: boolean;\r\n  maxRevisions?: number;\r\n  checkoutUrl?: string;\r\n}\r\n\r\ninterface PricingCardProps {\r\n  plan: PricingPlan;\r\n  currency?: Currency;\r\n  onViewExample?: (planId: string) => void;\r\n  accentColor?: string;\r\n  className?: string;\r\n  showSaveText?: boolean;\r\n  saveText?: Record<Currency, string>;\r\n}\r\n\r\nconst DEFAULT_SAVE_TEXT: Record<Currency, string> = {\r\n  INR: \"Save Flat ₹1,500/-\",\r\n  USD: \"Save $20\",\r\n};\r\n\r\nexport default function PricingCard({\r\n  plan,\r\n  className = \"\",\r\n  currency: propCurrency,\r\n  accentColor = ACCENT,\r\n  showSaveText = false,\r\n  saveText = DEFAULT_SAVE_TEXT,\r\n}: PricingCardProps) {\r\n  const [detectedCurrency, setDetectedCurrency] = useState<Currency>(\"USD\");\r\n  const currentCurrency = propCurrency || detectedCurrency;\r\n\r\n  return (\r\n    <Card\r\n      className={cn(\r\n        \"relative overflow-hidden rounded-2xl liquid-glass-enhanced shadow-[0_16px_50px_rgba(0,0,0,0.4)] transition-all duration-300 justify-between\",\r\n        className\r\n      )}\r\n    >\r\n      {plan.isPopular && (\r\n        <div className=\"absolute -right-8 top-4 rotate-45 bg-gradient-to-r from-yellow-400 to-orange-500 px-8 py-1 text-xs font-bold text-black\">\r\n          POPULAR\r\n        </div>\r\n      )}\r\n      <div>\r\n        <CardHeader>\r\n          <h4 className=\"text-base font-inter tracking-wide text-foreground/80\">\r\n            {plan.name}\r\n          </h4>\r\n          <h4>\r\n            {plan.prices[currentCurrency]}\r\n            <span className=\"pb-0.5 text-xs text-muted-foreground ml-1.5\">\r\n              per video\r\n            </span>\r\n          </h4>\r\n\r\n          {showSaveText && (\r\n            <h5 className=\"text-xl text-green-400 font-medium absolute top-8 right-10\">\r\n              {saveText[currentCurrency]}\r\n            </h5>\r\n          )}\r\n\r\n          <div className=\"flex gap-2 my-4\">\r\n            <Button\r\n              className=\"flex-1 rounded-full px-4 py-2 text-sm font-medium transition-colors\"\r\n              style={{\r\n                backgroundColor: \"#0a0a0a\",\r\n                color: \"#ffffff\",\r\n                border: \"1px solid #333\",\r\n              }}\r\n            >\r\n              View Example\r\n            </Button>\r\n\r\n            <Button\r\n              className=\"flex-1 rounded-full px-4 py-2 text-sm font-medium text-black shadow transition-[box-shadow,transform,filter] active:translate-y-[1px]\"\r\n              style={{ backgroundColor: accentColor }}\r\n            >\r\n              Delivery Time: {plan.deliveryTime}\r\n            </Button>\r\n          </div>\r\n        </CardHeader>\r\n\r\n        <CardContent>\r\n          {plan.description && (\r\n            <p className=\"mb-4 text-sm text-muted-foreground\">\r\n              {plan.description}\r\n            </p>\r\n          )}\r\n\r\n          <ul className=\"grid gap-2\">\r\n            {plan.features.map((feature, i) => (\r\n              <li key={i} className=\"flex items-start gap-2\">\r\n                <CheckCircle2\r\n                  className=\"mt-0.5 h-4 w-4 flex-shrink-0\"\r\n                  style={{ color: accentColor }}\r\n                />\r\n                <span className=\"text-sm text-foreground/80\">{feature}</span>\r\n              </li>\r\n            ))}\r\n          </ul>\r\n        </CardContent>\r\n      </div>\r\n\r\n      <CardFooter>\r\n        <Button className=\"w-full\" size={\"lg\"}>\r\n          Select\r\n        </Button>\r\n      </CardFooter>\r\n    </Card>\r\n  );\r\n}\r\n\r\nfunction guessLocalCurrency(): Currency {\r\n  const lang = typeof navigator !== \"undefined\" ? navigator.language : \"\";\r\n  const tz =\r\n    typeof Intl !== \"undefined\"\r\n      ? Intl.DateTimeFormat().resolvedOptions().timeZone\r\n      : \"\";\r\n  if (/-(IN|PK|BD)\\b/i.test(lang) || /(Kolkata|Karachi|Dhaka)/i.test(tz || \"\"))\r\n    return \"INR\";\r\n  return \"USD\";\r\n}\r\n",
+      "type": "registry:block",
+      "target": "components/pricing.tsx"
+    }
+  ],
+  "categories": [
+    "pricing"
+  ]
+}
