@@ -7,7 +7,7 @@
   ],
   "files": [
     {
-      "path": "registry/demo/components/toggle-with-text.tsx",
+      "path": "registry/demo/ui/toggle-with-text.tsx",
       "content": "import { Italic } from \"lucide-react\"\n\nimport { Toggle } from \"@/components/ui/toggle\"\n\nexport default function ToggleWithText() {\n  return (\n    <Toggle aria-label=\"Toggle italic\">\n      <Italic />\n      Italic\n    </Toggle>\n  )\n}\n",
       "type": "registry:example"
     }

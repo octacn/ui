@@ -1,6 +1,6 @@
 import { CodePreviewBox } from "@/components/box";
-import { FileUploader } from "@/registry/src/components/file-uploader";
-import { Loading } from "@/registry/src/loaders/loading";
+import { FileUploader } from "@/registry/components/file-uploader";
+import { Loading } from "@/registry/components/loading";
 import React, { Suspense } from "react";
 
 export default function Page() {

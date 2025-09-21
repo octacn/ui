@@ -6,19 +6,9 @@ export const components: Registry["items"] = [
     type: "registry:component",
     files: [
       {
-        path: "src/components/file-uploader.tsx",
+        path: "components/file-uploader.tsx",
         type: "registry:component",
         target: "components/file-uploader.tsx",
-      },
-    ],
-  },
-  {
-    name: "file-uploader-demo",
-    type: "registry:component",
-    files: [
-      {
-        path: "demo/cards/file-uploader-demo.tsx",
-        type: "registry:component",
       },
     ],
   },

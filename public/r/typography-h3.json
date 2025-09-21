@@ -4,7 +4,7 @@
   "type": "registry:example",
   "files": [
     {
-      "path": "registry/demo/components/typography-h3.tsx",
+      "path": "registry/demo/ui/typography-h3.tsx",
       "content": "import { H3 } from \"@/components/ui/typography\";\r\nimport React from \"react\";\r\n\r\nexport const H3Demo = () => {\r\n  return (\r\n     <H3>\r\n      Taxing Laughter: The Joke Tax Chronicles.\r\n    </H3>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }

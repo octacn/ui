@@ -1,4 +1,4 @@
-import { Header } from "@/registry/src/headers/header-01";
+import { Header } from "@/registry/blocks/header-01";
 import React from "react";
 
 const Page = () => {

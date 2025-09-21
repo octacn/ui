@@ -8,7 +8,7 @@
   ],
   "files": [
     {
-      "path": "registry/demo/components/textarea-with-label.tsx",
+      "path": "registry/demo/ui/textarea-with-label.tsx",
       "content": "import { Label } from \"@/components/ui/label\"\nimport { Textarea } from \"@/components/ui/textarea\"\n\nexport default function TextareaWithLabel() {\n  return (\n    <div className=\"grid w-full gap-3\">\n      <Label htmlFor=\"message\">Your message</Label>\n      <Textarea placeholder=\"Type your message here.\" id=\"message\" />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }

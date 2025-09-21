@@ -7,7 +7,7 @@
   ],
   "files": [
     {
-      "path": "registry/demo/components/input-disabled.tsx",
+      "path": "registry/demo/ui/input-disabled.tsx",
       "content": "import { Input } from \"@/components/ui/input\"\n\nexport default function InputDisabled() {\n  return <Input disabled type=\"email\" placeholder=\"Email\" />\n}\n",
       "type": "registry:example"
     }

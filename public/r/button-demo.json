@@ -7,7 +7,7 @@
   ],
   "files": [
     {
-      "path": "registry/demo/components/button-demo.tsx",
+      "path": "registry/demo/ui/button-demo.tsx",
       "content": "import { Button } from \"@/components/ui/button\"\n\nexport default function ButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-2 md:flex-row\">\n      <Button>Button</Button>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }

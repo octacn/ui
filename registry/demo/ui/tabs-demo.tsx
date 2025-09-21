@@ -1,5 +1,3 @@
-import { AppWindowIcon, CodeIcon } from "lucide-react"
-
 import { Button } from "@/registry/ui/button"
 import {
   Card,

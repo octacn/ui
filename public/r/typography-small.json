@@ -4,7 +4,7 @@
   "type": "registry:example",
   "files": [
     {
-      "path": "registry/demo/components/typography-small.tsx",
+      "path": "registry/demo/ui/typography-small.tsx",
       "content": "import { Small } from \"@/components/ui/typography\";\n\nexport default function TypographySmall() {\n  return (\n    <Small className=\"text-sm leading-none font-medium\">Email address</Small>\n  );\n}\n",
       "type": "registry:example"
     }

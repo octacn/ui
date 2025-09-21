@@ -8,7 +8,7 @@
   ],
   "files": [
     {
-      "path": "registry/demo/components/textarea-with-button.tsx",
+      "path": "registry/demo/ui/textarea-with-button.tsx",
       "content": "import { Button } from \"@/components/ui/button\"\nimport { Textarea } from \"@/components/ui/textarea\"\n\nexport default function TextareaWithButton() {\n  return (\n    <div className=\"grid w-full gap-2\">\n      <Textarea placeholder=\"Type your message here.\" />\n      <Button>Send message</Button>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }

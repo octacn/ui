@@ -7,7 +7,7 @@
   ],
   "files": [
     {
-      "path": "registry/demo/components/button-link.tsx",
+      "path": "registry/demo/ui/button-link.tsx",
       "content": "import { Button } from \"@/components/ui/button\"\n\nexport default function ButtonLink() {\n  return <Button variant=\"link\">Link</Button>\n}\n",
       "type": "registry:example"
     }

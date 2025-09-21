@@ -4,7 +4,7 @@
   "type": "registry:example",
   "files": [
     {
-      "path": "registry/demo/components/typography-blockquote.tsx",
+      "path": "registry/demo/ui/typography-blockquote.tsx",
       "content": "import { Blockquote } from \"@/components/ui/typography\";\r\nimport React from \"react\";\r\n\r\nexport const BlockquoteDemo = () => {\r\n  return (\r\n     <Blockquote>\r\n      Taxing Laughter: The Joke Tax Chronicles.\r\n    </Blockquote>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }

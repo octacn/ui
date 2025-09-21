@@ -5,7 +5,7 @@ import path from "path";
 
 import { convertRegistryPaths, hasRegistryPaths, sleep } from "../lib/utils";
 import { getAllBlocks } from "../lib/blocks";
-import { registry } from "../registry/index";
+import { registry } from "../registry/items/index";
 
 async function buildRegistryIndex() {
   let index = `/* eslint-disable @typescript-eslint/ban-ts-comment */

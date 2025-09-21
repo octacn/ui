@@ -1,15 +1,16 @@
-import { MobileNav } from "@/registry/src/headers/mobile-nav";
 import { ModeSwitcher } from "@/components/mode-switcher";
-import { MainNav } from "@/registry/src/headers/main-nav";
 import { CommandMenu } from "@/components/command-menu";
 import { GitHubLink } from "@/components/github-icon";
+import { MobileNav } from "@/components/mobile-nav";
 import { Separator } from "@/registry/ui/separator";
+import { MainNav } from "@/components/main-nav";
 import { Icons } from "@/components/icons";
 import { siteConfig } from "@/lib/config";
 import { getColors } from "@/lib/colors";
 import { source } from "@/lib/source";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+
 import React from "react";
 
 export function SiteHeader() {

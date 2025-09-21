@@ -1,7 +1,7 @@
 import TestimonialsSection from "@/components/_components/testimonials-section";
 import { ExampleSection } from "@/components/_components/example-section";
-import { ShootingStars } from "@/registry/src/backgrounds/shooting-stars";
 import PremiumShowcase from "@/components/_components/premium-showcase";
+import { ShootingStars } from "@/registry/components/shooting-stars";
 import HeroSection from "@/components/_components/hero-section";
 import LogoSection from "@/components/_components/logo-section";
 import CtaSection from "@/components/_components/cta-section";

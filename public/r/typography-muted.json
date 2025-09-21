@@ -4,7 +4,7 @@
   "type": "registry:example",
   "files": [
     {
-      "path": "registry/demo/components/typography-muted.tsx",
+      "path": "registry/demo/ui/typography-muted.tsx",
       "content": "import { Muted } from \"@/components/ui/typography\";\n\nexport default function TypographyMuted() {\n  return (\n    <Muted className=\"text-muted-foreground text-sm\">\n      Enter your email address.\n    </Muted>\n  );\n}\n",
       "type": "registry:example"
     }

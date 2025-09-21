@@ -9,7 +9,7 @@ export const blocks: Registry["items"] = [
     registryDependencies: ["sheet", "utils", "button"],
     files: [
       {
-        path: "src/headers/header-01.tsx",
+        path: "blocks/header-01.tsx",
         type: "registry:block",
         target: "components/header.tsx",
       },

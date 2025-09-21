@@ -1,4 +1,4 @@
-import { colors } from "@/registry/registry-items/registry-colors"
+import { colors } from "@/registry/items/colors"
 import { z } from "zod"
 
 const colorSchema = z.object({

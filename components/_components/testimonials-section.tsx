@@ -1,6 +1,6 @@
 "use client";
 
-import { Loading } from "@/registry/src/loaders/loading";
+import { Loading } from "@/registry/components/loading";
 import React, { CSSProperties, Suspense } from "react";
 import { Heading } from "@/components/heading";
 import { BoxWrapper } from "@/components/box";

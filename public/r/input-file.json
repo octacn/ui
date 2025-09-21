@@ -7,7 +7,7 @@
   ],
   "files": [
     {
-      "path": "registry/demo/components/input-file.tsx",
+      "path": "registry/demo/ui/input-file.tsx",
       "content": "import { Input } from \"@/components/ui/input\"\nimport { Label } from \"@/components/ui/label\"\n\nexport default function InputFile() {\n  return (\n    <div className=\"grid w-full max-w-sm items-center gap-3\">\n      <Label htmlFor=\"picture\">Picture</Label>\n      <Input id=\"picture\" type=\"file\" />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }

@@ -1,5 +1,5 @@
 import { CodePreviewBox } from "@/components/box";
-import { Loading } from "@/registry/src/loaders/loading";
+import { Loading } from "@/registry/components/loading";
 import React, { Suspense } from "react";
 
 export default function Page() {

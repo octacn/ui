@@ -106,8 +106,8 @@ export default async function Page(props: PageProps) {
     >
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
-        <div className="mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
-          <div className="flex flex-col gap-2">
+        <div className="mx-auto flex w-full min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:pl-10 md:pr-8 lg:py-8 dark:text-neutral-300">
+          <div className="flex flex-col gap-2 mr-5">
             <div className="flex flex-col gap-2">
               <div className="flex items-start justify-between">
                 <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
@@ -199,19 +199,6 @@ export default async function Page(props: PageProps) {
               </Link>
             </Button>
           )}
-        </div>
-      </div>
-      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
-        <div className="h-(--top-spacing) shrink-0" />
-
-        {doc.toc?.length ? (
-          <div className="no-scrollbar overflow-y-auto px-6">
-            <DocsTableOfContents toc={doc.toc} />
-            <div className="h-12" />
-          </div>
-        ) : null}
-        <div className="flex flex-1 flex-col gap-12 px-6">
-          <OpenInAgency />
         </div>
       </div>
     </div>

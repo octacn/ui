@@ -7,7 +7,7 @@
   ],
   "files": [
     {
-      "path": "registry/demo/components/textarea-disabled.tsx",
+      "path": "registry/demo/ui/textarea-disabled.tsx",
       "content": "import { Textarea } from \"@/components/ui/textarea\"\n\nexport default function TextareaDisabled() {\n  return <Textarea placeholder=\"Type your message here.\" disabled />\n}\n",
       "type": "registry:example"
     }

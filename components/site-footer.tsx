@@ -1,4 +1,4 @@
-import { TextHoverEffect } from "@/registry/src/text/text-hover-effect";
+import { TextHoverEffect } from "@/registry/components/text-hover-effect";
 import HoverAnimation from "@/components/animation/hover-animation";
 import { Separator } from "@/registry/ui/separator";
 import { RiArrowRightUpLine } from "react-icons/ri";

@@ -1,6 +1,6 @@
 "use client"
 
-import { FileUploader } from "@/registry/src/components/file-uploader";
+import { FileUploader } from "@/registry/components/file-uploader";
 
 export default function FileUploaderDemo() {
   const handleUploadComplete = (files: File[]) => {
