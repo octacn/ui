@@ -12,4 +12,15 @@ export const components: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "phone-frame",
+    type: "registry:component",
+    files: [
+      {
+        path: "components/phone-frame.tsx",
+        type: "registry:component",
+        target: "components/phone-frame.tsx",
+      },
+    ],
+  },
 ];

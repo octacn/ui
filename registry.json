@@ -760,6 +760,17 @@
       ]
     },
     {
+      "name": "phone-frame",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/components/phone-frame.tsx",
+          "type": "registry:component",
+          "target": "components/phone-frame.tsx"
+        }
+      ]
+    },
+    {
       "name": "accordion-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -2836,6 +2847,16 @@
       "files": [
         {
           "path": "registry/demo/components/file-uploader-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "phone-frame-demo",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/demo/components/phone-frame-demo.tsx",
           "type": "registry:component"
         }
       ]

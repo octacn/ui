@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "phone-frame-demo",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/demo/components/phone-frame-demo.tsx",
+      "content": "import { AndroidFrame, IphoneFrame } from \"@/registry/components/phone-frame\";\r\nimport React from \"react\";\r\n\r\nexport const PhoneFrameDemo = () => {\r\n  return (\r\n    <div className=\"flex flex-col md:flex-row items-center justify-center gap-6\">\r\n      <AndroidFrame\r\n        title=\"Premium\"\r\n        description=\"Clear night. Great for render farm runs.\"\r\n        src=\"https://hebbkx1anhila5yf.public.blob.vercel-storage.com/b0f3222371106db366a14ca1c29cef55-1b1EWVSa4w3FL2zslcaCGYTy9vcxjF.mp4\"\r\n      />\r\n      <IphoneFrame\r\n        title=\"Premium\"\r\n        description=\"Clear night. Great for render farm runs.\"\r\n        src=\"https://hebbkx1anhila5yf.public.blob.vercel-storage.com/b0f3222371106db366a14ca1c29cef55-1b1EWVSa4w3FL2zslcaCGYTy9vcxjF.mp4\"\r\n      />\r\n    </div>\r\n  );\r\n};\r\n",
+      "type": "registry:component"
+    }
+  ]
+}

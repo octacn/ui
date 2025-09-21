@@ -1,10 +1,10 @@
-import { Header } from "@/registry/blocks/header-01";
+import { PhoneFrameDemo } from "@/registry/demo/components/phone-frame-demo";
 import React from "react";
 
 const Page = () => {
   return (
     <div className="flex py-28 items-center justify-center w-full">
-      <Header />
+      <PhoneFrameDemo />
     </div>
   );
 };

@@ -1,0 +1,70 @@
+---
+title: Phone Frame
+description: The Phone Frame component is a customizable mockup container for displaying mobile UI designs, apps, or media inside an iPhone or Android frame.
+---
+
+<ComponentPreview
+  name="phone-frame-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[700px] **:[pre]:h-[630px]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://ui.octacn.com/r/phone-frame.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="phone-frame" title="components/phone-frame.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { 
+  AndroidFrame, 
+  IphoneFrame
+} from "@/components/phone-case";
+```
+
+- **IPhone Case**
+```tsx showLineNumbers
+<IphoneFrame
+  src=""
+  title=""
+  description=""
+/>
+```
+
+- **Android Phone Case**
+```tsx showLineNumbers
+ <AndroidFrame
+  src=""
+  title=""
+  description=""
+  badge="optional"
+/>
+```
