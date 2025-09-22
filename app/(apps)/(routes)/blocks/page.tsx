@@ -1,10 +1,12 @@
-import PricingDemo from "@/registry/demo/blocks/pricing-01-demo";
 import React from "react";
+import ScaleHoverAnimationButton from "@/registry/components/scale-hover-animation-button";
 
 const Page = () => {
   return (
-    <div className="flex py-28 items-center justify-center w-full">
-      <PricingDemo />
+    <div className="flex items-center justify-center py-10">
+      <ScaleHoverAnimationButton >
+        Get Started
+      </ScaleHoverAnimationButton>
     </div>
   );
 };

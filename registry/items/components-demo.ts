@@ -21,4 +21,27 @@ export const componentsDemo: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "paper-background-demo",
+    type: "registry:component",
+    files: [
+      {
+        path: "demo/components/paper-background-demo.tsx",
+        type: "registry:component",
+        target: "components/paper-background.tsx",
+      },
+    ],
+  },
+  {
+    name: "scale-hover-animation-button-demo",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "demo/components/scale-hover-animation-button-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

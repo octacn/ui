@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scale-hover-animation-button-demo",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/scale-hover-animation-button-demo.tsx",
+      "content": "import ScaleHoverAnimationButton from \"@/registry/components/scale-hover-animation-button\";\r\nimport React from \"react\";\r\n\r\nexport default function ScaleHoverAnimationButtonDemo() {\r\n  return (\r\n    <>\r\n      <ScaleHoverAnimationButton>\r\n        Get Started\r\n      </ScaleHoverAnimationButton>\r\n    </>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ]
+}

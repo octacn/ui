@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "paper-background-demo",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/demo/components/paper-background-demo.tsx",
+      "content": "import PaperBackground from \"@/registry/components/paper-background\";\r\nimport React from \"react\";\r\n\r\nexport default function PaperBackgroundDemo() {\r\n  return <PaperBackground className=\"rounded-lg\" />;\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/paper-background.tsx"
+    }
+  ]
+}

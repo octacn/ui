@@ -1,0 +1,54 @@
+---
+title: Scale hover Animation Button
+description: Displays a button or a component that looks like a button but with hover animation.
+---
+
+<ComponentPreview name="scale-hover-animation-button-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://ui.octacn.com/r/scale-hover-animation-button.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="button" title="components/ui/button.tsx" />
+<ComponentSource 
+  name="scale-hover-animation-button" 
+  title="components/ui/scale-hover-animation-button.tsx" 
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import ScaleHoverAnimationButton from "@/components/scale-hover-animation-button"
+```
+
+```tsx
+<ScaleHoverAnimationButton>
+  Get Started
+</ScaleHoverAnimationButton>
+``` 
