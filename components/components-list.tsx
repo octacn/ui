@@ -53,18 +53,18 @@ export function FullComponentsList() {
         }
 
         return (
-          <div key={folder.$id} className="space-y-4">
+          <div key={folder.$id} className="space-y-3">
             <h3 className="text-lg font-semibold text-foreground">
               {folder.name}
             </h3>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20 text-base/normal font-inter tracking-wide">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-5 xl:gap-x-20 text-base/normal font-inter tracking-wide">
               {components.map((component, idx) => (
                 <div key={idx} className="flex gap-1">
                   {1 + idx}.
                   <Link
                     href={component.url}
-                    className="underline-offset-4 hover:underline hover:text-muted-foreground"
+                    className="underline-offset-4 hover:underline hover:text-muted-foreground capitalize truncate"
                   >
                     <span>{component.name}</span>
                   </Link>

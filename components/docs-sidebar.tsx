@@ -16,6 +16,9 @@ import {
 } from "@/registry/ui/sidebar";
 import { Badge } from "@/registry/ui/badge";
 import { newPages, proPages, comingSoonPages } from "@/lib/page-type";
+import { siteConfig } from "@/lib/config";
+import ExternalLink from "./site-footer";
+import { RiArrowRightUpLine } from "react-icons/ri";
 
 export function DocsSidebar({
   tree,
@@ -31,6 +34,26 @@ export function DocsSidebar({
     >
       <SidebarContent className="px-2 pb-12 no-scrollbar">
         <div className="h-(--top-spacing) shrink-0" />
+
+        <SidebarGroup className="font-inter tracking-wide">
+          <SidebarGroupLabel className="text-sm text-foreground">
+            Social Links
+          </SidebarGroupLabel>
+
+          <SidebarGroupContent className="text-muted-foreground px-2 space-y-2.5 mt-1.5">
+            <ExternalLink
+              text="Linkedin @Sahilkumardev"
+              href={siteConfig.links.linkedin}
+              isExternal
+            />
+            <ExternalLink
+              text="Twitter @Sahilkumardev"
+              href={siteConfig.links.twitter}
+              isExternal
+            />
+          </SidebarGroupContent>
+        </SidebarGroup>
+
         {tree.children.map((item) => (
           <SidebarGroup key={item.$id}>
             <SidebarGroupLabel className="text-muted-foreground font-inter text-sm tracking-wide">
@@ -55,9 +78,16 @@ export function DocsSidebar({
                           <SidebarMenuButton
                             asChild
                             isActive={item.url === pathname}
-                            className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] overflow-visible border border-transparent text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:text-orange-500 font-mono capitalize w-fit"
+                            className="data-[active=true]:bg-accent data-[active=true]:border-accent hover:bg- 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] overflow-visible border border-transparent text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:text-orange-400 hover:text-orange-400/90 font-inter tracking-wide font-normal capitalize w-fit group whitespace-nowrap inline-flex items-center gap-0.5 transition-colors duration-200 active:text-orange-400/90"
                           >
-                            <Link href={item.url}>{item.name}</Link>
+                            <Link href={item.url}>
+                              {item.name}
+                              <RiArrowRightUpLine
+                                className="text-orange-400/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 data-[active=true]:group-hover:opacity-0"
+                                aria-hidden="true"
+                                size={16}
+                              />
+                            </Link>
                           </SidebarMenuButton>
                           {isNew && (
                             <Badge className="capitalize bg-yellow-500 text-black py-0.5 rounded-md tracking-wide font-semibold select-none">
@@ -70,7 +100,10 @@ export function DocsSidebar({
                             </Badge>
                           )}
                           {isComingSoonPages && (
-                            <Badge variant={"secondary"} className="bg-transparent capitalize text-muted-foreground tracking-wide font-semibold select-none font-inter italic">
+                            <Badge
+                              variant={"secondary"}
+                              className="bg-transparent capitalize text-muted-foreground tracking-wide font-semibold select-none font-inter italic"
+                            >
                               Coming Soon
                             </Badge>
                           )}

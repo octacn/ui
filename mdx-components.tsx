@@ -104,7 +104,10 @@ export const mdxComponents = {
   ),
   p: ({ className, ...props }: React.ComponentProps<"p">) => (
     <p
-      className={cn("leading-relaxed [&:not(:first-child)]:mt-6", className)}
+      className={cn(
+        "leading-relaxed [&:not(:first-child)]:mt-6 text-lg font-inter font-light tracking-wide",
+        className
+      )}
       {...props}
     />
   ),

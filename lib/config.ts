@@ -7,10 +7,11 @@ export const siteConfig = {
   links: {
     twitter: "https://twitter.com/",
     github: "https://github.com/",
+    linkedin: "https://linkedin.com/",
   },
   navItems: [
     {
-      href: "/docs/installation",
+      href: "/docs",
       label: "Docs",
     },
     {
