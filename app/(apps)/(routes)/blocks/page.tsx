@@ -1,12 +1,15 @@
 import React from "react";
-import ScaleHoverAnimationButton from "@/registry/components/scale-hover-animation-button";
-
+import ProLibraryCta from "@/components/pro-library-cta";
+import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-button";
+ 
 const Page = () => {
   return (
-    <div className="flex items-center justify-center py-10">
-      <ScaleHoverAnimationButton >
-        Get Started
-      </ScaleHoverAnimationButton>
+    <div className="flex flex-col items-center gap-10 justify-center py-10">
+      <ProLibraryCta />
+
+ <MagneticShimmerButton>
+  Click Me
+</MagneticShimmerButton>
     </div>
   );
 };

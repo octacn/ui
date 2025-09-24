@@ -15,9 +15,7 @@ import Link from "next/link";
 import { Badge } from "@/registry/ui/badge";
 import { DocsTableOfContents } from "@/components/docs-toc";
 import { DocsEditButton } from "@/components/docs-edit-button";
-import { OpenInAgency } from "@/components/open-in-agency";
-// import { getGithubLastEdit } from "fumadocs-core/server";
-// import { LastEditTime } from "@/components/last-edit-time";
+import { OpenInAgency } from "@/components/open-in-agency"; 
 
 interface PageProps {
   params: Promise<{ slug?: string[] }>;

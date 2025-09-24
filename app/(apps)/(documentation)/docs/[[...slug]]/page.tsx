@@ -18,8 +18,7 @@ import { DocsEditButton } from "@/components/docs-edit-button";
 import { OpenInAgency } from "@/components/open-in-agency";
 import { comingSoonPages } from "@/lib/page-type";
 import { WaitlistForm } from "@/components/waitlist-form";
-// import { getGithubLastEdit } from "fumadocs-core/server";
-// import { LastEditTime } from "@/components/last-edit-time";
+import ProLibraryCta from "@/components/pro-library-cta";
 
 interface PageProps {
   params: Promise<{ slug?: string[] }>;
@@ -94,12 +93,6 @@ export default async function Page(props: PageProps) {
   const neighbours = await findNeighbour(source.pageTree, page.url);
 
   const links = doc.links;
-
-  // const time = await getGithubLastEdit({
-  //   owner: "shadwui",
-  //   repo: "new-lib",
-  //   path: `content/docs/${page.path}`,
-  // });
 
   const isComingSoonPages = comingSoonPages.includes(page.url);
 
@@ -176,8 +169,7 @@ export default async function Page(props: PageProps) {
             <MDX components={mdxComponents} />
             {isComingSoonPages && <WaitlistForm />}
           </div>
-
-          {/* <LastEditTime time={time} /> */}
+          <ProLibraryCta />
         </div>
         <div className="mx-auto hidden h-16 w-full max-w-3xl items-center gap-2 px-4 sm:flex md:px-0">
           {neighbours.previous && (
