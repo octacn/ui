@@ -1,4 +1,4 @@
-import { RiNextjsLine } from "react-icons/ri";
+import { RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
 import { FaReact } from "react-icons/fa6";
 
 /**
@@ -7,4 +7,5 @@ import { FaReact } from "react-icons/fa6";
 export const Icons = {
   react: FaReact,
   nextjs: RiNextjsLine,
+  tailwind: RiTailwindCssFill,
 } as const;

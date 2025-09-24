@@ -32,7 +32,17 @@ interface LinkButtonProps {
     | "link";
 }
 
-export const ImageCarousel = () => {
+interface ImageCarouselProps {
+  images: { image: string }[];
+  preview: string;
+  download: string;
+}
+
+export const ImageCarousel = ({
+  download,
+  preview,
+  images,
+}: ImageCarouselProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState<number>(0);
   const [count, setCount] = React.useState<number>(0);
@@ -71,13 +81,13 @@ export const ImageCarousel = () => {
           ]}
         >
           <CarouselContent>
-            {Array.from({ length: 2 }).map((_, index) => (
+            {images?.map((item, index) => (
               <CarouselItem key={index}>
                 <Image
-                  src={`/images/temp-${index + 1}.avif`}
+                  src={`/images/templates/${item.image}`}
                   width={1000}
                   height={1000}
-                  alt={`Carousel image ${index + 1}`}
+                  alt={item.image.toLowerCase()}
                   className="w-full object-cover rounded-md"
                 />
               </CarouselItem>
@@ -103,10 +113,8 @@ export const ImageCarousel = () => {
       </div>
 
       <div className="grid grid-cols-2 pt-6 gap-4">
-        <LinkButton href={"/"} target="_blank">
-          Live Preview
-        </LinkButton>
-        <LinkButton href={"/"} variant="outline">
+        <LinkButton href={preview}>Live Preview</LinkButton>
+        <LinkButton href={download} variant="outline">
           Github Download
         </LinkButton>
       </div>
@@ -114,19 +122,13 @@ export const ImageCarousel = () => {
   );
 };
 
-const LinkButton = ({
-  children,
-  href,
-  variant,
-  target,
-  ...props
-}: LinkButtonProps) => {
+const LinkButton = ({ children, href, variant, ...props }: LinkButtonProps) => {
   return (
     <Link
       href={href}
       rel="noreferrer"
       className="hover:cursor-default"
-      target={target}
+      target="_blank"
     >
       <Button className="w-full text-lg py-6" variant={variant} {...props}>
         {children}

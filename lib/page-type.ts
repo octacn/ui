@@ -4,29 +4,56 @@
 
 export const newPages = [
   /**
-   * Documentation for components and templates
+   * Badge for docs
    */
-  "/docs/templates/marketing",
+ 
 
   /**
-   * documentation for blocks
+   * Badge for blocks-docs
    */
-  "/blocks-docs/changelog",
+
+
+  /**
+   * Badge for auth-docs
+   */
+   
 ];
 
 export const proPages = [
   /**
-   * Documentation for components and templates
+   * Badge for docs
    */
-  "/docs/typography",
+ 
 
   /**
-   * documentation for blocks
+   * Badge for blocks-docs
    */
-  "/blocks-docs",
+
+
+  /**
+   * Badge for auth-docs
+   */
+   
 ];
 
 
 export const comingSoonPages = [
+  
+  /**
+   * Badge for docs
+  */
   "/docs/changelog",
+ 
+ 
+  /**
+    * Badge for blocks-docs
+  */
+  "/blocks-docs/changelog",
+
+
+  /**
+   * Badge for auth-docs
+  */
+  "/auth-docs/changelog",
+   
 ]
