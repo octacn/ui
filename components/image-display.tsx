@@ -8,7 +8,7 @@ export async function ImageDisplay({ name }: { name: string }) {
 
   if (!item) {
     return (
-      <div className="text-muted-foreground px-2 py-2.5 rounded-2xl text-sm font-inter border bg-surface">
+      <div className="text-muted-foreground px-4 py-2 rounded-2xl text-sm font-inter border bg-surface">
         No item found
       </div>
     );

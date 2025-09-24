@@ -34,7 +34,7 @@ export async function submitWaitlistForm(
       return { message: "Failed to submit form" };
     }
 
-    return { message: "Message sent successfully!" };
+    return { message: "Successfully added to waitlist!" };
   } catch {
     return { message: "Failed to submit form. Please try again." };
   }
