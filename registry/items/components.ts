@@ -45,4 +45,15 @@ export const components: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "magnetic-shimmer-button",
+    type: "registry:component",
+    registryDependencies: ["utils"],
+    files: [
+      {
+        path: "components/magnetic-shimmer-button.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

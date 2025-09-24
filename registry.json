@@ -820,6 +820,19 @@
       ]
     },
     {
+      "name": "magnetic-shimmer-button",
+      "type": "registry:component",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/components/magnetic-shimmer-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "accordion-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -2961,6 +2974,19 @@
       "files": [
         {
           "path": "registry/demo/components/scale-hover-animation-button-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-shimmer-button-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/magnetic-shimmer-button-demo.tsx",
           "type": "registry:component"
         }
       ]

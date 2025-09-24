@@ -10,7 +10,7 @@ export interface MagneticShimmerButtonProps
   borderRadius?: string;
   shimmerDuration?: string;
   background?: string;
-  strength?: number; // how strongly it pulls toward cursor
+  strength?: number;
   className?: string;
   children?: React.ReactNode;
 }

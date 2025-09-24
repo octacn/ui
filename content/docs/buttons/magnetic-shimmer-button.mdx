@@ -1,0 +1,67 @@
+---
+title: Magnetic Shimmer Button
+description: A button that uses a magnetic shimmer effect to create a sense of depth and visual interest. It is built using CSS and does not require any additional libraries or dependencies.
+---
+
+<ComponentPreview name="magnetic-shimmer-button-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://ui.octacn.com/r/magnetic-shimmer-button.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="utils" title="lib/utils.ts" />
+<ComponentSource 
+  name="magnetic-shimmer-button" 
+  title="components/ui/magnetic-shimmer-button.tsx" 
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { MagneticShimmerButton } from "@/components/magnetic-shimmer-button"
+```
+
+```tsx
+<MagneticShimmerButton>
+  Hover Near Me...
+</MagneticShimmerButton>
+``` 
+
+## Props
+| Prop             | Type            | Default                 | Description                          | Required |
+| ---------------- | --------------- | ----------------------- | ------------------------------------ | -------- |
+| shimmer-color    | string          | oklch(75% 0.183 55.934) | Color of the shimmer effect.         | No       |
+| shimmer-size     | string          | 0.2em                   | Size of the shimmer cut.             | No       |
+| shimmer-duration | string          | 4s                      | Duration of the shimmer animation.   | No       |
+| border-radius    | string          | 100px                   | Border radius of the button.         | No       |
+| strength         | number          | 5                       | Intensity of the magnetic pull.      | No       |
+| background       | string          | undefined               | Background color of the button.      | No       |
+| class-name       | string          | undefined               | Extra class names for custom styles. | No       |
+| children         | React.ReactNode | undefined               | Content inside the button.           | No       |
+| required         | boolean         | false                   | Whether the button is required.      | No       |

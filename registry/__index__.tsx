@@ -972,6 +972,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "magnetic-shimmer-button": {
+    name: "magnetic-shimmer-button",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["utils"],
+    files: [{
+      path: "registry/components/magnetic-shimmer-button.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/magnetic-shimmer-button.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "accordion-demo": {
     name: "accordion-demo",
     description: "",
@@ -3960,6 +3978,24 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/demo/components/scale-hover-animation-button-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "magnetic-shimmer-button-demo": {
+    name: "magnetic-shimmer-button-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["utils"],
+    files: [{
+      path: "registry/demo/components/magnetic-shimmer-button-demo.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/demo/components/magnetic-shimmer-button-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

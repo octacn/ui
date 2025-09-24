@@ -82,7 +82,7 @@ export default function ProLibraryCta({ className }: { className?: string }) {
           <p className="mt-4 text-base text-muted-foreground font-inter tracking-wide">
             Access our exclusive Pro library featuring advanced components,
             premium templates, and cutting-edge design systems. Join thousands
-            of developers building exceptional interfaces with Pro Octacn's
+            of developers building exceptional interfaces with Pro Octacn&apos;s
             comprehensive toolkit.
           </p>
 
