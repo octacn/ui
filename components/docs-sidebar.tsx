@@ -19,6 +19,22 @@ import { newPages, proPages, comingSoonPages } from "@/lib/page-type";
 import { siteConfig } from "@/lib/config";
 import ExternalLink from "./site-footer";
 import { RiArrowRightUpLine } from "react-icons/ri";
+import { Icons } from "./icons";
+
+const socialItems = [
+  {
+    id: 1,
+    href: siteConfig.links.linkedin,
+    title: "Linkedin",
+    icon: <Icons.linkedin className="text-[#0077B5] size-5 mr-0.5" />,
+  },
+  {
+    id: 2,
+    href: siteConfig.links.twitter,
+    title: "Twitter",
+    icon: <Icons.x className="text-foreground size-5 mr-0.5" />,
+  },
+];
 
 export function DocsSidebar({
   tree,
@@ -41,16 +57,9 @@ export function DocsSidebar({
           </SidebarGroupLabel>
 
           <SidebarGroupContent className="text-muted-foreground px-2 space-y-2.5 mt-1.5">
-            <ExternalLink
-              text="Linkedin @Sahilkumardev"
-              href={siteConfig.links.linkedin}
-              isExternal
-            />
-            <ExternalLink
-              text="Twitter @Sahilkumardev"
-              href={siteConfig.links.twitter}
-              isExternal
-            />
+            {socialItems.map((item) => (
+              <SocialLinks key={item.id} href={item.href} icon={item.icon} />
+            ))}
           </SidebarGroupContent>
         </SidebarGroup>
 
@@ -118,5 +127,30 @@ export function DocsSidebar({
         ))}
       </SidebarContent>
     </Sidebar>
+  );
+}
+
+function SocialLinks({
+  href,
+  icon,
+}: {
+  href: string;
+  icon: React.ReactElement;
+}) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      className="group whitespace-nowrap inline-flex items-center gap-0.5 transition-colors duration-200"
+    >
+      {icon}
+      <span className="font-inter text-sm tracking-wide underline underline-offset-7 decoration-wavy decoration-1 mb-1 hover:text-orange-400">
+        @Sahilkumardev
+      </span>
+      <RiArrowRightUpLine
+        className="text-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200 size-5"
+        aria-hidden="true"
+      />
+    </Link>
   );
 }
