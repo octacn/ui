@@ -56,4 +56,16 @@ export const components: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "interactive-gradient-text",
+    type: "registry:component",
+    dependencies: ["motion"],
+    registryDependencies: ["utils"],
+    files: [
+      {
+        path: "components/interactive-gradient-text.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

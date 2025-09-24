@@ -144,7 +144,7 @@ function SocialLinks({
       rel="noopener noreferrer"
     >
       {icon}
-      <span className="font-inter text-sm tracking-wide hover:underline underline-offset-7 decoration-wavy decoration-1 mb-1 hover:text-orange-400">
+      <span className="font-inter text-sm tracking-wide hover:underline underline-offset-7 decoration-wavy decoration-1 mb-0.5 hover:text-orange-400">
         @Sahilkumardev
       </span>
       <RiArrowRightUpLine

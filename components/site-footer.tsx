@@ -1,4 +1,4 @@
-import { TextHoverEffect } from "@/registry/components/text-hover-effect";
+import { InteractiveGradientText } from "@/registry/components/interactive-gradient-text";
 import HoverAnimation from "@/components/animation/hover-animation";
 import { Separator } from "@/registry/ui/separator";
 import { RiArrowRightUpLine } from "react-icons/ri";
@@ -149,7 +149,7 @@ export function SiteFooter() {
             © 2025 Octacn Labs LLC. All Rights Reserved.
           </p>
         </section>
-        <TextHoverEffect text="Octacn" />
+        <InteractiveGradientText text="Octacn" />
       </div>
     </footer>
   );

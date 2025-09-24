@@ -833,6 +833,22 @@
       ]
     },
     {
+      "name": "interactive-gradient-text",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/components/interactive-gradient-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "accordion-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -2987,6 +3003,22 @@
       "files": [
         {
           "path": "registry/demo/components/magnetic-shimmer-button-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "interactive-gradient-text-demo",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/interactive-gradient-text-demo.tsx",
           "type": "registry:component"
         }
       ]

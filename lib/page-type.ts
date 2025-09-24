@@ -41,10 +41,8 @@ export const comingSoonPages = [
   /**
    * Badge for blocks-docs
    */
-  "/blocks-docs/changelog",
 
   /**
    * Badge for auth-docs
    */
-  "/auth-docs/changelog",
 ];
