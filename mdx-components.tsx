@@ -17,8 +17,8 @@ import {
 import { TechStackIcon } from "@/components/tech-stack-icon";
 import { ImageCarousel } from "@/components/image-carousel";
 import { BlockDisplay } from "@/components/block-display";
+import { ImageDisplay } from "@/components/image-display";
 import { CopyButton } from "@/components/copy-button";
-import { ImageCard } from "@/components/image-card";
 import { CodeTabs } from "@/components/code-tabs";
 import { Callout } from "@/components/callout";
 
@@ -154,16 +154,16 @@ export const mdxComponents = {
     />
   ),
   thead: ({ className, ...props }: React.ComponentProps<"thead">) => (
-    <thead
-      className={cn("[&>tr]:bg-surface", className)}
-      {...props}
-    />
+    <thead className={cn("[&>tr]:bg-surface", className)} {...props} />
   ),
   th: ({ className, ...props }: React.ComponentProps<"th">) => (
     <th className={cn("px-4 py-3 border font-medium", className)} {...props} />
   ),
   td: ({ className, ...props }: React.ComponentProps<"td">) => (
-    <td className={cn("px-4 py-2.5 border font-light text-nowrap", className)} {...props} />
+    <td
+      className={cn("px-4 py-2.5 border font-light text-nowrap", className)}
+      {...props}
+    />
   ),
   pre: ({ className, children, ...props }: React.ComponentProps<"pre">) => {
     return (
@@ -349,7 +349,7 @@ export const mdxComponents = {
   ComponentSource,
   CodeCollapsibleWrapper,
   ImageCardWrapper,
-  ImageCard,
+  ImageDisplay,
   ImageCarousel,
   TechStackIcon,
   ComponentsList,

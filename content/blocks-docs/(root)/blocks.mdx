@@ -3,57 +3,18 @@ title: Blocks
 description: Blocks process on all devices
 ---
 
-<div>
-  ## ⇘ Header
-  <div className='mt-3 grid gap-4 sm:grid-cols-2 sm:gap-8'>
-    <ImageCard 
-      href="/docs/templates/marketing"
-      liveHref="https://casecobracase.vercel.app/"
-      src="/images/temp-1.avif"
-    />
-    <ImageCard 
-      href="/docs/templates/marketing"
-      liveHref=""
-      src="/images/temp-2.avif"
-    />
-  </div>
+<div className='space-y-10'> 
+  <ImageCardWrapper
+    title="Headers" 
+    grid
+  >
+    <ImageDisplay name="header-01" />
+  </ImageCardWrapper>
 
-  ## ⇘ Footer
-  <div className='mt-3 grid gap-4 sm:grid-cols-2 sm:gap-8'>
-    <ImageCard 
-      href="/docs/templates/marketing"
-      liveHref=""
-      src="/images/temp-2.avif"
-    />
-    <ImageCard 
-      href="/docs/templates/marketing"
-      liveHref="https://casecobracase.vercel.app/"
-      src="/images/temp-1.avif"
-    />
-    <ImageCard 
-      href="/docs/templates/marketing"
-      liveHref=""
-      src="/images/temp-2.avif"
-    />
-    <ImageCard 
-      href="/docs/templates/marketing"
-      liveHref="https://casecobracase.vercel.app/"
-      src="/images/temp-1.avif"
-    />
-  </div>
-
-  ## ⇘ Call To Action
-  <div className='mt-3 grid gap-4 sm:grid-cols-2 sm:gap-8'>
-    <ImageCard 
-      href="/docs/templates/marketing"
-      liveHref="https://casecobracase.vercel.app/"
-      src="/images/temp-1.avif"
-    />
-    <ImageCard 
-      href="/docs/templates/marketing"
-      liveHref=""
-      src="/images/temp-2.avif"
-    />
-  </div>
- 
+  <ImageCardWrapper
+    title="Pricings"
+    grid
+  >
+    <ImageDisplay name="pricing-01" />
+  </ImageCardWrapper>
 </div>

@@ -17,7 +17,6 @@ import {
 import { Badge } from "@/registry/ui/badge";
 import { newPages, proPages, comingSoonPages } from "@/lib/page-type";
 import { siteConfig } from "@/lib/config";
-import ExternalLink from "./site-footer";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import { Icons } from "./icons";
 
@@ -142,9 +141,10 @@ function SocialLinks({
       href={href}
       target="_blank"
       className="group whitespace-nowrap inline-flex items-center gap-0.5 transition-colors duration-200"
+      rel="noopener noreferrer"
     >
       {icon}
-      <span className="font-inter text-sm tracking-wide underline underline-offset-7 decoration-wavy decoration-1 mb-1 hover:text-orange-400">
+      <span className="font-inter text-sm tracking-wide hover:underline underline-offset-7 decoration-wavy decoration-1 mb-1 hover:text-orange-400">
         @Sahilkumardev
       </span>
       <RiArrowRightUpLine
