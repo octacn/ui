@@ -7,7 +7,11 @@ export async function ImageDisplay({ name }: { name: string }) {
   const item = await getCachedImageCardItem(name);
 
   if (!item) {
-    return <div>No item found</div>;
+    return (
+      <div className="text-muted-foreground px-2 py-2.5 rounded-2xl text-sm font-inter border bg-surface">
+        No item found
+      </div>
+    );
   }
 
   return <ImageViewer item={item} />;

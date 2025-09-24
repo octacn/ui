@@ -73,11 +73,18 @@ const handlePublish = (files: File[]) => {
 
 ```tsx showLineNumbers
 <ImageUploader
-  maxFiles={10}
-  maxSize={20 * 1024 * 1024} // 20MB
   onUploadComplete={handleUploadComplete}
   onCancel={handleCancel}
   onPublish={handlePublish}
 />
 ```
+
+## Props
+| Prop             | Type                     | Description                                 | Required |
+| ---------------- | ------------------------ | ------------------------------------------- | -------- |
+| maxFiles         | number                   | Maximum number of files allowed to upload.  | No       |
+| maxSize          | number                   | Maximum file size allowed (in bytes).       | No       |
+| onUploadComplete | (files: File\[]) => void | Callback executed when upload completes.    | No       |
+| onCancel         | () => void               | Callback executed when upload is cancelled. | No       |
+| onPublish        | (files: File\[]) => void | Callback executed when publishing files.    | No       |
 

@@ -110,7 +110,7 @@ function ImageViewerBlock() {
         className="h-2/3 w-full object-cover hover:scale-105 transition-all duration-200 border-border border-b-3 dark:hidden"
       />
       <ImageCardContent title={item.title}>
-        <LinkButton href={`/preview/${item.name}`} target="_blank">
+        <LinkButton href={`/preview/${item.name}`}>
           Live Preview
         </LinkButton>
         <LinkButton href={item.docs} variant="outline">
@@ -151,7 +151,7 @@ function LinkButton({
 
   return (
     <Link href={href} className="hover:cursor-default" {...props}>
-      <Button className="w-full">{children}</Button>
+      <Button className="w-full" {...props}>{children}</Button>
     </Link>
   );
 }
