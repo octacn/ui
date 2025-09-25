@@ -1,6 +1,13 @@
 {
   "title": "Get Started",
   "pages": [
-    "index"
+    "[Overview](/docs/index)",
+    "[Installation](/docs/installation)",
+    "[Dark Mode](/docs/dark-mode)",
+    "[changelog](/docs/changelog)",
+    "[blocks](/blocks-docs/blocks)",
+    "[templates](/docs/templates)",
+    "[components](/docs/components)",
+    "auth"
   ]
 }

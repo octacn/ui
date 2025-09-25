@@ -8,6 +8,7 @@
     "changelog",
     "[blocks](/blocks-docs/blocks)",
     "[templates](/docs/templates)",
-    "[components](/docs/components)"
+    "[components](/docs/components)",
+    "[authentication](/auth-docs/auth)"
   ]
 }

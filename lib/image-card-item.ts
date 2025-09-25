@@ -22,16 +22,16 @@ export const ImageCardItem: Record<string, ImageCard> = {
    *
    * Props :- title, name, docs, type
    */
-  "header-01": {
+  "header-v1": {
     type: "block",
     name: "header-01",
-    docs: "headers/header-01",
+    docs: "headers/header-v1",
     title: "Header",
   },
-  "pricing-01": {
+  "pricing-v1": {
     type: "block",
     name: "pricing-01-demo",
-    docs: "pricings/pricing-01",
-    title: "Header",
+    docs: "pricings/pricing-v1",
+    title: "Pricing",
   },
 };

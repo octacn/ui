@@ -24,11 +24,11 @@ export const siteConfig = {
       label: "Templates",
     },
     {
-      href: "/blocks-docs",
+      href: "/blocks-docs/blocks",
       label: "Blocks",
     },
     {
-      href: "/auth-docs",
+      href: "/auth-docs/auth",
       label: "Auth",
     },
     {
