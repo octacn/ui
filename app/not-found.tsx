@@ -1,14 +1,35 @@
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { ArrowLeft, Book } from "lucide-react";
+import { MdKeyboardArrowRight, MdSecurity } from "react-icons/md";
+import { ArrowLeft, Book, LucideBlocks } from "lucide-react";
 import { Badge } from "@/registry/ui/badge";
 import { Icons } from "@/components/icons";
+import { FaTwitter } from "react-icons/fa6";
 import Link from "next/link";
 
-const docsLinks = [
-  { title: "Documentation", href: "/docs" },
-  { title: "GitHub", href: "https://github.com/" },
-  { title: "Discord", href: "https://discord.com/" },
-  { title: "Twitter", href: "https://twitter.com/" },
+const docsItems = [
+  {
+    title: "Documentation",
+    description: "Learn how to integrate tools with your web apps",
+    icon: Book,
+    href: "/docs",
+  },
+  {
+    title: "Authentication",
+    description: "Explore our authentication methods",
+    icon: MdSecurity,
+    href: "/auth-docs/auth",
+  },
+  {
+    title: "Blocks",
+    description: "Check out our pre-built blocks",
+    icon: LucideBlocks,
+    href: "/blocks-docs/blocks",
+  },
+  {
+    title: "Pro Octacn",
+    description: "Discover the features of Octacn Pro",
+    icon: FaTwitter,
+    href: "https://pro.octacn.com",
+  },
 ];
 
 export default function NotFound() {
@@ -43,21 +64,21 @@ export default function NotFound() {
 function ContentLinks() {
   return (
     <div className="max-w-md mx-auto px-6 sm:px-0 ">
-      {docsLinks.map((link) => (
+      {docsItems.map((item) => (
         <Link
-          href={link.href}
-          key={link.title}
+          href={item.href}
+          key={item.title}
           className="border-b flex items-center justify-between py-7 gap-x-8"
         >
           <div className="flex items-start gap-4">
             <div className="border border-orange-400 bg-orange-400/60 rounded-md p-2 mt-1">
-              <Book className="size-4" />
+              <item.icon className="size-4" />
             </div>
 
             <div>
-              <h4 className="text-foreground">Documentation</h4>
+              <h4 className="text-foreground">{item.title}</h4>
               <p className="text-sm text-muted-foreground mt-1.5 line-clamp-1">
-                Learn how to integrate our tools with your web apps
+                {item.description}
               </p>
             </div>
           </div>
