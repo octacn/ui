@@ -711,7 +711,7 @@
       ]
     },
     {
-      "name": "header-01",
+      "name": "header-v1",
       "type": "registry:block",
       "description": "A responsive header block with navigation.",
       "dependencies": [
@@ -724,7 +724,7 @@
       ],
       "files": [
         {
-          "path": "registry/blocks/header-01.tsx",
+          "path": "registry/blocks/header-v1.tsx",
           "type": "registry:block",
           "target": "components/header.tsx"
         },
@@ -749,7 +749,7 @@
       ]
     },
     {
-      "name": "pricing-01",
+      "name": "pricing-v1",
       "type": "registry:block",
       "description": "A Pricing section of three section.",
       "dependencies": [
@@ -762,7 +762,7 @@
       ],
       "files": [
         {
-          "path": "registry/blocks/pricing-01.tsx",
+          "path": "registry/blocks/pricing-v1.tsx",
           "type": "registry:block",
           "target": "components/pricing.tsx"
         }
@@ -2746,7 +2746,7 @@
       ]
     },
     {
-      "name": "pricing-01-demo",
+      "name": "pricing-v1-demo",
       "type": "registry:block",
       "description": "A Pricing Demo of three section.",
       "dependencies": [
@@ -2759,14 +2759,14 @@
       ],
       "files": [
         {
-          "path": "registry/demo/blocks/pricing-01-demo.tsx",
+          "path": "registry/demo/blocks/pricing-v1-demo.tsx",
           "type": "registry:block",
           "target": "components/pricing-demo.tsx"
         },
         {
-          "path": "registry/blocks/pricing-01.tsx",
+          "path": "registry/blocks/pricing-v1.tsx",
           "type": "registry:block",
-          "target": "components/pricing-01.tsx"
+          "target": "components/pricing-v1.tsx"
         }
       ],
       "categories": [

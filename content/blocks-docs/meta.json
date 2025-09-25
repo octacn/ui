@@ -4,9 +4,6 @@
     "(root)",
     "headers",
     "pricings",
-    "hero",
-    "call-to-action",
-    "forms",
-    "footers"
+    "forms"
   ]
 }

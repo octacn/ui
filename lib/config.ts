@@ -8,6 +8,7 @@ export const siteConfig = {
     twitter: "https://twitter.com/",
     github: "https://github.com/",
     linkedin: "https://linkedin.com/",
+    discord: "https://discord.com/",
   },
   navItems: [
     {

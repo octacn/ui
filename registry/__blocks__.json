@@ -1,20 +1,20 @@
 [
   {
-    "name": "header-01",
+    "name": "header-v1",
     "description": "A responsive header block with navigation.",
     "categories": [
       "header"
     ]
   },
   {
-    "name": "pricing-01",
+    "name": "pricing-v1",
     "description": "A Pricing section of three section.",
     "categories": [
       "pricing"
     ]
   },
   {
-    "name": "pricing-01-demo",
+    "name": "pricing-v1-demo",
     "description": "A Pricing Demo of three section.",
     "categories": [
       "pricing"

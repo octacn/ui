@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 import React from "react";
+import { DiscordLink } from "./discord-icon";
 
 export function SiteHeader() {
   const colors = getColors();
@@ -46,6 +47,7 @@ export function SiteHeader() {
               className="ml-2 hidden lg:block"
             />
             <GitHubLink />
+            <DiscordLink />
             <Separator orientation="vertical" className="3xl:flex hidden" />
             <Separator orientation="vertical" />
             <ModeSwitcher />

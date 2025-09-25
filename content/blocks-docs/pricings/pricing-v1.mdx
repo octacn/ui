@@ -1,9 +1,9 @@
 ---
-title: Pricing 01
+title: Pricing v1
 description: The Pricing demo and installation process.
 ---
 
-<BlockDisplay name="pricing-01-demo" />
+<BlockDisplay name="pricing-v1-demo" />
 
 ## Installation
 
@@ -17,7 +17,7 @@ description: The Pricing demo and installation process.
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add https://ui.octacn.com/r/pricing-01.json
+npx shadcn@latest add https://ui.octacn.com/r/pricing-v1.json
 ```
 
 </TabsContent>
@@ -28,7 +28,7 @@ npx shadcn@latest add https://ui.octacn.com/r/pricing-01.json
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="pricing-01" title="components/pricing.tsx" />
+<ComponentSource name="pricing-v1" title="components/pricing.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -51,19 +51,7 @@ import PricingCard from "@/components/pricing";
   className={plan.isPopular ? "ring-2 ring-yellow-500/50" : ""}
 />
 ```
-Props
-```tsx showLineNumbers
-interface PricingCardProps {
-  plan: PricingPlan;
-  currency?: Currency;
-  onViewExample?: (planId: string) => void;
-  accentColor?: string;
-  className?: string;
-  showSaveText?: boolean;
-  saveText?: Record<Currency, string>;
-}
-```
-
+### Example Data
 <CodeCollapsibleWrapper>
 ```tsx showLineNumbers
 const pricingPlans = [
@@ -135,3 +123,17 @@ const pricingPlans = [
 ];
 ```
 </CodeCollapsibleWrapper>
+
+
+## Props
+| Prop          | Type       | Default     | Description                                           |
+| ------------- | ---------- | ----------- | ----------------------------------------------------- |
+| `id`          | `string`   | —           | Unique identifier for the pricing card.               |
+| `name`        | `string`   | —           | Name/title of the pricing plan.                       |
+| `time`        | `string`   | —           | Delivery time (e.g., "2 days").                       |
+| `prices`      | `string`   | —           | Price of the plan (e.g., "$50").                      |
+| `discount`    | `string?`  | `undefined` | Optional discount text (e.g., "20% off").             |
+| `features`    | `string[]` | —           | List of features included in the plan.                |
+| `className`   | `string?`  | `undefined` | Custom class names to style the card.                 |
+| `isPopular`   | `boolean?` | `false`     | Whether the plan is marked as popular (adds a badge). |
+| `description` | `string?`  | `undefined` | Short description of the plan.                        |

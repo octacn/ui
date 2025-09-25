@@ -2,14 +2,14 @@ import { type Registry } from "@/schema/shadcn";
 
 export const blocks: Registry["items"] = [
   {
-    name: "header-01",
+    name: "header-v1",
     description: "A responsive header block with navigation.",
     type: "registry:block",
     dependencies: ["lucide-react"],
     registryDependencies: ["sheet", "utils", "button"],
     files: [
       {
-        path: "blocks/header-01.tsx",
+        path: "blocks/header-v1.tsx",
         type: "registry:block",
         target: "components/header.tsx",
       },
@@ -32,14 +32,14 @@ export const blocks: Registry["items"] = [
     categories: ["header"],
   },
   {
-    name: "pricing-01",
+    name: "pricing-v1",
     description: "A Pricing section of three section.",
     type: "registry:block",
     dependencies: ["lucide-react"],
     registryDependencies: ["card", "utils", "button"],
     files: [
       {
-        path: "blocks/pricing-01.tsx",
+        path: "blocks/pricing-v1.tsx",
         type: "registry:block",
         target: "components/pricing.tsx",
       },

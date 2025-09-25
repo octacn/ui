@@ -1,6 +1,6 @@
-import PricingCard from "@/registry/blocks/pricing-01";
+import PricingCard from "@/registry/blocks/pricing-v1";
 
-export default function PricingDemo() {
+export default function PricingV1Demo() {
   const pricingPlans = [
     {
       id: "startup",

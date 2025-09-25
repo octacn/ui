@@ -19,17 +19,16 @@ export function GitHubLink() {
 }
 
 export async function StarsCount() {
-  // const data = await fetch("https://api.github.com/repos/shadcn-ui/ui", {
-  //   next: { revalidate: 86400 },
-  // });
-  // const json = await data.json();
+  const res = await fetch("https://api.github.com/repos/octacn/ui", {
+    next: { revalidate: 86400 },
+  });
+  const json = await res.json();
 
   return (
-    <span className="text-muted-foreground w-8 text-xs font-inter">
-      {/* {json.stargazers_count >= 1000
+    <span className="text-muted-foreground text-base font-inter mt-0.5">
+      {json.stargazers_count >= 1000
         ? `${(json.stargazers_count / 1000).toFixed(1)}k`
-        : json.stargazers_count.toLocaleString()} */}
-      0.0k
+        : json.stargazers_count.toLocaleString()}
     </span>
   );
 }
