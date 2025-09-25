@@ -162,7 +162,7 @@ export default async function Page(props: PageProps) {
           <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
             <MDX components={mdxComponents} />
           </div>
-          <ProLibraryCta />
+          <ProLibraryCta show />
         </div>
         <div className="mx-auto hidden h-16 w-full max-w-3xl items-center gap-2 px-4 sm:flex md:px-0">
           {neighbours.previous && (

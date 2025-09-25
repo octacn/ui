@@ -143,7 +143,7 @@ export function WaitlistForm() {
         </h2>
 
         <p className="text-muted-foreground text-center my-4">
-          Be One of the First to Discover What's Coming!
+          Be One of the First to Discover What&apos;s Coming!
         </p>
 
         <Form {...form}>

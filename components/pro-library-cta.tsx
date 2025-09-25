@@ -4,7 +4,13 @@ import Link from "next/link";
 import React from "react";
 import HoverAnimation from "./animation/hover-animation";
 
-export default function ProLibraryCta({ className }: { className?: string }) {
+export default function ProLibraryCta({
+  className,
+  show,
+}: {
+  className?: string;
+  show?: boolean;
+}) {
   const createBorder = (
     direction: "horizontal" | "vertical",
     position: "top" | "bottom" | "left" | "right"
@@ -63,7 +69,7 @@ export default function ProLibraryCta({ className }: { className?: string }) {
 
   return (
     <div className={cn("relative overflow-hidden", className)}>
-      <section className="relative z-20 mx-auto w-full max-w-7xl bg-gradient-to-br from-gray-100 to-white  dark:from-neutral-900 dark:to-neutral-950 mt-12">
+      <section className="relative z-20 mx-auto w-full max-w-7xl bg-gradient-to-br from-gray-100 to-white  dark:from-neutral-900 dark:to-neutral-950 mt-12 flex items-center justify-between">
         <>
           {createBorder("horizontal", "top")}
           {createBorder("horizontal", "bottom")}
@@ -98,6 +104,19 @@ export default function ProLibraryCta({ className }: { className?: string }) {
             </Link>
           </div>
         </div>
+
+        {show && (
+          <div className="flex h-72 min-w-sm flex-1">
+            <div className="border h-full w-px" />
+            <p className="pr-10 pl-16 py-12 font-inter tracking-wide text-base text-muted-foreground">
+              I take every requirement seriously and turn it into a polished,
+              high-quality result. To anyone reading this – I always strive to
+              deliver work that exceeds expectations. You can count on me to get
+              the job done exceptionally well, leaving you more than satisfied
+              with the outcome.
+            </p>
+          </div>
+        )}
       </section>
     </div>
   );

@@ -15,7 +15,8 @@ import Link from "next/link";
 import { Badge } from "@/registry/ui/badge";
 import { DocsTableOfContents } from "@/components/docs-toc";
 import { DocsEditButton } from "@/components/docs-edit-button";
-import { OpenInAgency } from "@/components/open-in-agency"; 
+import { OpenInAgency } from "@/components/open-in-agency";
+import ProLibraryCta from "@/components/pro-library-cta";
 
 interface PageProps {
   params: Promise<{ slug?: string[] }>;
@@ -91,12 +92,6 @@ export default async function Page(props: PageProps) {
 
   const links = doc.links;
 
-  // const time = await getGithubLastEdit({
-  //   owner: "shadwui",
-  //   repo: "new-lib",
-  //   path: `content/blocks-docs/${page.path}`,
-  // });
-
   return (
     <div
       data-slot="docs"
@@ -169,8 +164,7 @@ export default async function Page(props: PageProps) {
           <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
             <MDX components={mdxComponents} />
           </div>
-
-          {/* <LastEditTime time={time} /> */}
+          <ProLibraryCta />
         </div>
         <div className="mx-auto hidden h-16 w-full max-w-3xl items-center gap-2 px-4 sm:flex md:px-0">
           {neighbours.previous && (
