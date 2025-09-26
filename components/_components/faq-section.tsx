@@ -1,17 +1,10 @@
 "use client";
 
+import { GradientBorder } from "@/components/_components/testimonials-section";
 import { Box, BoxWrapper } from "@/components/box";
-import { OpenInAgency } from "../open-in-agency";
 import { Heading } from "@/components/heading";
-import { Button } from "@/registry/ui/button";
-import { Input } from "@/registry/ui/input";
-import { Label } from "@/registry/ui/label";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/registry/ui/accordion";
+import { CSSProperties } from "react";
+import { Plus } from "lucide-react";
 
 const faqItems = [
   {
@@ -47,118 +40,79 @@ const faqItems = [
 ];
 
 export default function FaqSection() {
+  const style: CSSProperties = {
+    "--height": "1px",
+    "--width": "5px",
+    "--background": "#ffffff",
+    "--color": "rgba(0, 0, 0, 0.2)",
+    "--fade-stop": "90%",
+    "--offset": "100px",
+    "--color-dark": "rgba(255, 255, 255, 0.5)",
+    WebkitMaskComposite: "exclude",
+    maskComposite: "exclude",
+  } as CSSProperties;
+
+  const styleVertical: CSSProperties = {
+    "--height": "5px",
+    "--width": "1px",
+    "--background": "#ffffff",
+    "--color": "rgba(0, 0, 0, 0.2)",
+    "--fade-stop": "90%",
+    "--offset": "80px",
+    "--color-dark": "rgba(255, 255, 255, 0.5)",
+    WebkitMaskComposite: "exclude",
+    maskComposite: "exclude",
+  } as CSSProperties;
+
   return (
-    <BoxWrapper className="pb-10">
+    <BoxWrapper className="pb-10 overflow-hidden">
       <Heading
         heading="Frequently Asked Questions"
         description="Discover quick and comprehensive answers to common questions about our platform, services, and features"
       />
 
-      <Box className="grid grid-cols-1 md:grid-cols-2 gap-x-14">
-        <AccordionQuestion />
-        <div className="relative w-full h-full hidden md:block">
-          <div className="w-full h-full border bg-surface rounded-xl">
-            <ContactForm />
-          </div>
-
-          <div className="absolute top-0 right-0 border-l-[20px] border-b-[20px] border-background rounded-bl-xl rounded-tr-xl w-72 shadow-[-1px_1px_0_0_#e5e5e5] dark:shadow-[-1px_1px_0_0_#262626]">
-            <div className="bg-background w-2 h-2 absolute bottom-0" />
-            <OpenInAgency className="rounded-tl-none rounded-br-none" />
-          </div>
-        </div>
-      </Box>
+      <GradientBorder top left right bottom>
+        <Box className="relative grid grid-cols-1 md:grid-cols-2 pt-0 md:pt-0 mt-14">
+          <div
+            className="absolute top-1/3 left-[calc(var(--offset)/2*-1)] h-[var(--height)] w-[calc(100%+var(--offset))] bg-[linear-gradient(to_right,var(--color),var(--color)_50%,transparent_0,transparent)] [background-size:var(--width)_var(--height)] [mask:linear-gradient(to_left,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_right,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)] [mask-composite:exclude] dark:bg-[linear-gradient(to_right,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]"
+            style={style}
+          />
+          <div
+            className="absolute top-2/3 left-[calc(var(--offset)/2*-1)] h-[var(--height)] w-[calc(100%+var(--offset))] bg-[linear-gradient(to_right,var(--color),var(--color)_50%,transparent_0,transparent)] [background-size:var(--width)_var(--height)] [mask:linear-gradient(to_left,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_right,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)] [mask-composite:exclude] dark:bg-[linear-gradient(to_right,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]"
+            style={style}
+          />
+          <div
+            className={
+              "absolute top-[calc(var(--offset)/2*-1)] left-1/2 h-[calc(100%+var(--offset))] w-[var(--width)] bg-[linear-gradient(to_bottom,var(--color),var(--color)_50%,transparent_0,transparent)] [background-size:var(--width)_var(--height)] [mask:linear-gradient(to_top,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_bottom,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)] [mask-composite:exclude] dark:bg-[linear-gradient(to_bottom,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)] -z-10"
+            }
+            style={styleVertical}
+          />
+          {faqItems.map((item, idx) => (
+            <AccordionQuestion {...item} key={idx} />
+          ))}
+        </Box>
+      </GradientBorder>
     </BoxWrapper>
   );
 }
 
-function AccordionQuestion() {
+function AccordionQuestion({
+  id,
+  answer,
+  question,
+}: {
+  id: string;
+  answer: string;
+  question: string;
+}) {
   return (
-    <Accordion
-      type="single"
-      collapsible
-      className="space-y-5"
-      defaultValue="item-1"
-    >
-      {faqItems.map((item) => (
-        <AccordionItem
-          key={item.id}
-          value={item.id}
-          className="bg-surface rounded-md border last:border-b"
-        >
-          <AccordionTrigger className="text-lg hover:no-underline font-inter font-medium tracking-wide px-4 py-3 hover:cursor-pointer">
-            {item.question}
-          </AccordionTrigger>
-          <AccordionContent className="text-base font-inter border-dashed text-muted-foreground border-t px-4 py-3">
-            {item.answer}
-          </AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
-  );
-}
-
-function ContactForm() {
-  return (
-    <div className="px-8 py-6">
-      <h4 className="font-inter text-foreground/90 text-xl underline underline-offset-6 decoration-1">
-        Contact From
+    <div className="bg-surface rounded-md border last:border-b mx-16 my-10 font-inter font-medium text-base text-foreground/90 tracking-wide">
+      <h4 className="text-lg hover:no-underline px-4 py-3 flex justify-between items-center">
+        {question} <Plus className="size-5 text-muted-foreground" />
       </h4>
-
-      <div className="mt-5 grid grid-cols-2">
-        <div className="space-y-4">
-          <div>
-            <Label
-              htmlFor={"email"}
-              className="font-inter text-sm font-normal tracking-wide mb-1.5"
-            >
-              Email
-            </Label>
-            <Input
-              id={"email"}
-              placeholder="Email"
-              type="email"
-              className="focus-visible:border-orange-500 focus-visible:ring-0"
-            />
-          </div>
-
-          <div>
-            <Label
-              htmlFor={"email"}
-              className="font-inter text-sm font-normal tracking-wide mb-1.5"
-            >
-              Email
-            </Label>
-            <Input
-              id={"email"}
-              placeholder="Email"
-              type="email"
-              className="focus-visible:border-orange-500 focus-visible:ring-0"
-            />
-          </div>
-
-          <div>
-            <Label
-              htmlFor={"email"}
-              className="font-inter text-sm font-normal tracking-wide mb-1.5"
-            >
-              Email
-            </Label>
-            <Input
-              id={"email"}
-              placeholder="Email"
-              type="email"
-              className="focus-visible:border-orange-500 focus-visible:ring-0"
-            />
-          </div>
-        </div>
-      </div>
-
-      <Button
-        className="w-full mt-6 font-inter text-base tracking-wide"
-        size={"lg"}
-      >
-        Submit
-      </Button>
+      <p className="border-dashed text-muted-foreground border-t text-sm px-4 py-3">
+        {answer}
+      </p>
     </div>
   );
 }

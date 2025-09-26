@@ -152,7 +152,7 @@ const GradientTestimonials = () => {
   );
 };
 
-const GradientBorder: React.FC<GradientBorderProps> = ({
+export const GradientBorder: React.FC<GradientBorderProps> = ({
   top = false,
   left = false,
   right = false,

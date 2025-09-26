@@ -135,7 +135,7 @@ export function SiteFooter() {
 
             <div className="flex flex-col items-start lg:items-end justify-start lg:justify-end relative md:pr-8">
               <div className="absolute bottom-8 right-0">
-                <GiWideArrowDunk className="rotate-[1.3rad] size-10" />
+                <GiWideArrowDunk className="rotate-[1.3rad] size-10 text-foreground/90" />
               </div>
               <h4 className="text-sm sm:text-base font-inter tracking-wider text-foreground/90 mb-2.5">
                 Connect with me
