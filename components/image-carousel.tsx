@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
 import { Button } from "@/registry/ui/button";
+import GithubDownloadButton from "./github-dowload-button";
 
 /**
  * LinkButton component props
@@ -114,9 +115,9 @@ export const ImageCarousel = ({
 
       <div className="grid grid-cols-2 pt-6 gap-4">
         <LinkButton href={preview}>Live Preview</LinkButton>
-        <LinkButton href={download} variant="outline">
+        <GithubDownloadButton repository="case-cobra">
           Github Download
-        </LinkButton>
+        </GithubDownloadButton>
       </div>
     </section>
   );

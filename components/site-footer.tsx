@@ -2,6 +2,7 @@ import { InteractiveGradientText } from "@/registry/components/interactive-gradi
 import HoverAnimation from "@/components/animation/hover-animation";
 import { Separator } from "@/registry/ui/separator";
 import { RiArrowRightUpLine } from "react-icons/ri";
+import { GiWideArrowDunk } from "react-icons/gi";
 import { Badge } from "@/registry/ui/badge";
 import { Icons } from "@/components/icons";
 import { siteConfig } from "@/lib/config";
@@ -61,27 +62,36 @@ const socialMediaLinks: SocialMediaLink[] = [
   {
     label: "Github",
     href: siteConfig.links.github,
-    icon: <Icons.gitHub className="hover:text-muted-foreground h-6 w-6" />,
+    icon: (
+      <Icons.gitHub className="hover:text-foreground text-muted-foreground h-6 w-6" />
+    ),
   },
   {
     label: "Twitter",
     href: siteConfig.links.twitter,
     icon: (
-      <Icons.twitter className="text-blue-400 hover:text-muted-foreground" />
+      <Icons.twitter className="hover:text-blue-400 text-muted-foreground" />
     ),
   },
   {
     label: "Instagram",
     href: "/",
     icon: (
-      <Icons.instagram className="text-red-300 hover:text-muted-foreground" />
+      <Icons.instagram className="hover:text-red-300 text-muted-foreground" />
     ),
   },
   {
     label: "LinkedIn",
     href: "/",
     icon: (
-      <Icons.linkedin className="text-blue-400 hover:text-muted-foreground " />
+      <Icons.linkedin className="hover:text-blue-400 text-muted-foreground " />
+    ),
+  },
+  {
+    label: "Discord",
+    href: "/",
+    icon: (
+      <Icons.discord className="hover:text-blue-400 text-muted-foreground " />
     ),
   },
 ];
@@ -123,11 +133,14 @@ export function SiteFooter() {
               </p>
             </div>
 
-            <div className="flex flex-col items-start lg:items-end justify-start lg:justify-end">
+            <div className="flex flex-col items-start lg:items-end justify-start lg:justify-end relative md:pr-8">
+              <div className="absolute bottom-8 right-0">
+                <GiWideArrowDunk className="rotate-[1.3rad] size-10" />
+              </div>
               <h4 className="text-sm sm:text-base font-inter tracking-wider text-foreground/90 mb-2.5">
-                Social Media
+                Connect with me
               </h4>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3.5">
                 {socialMediaLinks.map((item) => (
                   <SocialMediaIcons key={item.label} {...item} />
                 ))}

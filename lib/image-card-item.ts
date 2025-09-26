@@ -24,13 +24,13 @@ export const ImageCardItem: Record<string, ImageCard> = {
    */
   "header-v1": {
     type: "block",
-    name: "header-01",
+    name: "header-v1",
     docs: "headers/header-v1",
     title: "Header",
   },
   "pricing-v1": {
     type: "block",
-    name: "pricing-01-demo",
+    name: "pricing-v1-demo",
     docs: "pricings/pricing-v1",
     title: "Pricing",
   },
