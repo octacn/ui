@@ -1,6 +1,6 @@
 "use client";
 
-import { imageCardSchema } from "@/schema/image-card-schema";
+import { imageCardSchema } from "@/schema/image-schema";
 import { Button } from "@/registry/ui/button";
 import React, { ComponentProps } from "react";
 import { cn } from "@/lib/utils";

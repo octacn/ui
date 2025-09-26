@@ -1,7 +1,8 @@
+import { imageCardSchema, imageCarouselSchema } from "@/schema/image-schema";
 import { z } from "zod";
-import { imageCardSchema } from "@/schema/image-card-schema";
 
 type ImageCard = z.infer<typeof imageCardSchema>;
+type ImageCarousel = z.infer<typeof imageCarouselSchema>;
 
 export const ImageCardItem: Record<string, ImageCard> = {
   /**
@@ -33,5 +34,17 @@ export const ImageCardItem: Record<string, ImageCard> = {
     name: "pricing-v1-demo",
     docs: "pricings/pricing-v1",
     title: "Pricing",
+  },
+};
+
+export const ImageCarouselItem: Record<string, ImageCarousel> = {
+  "case-cobra": {
+    images: [
+      { image: "case-cobra.avif" },
+      { image: "temp-1.avif" },
+      { image: "temp-2.avif" },
+    ],
+    preview: "https://casecobracase.vercel.app/",
+     repository: "case-cobra",
   },
 };

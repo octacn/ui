@@ -4,15 +4,7 @@ description: A template for creating custom phone cases, perfect for marketing a
 ---
 
 ## Preview
-<ImageCarousel
-  images={[
-    { image: "case-cobra.avif" },
-    { image: "temp-1.avif" },
-    { image: "temp-2.avif" },
-  ]}
-  preview="https://casecobracase.vercel.app/"
-  download="https://github.com/sahilkumardev/case-cobra"
-/>
+<CarouselDisplay name="case-cobra"/>
 
 _"CaseCobra is a modern e-commerce platform that empowers users to design custom phone cases using their own images. Rather than buying a generic case, customers can upload a photo or artwork, preview it on the selected phone model, configure finishes, and place an order.”_
 - High-quality, durable materials  
@@ -35,11 +27,9 @@ Here are some of the key features of CaseCobra:
 - Durable print quality and 5-year print warranty (as advertised)  
 
 ## Tech Stack
-<div className='flex items-center gap-2 mt-2'>
-  <TechStackIcon icon="react" size={44} className="text-blue-500" />
-  <TechStackIcon icon="nextjs" size={44} className="text-primary stroke-0" />
-  <TechStackIcon icon="tailwind" size={44} className="text-sky-400 stroke-0" />
-</div>
+<TechStack 
+  icons={["react", "nextjs", "tailwind"]}
+/>
 
 
 ## Installation & Setup (from GitHub)

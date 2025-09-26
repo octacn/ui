@@ -1,6 +1,13 @@
 "use client";
-import React from "react";
+
+import GithubDownloadButton from "@/components/github-download-button";
+import { imageCarouselSchema } from "@/schema/image-schema";
+import Autoplay from "embla-carousel-autoplay";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import z from "zod";
 
 import {
   Carousel,
@@ -10,43 +17,56 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/registry/ui/carousel";
-import { cn } from "@/lib/utils";
-import Autoplay from "embla-carousel-autoplay";
-import Link from "next/link";
-import { Button } from "@/registry/ui/button";
-import GithubDownloadButton from "./github-dowload-button";
 
-/**
- * LinkButton component props
- */
-interface LinkButtonProps {
+type ImageCarouselContext = {
+  item: z.infer<typeof imageCarouselSchema>;
+};
+
+const ImageViewerContext = React.createContext<ImageCarouselContext | null>(
+  null
+);
+
+function useImageViewer() {
+  const context = React.useContext(ImageViewerContext);
+  if (!context) {
+    throw new Error(
+      "useImageViewer must be used within a ImageViewerProvider."
+    );
+  }
+  return context;
+}
+
+function ImageViewerProvider({
+  item,
+  children,
+}: Pick<ImageCarouselContext, "item"> & {
   children: React.ReactNode;
-  href: string;
-  className?: string;
-  target?: string;
-  variant?:
-    | "default"
-    | "destructive"
-    | "outline"
-    | "secondary"
-    | "ghost"
-    | "link";
+}) {
+  return (
+    <ImageViewerContext.Provider
+      value={{
+        item,
+      }}
+    >
+      {children}
+    </ImageViewerContext.Provider>
+  );
 }
 
-interface ImageCarouselProps {
-  images: { image: string }[];
-  preview: string;
-  download: string;
-}
+const CarouselViewer = ({ item }: Pick<ImageCarouselContext, "item">) => {
+  return (
+    <ImageViewerProvider item={item}>
+      <ImageCarouselContent />
+    </ImageViewerProvider>
+  );
+};
 
-export const ImageCarousel = ({
-  download,
-  preview,
-  images,
-}: ImageCarouselProps) => {
+function ImageCarouselContent() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState<number>(0);
   const [count, setCount] = React.useState<number>(0);
+
+  const { item } = useImageViewer();
 
   React.useEffect(() => {
     if (!api) {
@@ -82,7 +102,7 @@ export const ImageCarousel = ({
           ]}
         >
           <CarouselContent>
-            {images?.map((item, index) => (
+            {item.images.map((item, index) => (
               <CarouselItem key={index}>
                 <Image
                   src={`/images/templates/${item.image}`}
@@ -114,26 +134,22 @@ export const ImageCarousel = ({
       </div>
 
       <div className="grid grid-cols-2 pt-6 gap-4">
-        <LinkButton href={preview}>Live Preview</LinkButton>
-        <GithubDownloadButton repository="case-cobra">
+        <Link
+          href={item.preview}
+          className="bg-foreground border rounded-2xl flex items-center justify-center text-base font-medium transition-colors py-2 px-4 text-background"
+        >
+          Live Preview
+        </Link>
+        <GithubDownloadButton
+          repository={item.repository}
+          branch={item.branch}
+          owner={item.owner}
+        >
           Github Download
         </GithubDownloadButton>
       </div>
     </section>
   );
-};
+}
 
-const LinkButton = ({ children, href, variant, ...props }: LinkButtonProps) => {
-  return (
-    <Link
-      href={href}
-      rel="noreferrer"
-      className="hover:cursor-default"
-      target="_blank"
-    >
-      <Button className="w-full text-lg py-6" variant={variant} {...props}>
-        {children}
-      </Button>
-    </Link>
-  );
-};
+export { CarouselViewer };

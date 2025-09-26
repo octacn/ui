@@ -1,6 +1,6 @@
-import { ImageCardItem } from "@/lib/image-card-item";
-import { imageCardSchema } from "@/schema/image-card-schema";
-import { ImageViewer } from "./image-viewer";
+import { imageCardSchema } from "@/schema/image-schema";
+import { ImageViewer } from "@/components/image-viewer";
+import { ImageCardItem } from "@/lib/image-item";
 import React from "react";
 
 export async function ImageDisplay({ name }: { name: string }) {

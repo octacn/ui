@@ -1,6 +1,6 @@
+import { ComponentProps, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { ComponentProps, useMemo } from "react";
 
 interface GithubDownloadButtonProps
   extends Omit<ComponentProps<"a">, "children"> {

@@ -14,8 +14,8 @@ import {
   ComponentsList,
   FullComponentsList,
 } from "@/components/components-list";
-import { TechStackIcon } from "@/components/tech-stack-icon";
-import { ImageCarousel } from "@/components/image-carousel";
+import { CarouselDisplay } from "@/components/carousel-display";
+import { TechStack } from "@/components/tech-stack-icon";
 import { BlockDisplay } from "@/components/block-display";
 import { ImageDisplay } from "@/components/image-display";
 import { CopyButton } from "@/components/copy-button";
@@ -350,8 +350,8 @@ export const mdxComponents = {
   CodeCollapsibleWrapper,
   ImageCardWrapper,
   ImageDisplay,
-  ImageCarousel,
-  TechStackIcon,
+  CarouselDisplay,
+  TechStack,
   ComponentsList,
   FullComponentsList,
   BlockDisplay,

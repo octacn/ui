@@ -1,25 +1,42 @@
-import { Icons as techStackIcons } from "@/lib/icons";
+import { RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
+import { FaReact } from "react-icons/fa6";
+import { cn } from "@/lib/utils";
 import React from "react";
 
-export type TechStackIconName = keyof typeof techStackIcons;
+const techStackIcons = {
+  react: {
+    name: FaReact,
+    className: "text-blue-500",
+  },
+  nextjs: {
+    name: RiNextjsLine,
+    className: "text-black dark:text-white",
+  },
+  tailwind: {
+    name: RiTailwindCssFill,
+    className: "text-cyan-500",
+  },
+} as const;
 
-type IconComponent = React.ComponentType<{
-  size?: number;
-  className?: string;
-}>;
+type TechStackIconName = keyof typeof techStackIcons;
 
-interface TechStackIconProps {
-  size?: 18 | 24 | 44;
-  className?: string;
-  icon: TechStackIconName | IconComponent;
+interface TechStackProps {
+  icons: TechStackIconName[];
 }
 
-export const TechStackIcon = ({
-  className,
-  size = 24,
-  icon,
-}: TechStackIconProps) => {
-  const IconComponent = typeof icon === "string" ? techStackIcons[icon] : icon;
+export function TechStack({ icons }: TechStackProps) {
+  return (
+    <div className="flex items-center mt-2 gap-2">
+      {icons.map((icon) => {
+        const IconComponent = techStackIcons[icon].name;
 
-  return <IconComponent size={size} className={className} />;
-};
+        return (
+          <IconComponent
+            key={icon}
+            className={cn(techStackIcons[icon].className, "size-10")}
+          />
+        );
+      })}
+    </div>
+  );
+}

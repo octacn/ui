@@ -8,3 +8,11 @@ export const imageCardSchema = z.object({
   image: z.string().optional(),
   preview: z.string().optional(),
 });
+
+export const imageCarouselSchema = z.object({
+  images: z.array(z.object({ image: z.string() })),
+  preview: z.string(),
+  repository: z.string(),
+  owner: z.string().optional(),
+  branch: z.string().optional(),
+});
