@@ -1,12 +1,7 @@
-import NotFound from "@/app/not-found";
 import React from "react";
 
 const Page = () => {
-  return (
-    <div className="py-10">
-       <NotFound />
-    </div>
-  );
+  return <div className="py-10">Blocks</div>;
 };
 
 export default Page;

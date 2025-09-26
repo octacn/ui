@@ -17,6 +17,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/registry/ui/carousel";
+import { Loading } from "@/registry/components/loading";
 
 type ImageCarouselContext = {
   item: z.infer<typeof imageCarouselSchema>;
@@ -65,6 +66,7 @@ function ImageCarouselContent() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState<number>(0);
   const [count, setCount] = React.useState<number>(0);
+  const [loading, setLoading] = React.useState(true);
 
   const { item } = useImageViewer();
 
@@ -103,13 +105,22 @@ function ImageCarouselContent() {
         >
           <CarouselContent>
             {item.images.map((item, index) => (
-              <CarouselItem key={index}>
+              <CarouselItem className="h-[27rem]" key={index}>
+                {loading && (
+                  <Loading className="border rounded-2xl bg-surface" />
+                )}
+
                 <Image
                   src={`/images/templates/${item.image}`}
                   width={1000}
                   height={1000}
                   alt={item.image.toLowerCase()}
-                  className="w-full object-cover rounded-md"
+                  loading="lazy"
+                  onLoad={() => setLoading(false)}
+                  className={cn(
+                    "w-full object-cover rounded-md",
+                    loading ? "opacity-0" : "opacity-100"
+                  )}
                 />
               </CarouselItem>
             ))}

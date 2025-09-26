@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import z from "zod";
+import { Loading } from "@/registry/components/loading";
 
 type ImageCardContext = {
   item: z.infer<typeof imageCardSchema>;
@@ -51,109 +52,99 @@ function ImageViewer({ item }: Pick<ImageCardContext, "item">) {
 
 function ImageViewerView() {
   const { item } = useImageViewer();
+  const [loading, setLoading] = React.useState(true);
 
-  if (item.type === "template") {
-    return <ImageViewerTemplate />;
-  }
-
-  return <ImageViewerBlock />;
-}
-
-function ImageViewerTemplate() {
-  const { item } = useImageViewer();
   return (
-    <section
-      className={cn(
-        "bg-code rounded-md overflow-hidden border-border border-2"
-      )}
-    >
-      <Image
-        src={item.image || "/images/placeholder.png"}
-        width={1440}
-        height={900}
-        alt={item.title}
-        className="h-2/3 w-full object-cover hover:scale-105 transition-all duration-200 border-border border-b-3"
-      />
-      <ImageCardContent title={item.title}>
-        <LinkButton href={item.preview} target="_blank">
-          Live Preview
-        </LinkButton>
-        <LinkButton href={item.docs} variant="outline">
-          View Docs
-        </LinkButton>
-      </ImageCardContent>
-    </section>
+    <>
+      <section
+        className={cn(
+          "bg-code rounded-md overflow-hidden border-border border-2"
+        )}
+      >
+        <div className="h-52 border-b-2">
+          {loading && <Loading />}
+          {item.type === "template" ? (
+            <Image
+              src={item.image || "/images/placeholder-dark.png"}
+              width={1440}
+              height={900}
+              alt={item.title}
+              loading="lazy"
+              onLoad={() => setLoading(false)}
+              className={cn(
+                "h-full object-center w-full object-cover hover:scale-105 transition-all duration-200",
+                loading ? "opacity-0" : "opacity-100"
+              )}
+            />
+          ) : (
+            <>
+              <Image
+                src={`/images/blocks/${item.name}-dark.png`}
+                width={1440}
+                height={900}
+                alt={item.title}
+                loading="lazy"
+                onLoad={() => setLoading(false)}
+                className={cn(
+                  "h-full object-center w-full object-cover hover:scale-105 transition-all duration-200",
+                  loading ? "opacity-0" : "opacity-100",
+                  "hidden dark:block"
+                )}
+              />
+              <Image
+                src={`/images/blocks/${item.name}-light.png`}
+                width={1440}
+                height={900}
+                alt={item.title}
+                loading="lazy"
+                onLoad={() => setLoading(false)}
+                className={cn(
+                  "h-full object-center w-full object-cover hover:scale-105 transition-all duration-200",
+                  loading ? "opacity-0" : "opacity-100",
+                  "dark:hidden"
+                )}
+              />
+            </>
+          )}
+        </div>
+
+        <div className="px-4 pt-4 pb-5">
+          <h4 className="truncate font-medium text-base">{item.title}</h4>
+          <div className="grid grid-cols-2 pt-3 gap-4">
+            <Link
+              href={
+                item.type === "template"
+                  ? (item.preview as string)
+                  : `/preview/${item.name}`
+              }
+              target="_blank"
+            >
+              <Button className="w-full">Live Preview</Button>
+            </Link>
+
+            <Link href={item.docs}>
+              <Button className="w-full" variant="outline">
+                View Docs
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
-function ImageViewerBlock() {
-  const { item } = useImageViewer();
-
+function Suggestion({ children, className }: ComponentProps<"div">) {
   return (
-    <section
+    <div
       className={cn(
-        "bg-code rounded-md overflow-hidden border-border border-2"
+        "text-muted-foreground px-4 py-2 rounded-2xl text-sm font-inter border bg-surface w-fit h-fit",
+        className
       )}
     >
-      <Image
-        width={1440}
-        height={900}
-        alt=""
-        src={`/images/blocks/${item.name}-dark.png`}
-        className="h-2/3 w-full object-cover hover:scale-105 transition-all duration-200 border-border border-b-3 hidden dark:block"
-      />
-      <Image
-        width={1440}
-        height={900}
-        alt=""
-        src={`/images/blocks/${item.name}-light.png`}
-        className="h-2/3 w-full object-cover hover:scale-105 transition-all duration-200 border-border border-b-3 dark:hidden"
-      />
-      <ImageCardContent title={item.title}>
-        <LinkButton href={`/preview/${item.name}`}>
-          Live Preview
-        </LinkButton>
-        <LinkButton href={item.docs} variant="outline">
-          View Docs
-        </LinkButton>
-      </ImageCardContent>
-    </section>
-  );
-}
-
-function ImageCardContent({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="px-4 pt-4 pb-3">
-      <h4 className="truncate font-medium text-base">{title}</h4>
-      <div className="grid grid-cols-2 pt-3 gap-4">{children}</div>
+      {children}
     </div>
   );
 }
 
-function LinkButton({
-  children,
-  href,
-  ...props
-}: ComponentProps<"a"> & ComponentProps<typeof Button>) {
-  if (!href) {
-    return (
-      <Button className="w-full" disabled>
-        {children}
-      </Button>
-    );
-  }
-
-  return (
-    <Link href={href} className="hover:cursor-default" {...props}>
-      <Button className="w-full" {...props}>{children}</Button>
-    </Link>
-  );
-}
-
-export { ImageViewer };
+export { ImageViewer, Suggestion };
