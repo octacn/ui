@@ -2,13 +2,13 @@
   "title": "Get Started",
   "pages": [
     "index",
-    "[Installation](/docs/installation)",
+    "[Installation](/components/installation)",
     "[Dark Mode](/docs/dark-mode)",
-    "[typography](/docs/text/typography)",
+    "[typography](/components/text/typography)",
     "changelog",
-    "[blocks](/blocks-docs/blocks)",
-    "[templates](/docs/templates)",
-    "[components](/docs/components)",
-    "[authentication](/auth-docs/auth)"
+    "[blocks](/blocks)",
+    "[templates](/components/templates)",
+    "[components](/components/components)",
+    "[authentication](/authentication)"
   ]
 }

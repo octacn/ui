@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import type { source } from "@/lib/source";
+import type { docsSource } from "@/lib/source";
 import {
   Sidebar,
   SidebarContent,
@@ -37,8 +37,12 @@ const socialItems = [
 
 export function DocsSidebar({
   tree,
+  docs,
   ...props
-}: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) {
+}: React.ComponentProps<typeof Sidebar> & {
+  tree: typeof docsSource.pageTree;
+  docs: typeof docsSource.pageTree;
+}) {
   const pathname = usePathname();
 
   return (
@@ -62,7 +66,7 @@ export function DocsSidebar({
           </SidebarGroupContent>
         </SidebarGroup>
 
-        {tree.children.map((item) => (
+        {docs.children.map((item) => (
           <SidebarGroup key={item.$id}>
             <SidebarGroupLabel className="text-muted-foreground font-inter text-sm tracking-wide">
               {item.name}

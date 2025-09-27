@@ -6,7 +6,7 @@ export const newPages = [
   /**
    * Badge for docs
    */
-  "/docs/templates/custom-phone-case",
+  "/components/templates/custom-phone-case",
 
   /**
    * Badge for blocks-docs

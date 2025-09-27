@@ -17,19 +17,19 @@ export const siteConfig = {
       label: "Docs",
     },
     {
-      href: "/docs/components",
+      href: "/components/components",
       label: "Components",
     },
     {
-      href: "/docs/templates",
+      href: "/components/templates",
       label: "Templates",
     },
     {
-      href: "/blocks-docs/blocks",
+      href: "/blocks",
       label: "Blocks",
     },
     {
-      href: "/auth-docs/auth",
+      href: "/authentication",
       label: "Auth",
     },
     {
@@ -37,7 +37,7 @@ export const siteConfig = {
       label: "Illustration",
     },
     {
-      href: "/blocks",
+      href: "/blocks-test",
       label: "Test-Route",
     },
   ],

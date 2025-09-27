@@ -1,4 +1,4 @@
-import { source, authSource, blocksSource } from "@/lib/source";
+import { docsSource, authenticationSource, blocksSource, componentsSource } from "@/lib/source";
 import GenerateList from "@/components/generate-list";
 import Link from "next/link";
 
@@ -7,14 +7,18 @@ interface FullComponentsListProps {
 }
 
 export function ComponentsList() {
-  return <GenerateList tree={source.pageTree} />;
+  return <GenerateList tree={componentsSource.pageTree} />;
 }
 
 export function FullComponentsList({
   name = "source",
 }: FullComponentsListProps) {
   const selectedSource =
-    name === "blocks" ? blocksSource : name === "auth" ? authSource : source;
+    name === "blocks"
+      ? blocksSource
+      : name === "auth"
+      ? authenticationSource
+      : docsSource;
 
   const folders = selectedSource.pageTree.children.filter(
     (item) => item.type === "folder"

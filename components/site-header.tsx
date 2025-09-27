@@ -1,12 +1,12 @@
 import { ModeSwitcher } from "@/components/mode-switcher";
-import { CommandMenu } from "@/components/command-menu"; 
+import { CommandMenu } from "@/components/command-menu";
 import { MobileNav } from "@/components/mobile-nav";
 import { Separator } from "@/registry/ui/separator";
 import { MainNav } from "@/components/main-nav";
 import { Icons } from "@/components/icons";
+import { docsSource } from "@/lib/source";
 import { siteConfig } from "@/lib/config";
 import { getColors } from "@/lib/colors";
-import { source } from "@/lib/source";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -15,7 +15,7 @@ import { DiscordLink, GitHubLink } from "@/components/social-icon";
 
 export function SiteHeader() {
   const colors = getColors();
-  const pageTree = source.pageTree;
+  const pageTree = docsSource.pageTree;
 
   return (
     <header

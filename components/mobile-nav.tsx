@@ -4,7 +4,7 @@ import * as React from "react";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
-import { source } from "@/lib/source";
+import { docsSource } from "@/lib/source";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover";
@@ -14,7 +14,7 @@ export function MobileNav({
   items,
   className,
 }: {
-  tree: typeof source.pageTree;
+  tree: typeof docsSource.pageTree;
   items: { href: string; label: string }[];
   className?: string;
 }) {

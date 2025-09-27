@@ -1,14 +1,6 @@
 {
   "root": true,
-  "title": "docs",
   "pages": [
-    "(root)",
-    "templates",
-    "backgrounds",
-    "cards",
-    "buttons",
-    "text",
-    "components",
-    "installation"
+    "(root)"
   ]
 }

@@ -8,7 +8,7 @@ import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react";
 
 import { useIsMac } from "@/hooks/use-is-mac";
 import { useMutationObserver } from "@/hooks/use-mutation-observer";
-import { source } from "@/lib/source";
+import { docsSource } from "@/lib/source";
 import { cn } from "@/lib/utils";
 import { useConfig } from "@/hooks/use-config";
 import { copyToClipboardWithMeta } from "@/components/copy-button";
@@ -39,7 +39,7 @@ export function CommandMenu({
   navItems,
   ...props
 }: DialogProps & {
-  tree: typeof source.pageTree;
+  tree: typeof docsSource.pageTree;
   colors: ColorPalette[];
   blocks?: { name: string; description: string; categories: string[] }[];
   navItems?: { href: string; label: string }[];

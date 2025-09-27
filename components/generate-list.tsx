@@ -1,6 +1,6 @@
 "use client";
 
-import type { source } from "@/lib/source";
+import type { docsSource } from "@/lib/source";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { getLastSegment } from "@/lib/get-segment";
@@ -9,7 +9,7 @@ import { getLastSegment } from "@/lib/get-segment";
 export default function GenerateList({
   tree,
 }: {
-  tree: typeof source.pageTree;
+  tree: typeof docsSource.pageTree;
 }) {
   const path = usePathname();
   const name = getLastSegment(path);

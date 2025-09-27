@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "title": "components",
+  "pages": [
+    "templates",
+    "backgrounds",
+    "cards",
+    "buttons",
+    "text",
+    "components",
+    "installation"
+  ]
+}

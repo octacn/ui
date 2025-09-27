@@ -9,14 +9,14 @@ import {
 } from "@tabler/icons-react";
 import { findNeighbour } from "fumadocs-core/server";
 
-import { authSource } from "@/lib/source";
+import { componentsSource } from "@/lib/source";
 import { Button } from "@/registry/ui/button";
 import Link from "next/link";
 import { Badge } from "@/registry/ui/badge";
-import { DocsTableOfContents } from "@/components/docs-toc";
 import { DocsEditButton } from "@/components/docs-edit-button";
-import { OpenInAgency } from "@/components/open-in-agency";
 import ProLibraryCta from "@/components/pro-library-cta";
+import { DocsTableOfContents } from "@/components/docs-toc";
+import { OpenInAgency } from "@/components/open-in-agency";
 
 interface PageProps {
   params: Promise<{ slug?: string[] }>;
@@ -27,12 +27,12 @@ export const dynamic = "force-static";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return authSource.generateParams();
+  return componentsSource.generateParams();
 }
 
 export async function generateMetadata(props: PageProps) {
   const params = await props.params;
-  const page = authSource.getPage(params.slug);
+  const page = componentsSource.getPage(params.slug);
 
   if (!page) {
     notFound();
@@ -79,7 +79,7 @@ export async function generateMetadata(props: PageProps) {
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
-  const page = authSource.getPage(params.slug);
+  const page = componentsSource.getPage(params.slug);
   if (!page) {
     notFound();
   }
@@ -88,7 +88,7 @@ export default async function Page(props: PageProps) {
   const path = page.path;
 
   const MDX = doc.body;
-  const neighbours = await findNeighbour(authSource.pageTree, page.url);
+  const neighbours = await findNeighbour(componentsSource.pageTree, page.url);
 
   const links = doc.links;
 

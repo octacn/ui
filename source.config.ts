@@ -43,7 +43,7 @@ export const docs = defineDocs({
 });
 
 export const blocksDocs = defineDocs({
-  dir: "content/blocks-docs",
+  dir: "content/blocks",
   docs: {
     schema: frontmatterSchema.extend({
       links: z
@@ -56,9 +56,22 @@ export const blocksDocs = defineDocs({
   },
 });
 
+export const authenticationDocs = defineDocs({
+  dir: "content/authentication",
+  docs: {
+    schema: frontmatterSchema.extend({
+      links: z
+        .object({
+          doc: z.string().optional(),
+          api: z.string().optional(),
+        })
+        .optional(),
+    }),
+  },
+});
 
-export const authDocs = defineDocs({
-  dir: "content/auth-docs",
+export const componentsDocs = defineDocs({
+  dir: "content/components",
   docs: {
     schema: frontmatterSchema.extend({
       links: z

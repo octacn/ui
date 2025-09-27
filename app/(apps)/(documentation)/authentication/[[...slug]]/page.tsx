@@ -9,15 +9,13 @@ import {
 } from "@tabler/icons-react";
 import { findNeighbour } from "fumadocs-core/server";
 
-import { docsSource } from "@/lib/source";
+import { authenticationSource } from "@/lib/source";
 import { Button } from "@/registry/ui/button";
 import Link from "next/link";
 import { Badge } from "@/registry/ui/badge";
 import { DocsTableOfContents } from "@/components/docs-toc";
 import { DocsEditButton } from "@/components/docs-edit-button";
 import { OpenInAgency } from "@/components/open-in-agency";
-import { comingSoonPages } from "@/lib/page-type";
-import { WaitlistForm } from "@/components/waitlist-form";
 import ProLibraryCta from "@/components/pro-library-cta";
 
 interface PageProps {
@@ -29,12 +27,12 @@ export const dynamic = "force-static";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return docsSource.generateParams();
+  return authenticationSource.generateParams();
 }
 
 export async function generateMetadata(props: PageProps) {
   const params = await props.params;
-  const page = docsSource.getPage(params.slug);
+  const page = authenticationSource.getPage(params.slug);
 
   if (!page) {
     notFound();
@@ -49,7 +47,7 @@ export async function generateMetadata(props: PageProps) {
   return {
     title: doc.title,
     description: doc.description,
-    metadataBase: new URL("https://yourdomain.com"), // TODO:- Change it after
+    metadataBase: new URL("https://yourdomain.com"), // TODO :- Change it after
     openGraph: {
       title: doc.title,
       description: doc.description,
@@ -81,7 +79,7 @@ export async function generateMetadata(props: PageProps) {
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
-  const page = docsSource.getPage(params.slug);
+  const page = authenticationSource.getPage(params.slug);
   if (!page) {
     notFound();
   }
@@ -90,11 +88,12 @@ export default async function Page(props: PageProps) {
   const path = page.path;
 
   const MDX = doc.body;
-  const neighbours = await findNeighbour(docsSource.pageTree, page.url);
+  const neighbours = await findNeighbour(
+    authenticationSource.pageTree,
+    page.url
+  );
 
   const links = doc.links;
-
-  const isComingSoonPages = comingSoonPages.includes(page.url);
 
   return (
     <div
@@ -111,7 +110,7 @@ export default async function Page(props: PageProps) {
                   {doc.title}
                 </h1>
                 <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
-                  <DocsEditButton path={path} />
+                  <DocsEditButton docs="auth-docs" path={path} />
                   {neighbours.previous && (
                     <Button
                       variant="secondary"
@@ -141,7 +140,7 @@ export default async function Page(props: PageProps) {
                 </div>
               </div>
               {doc.description && (
-                <p className="text-muted-foreground text-[1.05rem]">
+                <p className="text-muted-foreground text-[1.05rem] sm:text-base">
                   {doc.description}
                 </p>
               )}
@@ -167,7 +166,6 @@ export default async function Page(props: PageProps) {
           </div>
           <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
             <MDX components={mdxComponents} />
-            {isComingSoonPages && <WaitlistForm />}
           </div>
           <ProLibraryCta />
         </div>
