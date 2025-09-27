@@ -4,7 +4,7 @@ import type { source } from "@/lib/source";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { getLastSegment } from "@/lib/get-segment";
-import { Suggestion } from "./image-viewer";
+// import { Suggestion } from "./image-viewer";
 
 export default function GenerateList({
   tree,
