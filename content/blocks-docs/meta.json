@@ -1,5 +1,6 @@
 {
   "root": true,
+  "title": "blocks-docs",
   "pages": [
     "(root)",
     "headers",

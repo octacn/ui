@@ -18,6 +18,16 @@ export function GitHubLink() {
   );
 }
 
+export function DiscordLink() {
+  return (
+    <Button asChild size="sm" variant="ghost" className="h-8 shadow-none -ml-2">
+      <Link href={siteConfig.links.discord} target="_blank" rel="noreferrer">
+        <Icons.discord />
+      </Link>
+    </Button>
+  );
+}
+
 export async function StarsCount() {
   const res = await fetch("https://api.github.com/repos/octacn/ui", {
     next: { revalidate: 86400 },

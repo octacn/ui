@@ -1,13 +1,14 @@
 "use client";
 
 import { Loading } from "@/registry/components/loading";
-import React, { CSSProperties, Suspense } from "react";
+import React, { Suspense } from "react";
 import { Heading } from "@/components/heading";
 import { BoxWrapper } from "@/components/box";
 import { Icons } from "@/components/icons";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/ui/button";
+import { createBorder } from "../create-border";
 
 export interface ImageData {
   src: string;
@@ -15,15 +16,6 @@ export interface ImageData {
   width: number;
   height: number;
   priority?: boolean;
-}
-
-interface GradientBorderProps {
-  top?: boolean;
-  bottom?: boolean;
-  left?: boolean;
-  right?: boolean;
-  children: React.ReactNode;
-  className?: string;
 }
 
 interface TestimonialsCardProps {
@@ -107,7 +99,7 @@ const GradientTestimonials = () => {
   const gridTestimonials = testimonialsToShow.slice(1, visibleCount);
 
   return (
-    <BoxWrapper className="bg-gradient-to-b from-white/20 to-[125%] pt-10 ring-1 ring-gray-900/5 sm:pt-32 dark:from-gray-500/20 dark:ring-gray-950/5 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05)] shadow-inner-[0_1px_0_rgba(255,255,255,0.1)] overflow-hidden pb-6 md:pb-20 mt-16">
+    <BoxWrapper className="bg-gradient-to-b from-white/20 to-[100%] pt-10 sm:pt-32 dark:from-foreground/5 overflow-hidden pb-6 md:pb-20 mt-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <Heading
           heading="Premium Components showcase"
@@ -151,65 +143,16 @@ const GradientTestimonials = () => {
     </BoxWrapper>
   );
 };
-
-export const GradientBorder: React.FC<GradientBorderProps> = ({
-  top = false,
-  left = false,
-  right = false,
-  bottom = false,
-  children,
-  className,
-}) => {
-  const styleVertical: CSSProperties = {
-    "--height": "5px",
-    "--width": "1px",
-    "--background": "#ffffff",
-    "--color": "rgba(0, 0, 0, 0.2)",
-    "--fade-stop": "90%",
-    "--offset": "80px",
-    "--color-dark": "rgba(255, 255, 255, 0.5)",
-    WebkitMaskComposite: "exclude",
-    maskComposite: "exclude",
-  } as CSSProperties;
-
-  const styleHorizontal: CSSProperties = {
-    "--height": "1px",
-    "--width": "5px",
-    "--background": "#ffffff",
-    "--color": "rgba(0, 0, 0, 0.2)",
-    "--fade-stop": "90%",
-    "--offset": "100px",
-    "--color-dark": "rgba(255, 255, 255, 0.5)",
-    WebkitMaskComposite: "exclude",
-    maskComposite: "exclude",
-  } as CSSProperties;
-
-  const cssHorizontal =
-    "absolute left-[calc(var(--offset)/2*-1)] h-[var(--height)] w-[calc(100%+var(--offset))] bg-[linear-gradient(to_right,var(--color),var(--color)_50%,transparent_0,transparent)] [background-size:var(--width)_var(--height)] [mask:linear-gradient(to_left,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_right,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)] [mask-composite:exclude] dark:bg-[linear-gradient(to_right,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)] -z-10";
-  const cssVertical =
-    "absolute top-[calc(var(--offset)/2*-1)] h-[calc(100%+var(--offset))] w-[var(--width)] bg-[linear-gradient(to_bottom,var(--color),var(--color)_50%,transparent_0,transparent)] [background-size:var(--width)_var(--height)] [mask:linear-gradient(to_top,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_bottom,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)] [mask-composite:exclude] dark:bg-[linear-gradient(to_bottom,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)] -z-10";
-
-  return (
-    <div className={cn("relative", className)}>
-      {top && <div className={cn(cssHorizontal)} style={styleHorizontal} />}
-      {left && <div className={cn(cssVertical)} style={styleVertical} />}
-      {children}
-      {bottom && (
-        <div
-          className={cn("bottom-0", cssHorizontal)}
-          style={styleHorizontal}
-        />
-      )}
-      {right && (
-        <div className={cn("right-px", cssVertical)} style={styleVertical} />
-      )}
-    </div>
-  );
-};
-
 function TestimonialsCard({ body, name, username }: TestimonialsCardProps) {
   return (
-    <GradientBorder top right bottom left className="w-fit">
+    <div className="relative">
+      <>
+        {createBorder("horizontal", "top")}
+        {createBorder("horizontal", "bottom")}
+        {createBorder("vertical", "left")}
+        {createBorder("vertical", "right")}
+      </>
+
       <figure
         className={cn(
           "relative h-fit cursor-default select-none overflow-hidden rounded-2xl border px-5 py-5 pb-4 md:px-8 md:py-5 md:pb-4",
@@ -240,6 +183,6 @@ function TestimonialsCard({ body, name, username }: TestimonialsCardProps) {
           {body}
         </blockquote>
       </figure>
-    </GradientBorder>
+    </div>
   );
 }

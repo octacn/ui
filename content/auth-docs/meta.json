@@ -1,5 +1,6 @@
 {
   "root": true,
+  "title": "auth-docs",
   "pages": [
     "(root)",
     "mongo-db"

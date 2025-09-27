@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { getIconForLanguageExtension } from "@/components/icons";
 
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
-import { CodeBlockCommand } from "@/components/code-block-command"; 
+import { CodeBlockCommand } from "@/components/code-block-command";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
 import {

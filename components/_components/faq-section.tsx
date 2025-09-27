@@ -1,10 +1,9 @@
 "use client";
 
-import { GradientBorder } from "@/components/_components/testimonials-section";
-import { Box, BoxWrapper } from "@/components/box";
-import { Heading } from "@/components/heading";
-import { CSSProperties } from "react";
 import { Plus } from "lucide-react";
+import { Heading } from "@/components/heading";
+import { Box, BoxWrapper } from "@/components/box";
+import { createBorder } from "@/components/create-border";
 
 const faqItems = [
   {
@@ -40,30 +39,6 @@ const faqItems = [
 ];
 
 export default function FaqSection() {
-  const style: CSSProperties = {
-    "--height": "1px",
-    "--width": "5px",
-    "--background": "#ffffff",
-    "--color": "rgba(0, 0, 0, 0.2)",
-    "--fade-stop": "90%",
-    "--offset": "100px",
-    "--color-dark": "rgba(255, 255, 255, 0.5)",
-    WebkitMaskComposite: "exclude",
-    maskComposite: "exclude",
-  } as CSSProperties;
-
-  const styleVertical: CSSProperties = {
-    "--height": "5px",
-    "--width": "1px",
-    "--background": "#ffffff",
-    "--color": "rgba(0, 0, 0, 0.2)",
-    "--fade-stop": "90%",
-    "--offset": "80px",
-    "--color-dark": "rgba(255, 255, 255, 0.5)",
-    WebkitMaskComposite: "exclude",
-    maskComposite: "exclude",
-  } as CSSProperties;
-
   return (
     <BoxWrapper className="pb-10 overflow-hidden">
       <Heading
@@ -71,37 +46,25 @@ export default function FaqSection() {
         description="Discover quick and comprehensive answers to common questions about our platform, services, and features"
       />
 
-      <GradientBorder top left right bottom>
-        <Box className="relative grid grid-cols-1 md:grid-cols-2 pt-0 md:pt-0 mt-14">
-          <div
-            className="absolute top-1/3 left-[calc(var(--offset)/2*-1)] h-[var(--height)] w-[calc(100%+var(--offset))] bg-[linear-gradient(to_right,var(--color),var(--color)_50%,transparent_0,transparent)] [background-size:var(--width)_var(--height)] [mask:linear-gradient(to_left,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_right,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)] [mask-composite:exclude] dark:bg-[linear-gradient(to_right,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]"
-            style={style}
-          />
-          <div
-            className="absolute top-2/3 left-[calc(var(--offset)/2*-1)] h-[var(--height)] w-[calc(100%+var(--offset))] bg-[linear-gradient(to_right,var(--color),var(--color)_50%,transparent_0,transparent)] [background-size:var(--width)_var(--height)] [mask:linear-gradient(to_left,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_right,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)] [mask-composite:exclude] dark:bg-[linear-gradient(to_right,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]"
-            style={style}
-          />
-          <div
-            className={
-              "absolute top-[calc(var(--offset)/2*-1)] left-1/2 h-[calc(100%+var(--offset))] w-[var(--width)] bg-[linear-gradient(to_bottom,var(--color),var(--color)_50%,transparent_0,transparent)] [background-size:var(--width)_var(--height)] [mask:linear-gradient(to_top,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_bottom,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)] [mask-composite:exclude] dark:bg-[linear-gradient(to_bottom,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)] -z-10"
-            }
-            style={styleVertical}
-          />
-          {faqItems.map((item, idx) => (
-            <AccordionQuestion {...item} key={idx} />
-          ))}
-        </Box>
-      </GradientBorder>
+      <Box className="relative grid grid-cols-1 md:grid-cols-2 pt-0 md:pt-0 mt-14">
+        <>
+          {createBorder("vertical", "left", "absolute inset-y-0 left-1/2")}
+          {createBorder("horizontal", "top", "absolute inset-x-0 top-1/3")}
+          {createBorder("horizontal", "top", "absolute inset-x-0 top-2/3")}
+        </>
+
+        {faqItems.map((item, idx) => (
+          <AccordionQuestion {...item} key={idx} />
+        ))}
+      </Box>
     </BoxWrapper>
   );
 }
 
 function AccordionQuestion({
-  id,
   answer,
   question,
 }: {
-  id: string;
   answer: string;
   question: string;
 }) {

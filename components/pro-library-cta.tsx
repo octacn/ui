@@ -1,72 +1,14 @@
-import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-button";
-import { cn } from "@/lib/utils";
+import React, { ComponentProps } from "react";
 import Link from "next/link";
-import React from "react";
-import HoverAnimation from "./animation/hover-animation";
+import { cn } from "@/lib/utils";
+import {createBorder} from "@/components/create-border";
+import HoverAnimation from "@/components/animation/hover-animation";
+import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-button";
 
 export default function ProLibraryCta({
   className,
   show,
-}: {
-  className?: string;
-  show?: boolean;
-}) {
-  const createBorder = (
-    direction: "horizontal" | "vertical",
-    position: "top" | "bottom" | "left" | "right"
-  ) => {
-    const isHorizontal = direction === "horizontal";
-    const baseClasses =
-      "absolute z-30 bg-[linear-gradient(to_right,var(--color),var(--color)_50%,transparent_0,transparent)] dark:bg-[linear-gradient(to_right,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]";
-
-    const positionClasses = {
-      top: "top-0 left-[calc(var(--offset)/2*-1)] h-[var(--height)] w-[calc(100%+var(--offset))]",
-      bottom:
-        "bottom-0 left-[calc(var(--offset)/2*-1)] h-[var(--height)] w-[calc(100%+var(--offset))]",
-      left: "left-0 top-[calc(var(--offset)/2*-1)] h-[calc(100%+var(--offset))] w-[var(--width)]",
-      right:
-        "right-0 top-[calc(var(--offset)/2*-1)] h-[calc(100%+var(--offset))] w-[var(--width)]",
-    };
-
-    const styles: React.CSSProperties = {
-      "--background": "#ffffff",
-      "--color": "rgba(0, 0, 0, 0.2)",
-      "--color-dark": "rgba(255, 255, 255, 0.2)",
-      "--fade-stop": "90%",
-      maskComposite: "exclude",
-      ...(isHorizontal
-        ? {
-            "--height": "1px",
-            "--width": "5px",
-            "--offset": "200px",
-          }
-        : {
-            "--height": "5px",
-            "--width": "1px",
-            "--offset": "80px",
-          }),
-    } as React.CSSProperties;
-
-    const maskDirection = isHorizontal ? "left" : "top";
-    const oppositeMaskDirection = isHorizontal ? "right" : "bottom";
-    const backgroundSize = isHorizontal
-      ? "var(--width)_var(--height)"
-      : "var(--width)_var(--height)";
-
-    return (
-      <div
-        className={cn(
-          baseClasses,
-          positionClasses[position],
-          `[background-size:${backgroundSize}]`,
-          `[mask:linear-gradient(to_${maskDirection},var(--background)_var(--fade-stop),transparent),_linear-gradient(to_${oppositeMaskDirection},var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)]`,
-          "[mask-composite:exclude]"
-        )}
-        style={styles}
-      />
-    );
-  };
-
+}: ComponentProps<"div"> & { show?: boolean }) {
   return (
     <div className={cn("relative overflow-hidden", className)}>
       <section className="relative z-20 mx-auto w-full max-w-7xl bg-gradient-to-br from-gray-100 to-white  dark:from-neutral-900 dark:to-neutral-950 mt-12 flex items-center justify-between">
@@ -107,7 +49,7 @@ export default function ProLibraryCta({
 
         {show && (
           <div className="flex h-72 min-w-sm flex-1">
-            <div className="border h-full w-px" />
+            <div className="border-l h-full w-px" />
             <div className="flex flex-col items-center justify-center pr-10 pl-16 font-inter tracking-wide text-base text-muted-foreground">
               <div>
                 <p className="">

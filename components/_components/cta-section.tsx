@@ -1,3 +1,5 @@
+"use client";
+
 import HoverAnimation from "@/components/animation/hover-animation";
 import { Box, BoxWrapper } from "@/components/box";
 import { Heading } from "@/components/heading";
@@ -5,6 +7,8 @@ import { Button } from "@/registry/ui/button";
 import { Badge } from "@/registry/ui/badge";
 import Image from "next/image";
 import React from "react";
+import { Loading } from "@/registry/components/loading";
+import { cn } from "@/lib/utils";
 
 interface ComponentPackCardProps {
   title: string;
@@ -77,9 +81,11 @@ function ProductCards({
   description,
   imageUrl,
 }: ComponentPackCardProps) {
+  const [loading, setLoading] = React.useState(true);
   return (
     <div className="group overflow-hidden rounded-2xl border bg-surface">
-      <div className="relative overflow-hidden rounded-2xl transition duration-200 group-hover:shadow-xl border-b">
+      <div className="relative overflow-hidden rounded-2xl transition duration-200 group-hover:shadow-xl border-b h-52">
+        {loading && <Loading />}
         <Image
           src={imageUrl}
           width="720"
@@ -87,11 +93,14 @@ function ProductCards({
           loading="lazy"
           decoding="async"
           alt="ALt for image"
-          className="transition duration-300 blur-0 aspect-video rounded-b-2xl object-cover object-top group-hover:scale-105 border-b"
+          onLoad={() => setLoading(false)}
+          className={cn(
+            "transition duration-300 blur-0 aspect-video rounded-b-2xl object-cover object-top group-hover:scale-105 border-b",
+            loading ? "opacity-0" : "opacity-100"
+          )}
         />
       </div>
 
-      {/* Content Section */}
       <div className="px-4 pt-3.5 pb-5 space-y-1">
         <h4 className="text-base font-inter font-normal flex items-center">
           {title}

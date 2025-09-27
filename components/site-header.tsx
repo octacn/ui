@@ -1,6 +1,5 @@
 import { ModeSwitcher } from "@/components/mode-switcher";
-import { CommandMenu } from "@/components/command-menu";
-import { GitHubLink } from "@/components/github-icon";
+import { CommandMenu } from "@/components/command-menu"; 
 import { MobileNav } from "@/components/mobile-nav";
 import { Separator } from "@/registry/ui/separator";
 import { MainNav } from "@/components/main-nav";
@@ -12,7 +11,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 import React from "react";
-import { DiscordLink } from "./discord-icon";
+import { DiscordLink, GitHubLink } from "@/components/social-icon";
 
 export function SiteHeader() {
   const colors = getColors();
