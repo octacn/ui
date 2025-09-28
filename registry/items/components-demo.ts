@@ -79,4 +79,15 @@ export const componentsDemo: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "pinterest-layout-demo",
+    type: "registry:component",
+    registryDependencies: ["utils"],
+    files: [
+      {
+        path: "demo/components/pinterest-layout-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

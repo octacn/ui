@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pinterest-layout-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/pinterest-layout-demo.tsx",
+      "content": "import { PinterestLayout } from \"@/registry/components/pinterest-layout\";\r\nimport React from \"react\";\r\n\r\nexport default function PinterestLayoutDemo() {\r\n  const defaultImages = Array.from({ length: 9 }, (_, i) => {\r\n    const isLandscape = i % 2 === 0;\r\n    const width = isLandscape ? 800 : 600;\r\n    const height = isLandscape ? 600 : 800;\r\n    return `https://picsum.photos/seed/${i + 1}/${width}/${height}`;\r\n  });\r\n  return <PinterestLayout images={defaultImages} />;\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ]
+}

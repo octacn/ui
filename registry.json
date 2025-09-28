@@ -865,6 +865,19 @@
       ]
     },
     {
+      "name": "pinterest-layout",
+      "type": "registry:component",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/components/pinterest-layout.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "accordion-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -3051,6 +3064,19 @@
       "files": [
         {
           "path": "registry/demo/components/typewriter-effect-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pinterest-layout-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/pinterest-layout-demo.tsx",
           "type": "registry:component"
         }
       ]
