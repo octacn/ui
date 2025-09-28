@@ -1008,6 +1008,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "typewriter-effect": {
+    name: "typewriter-effect",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["utils"],
+    files: [{
+      path: "registry/components/typewriter-effect.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/typewriter-effect.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "accordion-demo": {
     name: "accordion-demo",
     description: "",
@@ -4032,6 +4050,24 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/demo/components/interactive-gradient-text-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "typewriter-effect-demo": {
+    name: "typewriter-effect-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["utils"],
+    files: [{
+      path: "registry/demo/components/typewriter-effect-demo.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/demo/components/typewriter-effect-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

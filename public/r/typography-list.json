@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/demo/ui/typography-list.tsx",
-      "content": "import { LI, UL } from \"@/components/ui/typography\";\n\nexport default function TypographyList() {\n  return (\n    <UL className=\"my-6 ml-6 list-disc [&>li]:mt-2\">\n      <LI>1st level of puns: 5 gold coins</LI>\n      <LI>2nd level of jokes: 10 gold coins</LI>\n      <LI>3rd level of one-liners : 20 gold coins</LI>\n    </UL>\n  );\n}\n",
+      "content": "import { Li, Ul } from \"@/components/ui/typography\";\n\nexport default function TypographyList() {\n  return (\n    <Ul className=\"my-6 ml-6 list-disc [&>li]:mt-2\">\n      <Li>1st level of puns: 5 gold coins</Li>\n      <Li>2nd level of jokes: 10 gold coins</Li>\n      <Li>3rd level of one-liners : 20 gold coins</Li>\n    </Ul>\n  );\n}\n",
       "type": "registry:example"
     }
   ]

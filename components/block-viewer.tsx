@@ -206,7 +206,9 @@ function BlockViewerToolbar() {
           className="w-fit gap-1 px-2 shadow-none max-w-50"
           size="sm"
           onClick={() => {
-            copyToClipboard(`npx shadcn@latest add https://ui.octacn.com/r/${item.name}.json`);
+            copyToClipboard(
+              `npx shadcn@latest add https://ui.octacn.com/r/${item.name}.json`
+            );
           }}
         >
           {isCopied ? <Check /> : <Terminal />}

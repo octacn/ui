@@ -28,32 +28,32 @@ function createText<T extends HTMLElement>(
  */
 export const H1 = createText<HTMLHeadingElement>(
   "h1",
-  "scroll-m-20 text-4xl font-extrabold tracking-tight text-balance"
+  "scroll-m-20 text-4xl font-inter tracking-wide font-medium text-balance"
 );
 
 export const H2 = createText<HTMLHeadingElement>(
   "h2",
-  "scroll-m-20 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
+  "scroll-m-20 text-3xl font-inter tracking-wide first:mt-0"
 );
 
 export const H3 = createText<HTMLHeadingElement>(
   "h3",
-  "scroll-m-20 text-2xl font-semibold tracking-tight"
+  "scroll-m-20 text-2xl font-inter tracking-wide"
 );
 
 export const H4 = createText<HTMLHeadingElement>(
   "h4",
-  "scroll-m-20 text-xl tracking-tight"
+  "scroll-m-20 text-xl font-inter tracking-wide"
 );
 
 export const H5 = createText<HTMLHeadingElement>(
   "h5",
-  "scroll-m-20 text-lg tracking-tight"
+  "scroll-m-20 text-lg font-inter tracking-wide"
 );
 
 export const H6 = createText<HTMLHeadingElement>(
   "h6",
-  "scroll-m-20 text-base tracking-tight"
+  "scroll-m-20 text-base font-inter tracking-wide"
 );
 
 /**
@@ -61,7 +61,7 @@ export const H6 = createText<HTMLHeadingElement>(
  */
 export const P = createText<HTMLParagraphElement>(
   "p",
-  "leading-7 [&:not(:first-child)]:mt-6"
+  "leading-7 [&:not(:first-child)]:mt-6 text-base font-inter tracking-wide"
 );
 
 export const Lead = createText<HTMLParagraphElement>(
@@ -69,26 +69,29 @@ export const Lead = createText<HTMLParagraphElement>(
   "text-xl text-muted-foreground"
 );
 
-export const Large = createText<HTMLDivElement>("div", "text-lg font-semibold");
+export const Large = createText<HTMLDivElement>(
+  "div",
+  "text-lg font-inter font-normal tracking-wide"
+);
 
 export const Small = createText<HTMLParagraphElement>(
   "p",
-  "text-sm font-medium leading-none"
+  "text-sm font-inter font-normal leading-none tracking-wide"
 );
 
 export const Muted = createText<HTMLParagraphElement>(
   "p",
-  "text-sm text-muted-foreground"
+  "text-base text-muted-foreground font-inter tracking-wide"
 );
 
 export const Blockquote = createText<HTMLQuoteElement>(
   "blockquote",
-  "mt-6 border-l-2 pl-6 italic"
+  "mt-6 border-l-3 pl-3 italic font-inter text-foreground/70 tracking-wide text-base"
 );
 
 export const InlineCode = createText<HTMLElement>(
   "code",
-  "relative rounded bg-muted px-1.5 py-0.5 font-mono text-sm"
+  "relative rounded bg-muted px-2.5 py-1 rounded-md font-inter text-sm flex-inline items-center justify-center tracking-wide font-normal"
 );
 
 export const Kbd = createText<HTMLElement>(
@@ -99,15 +102,21 @@ export const Kbd = createText<HTMLElement>(
 /**
  * Lists & rules Are as Follow Ul, Ol, Li, Hr, Prose
  */
-export const UL: React.FC<React.HTMLAttributes<HTMLUListElement>> = ({
+export const Ul: React.FC<React.HTMLAttributes<HTMLUListElement>> = ({
   className,
   ...props
 }) => (
-  <ul className={cn("my-6 ml-6 list-disc [&>li]:mt-2", className)} {...props} />
+  <ul
+    className={cn(
+      "my-6 ml-6 list-disc [&>li]:mt-1.5 font-inter tracking-wide text-left",
+      className
+    )}
+    {...props}
+  />
 );
-UL.displayName = "Typography.UL";
+Ul.displayName = "Typography.Ul";
 
-export const OL: React.FC<React.OlHTMLAttributes<HTMLOListElement>> = ({
+export const Ol: React.FC<React.OlHTMLAttributes<HTMLOListElement>> = ({
   className,
   ...props
 }) => (
@@ -116,19 +125,19 @@ export const OL: React.FC<React.OlHTMLAttributes<HTMLOListElement>> = ({
     {...props}
   />
 );
-OL.displayName = "Typography.OL";
+Ol.displayName = "Typography.Ol";
 
-export const LI: React.FC<React.LiHTMLAttributes<HTMLLIElement>> = ({
+export const Li: React.FC<React.LiHTMLAttributes<HTMLLIElement>> = ({
   className,
   ...props
-}) => <li className={cn("leading-7", className)} {...props} />;
-LI.displayName = "Typography.LI";
+}) => <li className={cn("leading-5", className)} {...props} />;
+Li.displayName = "Typography.Li";
 
-export const HR: React.FC<React.HTMLAttributes<HTMLHRElement>> = ({
+export const Hr: React.FC<React.HTMLAttributes<HTMLHRElement>> = ({
   className,
   ...props
 }) => <hr className={cn("my-6 border-muted", className)} {...props} />;
-HR.displayName = "Typography.HR";
+Hr.displayName = "Typography.Hr";
 
 export const Prose: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,

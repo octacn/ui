@@ -849,6 +849,22 @@
       ]
     },
     {
+      "name": "typewriter-effect",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/components/typewriter-effect.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "accordion-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -3019,6 +3035,22 @@
       "files": [
         {
           "path": "registry/demo/components/interactive-gradient-text-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "typewriter-effect-demo",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/typewriter-effect-demo.tsx",
           "type": "registry:component"
         }
       ]

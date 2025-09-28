@@ -1,0 +1,73 @@
+---
+title: Typewriter Effect
+description: A typing animation effect for text.
+---
+
+<ComponentPreview
+  name="typewriter-effect-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%]"
+/>
+
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://ui.octacn.com/r/interactive-gradient-text.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion clsx tailwind-merge
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="utils" title="lib/utils.ts" />
+<ComponentSource name="typewriter-effect" title="components/typewriter-effect.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { TypewriterEffect } from "@/components/typewriter-effect"
+```
+
+```tsx showLineNumbers
+<TypewriterEffect>
+  https://ui.octacn.com
+</TypewriterEffect>
+```
+
+## Props
+| Prop        | Accepts             | Description                                                     | Required |
+| ----------- | ------------------- | --------------------------------------------------------------- | -------- |
+| children    | `string`            | The text content to display with the typing animation.          | Yes      |
+| className   | `string`            | Additional CSS classes for styling the wrapper element.         | No       |
+| duration    | `number`            | Delay (in ms) between typing each character.                    | No       |
+| delay       | `number`            | Delay (in ms) before starting the typing animation.             | No       |
+| as          | `React.ElementType` | Element type to render (default is `div`).                      | No       |
+| startOnView | `boolean`           | If `true`, animation starts only when the component is in view. | No       |
+| ...props    | `MotionProps`       | Additional motion props from `motion/react`.                    | No       |

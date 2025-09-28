@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typewriter-effect-demo",
+  "type": "registry:component",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/typewriter-effect-demo.tsx",
+      "content": "import { TypewriterEffect } from \"@/registry/components/typewriter-effect\";\r\nimport React from \"react\";\r\n\r\nexport default function TypewriterEffectDemo() {\r\n  return (\r\n    <>\r\n      <TypewriterEffect>\r\n        https://ui.octacn.com\r\n      </TypewriterEffect>\r\n    </>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ]
+}

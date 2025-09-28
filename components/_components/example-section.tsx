@@ -12,13 +12,13 @@ const examples = [
     href: "/example/blocks",
   },
   {
-    name: "Dashboard",
-    href: "/example/dashboard",
-  },
-  {
     name: "Typography",
     href: "/example/typography",
   },
+  // {
+  //   name: "Dashboard",
+  //   href: "/example/dashboard",
+  // },
   // {
   //   name: "Playground",
   //   href: "/example/playground",

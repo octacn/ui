@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typewriter-effect",
+  "type": "registry:component",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/components/typewriter-effect.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useEffect, useRef, useState } from \"react\";\r\nimport { motion, MotionProps, useInView } from \"motion/react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface TypingAnimationProps extends MotionProps {\r\n  children: string;\r\n  className?: string;\r\n  duration?: number;\r\n  delay?: number;\r\n  as?: React.ElementType;\r\n  startOnView?: boolean;\r\n}\r\n\r\nexport function TypewriterEffect({\r\n  children,\r\n  className,\r\n  duration = 100,\r\n  delay = 0,\r\n  as: Component = \"div\",\r\n  startOnView = false,\r\n  ...props\r\n}: TypingAnimationProps) {\r\n  const MotionComponent = motion.create(Component, {\r\n    forwardMotionProps: true,\r\n  });\r\n\r\n  const [displayedText, setDisplayedText] = useState<string>(\"\");\r\n  const [started, setStarted] = useState(false);\r\n  const elementRef = useRef<HTMLElement | null>(null);\r\n  const isInView = useInView(elementRef as React.RefObject<Element>, {\r\n    amount: 0.3,\r\n    once: true,\r\n  });\r\n\r\n  useEffect(() => {\r\n    if (!startOnView) {\r\n      const startTimeout = setTimeout(() => {\r\n        setStarted(true);\r\n      }, delay);\r\n      return () => clearTimeout(startTimeout);\r\n    }\r\n\r\n    if (!isInView) return;\r\n\r\n    const startTimeout = setTimeout(() => {\r\n      setStarted(true);\r\n    }, delay);\r\n\r\n    return () => clearTimeout(startTimeout);\r\n  }, [delay, startOnView, isInView]);\r\n\r\n  useEffect(() => {\r\n    if (!started) return;\r\n\r\n    const graphemes = Array.from(children);\r\n    let i = 0;\r\n    const typingEffect = setInterval(() => {\r\n      if (i < graphemes.length) {\r\n        setDisplayedText(graphemes.slice(0, i + 1).join(\"\"));\r\n        i++;\r\n      } else {\r\n        clearInterval(typingEffect);\r\n      }\r\n    }, duration);\r\n\r\n    return () => {\r\n      clearInterval(typingEffect);\r\n    };\r\n  }, [children, duration, started]);\r\n\r\n  return (\r\n    <MotionComponent\r\n      ref={elementRef}\r\n      className={cn(\r\n        \"text-3xl font-inter font-normal tracking-wide text-foreground/90 flex items-center\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      {displayedText}\r\n      <motion.span\r\n        initial={{\r\n          opacity: 0,\r\n        }}\r\n        animate={{\r\n          opacity: 1,\r\n        }}\r\n        transition={{\r\n          duration: 1,\r\n          repeat: Infinity,\r\n          repeatType: \"reverse\",\r\n        }}\r\n        className={cn(\"inline-block rounded-sm w-1 h-12 bg-foreground ml-2\")}\r\n      ></motion.span>\r\n    </MotionComponent>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ]
+}

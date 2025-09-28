@@ -1,14 +1,8 @@
-import { Loading } from "@/registry/components/loading";
-import React, { Suspense } from "react";
+"use client";
+
+import { notFound } from "next/navigation";
+import React from "react";
 
 export default function Page() {
-  return (
-    <Suspense fallback={<Loading />}>
-      <Dashboard />
-    </Suspense>
-  );
-}
-
-function Dashboard() {
-  return <div>Dashboard</div>;
+  return <>{notFound()}</>;
 }

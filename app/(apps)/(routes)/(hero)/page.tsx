@@ -1,6 +1,11 @@
 import { CodePreviewBox } from "@/components/box";
 import { FileUploader } from "@/registry/components/file-uploader";
+import { InteractiveGradientText } from "@/registry/components/interactive-gradient-text";
 import { Loading } from "@/registry/components/loading";
+import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-button";
+import PaperBackground from "@/registry/components/paper-background";
+import ScaleHoverAnimationButton from "@/registry/components/scale-hover-animation-button";
+import { TypewriterEffect } from "@/registry/components/typewriter-effect";
 import React, { Suspense } from "react";
 
 export default function Page() {
@@ -32,53 +37,43 @@ function HeroPage() {
 
       <FileUploader className="md:col-start-7 md:row-start-1 md:col-span-4 md:row-span-6 bg-surface" />
 
-      <CodePreviewBox
-        link=""
-        title="Number hai 3"
-        className="md:col-start-1 md:row-start-4 md:col-span-6 md:row-span-3"
-      >
-        3
-      </CodePreviewBox>
+      <div className="md:content-center md:justify-items-center border border-dashed bg-surface rounded-lg hidden md:grid overflow-hidden md:col-start-1 md:row-start-4 md:col-span-6 md:row-span-3 relative w-full h-full">
+        <h4 className="absolute top-5 left-0 right-0 text-center text-xl font-inter text-muted-foreground">
+          Hover Over Text to see Animation
+        </h4>
+        <InteractiveGradientText text="octacn" />
+      </div>
 
-      <CodePreviewBox
-        link=""
-        title="Number hai 4"
-        className="md:col-start-1 md:row-start-7 md:col-span-3 md:row-span-2"
-      >
-        4
-      </CodePreviewBox>
+      <div className="md:content-center md:justify-items-center border border-dashed bg-surface rounded-lg hidden md:grid overflow-hidden md:col-start-1 md:row-start-7 md:col-span-3 md:row-span-2">
+        <TypewriterEffect>https://ui.octacn.com</TypewriterEffect>
+      </div>
 
       <CodePreviewBox
         link=""
         title="Number hai 5"
-        className="md:col-start-4 md:row-start-7 md:col-span-7 md:row-span-2"
+        className=" md:col-start-4 md:row-start-7 md:col-span-7 md:row-span-2"
       >
         5
       </CodePreviewBox>
 
-      <CodePreviewBox
-        link=""
-        title="Number hai 6"
-        className="md:col-start-1 md:row-start-9 md:col-span-4 md:row-span-6"
-      >
-        6
-      </CodePreviewBox>
+      <div className="border border-dashed bg-surface rounded-lg hidden md:grid overflow-hidden md:col-start-1 md:row-start-9 md:col-span-4 md:row-span-6 relative">
+        <div className="absolute top-0 right-0 left-0 bottom-0 z-10">
+          <div className="flex items-center justify-centers h-full text-center">
+            <h4 className="whitespace-nowrap text-center w-full text-3xl font-medium font-inter tracking-wide">
+              Zoom to see background
+            </h4>
+          </div>
+        </div>
+        <PaperBackground className="rounded-lg" />
+      </div>
 
-      <CodePreviewBox
-        link=""
-        title="Number hai 7"
-        className="md:col-start-5 md:row-start-9 md:col-span-3 md:row-span-1"
-      >
-        7
-      </CodePreviewBox>
+      <div className="border border-dashed bg-surface rounded-lg hidden md:grid overflow-hidden md:col-start-5 md:row-start-9 md:col-span-3 md:row-span-1 ">
+        <MagneticShimmerButton>Hover Near Me!</MagneticShimmerButton>
+      </div>
 
-      <CodePreviewBox
-        link=""
-        title="Number hai 8"
-        className="md:col-start-8 md:row-start-9 md:col-span-3 md:row-span-1"
-      >
-        8
-      </CodePreviewBox>
+      <div className="md:content-center md:justify-items-center border border-dashed bg-surface rounded-lg hidden md:grid overflow-hidden md:col-start-8 md:row-start-9 md:col-span-3 md:row-span-1">
+        <ScaleHoverAnimationButton>Hover On Me!</ScaleHoverAnimationButton>
+      </div>
 
       <CodePreviewBox
         link=""

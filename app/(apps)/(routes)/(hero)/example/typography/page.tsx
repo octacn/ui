@@ -1,6 +1,18 @@
-import { CodePreviewBox } from "@/components/box";
 import { Loading } from "@/registry/components/loading";
-import React, { Suspense } from "react";
+import { BlockquoteDemo } from "@/registry/demo/ui/typography-blockquote";
+import { H1Demo } from "@/registry/demo/ui/typography-h1";
+import { H2Demo } from "@/registry/demo/ui/typography-h2";
+import { H3Demo } from "@/registry/demo/ui/typography-h3";
+import { H4Demo } from "@/registry/demo/ui/typography-h4";
+import { H5Demo } from "@/registry/demo/ui/typography-h5";
+import { H6Demo } from "@/registry/demo/ui/typography-h6";
+import { InlineCodeDemo } from "@/registry/demo/ui/typography-inline-code";
+import TypographyLarge from "@/registry/demo/ui/typography-large";
+import TypographyList from "@/registry/demo/ui/typography-list";
+import TypographyMuted from "@/registry/demo/ui/typography-muted";
+import { PDemo } from "@/registry/demo/ui/typography-p";
+import TypographySmall from "@/registry/demo/ui/typography-small";
+import React, { ComponentProps, Suspense } from "react";
 
 export default function Page() {
   return (
@@ -11,85 +23,47 @@ export default function Page() {
 }
 
 function Typography() {
+  const typographyDemos = [
+    { component: <H1Demo />, label: "Heading 1" },
+    { component: <H2Demo />, label: "Heading 2" },
+    { component: <H3Demo />, label: "Heading 3" },
+    { component: <H4Demo />, label: "Heading 4" },
+    { component: <H5Demo />, label: "Heading 5" },
+    { component: <H6Demo />, label: "Heading 6" },
+    { component: <PDemo />, label: "Paragraph" },
+    { component: <TypographyLarge />, label: "Large Text" },
+    { component: <TypographySmall />, label: "Small Text" },
+    { component: <TypographyMuted />, label: "Muted Text" },
+    { component: <TypographyList />, label: "List Text" },
+    { component: <BlockquoteDemo />, label: "Blockquote" },
+    { component: <InlineCodeDemo />, label: "Inline Code" },
+  ];
+
   return (
-    <div className="grid grid-cols-3 md:grid-cols-7 grid-rows-3 md:grid-rows-5 gap-2 md:gap-5">
-      <CodePreviewBox
-        title=""
-        link=""
-        className="md:col-start-1 md:row-start-1 md:col-span-4 md:row-span-2"
-      >
-        0
-      </CodePreviewBox>
-      <CodePreviewBox
-        title=""
-        link=""
-        className="md:col-start-5 md:row-start-1 md:col-span-3 md:row-span-1"
-      >
-        1
-      </CodePreviewBox>
-      <CodePreviewBox
-        title=""
-        link=""
-        className="md:col-start-5 md:row-start-2 md:col-span-3 md:row-span-1"
-      >
-        2
-      </CodePreviewBox>
-      <CodePreviewBox
-        title=""
-        link=""
-        className="md:col-start-1 md:row-start-3 md:col-span-3 md:row-span-1"
-      >
-        3
-      </CodePreviewBox>
-      <CodePreviewBox
-        title=""
-        link=""
-        className="md:col-start-4 md:row-start-3 md:col-span-4 md:row-span-1"
-      >
-        4
-      </CodePreviewBox>
-      <CodePreviewBox
-        title=""
-        link=""
-        className="md:col-start-1 md:row-start-4 md:col-span-2 md:row-span-1"
-      >
-        5
-      </CodePreviewBox>
-      <CodePreviewBox
-        title=""
-        link=""
-        className="md:col-start-3 md:row-start-4 md:col-span-3 md:row-span-1"
-      >
-        6
-      </CodePreviewBox>
-      <CodePreviewBox
-        title=""
-        link=""
-        className="md:col-start-6 md:row-start-4 md:col-span-2 md:row-span-1"
-      >
-        7
-      </CodePreviewBox>
-      <CodePreviewBox
-        title=""
-        link=""
-        className="md:col-start-1 md:row-start-5 md:col-span-3 md:row-span-1"
-      >
-        8
-      </CodePreviewBox>
-      <CodePreviewBox
-        title=""
-        link=""
-        className="md:col-start-4 md:row-start-5 md:col-span-4 md:row-span-3"
-      >
-        9
-      </CodePreviewBox>
-      <CodePreviewBox
-        title=""
-        link=""
-        className="md:col-start-1 md:row-start-6 md:col-span-3 md:row-span-2"
-      >
-        10
-      </CodePreviewBox>
+    <div className="border bg-surface rounded-lg relative grid grid-cols-2 gap-0">
+      {typographyDemos.map((demo, index) => (
+        <DemoBox key={index} label={demo.label}>
+          {demo.component}
+        </DemoBox>
+      ))}
+    </div>
+  );
+}
+
+function DemoBox({
+  children,
+  label,
+}: ComponentProps<"div"> & {
+  label: string;
+}) {
+  return (
+    <div className="relative border-r border-b border-dashed last:border-r-0">
+      <h4 className="absolute top-0 left-0 px-3 py-2 border-b border-r rounded-br-lg font-inter text-xs tracking-wide bg-accent text-foreground/90 z-10">
+        {label}
+      </h4>
+      <div className="px-8 flex items-center justify-center min-h-36">
+        <div className="text-center truncate max-w-full">{children}</div>
+      </div>
     </div>
   );
 }

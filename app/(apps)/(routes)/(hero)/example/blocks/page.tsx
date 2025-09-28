@@ -4,8 +4,8 @@ import React, { Suspense } from "react";
 
 export default function Page() {
   return (
-    <Suspense fallback={<Loading />}>
-      <BlockDisplay name="accordion-demo" />
+    <Suspense fallback={<Loading className="h-[700px]" />}>
+      <BlockDisplay name="header-v1" />
     </Suspense>
   );
 }

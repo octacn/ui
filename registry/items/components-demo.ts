@@ -67,4 +67,16 @@ export const componentsDemo: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "typewriter-effect-demo",
+    type: "registry:component",
+    dependencies: ["motion"],
+    registryDependencies: ["utils"],
+    files: [
+      {
+        path: "demo/components/typewriter-effect-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];
