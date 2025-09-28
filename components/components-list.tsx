@@ -1,22 +1,25 @@
-import { docsSource, authenticationSource, blocksSource, componentsSource } from "@/lib/source";
+import {
+  docsSource,
+  authenticationSource,
+  blocksSource,
+  componentsSource,
+} from "@/lib/source";
 import GenerateList from "@/components/generate-list";
 import Link from "next/link";
 
 interface FullComponentsListProps {
-  name: "source" | "blocks" | "auth";
+  name: "docs" | "blocks" | "authentication";
 }
 
 export function ComponentsList() {
   return <GenerateList tree={componentsSource.pageTree} />;
 }
 
-export function FullComponentsList({
-  name = "source",
-}: FullComponentsListProps) {
+export function FullComponentsList({ name = "docs" }: FullComponentsListProps) {
   const selectedSource =
-    name === "blocks"
+    name === "docs"
       ? blocksSource
-      : name === "auth"
+      : name === "authentication"
       ? authenticationSource
       : docsSource;
 

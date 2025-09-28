@@ -1,7 +1,7 @@
 import React, { ComponentProps } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import {createBorder} from "@/components/create-border";
+import { createBorder } from "@/components/create-border";
 import HoverAnimation from "@/components/animation/hover-animation";
 import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-button";
 
@@ -34,7 +34,7 @@ export default function ProLibraryCta({
             comprehensive toolkit.
           </p>
 
-          <div className="mt-4 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-2">
+          <div className="mt-4 flex gap-4 items-center sm:gap-2">
             <HoverAnimation href="/" rel="noopener noreferrer" target="_blank">
               <button className="inline-flex items-center justify-center px-6 py-3 rounded-full font-medium shadow-sm bg-background border text-base font-inter tracking-wide hover:cursor-pointer">
                 Upgrade to Pro
@@ -48,7 +48,7 @@ export default function ProLibraryCta({
         </div>
 
         {show && (
-          <div className="flex h-72 min-w-sm flex-1">
+          <div className="md:flex h-72 min-w-sm flex-1 hidden">
             <div className="border-l h-full w-px" />
             <div className="flex flex-col items-center justify-center pr-10 pl-16 font-inter tracking-wide text-base text-muted-foreground">
               <div>

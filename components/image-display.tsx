@@ -33,8 +33,8 @@ export async function ImageDisplay({
 
       <div
         className={cn(
-          "mt-3 grid gap-4 sm:gap-8",
-          grid ? "grid-cols-3" : "grid-cols-2"
+          "mt-3 grid gap-4 sm:gap-8 grid-cols-1 ",
+          grid ? "md:grid-cols-3" : "md:grid-cols-2"
         )}
       >
         {name.map((name, idx) => {
