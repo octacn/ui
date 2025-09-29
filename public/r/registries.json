@@ -1,0 +1,3085 @@
+{
+  "name": "octacn/ui",
+  "homepage": "https://ui.octacn.com",
+  "items": [
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "tailwind": {
+        "config": {
+          "theme": {
+            "extend": {
+              "keyframes": {
+                "accordion-down": {
+                  "from": {
+                    "height": "0"
+                  },
+                  "to": {
+                    "height": "var(--radix-accordion-content-height)"
+                  }
+                },
+                "accordion-up": {
+                  "from": {
+                    "height": "var(--radix-accordion-content-height)"
+                  },
+                  "to": {
+                    "height": "0"
+                  }
+                }
+              },
+              "animation": {
+                "accordion-down": "accordion-down 0.2s ease-out",
+                "accordion-up": "accordion-up 0.2s ease-out"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-alert-dialog"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-aspect-ratio"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "dependencies": [
+        "react-day-picker@latest",
+        "date-fns"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "dependencies": [
+        "embla-carousel-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "dependencies": [
+        "recharts@2.15.4",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "dependencies": [
+        "cmdk"
+      ],
+      "registryDependencies": [
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-context-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "dependencies": [
+        "vaul",
+        "@radix-ui/react-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-label",
+        "@radix-ui/react-slot",
+        "@hookform/resolvers",
+        "zod",
+        "react-hook-form"
+      ],
+      "registryDependencies": [
+        "button",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/form.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-hover-card"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "dependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-label"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-menubar"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-navigation-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-popover"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-progress"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "dependencies": [
+        "react-resizable-panels"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-scroll-area"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-select"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-separator"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "separator",
+        "sheet",
+        "tooltip",
+        "input",
+        "use-mobile",
+        "skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "tailwind": {
+        "config": {
+          "theme": {
+            "extend": {
+              "colors": {
+                "sidebar": {
+                  "DEFAULT": "hsl(var(--sidebar-background))",
+                  "foreground": "hsl(var(--sidebar-foreground))",
+                  "primary": "hsl(var(--sidebar-primary))",
+                  "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+                  "accent": "hsl(var(--sidebar-accent))",
+                  "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+                  "border": "hsl(var(--sidebar-border))",
+                  "ring": "hsl(var(--sidebar-ring))"
+                }
+              }
+            }
+          }
+        }
+      },
+      "cssVars": {
+        "light": {
+          "sidebar-background": "0 0% 98%",
+          "sidebar-foreground": "240 5.3% 26.1%",
+          "sidebar-primary": "240 5.9% 10%",
+          "sidebar-primary-foreground": "0 0% 98%",
+          "sidebar-accent": "240 4.8% 95.9%",
+          "sidebar-accent-foreground": "240 5.9% 10%",
+          "sidebar-border": "220 13% 91%",
+          "sidebar-ring": "217.2 91.2% 59.8%"
+        },
+        "dark": {
+          "sidebar-background": "240 5.9% 10%",
+          "sidebar-foreground": "240 4.8% 95.9%",
+          "sidebar-primary": "224.3 76.3% 48%",
+          "sidebar-primary-foreground": "0 0% 100%",
+          "sidebar-accent": "240 3.7% 15.9%",
+          "sidebar-accent-foreground": "240 4.8% 95.9%",
+          "sidebar-border": "240 3.7% 15.9%",
+          "sidebar-ring": "217.2 91.2% 59.8%"
+        }
+      }
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-slider"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "dependencies": [
+        "sonner",
+        "next-themes"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-switch"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-toggle-group"
+      ],
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "header-v1",
+      "type": "registry:block",
+      "description": "A responsive header block with navigation.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sheet",
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/header-v1.tsx",
+          "type": "registry:block",
+          "target": "components/header.tsx"
+        },
+        {
+          "path": "registry/ui/sheet.tsx",
+          "type": "registry:component",
+          "target": "components/ui/sheet.tsx"
+        },
+        {
+          "path": "registry/ui/button.tsx",
+          "type": "registry:component",
+          "target": "components/ui/button.tsx"
+        },
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ],
+      "categories": [
+        "header"
+      ]
+    },
+    {
+      "name": "pricing-v1",
+      "type": "registry:block",
+      "description": "A Pricing section of three section.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "card",
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/pricing-v1.tsx",
+          "type": "registry:block",
+          "target": "components/pricing.tsx"
+        }
+      ],
+      "categories": [
+        "pricing"
+      ]
+    },
+    {
+      "name": "file-uploader",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/components/file-uploader.tsx",
+          "type": "registry:component",
+          "target": "components/file-uploader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "phone-frame",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/components/phone-frame.tsx",
+          "type": "registry:component",
+          "target": "components/phone-frame.tsx"
+        }
+      ]
+    },
+    {
+      "name": "paper-background",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/components/paper-background.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "scale-hover-animation-button",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/components/scale-hover-animation-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-shimmer-button",
+      "type": "registry:component",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/components/magnetic-shimmer-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "interactive-gradient-text",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/components/interactive-gradient-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "typewriter-effect",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/components/typewriter-effect.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pinterest-layout",
+      "type": "registry:component",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/components/pinterest-layout.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "accordion-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/accordion-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "alert-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "alert"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/alert-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "alert-destructive",
+      "type": "registry:example",
+      "registryDependencies": [
+        "alert"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/alert-destructive.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "alert-dialog",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/alert-dialog-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "aspect-ratio"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/aspect-ratio-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "avatar-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/avatar-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "badge-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/badge-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "badge-destructive",
+      "type": "registry:example",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/badge-destructive.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "badge-outline",
+      "type": "registry:example",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/badge-outline.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "badge-secondary",
+      "type": "registry:example",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/badge-secondary.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/breadcrumb-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-separator",
+      "type": "registry:example",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/breadcrumb-separator.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-dropdown",
+      "type": "registry:example",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/breadcrumb-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-ellipsis",
+      "type": "registry:example",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/breadcrumb-ellipsis.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-link",
+      "type": "registry:example",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/breadcrumb-link.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-responsive",
+      "type": "registry:example",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/breadcrumb-responsive.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-secondary",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-secondary.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-destructive",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-destructive.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-outline",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-outline.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-ghost",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-ghost.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-link",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-link.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-with-icon",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-with-icon.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-loading",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-loading.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-icon",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-icon.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-as-child",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-as-child.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "calendar-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/calendar-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "calendar-form",
+      "type": "registry:example",
+      "registryDependencies": [
+        "calendar",
+        "form",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/calendar-form.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "calendar-hijri",
+      "type": "registry:example",
+      "description": "A Persian calendar.",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/calendar-hijri.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "card-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "card",
+        "button",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "card-with-form",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/card-with-form.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "carousel-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/carousel-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "carousel-size",
+      "type": "registry:example",
+      "registryDependencies": [
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/carousel-size.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "carousel-spacing",
+      "type": "registry:example",
+      "registryDependencies": [
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/carousel-spacing.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "carousel-orientation",
+      "type": "registry:example",
+      "registryDependencies": [
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/carousel-orientation.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "carousel-api",
+      "type": "registry:example",
+      "registryDependencies": [
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/carousel-api.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "carousel-plugin",
+      "type": "registry:example",
+      "registryDependencies": [
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/carousel-plugin.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "chart-bar-demo",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/chart-bar-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "chart-bar-interactive",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/chart-bar-interactive.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "chart-bar-demo-grid",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/chart-bar-demo-grid.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "chart-bar-demo-axis",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/chart-bar-demo-axis.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "chart-bar-demo-tooltip",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/chart-bar-demo-tooltip.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "chart-bar-demo-legend",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/chart-bar-demo-legend.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "chart-tooltip-demo",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/chart-tooltip-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/checkbox-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/checkbox-disabled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-form-multiple",
+      "type": "registry:example",
+      "registryDependencies": [
+        "checkbox",
+        "form"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/checkbox-form-multiple.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-form-single",
+      "type": "registry:example",
+      "registryDependencies": [
+        "checkbox",
+        "form"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/checkbox-form-single.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-with-text",
+      "type": "registry:example",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/checkbox-with-text.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "collapsible-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/collapsible-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "combobox-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "command"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/combobox-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "combobox-dropdown-menu",
+      "type": "registry:example",
+      "registryDependencies": [
+        "command",
+        "dropdown-menu",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/combobox-dropdown-menu.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "combobox-form",
+      "type": "registry:example",
+      "registryDependencies": [
+        "command",
+        "form"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/combobox-form.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "combobox-popover",
+      "type": "registry:example",
+      "registryDependencies": [
+        "combobox",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/combobox-popover.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "combobox-responsive",
+      "type": "registry:example",
+      "registryDependencies": [
+        "combobox",
+        "popover",
+        "drawer"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/combobox-responsive.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "command-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "command"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/command-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "command-dialog",
+      "type": "registry:example",
+      "registryDependencies": [
+        "command",
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/command-dialog.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "context-menu-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "context-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/context-menu-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "data-table-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "data-table"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/data-table-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "date-picker-demo",
+      "type": "registry:example",
+      "dependencies": [
+        "date-fns"
+      ],
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/date-picker-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "date-picker-form",
+      "type": "registry:example",
+      "dependencies": [
+        "date-fns"
+      ],
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "form",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/date-picker-form.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "date-picker-with-presets",
+      "type": "registry:example",
+      "dependencies": [
+        "date-fns"
+      ],
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "popover",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/date-picker-with-presets.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "date-picker-with-range",
+      "type": "registry:example",
+      "dependencies": [
+        "date-fns"
+      ],
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/date-picker-with-range.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dialog-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/dialog-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dialog-close-button",
+      "type": "registry:example",
+      "registryDependencies": [
+        "dialog",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/dialog-close-button.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "drawer-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "drawer"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/drawer-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "drawer-dialog",
+      "type": "registry:example",
+      "registryDependencies": [
+        "drawer",
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/drawer-dialog.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/dropdown-menu-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu-checkboxes",
+      "type": "registry:example",
+      "registryDependencies": [
+        "dropdown-menu",
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/dropdown-menu-checkboxes.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu-radio-group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "dropdown-menu",
+        "radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/dropdown-menu-radio-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "hover-card-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "hover-card"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/hover-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/input-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/input-disabled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-file",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/input-file.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-form",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input",
+        "button",
+        "form"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/input-form.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-with-button",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/input-with-button.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-with-label",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input",
+        "button",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/input-with-label.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-with-text",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input",
+        "button",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/input-with-text.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-otp-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/input-otp-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-otp-pattern",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/input-otp-pattern.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-otp-separator",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/input-otp-separator.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-otp-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/input-otp-controlled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-otp-form",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-otp",
+        "form"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/input-otp-form.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "label-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/label-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "menubar-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "menubar"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/menubar-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "mode-toggle",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/mode-toggle.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "navigation-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/navigation-menu-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "pagination-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "pagination"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/pagination-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "popover-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/popover-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "progress-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/progress-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "radio-group-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/radio-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "radio-group-form",
+      "type": "registry:example",
+      "registryDependencies": [
+        "radio-group",
+        "form"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/radio-group-form.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "resizable-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/resizable-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "resizable-demo-with-handle",
+      "type": "registry:example",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/resizable-demo-with-handle.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "resizable-vertical",
+      "type": "registry:example",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/resizable-vertical.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "resizable-handle",
+      "type": "registry:example",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/resizable-handle.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "scroll-area"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/scroll-area-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area-horizontal-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "scroll-area"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/scroll-area-horizontal-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "select-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/select-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "select-scrollable",
+      "type": "registry:example",
+      "registryDependencies": [
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/select-scrollable.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "select-form",
+      "type": "registry:example",
+      "registryDependencies": [
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/select-form.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "separator-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/separator-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "sheet-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/sheet-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "sheet-side",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/sheet-side.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "skeleton-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/skeleton-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "skeleton-card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/skeleton-card.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "slider-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "slider"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/slider-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "sonner-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/sonner-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "switch-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/switch-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "switch-form",
+      "type": "registry:example",
+      "registryDependencies": [
+        "switch",
+        "form"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/switch-form.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "table-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "table"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/table-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "tabs-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/tabs-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "textarea-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/textarea-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "textarea-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/textarea-disabled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "textarea-form",
+      "type": "registry:example",
+      "registryDependencies": [
+        "textarea",
+        "form"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/textarea-form.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "textarea-with-button",
+      "type": "registry:example",
+      "registryDependencies": [
+        "textarea",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/textarea-with-button.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "textarea-with-label",
+      "type": "registry:example",
+      "registryDependencies": [
+        "textarea",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/textarea-with-label.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "textarea-with-text",
+      "type": "registry:example",
+      "registryDependencies": [
+        "textarea",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/textarea-with-text.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/toggle-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/toggle-group-disabled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group-lg",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/toggle-group-lg.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group-outline",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/toggle-group-outline.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group-sm",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/toggle-group-sm.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group-single",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/toggle-group-single.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/toggle-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/toggle-disabled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-lg",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/toggle-lg.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-outline",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/toggle-outline.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-sm",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/toggle-sm.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-with-text",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/toggle-with-text.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/tooltip-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-blockquote",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-blockquote.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-demo",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-h1",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-h1.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-h2",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-h2.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-h3",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-h3.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-h4",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-h4.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-h5",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-h5.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-h6",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-h6.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-inline-code",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-inline-code.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-large",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-large.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-lead",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-lead.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-list",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-list.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-muted",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-muted.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-p",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-p.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typography-small",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/ui/typography-small.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "pricing-v1-demo",
+      "type": "registry:block",
+      "description": "A Pricing Demo of three section.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "card",
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/pricing-v1-demo.tsx",
+          "type": "registry:block",
+          "target": "components/pricing-demo.tsx"
+        },
+        {
+          "path": "registry/blocks/pricing-v1.tsx",
+          "type": "registry:block",
+          "target": "components/pricing-v1.tsx"
+        }
+      ],
+      "categories": [
+        "pricing"
+      ]
+    },
+    {
+      "name": "sidebar-demo",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-header",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-header.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-footer",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-footer.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-group",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-group.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-group-collapsible",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-group-collapsible.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-group-action",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-group-action.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-menu",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-menu.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-menu-action",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-menu-action.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-menu-sub",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-menu-sub.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-menu-collapsible",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-menu-collapsible.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-menu-badge",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-menu-badge.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-rsc",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-rsc.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-controlled",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-controlled.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-07",
+      "type": "registry:block",
+      "description": "A sidebar that collapses to icons.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/sidebars/sidebar-07/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/demo/sidebars/sidebar-07/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/demo/sidebars/sidebar-07/components/nav-main.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/demo/sidebars/sidebar-07/components/nav-projects.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/demo/sidebars/sidebar-07/components/nav-user.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/demo/sidebars/sidebar-07/components/team-switcher.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "sidebar",
+        "dashboard"
+      ]
+    },
+    {
+      "name": "file-uploader-demo",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/demo/components/file-uploader-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "phone-frame-demo",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/demo/components/phone-frame-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "paper-background-demo",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/demo/components/paper-background-demo.tsx",
+          "type": "registry:component",
+          "target": "components/paper-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scale-hover-animation-button-demo",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/scale-hover-animation-button-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-shimmer-button-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/magnetic-shimmer-button-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "interactive-gradient-text-demo",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/interactive-gradient-text-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "typewriter-effect-demo",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/typewriter-effect-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pinterest-layout-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/pinterest-layout-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}

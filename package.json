@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "registry:build": "shadcn build",
+    "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registry.mts",
     "build:registry:internal": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "postinstall": "fumadocs-mdx"

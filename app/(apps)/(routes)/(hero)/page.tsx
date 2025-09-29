@@ -1,11 +1,9 @@
-import { CodePreviewBox } from "@/components/box";
 import { cn } from "@/lib/utils";
 import { FileUploader } from "@/registry/components/file-uploader";
 import { InteractiveGradientText } from "@/registry/components/interactive-gradient-text";
 import { Loading } from "@/registry/components/loading";
 import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-button";
 import PaperBackground from "@/registry/components/paper-background";
-import { PinterestLayout } from "@/registry/components/pinterest-layout";
 import ScaleHoverAnimationButton from "@/registry/components/scale-hover-animation-button";
 import { TypewriterEffect } from "@/registry/components/typewriter-effect";
 import PinterestLayoutDemo from "@/registry/demo/components/pinterest-layout-demo";

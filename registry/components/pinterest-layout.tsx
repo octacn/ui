@@ -1,10 +1,10 @@
 interface PinterestLayoutProps {
-  images: string[];
+  images?: string[];
 }
 
-export function PinterestLayout({ images }: PinterestLayoutProps) {
+export function PinterestLayout({ images = [] }: PinterestLayoutProps) {
   const getColumnClasses = () => {
-    const imageCount = images.length;
+    const imageCount = images?.length || 0;
 
     if (imageCount <= 2) return "columns-1";
     if (imageCount <= 4) return "columns-1 sm:columns-2";
@@ -12,6 +12,17 @@ export function PinterestLayout({ images }: PinterestLayoutProps) {
     if (imageCount <= 9) return "columns-2 sm:columns-3 md:columns-4";
     return "columns-2 sm:columns-3 md:columns-4 lg:columns-5";
   };
+
+  // Early return if no images
+  if (!images || images.length === 0) {
+    return (
+      <section className="gap-4 columns-1">
+        <div className="text-center text-gray-500 py-8">
+          No images to display
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={`gap-4 ${getColumnClasses()}`}>

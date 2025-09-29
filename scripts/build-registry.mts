@@ -112,6 +112,12 @@ async function syncRegistry() {
   const registryIndexPath = path.join(registryDir, "__index__.tsx");
   let registryContent = null;
 
+  // const src = path.join(process.cwd(), "registry.json");
+  // const dest = path.join(process.cwd(), "public", "r", "registries.json");
+
+  // await fs.mkdir(path.dirname(dest), { recursive: true });
+  // await fs.cp(src, dest);
+
   try {
     registryContent = await fs.readFile(registryIndexPath, "utf8");
   } catch {
