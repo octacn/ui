@@ -12,6 +12,8 @@ interface TypingAnimationProps extends MotionProps {
   delay?: number;
   as?: React.ElementType;
   startOnView?: boolean;
+  repeat?: boolean;
+  repeatDelay?: number;
 }
 
 export function TypewriterEffect({
@@ -21,6 +23,8 @@ export function TypewriterEffect({
   delay = 0,
   as: Component = "div",
   startOnView = false,
+  repeat = true,
+  repeatDelay = 2000,
   ...props
 }: TypingAnimationProps) {
   const MotionComponent = motion.create(Component, {
@@ -55,21 +59,47 @@ export function TypewriterEffect({
   useEffect(() => {
     if (!started) return;
 
-    const graphemes = Array.from(children);
-    let i = 0;
-    const typingEffect = setInterval(() => {
-      if (i < graphemes.length) {
-        setDisplayedText(graphemes.slice(0, i + 1).join(""));
-        i++;
-      } else {
-        clearInterval(typingEffect);
-      }
-    }, duration);
+    let currentInterval: NodeJS.Timeout | null = null;
+    let currentTimeout: NodeJS.Timeout | null = null;
+
+    const runTypewriterAnimation = () => {
+      const graphemes = Array.from(children);
+      let i = 0;
+
+      // Reset displayed text
+      setDisplayedText("");
+
+      currentInterval = setInterval(() => {
+        if (i < graphemes.length) {
+          setDisplayedText(graphemes.slice(0, i + 1).join(""));
+          i++;
+        } else {
+          if (currentInterval) {
+            clearInterval(currentInterval);
+            currentInterval = null;
+          }
+
+          // If repeat is enabled, schedule the next iteration
+          if (repeat) {
+            currentTimeout = setTimeout(() => {
+              runTypewriterAnimation();
+            }, repeatDelay);
+          }
+        }
+      }, duration);
+    };
+
+    runTypewriterAnimation();
 
     return () => {
-      clearInterval(typingEffect);
+      if (currentInterval) {
+        clearInterval(currentInterval);
+      }
+      if (currentTimeout) {
+        clearTimeout(currentTimeout);
+      }
     };
-  }, [children, duration, started]);
+  }, [children, duration, started, repeat, repeatDelay]);
 
   return (
     <MotionComponent
