@@ -4,6 +4,6 @@
   "pages": [
     "headers",
     "pricings",
-    "forms"
+    "auth"
   ]
 }

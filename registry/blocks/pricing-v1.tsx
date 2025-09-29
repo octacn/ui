@@ -18,7 +18,6 @@ interface PricingCardProps {
 }
 
 export default function PricingCard({
-  id,
   name,
   time,
   prices,

@@ -1,22 +1,21 @@
-import { cn } from "@/lib/utils";
-import { FileUploader } from "@/registry/components/file-uploader";
-import { InteractiveGradientText } from "@/registry/components/interactive-gradient-text";
-import { Loading } from "@/registry/components/loading";
-import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-button";
-import PaperBackground from "@/registry/components/paper-background";
 import ScaleHoverAnimationButton from "@/registry/components/scale-hover-animation-button";
-import { TypewriterEffect } from "@/registry/components/typewriter-effect";
+import { InteractiveGradientText } from "@/registry/components/interactive-gradient-text";
+import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-button";
 import PinterestLayoutDemo from "@/registry/demo/components/pinterest-layout-demo";
+import { TypewriterEffect } from "@/registry/components/typewriter-effect";
+import PaperBackground from "@/registry/components/paper-background";
+import { AuthForm } from "@/registry/blocks/auth-form-v1";
+import { Loading } from "@/registry/components/loading";
 import React, { ComponentProps, Suspense } from "react";
+import { cn } from "@/lib/utils";
 
 export default function Page() {
   return (
     <Suspense fallback={<Loading />}>
-      <section className="space-y-6 space-x-6 hidden md:block">
+      <section className="space-y-6 hidden md:block">
         <TopLayout />
         <MiddleLayout />
         <BottomLayout />
-        <LastLayout />
       </section>
     </Suspense>
   );
@@ -48,9 +47,14 @@ function TopLayout() {
 function MiddleLayout() {
   return (
     <div className="grid grid-cols-3 gap-6">
-      <Box>
-        <FileUploader />
-      </Box>
+      <div className="flex flex-col gap-6">
+        <Box className="h-full">animated line</Box>
+        <Box>
+          <TypewriterEffect className="py-2">
+            https://ui.octacn.com
+          </TypewriterEffect>
+        </Box>
+      </div>
 
       <Box className="col-span-2">
         <PinterestLayoutDemo />
@@ -62,19 +66,6 @@ function MiddleLayout() {
 function BottomLayout() {
   return (
     <div className="grid grid-cols-3 gap-6">
-      <Box className="col-span-2">remain last components</Box>
-
-      <Box>
-        <TypewriterEffect>https://ui.octacn.com</TypewriterEffect>
-      </Box>
-    </div>
-  );
-}
-
-function LastLayout() {
-  return (
-    <div className="grid grid-cols-3 gap-6">
-      <Box>Registration Fom</Box>
       <Box className="col-span-2">
         <div className="absolute top-0 right-0 left-0 bottom-0 z-10">
           <div className="flex items-center justify-centers h-full text-center">
@@ -85,6 +76,7 @@ function LastLayout() {
         </div>
         <PaperBackground className="rounded-lg" />
       </Box>
+      <AuthForm />
     </div>
   );
 }

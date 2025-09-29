@@ -900,6 +900,24 @@ export const Index: Record<string, any> = {
     categories: ["pricing"],
     meta: undefined,
   },
+  "auth-form-v1": {
+    name: "auth-form-v1",
+    description: "A Authentication form with sign up and sign in section.",
+    type: "registry:block",
+    registryDependencies: ["card","utils","button","input","label"],
+    files: [{
+      path: "registry/blocks/auth-form-v1.tsx",
+      type: "registry:block",
+      target: "components/auth-form.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/blocks/auth-form-v1.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication"],
+    meta: undefined,
+  },
   "file-uploader": {
     name: "file-uploader",
     description: "",
@@ -3680,7 +3698,7 @@ export const Index: Record<string, any> = {
     files: [{
       path: "registry/demo/blocks/pricing-v1-demo.tsx",
       type: "registry:block",
-      target: "components/pricing-demo.tsx"
+      target: "app/page.tsx"
     },{
       path: "registry/blocks/pricing-v1.tsx",
       type: "registry:block",
@@ -3692,6 +3710,28 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["pricing"],
+    meta: undefined,
+  },
+  "auth-form-v1-demo": {
+    name: "auth-form-v1-demo",
+    description: "A Authentication form with sign up and sign in section.",
+    type: "registry:block",
+    registryDependencies: ["card","utils","button","input","label"],
+    files: [{
+      path: "registry/demo/blocks/auth-form-v1-demo.tsx",
+      type: "registry:block",
+      target: "app/page.tsx"
+    },{
+      path: "registry/blocks/auth-form-v1.tsx",
+      type: "registry:block",
+      target: "components/auth-form.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/demo/blocks/auth-form-v1-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication"],
     meta: undefined,
   },
   "sidebar-demo": {

@@ -1,304 +1,262 @@
 "use client";
 
-import type React from "react";
+import React, { useState, useCallback, useMemo } from "react";
 
-import { useState } from "react";
+import { Card, CardContent, CardFooter, CardHeader } from "@/registry/ui/card";
+import { Label } from "@/registry/ui/label";
 import { Button } from "@/registry/ui/button";
 import { Input } from "@/registry/ui/input";
-import { Label } from "@/registry/ui/label";
-import { Checkbox } from "@/registry/ui/checkbox";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/ui/tabs";
-import { Eye, EyeOff, Loader2, Mail, Lock, User, Github } from "lucide-react";
-import { Separator } from "../ui/separator";
-// import { PasswordStrengthIndicator } from "./password-strength";
-interface AuthFormProps {
-  isLoading: boolean;
-  email: string;
-  setEmail: (email: string) => void;
-  password: string;
-  setPassword: (password: string) => void;
-  rememberMe: boolean;
-  setRememberMe: (remember: boolean) => void;
-  onSignIn: (e: React.FormEvent) => void;
-  onSignUp: (e: React.FormEvent) => void;
-  onSocialLogin: (provider: string) => void;
-  onForgotPassword: () => void;
-}
+import { cn } from "@/lib/utils";
+import {
+  X,
+  Mail,
+  Eye,
+  EyeOff,
+  Lock,
+  Facebook,
+  Github,
+  Phone,
+} from "lucide-react";
 
-interface SocialLoginProps {
-  onSocialLogin: (provider: string) => void;
-  type: "signin" | "signup";
-  isLoading?: boolean;
-}
-
-export function AuthForm({
-  isLoading,
-  email,
-  setEmail,
-  password,
-  setPassword,
-  rememberMe,
-  setRememberMe,
-  onSignIn,
-  onSignUp,
-  onSocialLogin,
-  onForgotPassword,
-}: AuthFormProps) {
+export function AuthForm() {
+  const [activeTab, setActiveTab] = useState("signup");
+  const [formData, setFormData] = useState({
+    firstName: "John",
+    lastName: "",
+    phoneNumber: "+91 1234567890",
+    email: "",
+    password: "",
+    rememberMe: false,
+  });
   const [showPassword, setShowPassword] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [fullName, setFullName] = useState("");
+
+  const isSignUp = activeTab === "signup";
+
+  const handleInputChange = useCallback(
+    (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+    },
+    []
+  );
+
+  const handleCheckboxChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData((prev) => ({ ...prev, rememberMe: e.target.checked }));
+    },
+    []
+  );
+
+  const togglePassword = useCallback(() => {
+    setShowPassword((prev) => !prev);
+  }, []);
+
+  const handleSubmit = useCallback(
+    (
+      e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
+    ) => {
+      e.preventDefault();
+      console.log("Form submitted:", formData);
+    },
+    [formData]
+  );
+
+  // Memoized content
+  const title = useMemo(
+    () => (isSignUp ? "Create an account" : "Welcome back"),
+    [isSignUp]
+  );
+  const dividerText = useMemo(
+    () => (isSignUp ? "OR SIGN IN WITH" : "OR CONTINUE WITH"),
+    [isSignUp]
+  );
+  const termsText = useMemo(
+    () =>
+      isSignUp
+        ? "By creating an account, you agree to our Terms & Service"
+        : "By signing in, you agree to our Terms & Service",
+    [isSignUp]
+  );
 
   return (
-    <Tabs defaultValue="signin" className="w-full">
-      <TabsList className="grid w-full grid-cols-2 bg-white/10 backdrop-blur-sm">
-        <TabsTrigger
-          value="signin"
-          className="data-[state=active]:bg-white/20 data-[state=active]:text-white text-white/70"
+    <Card className="w-full max-w-md mx-auto md:px-5 pt-10 rounded-4xl font-inter tracking-wide font-normal">
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="flex p-1.5 border rounded-full gap-1.5">
+            {["signup", "signin"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={cn(
+                  "px-6 py-2 rounded-full text-sm transition-all duration-300 transform hover:scale-105",
+                  {
+                    "bg-white/20 backdrop-blur-sm text-white border border-white/20 shadow-lg":
+                      activeTab === tab,
+                    "text-white/60 hover:text-white hover:bg-white/5":
+                      activeTab !== tab,
+                  }
+                )}
+              >
+                {tab === "signup" ? "Sign up" : "Sign in"}
+              </button>
+            ))}
+          </div>
+          <button className="w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-200 hover:scale-110 hover:rotate-90">
+            <X className="w-5 h-5 text-foreground" />
+          </button>
+        </div>
+        <h1 className="transition-all duration-300 pt-2 pl-2 text-foreground/80">
+          {title}, Sahil
+        </h1>
+      </CardHeader>
+      <CardContent className="relative overflow-hidden">
+        <form
+          onSubmit={handleSubmit}
+          className={cn(
+            "transition-all duration-500 ease-in-out transform space-y-6",
+            isSignUp
+              ? "translate-x-0 opacity-100"
+              : "-translate-x-full opacity-0 absolute inset-0"
+          )}
         >
-          Sign In
-        </TabsTrigger>
-        <TabsTrigger
-          value="signup"
-          className="data-[state=active]:bg-white/20 data-[state=active]:text-white text-white/70"
-        >
-          Sign Up
-        </TabsTrigger>
-      </TabsList>
-
-      <TabsContent value="signin" className="space-y-4 mt-6">
-        <form onSubmit={onSignIn} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="signin-email" className="text-white/90">
-              Email
-            </Label>
-            <div className="relative">
-              <Mail className="absolute left-3 top-3 h-4 w-4 text-white/50" />
-              <Input
-                id="signin-email"
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40 backdrop-blur-sm"
-                required
-              />
-            </div>
+          <div className="grid grid-cols-2 gap-4">
+            <Input
+              type="text"
+              onChange={handleInputChange("firstName")}
+              className="h-14 px-4 rounded-full focus-visible:ring-0 focus-visible:border-orange-400/80"
+              placeholder="First name"
+            />
+            <Input
+              type="text"
+              onChange={handleInputChange("lastName")}
+              className="h-14 px-4 rounded-full focus-visible:ring-0 focus-visible:border-orange-400/80"
+              placeholder="Last name"
+            />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="signin-password" className="text-white/90">
-              Password
-            </Label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-3 h-4 w-4 text-white/50" />
-              <Input
-                id="signin-password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="pl-10 pr-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40 backdrop-blur-sm"
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3 text-white/50 hover:text-white/70"
-              >
-                {showPassword ? (
-                  <EyeOff className="h-4 w-4" />
-                ) : (
-                  <Eye className="h-4 w-4" />
-                )}
-              </button>
-            </div>
+          <div className="relative">
+            <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground transition-colors duration-200" />
+            <Input
+              type="email"
+              onChange={handleInputChange("email")}
+              className="h-14 px-4 rounded-full focus-visible:ring-0 focus-visible:border-orange-400/80 pl-12"
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div className="relative">
+            <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground transition-colors duration-200" />
+            <Input
+              type="tel"
+              onChange={handleInputChange("phoneNumber")}
+              className="h-14 px-4 rounded-full focus-visible:ring-0 focus-visible:border-orange-400/80 pl-12"
+              placeholder="Phone number"
+            />
+          </div>
+
+          <Button
+            className="w-full bg-foreground/80 py-6 rounded-full text-base mt-4"
+            size={"lg"}
+          >
+            Create an account
+          </Button>
+        </form>
+
+        <form
+          onSubmit={handleSubmit}
+          className={cn(
+            "transition-all duration-500 ease-in-out transform space-y-6",
+            {
+              "translate-x-0 opacity-100": !isSignUp,
+              "translate-x-full opacity-0 absolute inset-0": isSignUp,
+            }
+          )}
+        >
+          <div className="relative">
+            <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground transition-colors duration-200" />
+            <Input
+              type="email"
+              onChange={handleInputChange("email")}
+              className="h-14 px-4 rounded-full focus-visible:ring-0 focus-visible:border-orange-400/80 pl-12"
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div className="relative">
+            <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground transition-colors duration-200" />
+            <Input
+              type={showPassword ? "text" : "password"}
+              onChange={handleInputChange("password")}
+              className="h-14 px-4 rounded-full focus-visible:ring-0 focus-visible:border-orange-400/80 pl-12"
+              placeholder="Enter your password"
+            />
+            <button
+              type="button"
+              onClick={togglePassword}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 transition-colors duration-200"
+            >
+              {showPassword ? (
+                <EyeOff className="w-5 h-5" />
+              ) : (
+                <Eye className="w-5 h-5" />
+              )}
+            </button>
           </div>
 
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Checkbox
-                id="remember"
-                checked={rememberMe}
-                onCheckedChange={setRememberMe}
-                className="border-white/20 data-[state=checked]:bg-white/20"
+            <Label className="flex items-center cursor-pointer">
+              <Input
+                type="checkbox"
+                checked={formData.rememberMe}
+                onChange={handleCheckboxChange}
+                className="w-4 h-4"
               />
-              <Label htmlFor="remember" className="text-sm text-white/70">
-                Remember me
-              </Label>
-            </div>
+              <span className="text-muted-foreground text-sm">Remember me</span>
+            </Label>
             <button
               type="button"
-              onClick={onForgotPassword}
-              className="text-sm text-white/70 hover:text-white underline"
+              className="text-muted-foreground text-sm transition-colors duration-200"
             >
               Forgot password?
             </button>
           </div>
 
           <Button
-            type="submit"
-            className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/20 backdrop-blur-sm transition-all duration-200"
-            disabled={isLoading}
+            className="w-full bg-foreground/80 py-6 rounded-full text-base mt-4"
+            size={"lg"}
           >
-            {isLoading ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Signing in...
-              </>
-            ) : (
-              "Sign In"
-            )}
+            Sign in
           </Button>
         </form>
+      </CardContent>
 
-        <SocialLogin onSocialLogin={onSocialLogin} type="signin" isLoading={isLoading} />
-      </TabsContent>
-
-      <TabsContent value="signup" className="space-y-4 mt-6">
-        <form onSubmit={onSignUp} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="signup-name" className="text-white/90">
-              Full Name
-            </Label>
-            <div className="relative">
-              <User className="absolute left-3 top-3 h-4 w-4 text-white/50" />
-              <Input
-                id="signup-name"
-                type="text"
-                placeholder="Enter your full name"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40 backdrop-blur-sm"
-                required
-              />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="signup-email" className="text-white/90">
-              Email
-            </Label>
-            <div className="relative">
-              <Mail className="absolute left-3 top-3 h-4 w-4 text-white/50" />
-              <Input
-                id="signup-email"
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40 backdrop-blur-sm"
-                required
-              />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="signup-password" className="text-white/90">
-              Password
-            </Label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-3 h-4 w-4 text-white/50" />
-              <Input
-                id="signup-password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Create a password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="pl-10 pr-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40 backdrop-blur-sm"
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3 text-white/50 hover:text-white/70"
-              >
-                {showPassword ? (
-                  <EyeOff className="h-4 w-4" />
-                ) : (
-                  <Eye className="h-4 w-4" />
-                )}
-              </button>
-            </div>
-            {/* <PasswordStrengthIndicator password={password} /> */}
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="confirm-password" className="text-white/90">
-              Confirm Password
-            </Label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-3 h-4 w-4 text-white/50" />
-              <Input
-                id="confirm-password"
-                type="password"
-                placeholder="Confirm your password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40 backdrop-blur-sm"
-                required
-              />
-            </div>
-            {confirmPassword && password !== confirmPassword && (
-              <p className="text-xs text-red-400">Passwords do not match</p>
-            )}
-          </div>
-
-          <Button
-            type="submit"
-            className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/20 backdrop-blur-sm transition-all duration-200"
-            disabled={isLoading || password !== confirmPassword}
-          >
-            {isLoading ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Creating account...
-              </>
-            ) : (
-              "Create Account"
-            )}
-          </Button>
-        </form>
-
-        <SocialLogin onSocialLogin={onSocialLogin} type="signup" isLoading={isLoading} />
-      </TabsContent>
-    </Tabs>
-  );
-}
-
-export function SocialLogin({ onSocialLogin, type, isLoading }: SocialLoginProps) {
-  return (
-    <div className="space-y-6">
-      <div className="relative">
-        <Separator className="bg-[#3a3a3c]" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="bg-[#1c1c1e] px-4 text-sm text-[#8e8e93] font-medium tracking-wide font-sans">
-            {type === "signin" ? "OR CONTINUE WITH" : "OR SIGN UP WITH"}
-          </span>
-        </div>
+      <div className="flex items-center my-3">
+        <div className="flex-1 h-px bg-border" />
+        <span className="px-3 text-muted-foreground text-xs">
+          {dividerText}
+        </span>
+        <div className="flex-1 h-px bg-border" />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <CardFooter className="grid grid-cols-2 gap-4">
         <Button
-          type="button"
-          variant="outline"
-          className="bg-[#2c2c2e] border border-[#3a3a3c] text-white hover:bg-[#3a3a3c] hover:text-white hover:border-[#48484a] transition-all duration-200 rounded-2xl h-14 font-medium font-sans"
-          onClick={() => onSocialLogin("Google")}
-          disabled={isLoading}
+          variant={"outline"}
+          aria-label="Sign in with Google"
+          className="py-7 rounded-2xl"
         >
-          <Mail className="w-5 h-5 mr-2" />
-          Google
+          <Facebook className="size-6 text-blue-500" />
         </Button>
         <Button
-          type="button"
-          variant="outline"
-          className="bg-[#2c2c2e] border border-[#3a3a3c] text-white hover:bg-[#3a3a3c] hover:text-white hover:border-[#48484a] transition-all duration-200 rounded-2xl h-14 font-medium font-sans"
-          onClick={() => onSocialLogin("GitHub")}
-          disabled={isLoading}
+          className="py-7 rounded-2xl"
+          variant={"outline"}
+          aria-label="Sign in with Apple"
         >
-          <Github className="w-5 h-5 mr-2" />
-          GitHub
+          <Github className="size-6 text-foreground" />
         </Button>
-      </div>
-    </div>
+      </CardFooter>
+
+      <p className="text-center text-muted-foreground/60 text-sm mt-4">
+        {termsText}
+      </p>
+    </Card>
   );
 }

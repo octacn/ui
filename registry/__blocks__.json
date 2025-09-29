@@ -14,10 +14,24 @@
     ]
   },
   {
+    "name": "auth-form-v1",
+    "description": "A Authentication form with sign up and sign in section.",
+    "categories": [
+      "authentication"
+    ]
+  },
+  {
     "name": "pricing-v1-demo",
     "description": "A Pricing Demo of three section.",
     "categories": [
       "pricing"
+    ]
+  },
+  {
+    "name": "auth-form-v1-demo",
+    "description": "A Authentication form with sign up and sign in section.",
+    "categories": [
+      "authentication"
     ]
   },
   {

@@ -12,7 +12,7 @@ export default function PaperBackground({
     >
       <svg
         className="absolute"
-        viewBox="0 0 1000 800"
+        viewBox="0 0 900 800"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

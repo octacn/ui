@@ -46,4 +46,19 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["pricing"],
   },
+  {
+    name: "auth-form-v1",
+    description: "A Authentication form with sign up and sign in section.",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["card", "utils", "button", "input", "label"],
+    files: [
+      {
+        path: "blocks/auth-form-v1.tsx",
+        type: "registry:block",
+        target: "components/auth-form.tsx",
+      },
+    ],
+    categories: ["authentication"],
+  },
 ];
