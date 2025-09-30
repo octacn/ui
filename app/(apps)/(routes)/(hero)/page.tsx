@@ -1,33 +1,41 @@
-import ScaleHoverAnimationButton from "@/registry/components/scale-hover-animation-button";
-import { InteractiveGradientText } from "@/registry/components/interactive-gradient-text";
-import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-button";
-import PinterestLayoutDemo from "@/registry/demo/components/pinterest-layout-demo";
-import { TypewriterEffect } from "@/registry/components/typewriter-effect";
-import PaperBackground from "@/registry/components/paper-background";
-import { AuthForm } from "@/registry/blocks/auth-form-v1";
-import { Loading } from "@/registry/components/loading";
-import React, { ComponentProps, Suspense } from "react";
+import React, { ComponentProps, memo, Suspense } from "react";
+import {
+  ScaleHoverAnimationButton,
+  InteractiveGradientText,
+  MagneticShimmerButton,
+  PinterestLayoutDemo,
+  TypewriterEffect,
+  PaperBackground,
+  AuthForm,
+} from "./example";
+import AnimatedConnectLine from "@/registry/components/animated-connect-line";
 import { cn } from "@/lib/utils";
+import { Loading } from "@/registry/components/loading";
 
 export default function Page() {
   return (
-    <Suspense fallback={<Loading />}>
-      <section className="space-y-6 hidden md:block">
+    <section className="space-y-6">
+      <div className="hidden md:block space-y-6">
         <TopLayout />
         <MiddleLayout />
         <BottomLayout />
-      </section>
-    </Suspense>
+      </div>
+
+      <div className="block md:hidden space-y-4 px-4">
+        <MobileLayout />
+      </div>
+    </section>
   );
 }
 
-function TopLayout() {
+const TopLayout = memo(() => {
   return (
     <div className="grid grid-cols-3 gap-6">
       <Box className="col-span-2">
         <h4 className="absolute top-5 left-0 right-0 text-center text-xl font-inter text-muted-foreground">
           Hover Over Text to see Animation
         </h4>
+
         <InteractiveGradientText text="octacn" />
       </Box>
 
@@ -42,13 +50,16 @@ function TopLayout() {
       </div>
     </div>
   );
-}
+});
+TopLayout.displayName = "TopLayout";
 
-function MiddleLayout() {
+const MiddleLayout = memo(() => {
   return (
     <div className="grid grid-cols-3 gap-6">
       <div className="flex flex-col gap-6">
-        <Box className="h-full">animated line</Box>
+        <Box className="h-full">
+          <AnimatedConnectLine />
+        </Box>
         <Box>
           <TypewriterEffect className="py-2">
             https://ui.octacn.com
@@ -61,36 +72,88 @@ function MiddleLayout() {
       </Box>
     </div>
   );
-}
+});
+MiddleLayout.displayName = "MiddleLayout";
 
-function BottomLayout() {
+const BottomLayout = memo(() => {
   return (
     <div className="grid grid-cols-3 gap-6">
       <Box className="col-span-2">
         <div className="absolute top-0 right-0 left-0 bottom-0 z-10">
-          <div className="flex items-center justify-centers h-full text-center">
+          <div className="flex items-center justify-center h-full text-center">
             <h4 className="whitespace-nowrap text-center w-full text-3xl font-medium font-inter tracking-wide">
               Zoom to see background
             </h4>
           </div>
         </div>
+
         <PaperBackground className="rounded-lg" />
       </Box>
+
       <AuthForm />
     </div>
   );
-}
+});
+BottomLayout.displayName = "BottomLayout";
 
-function Box({ children, className }: ComponentProps<"div">) {
+const MobileLayout = memo(() => {
   return (
-    <div
-      className={cn(
-        "relative border border-dashed bg-surface rounded-lg px-4 py-8 overflow-hidden",
-        "grid place-items-center content-center justify-items-center",
-        className
-      )}
-    >
-      {children}
+    <div className="space-y-4">
+      <Box className="text-center">
+        <h4 className="text-lg font-inter text-muted-foreground mb-4">
+          Tap to see Animation
+        </h4>
+
+        <InteractiveGradientText text="octacn" />
+      </Box>
+
+      <div className="grid grid-cols-1 gap-4">
+        <Box>
+          <MagneticShimmerButton>Hover Near Me!</MagneticShimmerButton>
+        </Box>
+
+        <Box>
+          <ScaleHoverAnimationButton>Hover On Me!</ScaleHoverAnimationButton>
+        </Box>
+      </div>
+
+      <Box>
+        <TypewriterEffect className="py-2">
+          https://ui.octacn.com
+        </TypewriterEffect>
+      </Box>
+
+      <Box>
+        <PinterestLayoutDemo />
+      </Box>
+
+      <Box className="relative min-h-[200px]">
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <h4 className="text-xl font-medium font-inter tracking-wide text-center">
+            Zoom to see background
+          </h4>
+        </div>
+        <PaperBackground className="rounded-lg" />
+      </Box>
+
+      <AuthForm />
     </div>
+  );
+});
+MobileLayout.displayName = "MobileLayout";
+
+export function Box({ children, className }: ComponentProps<"div">) {
+  return (
+    <Suspense fallback={<Loading />}>
+      <div
+        className={cn(
+          "relative border border-dashed bg-surface rounded-lg px-4 py-8 overflow-hidden",
+          "grid place-items-center content-center justify-items-center",
+          className
+        )}
+      >
+        {children}
+      </div>
+    </Suspense>
   );
 }

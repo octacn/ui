@@ -27,6 +27,10 @@ const examples = [
     name: "Authentication",
     href: "/example/authentication",
   },
+  {
+    name: "Templates",
+    href: "/example/templates",
+  },
 ];
 
 export function ExampleSection({
