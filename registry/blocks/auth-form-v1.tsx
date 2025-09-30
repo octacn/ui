@@ -89,9 +89,9 @@ export function AuthForm() {
                 className={cn(
                   "px-6 py-2 rounded-full text-sm transition-all duration-300 transform hover:scale-105",
                   {
-                    "bg-white/20 backdrop-blur-sm text-white border border-white/20 shadow-lg":
+                    "bg-foreground/80 backdrop-blur-sm border text-background border-foreground/20 shadow-lg":
                       activeTab === tab,
-                    "text-white/60 hover:text-white hover:bg-white/5":
+                    "text-foreground/60 hover:text-muted-foreground hover:bg-accent":
                       activeTab !== tab,
                   }
                 )}

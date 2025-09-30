@@ -18,9 +18,13 @@ import {
   CarouselPrevious,
 } from "@/registry/ui/carousel";
 import { Loading } from "@/registry/components/loading";
+import { Button } from "@/registry/ui/button";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+
+type ImageCarouselItem = z.infer<typeof imageCarouselSchema>;
 
 type ImageCarouselContext = {
-  item: z.infer<typeof imageCarouselSchema>;
+  item: ImageCarouselItem;
 };
 
 const ImageViewerContext = React.createContext<ImageCarouselContext | null>(
@@ -37,22 +41,21 @@ function useImageViewer() {
   return context;
 }
 
-function ImageViewerProvider({
-  item,
-  children,
-}: Pick<ImageCarouselContext, "item"> & {
-  children: React.ReactNode;
-}) {
+const ImageViewerProvider = React.memo<
+  Pick<ImageCarouselContext, "item"> & {
+    children: React.ReactNode;
+  }
+>(({ item, children }) => {
+  const contextValue = React.useMemo(() => ({ item }), [item]);
+
   return (
-    <ImageViewerContext.Provider
-      value={{
-        item,
-      }}
-    >
+    <ImageViewerContext.Provider value={contextValue}>
       {children}
     </ImageViewerContext.Provider>
   );
-}
+});
+
+ImageViewerProvider.displayName = "ImageViewerProvider";
 
 const CarouselViewer = ({ item }: Pick<ImageCarouselContext, "item">) => {
   return (
@@ -87,6 +90,93 @@ function ImageCarouselContent() {
       api.off("select", handleSelect);
     };
   }, [api]);
+
+  if (item.type === "view") {
+    return (
+      <Carousel
+        setApi={setApi}
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        plugins={[
+          Autoplay({
+            delay: 4000,
+          }),
+        ]}
+        className="bg-surface border rounded-2xl overflow-hidden gap-0 "
+      >
+        <div className="flex justify-between items-center py-3 px-6">
+          <div className="flex gap-x-3 items-center">
+            <Link
+              href={"/"}
+              className="font-inter tracking-wide font-normal capitalize group whitespace-nowrap inline-flex items-center transition-colors duration-200 hover:text-orange-400 text-sm"
+            >
+              Live
+            </Link>
+
+            <GithubDownloadButton
+              className="hover:text-orange-400/90 text-sm"
+              repository={item.repository}
+              branch={item.branch}
+              owner={item.owner}
+            >
+              Docs
+            </GithubDownloadButton>
+          </div>
+
+          <h4 className="font-inter tracking-wide font-normal capitalize text-sm">
+            {item.name}
+          </h4>
+
+          <div className="flex gap-x-4">
+            <Button
+              onClick={() => api?.scrollPrev()}
+              data-slot="carousel-previous"
+              variant={"outline"}
+              className={cn("size-8 rounded-full")}
+            >
+              <ArrowLeft />
+              <span className="sr-only">Previous slide</span>
+            </Button>
+
+            <Button
+              onClick={() => api?.scrollNext()}
+              data-slot="carousel-previous"
+              variant={"outline"}
+              className={cn("size-8 rounded-full")}
+            >
+              <ArrowRight />
+              <span className="sr-only">Next slide</span>
+            </Button>
+          </div>
+        </div>
+
+        <div className="bg-border h-px" />
+
+        <CarouselContent className="pt-0 max-h-[46rem]">
+          {item.images.map((item, index) => (
+            <CarouselItem className="pt-0" key={index}>
+              {loading && <Loading />}
+
+              <Image
+                src={`/images/templates/${item.image}`}
+                width={1000}
+                height={1000}
+                alt={item.image.toLowerCase()}
+                loading="lazy"
+                onLoad={() => setLoading(false)}
+                className={cn(
+                  "w-full object-cover",
+                  loading ? "opacity-0" : "opacity-100"
+                )}
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    );
+  }
 
   return (
     <section className="pt-3">
@@ -152,6 +242,7 @@ function ImageCarouselContent() {
           Live Preview
         </Link>
         <GithubDownloadButton
+          className="bg-surface border px-10 py-4 rounded-xl hover:bg-accent hover:text-accent-foreground"
           repository={item.repository}
           branch={item.branch}
           owner={item.owner}

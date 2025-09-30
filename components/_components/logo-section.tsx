@@ -3,7 +3,7 @@ import React from "react";
 
 export default function LogoSection() {
   return (
-    <section className="mt-6">
+    <section className="mt-8">
       <h2 className="font-inter font-normal text-foreground/80 text-center text-base md:text-xl tracking-wide">
         <span className="inline-block vertical-align-top text-balance max-w-lg">
           Our Technology Stack for Building Websites
@@ -37,7 +37,7 @@ function LogoCard() {
   ];
 
   return (
-    <div className="no-visible-scrollbar relative flex flex-wrap items-center justify-center gap-4 mt-3">
+    <div className="no-visible-scrollbar relative flex flex-wrap items-center justify-center gap-4 mt-4">
       {techStackItems.map(({ icon: Icon, name }) => (
         <div
           key={name}

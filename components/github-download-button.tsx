@@ -29,7 +29,7 @@ export default function GithubDownloadButton({
   return (
     <Link
       className={cn(
-        "inline-flex items-center justify-center bg-surface border px-10 py-4 rounded-xl font-inter text-base font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
+        "inline-flex items-center justify-center font-inter text-base font-normal tracking-wide transition-colors",
         className
       )}
       href={url}

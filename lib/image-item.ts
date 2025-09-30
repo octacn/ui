@@ -44,6 +44,18 @@ export const ImageCarouselItem: Record<string, ImageCarousel> = {
       { image: "temp-1.avif" },
       { image: "temp-2.avif" },
     ],
+    type: "docs",
+    preview: "https://casecobracase.vercel.app/",
+    repository: "case-cobra",
+  },
+  "case-cobra-view": {
+    name: "case-cobra-view of ImageCarouselItem",
+    images: [
+      { image: "case-cobra.avif" },
+      { image: "temp-1.avif" },
+      { image: "temp-2.avif" },
+    ],
+    type: "view",
     preview: "https://casecobracase.vercel.app/",
     repository: "case-cobra",
   },

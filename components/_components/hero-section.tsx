@@ -31,13 +31,12 @@ export default function HeroSection() {
           on what truly matters creating impactful websites that inspire your
           audience.
         </h2>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-y-4 gap-x-10 mt-4 md:my-2 w-full px-4 md:w-fit">
-          <Button className="font-inter has-[>svg]:px-8 h-10 w-full md:w-fit">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-y-4 gap-x-8 mt-4 md:my-2 w-full px-4 md:w-fit">
+          <Button className="font-inter has-[>svg]:px-8 h-10 w-full md:w-fit px-10 py-6 rounded-2xl">
             Browser Components
-            <ArrowRight />
           </Button>
           <Button
-            className="font-inter has-[>svg]:px-8 h-10 hover:translate-y-[-2px] transition-all duration-300 w-full md:w-fit"
+            className="font-inter has-[>svg]:px-8 h-10 hover:translate-y-[-2px] transition-all duration-300 w-full md:w-fit px-10 py-6 rounded-2xl"
             variant={"outline"}
           >
             Explore Templates
