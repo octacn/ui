@@ -8,19 +8,29 @@ import GenerateList from "@/components/generate-list";
 import Link from "next/link";
 
 interface FullComponentsListProps {
-  name: "docs" | "blocks" | "authentication";
+  name: "docs" | "blocks" | "authentication" | "components";
 }
+export function ComponentsList({ name }: FullComponentsListProps) {
+  const selectedSource =
+    name === "components"
+      ? componentsSource
+      : name === "authentication"
+      ? authenticationSource
+      : name === "blocks"
+      ? blocksSource
+      : docsSource;
 
-export function ComponentsList() {
-  return <GenerateList tree={componentsSource.pageTree} />;
+  return <GenerateList tree={selectedSource.pageTree} />;
 }
 
 export function FullComponentsList({ name = "docs" }: FullComponentsListProps) {
   const selectedSource =
-    name === "docs"
-      ? blocksSource
+    name === "components"
+      ? componentsSource
       : name === "authentication"
       ? authenticationSource
+      : name === "blocks"
+      ? blocksSource
       : docsSource;
 
   const folders = selectedSource.pageTree.children.filter(

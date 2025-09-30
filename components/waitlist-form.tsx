@@ -19,13 +19,13 @@ import {
   FormMessage,
 } from "@/registry/ui/form";
 import { Input } from "@/registry/ui/input";
-import { submitWaitlistForm } from "@/actions/waitlist-action";
 import { waitlistSchema } from "@/schema/waitlist-schema";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import Link from "next/link";
 import Highlighter from "@/registry/components/highlighter";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
+import { submitWaitlistForm } from "@/app/waitlist/waitlist-action";
 
 type FormValues = z.infer<typeof waitlistSchema>;
 

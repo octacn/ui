@@ -1,5 +1,3 @@
-"use server";
-
 import { waitlistSchema } from "@/schema/waitlist-schema";
 
 type FormState = {
