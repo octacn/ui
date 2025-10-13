@@ -6,6 +6,7 @@ export const siteConfig = {
   ogImage: "https://ui.octacn.com/og.jpg",
   meeting: "https://axisbuddy.com/meeting",
   agency: "https://axisbuddy.com",
+  issue: "https://github.com/octacn/ui/issues",
   description:
     "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
   links: {
