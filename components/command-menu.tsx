@@ -4,11 +4,16 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 import { type DialogProps } from "@radix-ui/react-dialog";
 import { IconArrowRight } from "@tabler/icons-react";
-import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react";
+import { CornerDownLeftIcon } from "lucide-react";
 
 import { useIsMac } from "@/hooks/use-is-mac";
 import { useMutationObserver } from "@/hooks/use-mutation-observer";
-import { docsSource } from "@/lib/source";
+import {
+  authenticationSource,
+  blocksSource,
+  componentsSource,
+  docsSource,
+} from "@/lib/source";
 import { cn } from "@/lib/utils";
 import { useConfig } from "@/hooks/use-config";
 import { copyToClipboardWithMeta } from "@/components/copy-button";
@@ -34,14 +39,19 @@ import {
 
 export function CommandMenu({
   tree,
+  components,
+  authentication,
   colors,
   blocks,
   navItems,
   ...props
 }: DialogProps & {
   tree: typeof docsSource.pageTree;
+  components: typeof componentsSource.pageTree;
+  blocks: typeof blocksSource.pageTree;
+  authentication: typeof authenticationSource.pageTree;
   colors: ColorPalette[];
-  blocks?: { name: string; description: string; categories: string[] }[];
+  // blocks?: { name: string; description: string; categories: string[] }[];
   navItems?: { href: string; label: string }[];
 }) {
   const router = useRouter();
@@ -203,7 +213,112 @@ export function CommandMenu({
                 ))}
               </CommandGroup>
             )}
-            {tree.children!.map((group) => (
+            {tree.children.map((group) => (
+              <CommandGroup
+                key={group.$id}
+                heading={group.name}
+                className="!p-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1"
+              >
+                {group.children?.map((item) => {
+                  if (item.type === "page") {
+                    const isComponent = item.url!.includes("/components/");
+
+                    return (
+                      <CommandMenuItem
+                        key={item.url}
+                        value={item.name ? `${group.name} ${item.name}` : ""}
+                        keywords={isComponent ? ["component"] : undefined}
+                        onHighlight={() =>
+                          handlePageHighlight(isComponent, item)
+                        }
+                        onSelect={() =>
+                          runCommand(() => router.push(item.url!))
+                        }
+                      >
+                        {isComponent ? (
+                          <div className="border-muted-foreground aspect-square size-4 rounded-full border border-dashed" />
+                        ) : (
+                          <IconArrowRight />
+                        )}
+                        {item.name}
+                      </CommandMenuItem>
+                    );
+                  }
+                  return null;
+                })}
+              </CommandGroup>
+            ))}
+            {components.children.map((group) => (
+              <CommandGroup
+                key={group.$id}
+                heading={group.name}
+                className="!p-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1"
+              >
+                {group.children?.map((item) => {
+                  if (item.type === "page") {
+                    const isComponent = item.url!.includes("/components/");
+
+                    return (
+                      <CommandMenuItem
+                        key={item.url}
+                        value={item.name ? `${group.name} ${item.name}` : ""}
+                        keywords={isComponent ? ["component"] : undefined}
+                        onHighlight={() =>
+                          handlePageHighlight(isComponent, item)
+                        }
+                        onSelect={() =>
+                          runCommand(() => router.push(item.url!))
+                        }
+                      >
+                        {isComponent ? (
+                          <div className="border-muted-foreground aspect-square size-4 rounded-full border border-dashed" />
+                        ) : (
+                          <IconArrowRight />
+                        )}
+                        {item.name}
+                      </CommandMenuItem>
+                    );
+                  }
+                  return null;
+                })}
+              </CommandGroup>
+            ))}
+            {blocks.children.map((group) => (
+              <CommandGroup
+                key={group.$id}
+                heading={group.name}
+                className="!p-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1"
+              >
+                {group.children?.map((item) => {
+                  if (item.type === "page") {
+                    const isComponent = item.url!.includes("/components/");
+
+                    return (
+                      <CommandMenuItem
+                        key={item.url}
+                        value={item.name ? `${group.name} ${item.name}` : ""}
+                        keywords={isComponent ? ["component"] : undefined}
+                        onHighlight={() =>
+                          handlePageHighlight(isComponent, item)
+                        }
+                        onSelect={() =>
+                          runCommand(() => router.push(item.url!))
+                        }
+                      >
+                        {isComponent ? (
+                          <div className="border-muted-foreground aspect-square size-4 rounded-full border border-dashed" />
+                        ) : (
+                          <IconArrowRight />
+                        )}
+                        {item.name}
+                      </CommandMenuItem>
+                    );
+                  }
+                  return null;
+                })}
+              </CommandGroup>
+            ))}
+            {authentication.children.map((group) => (
               <CommandGroup
                 key={group.$id}
                 heading={group.name}
@@ -274,41 +389,6 @@ export function CommandMenu({
                 ))}
               </CommandGroup>
             ))}
-            {blocks?.length ? (
-              <CommandGroup
-                heading="Blocks"
-                className="!p-0 [&_[cmdk-group-heading]]:!p-3"
-              >
-                {blocks.map((block) => (
-                  <CommandMenuItem
-                    key={block.name}
-                    value={block.name}
-                    onHighlight={() => {
-                      handleBlockHighlight(block);
-                    }}
-                    keywords={[
-                      "block",
-                      block.name,
-                      block.description,
-                      ...block.categories,
-                    ]}
-                    onSelect={() => {
-                      runCommand(() =>
-                        router.push(
-                          `/blocks/${block.categories[0]}#${block.name}`
-                        )
-                      );
-                    }}
-                  >
-                    <SquareDashedIcon />
-                    {block.description}
-                    <span className="text-muted-foreground ml-auto font-mono text-xs font-normal tabular-nums">
-                      {block.name}
-                    </span>
-                  </CommandMenuItem>
-                ))}
-              </CommandGroup>
-            ) : null}
           </CommandList>
         </Command>
         <div className="text-muted-foreground absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-t-neutral-100 bg-neutral-50 px-4 text-xs font-medium dark:border-t-neutral-700 dark:bg-neutral-800">

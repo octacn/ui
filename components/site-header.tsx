@@ -4,7 +4,12 @@ import { MobileNav } from "@/components/mobile-nav";
 import { Separator } from "@/registry/ui/separator";
 import { MainNav } from "@/components/main-nav";
 import { Icons } from "@/components/icons";
-import { docsSource } from "@/lib/source";
+import {
+  authenticationSource,
+  blocksSource,
+  componentsSource,
+  docsSource,
+} from "@/lib/source";
 import { siteConfig } from "@/lib/config";
 import { getColors } from "@/lib/colors";
 import { cn } from "@/lib/utils";
@@ -15,7 +20,11 @@ import { DiscordLink, GitHubLink } from "@/components/social-icon";
 
 export function SiteHeader() {
   const colors = getColors();
+
   const pageTree = docsSource.pageTree;
+  const componentsTree = componentsSource.pageTree;
+  const authenticationTree = authenticationSource.pageTree;
+  const blocksTree = blocksSource.pageTree;
 
   return (
     <header
@@ -37,6 +46,9 @@ export function SiteHeader() {
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
               <CommandMenu
                 tree={pageTree}
+                components={componentsTree}
+                authentication={authenticationTree}
+                blocks={blocksTree}
                 colors={colors}
                 navItems={siteConfig.navItems}
               />
