@@ -1,11 +1,11 @@
-import TestimonialsSection from "@/components/_components/testimonials-section";
+// import TestimonialsSection from "@/components/_components/testimonials-section";
 import { ExampleSection } from "@/components/_components/example-section";
-import PremiumShowcase from "@/components/_components/premium-showcase";
+// import PremiumShowcase from "@/components/_components/premium-showcase";
 import { ShootingStars } from "@/registry/components/shooting-stars";
 import HeroSection from "@/components/_components/hero-section";
 import LogoSection from "@/components/_components/logo-section";
-import CtaSection from "@/components/_components/cta-section";
-import FaqSection from "@/components/_components/faq-section";
+import { WaitListCta } from "@/components/_components/cta-section";
+// import FaqSection from "@/components/_components/faq-section";
 import { PageNav } from "@/components/page-nav";
 import { BoxWrapper } from "@/components/box";
 
@@ -26,10 +26,11 @@ export default function HeroLayout({
           </PageNav>
           <div className="hidden md:block">{children}</div>
         </BoxWrapper>
-        <PremiumShowcase />
-        <TestimonialsSection />
-        <FaqSection />
-        <CtaSection />
+        {/* <PremiumShowcase /> */}
+        {/* <TestimonialsSection />
+        <FaqSection /> */}
+        {/* <CtaSection /> */}
+        <WaitListCta />
       </>
     </main>
   );

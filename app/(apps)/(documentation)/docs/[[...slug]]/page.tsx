@@ -16,8 +16,6 @@ import { Badge } from "@/registry/ui/badge";
 import { DocsTableOfContents } from "@/components/docs-toc";
 import { DocsEditButton } from "@/components/docs-edit-button";
 import { OpenInAgency } from "@/components/open-in-agency";
-import { comingSoonPages } from "@/lib/page-type";
-import { WaitlistForm } from "@/components/waitlist-form";
 import ProLibraryCta from "@/components/pro-library-cta";
 
 interface PageProps {
@@ -94,8 +92,6 @@ export default async function Page(props: PageProps) {
 
   const links = doc.links;
 
-  const isComingSoonPages = comingSoonPages.includes(page.url);
-
   return (
     <div
       data-slot="docs"
@@ -167,7 +163,6 @@ export default async function Page(props: PageProps) {
           </div>
           <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
             <MDX components={mdxComponents} />
-            {isComingSoonPages && <WaitlistForm />}
           </div>
           <ProLibraryCta />
         </div>

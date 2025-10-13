@@ -18,80 +18,71 @@ const footerNavigation = [
   {
     title: "Components",
     links: [
-      { label: "Alert", href: "/" },
-      { label: "Button", href: "/" },
-      { label: "Card", href: "/" },
-      { label: "Dialog", href: "/" },
-      { label: "Input", href: "/" },
-      { label: "Select", href: "/" },
+      { label: "Button", href: "/components/components/button" },
+      { label: "Card", href: "/components/components/card" },
+      { label: "Input", href: "/components/components/input" },
+      { label: "Dialog", href: "/components/components/dialog" },
+      { label: "Badge", href: "/components/components/badge" },
+      { label: "See more...", href: "/components/components" },
     ],
   },
   {
     title: "Pro Components",
-    links: [
-      { label: "Hover Card", href: "/" },
-      { label: "Interactive Button", href: "/" },
-      { label: "File Uploader", href: "/" },
-    ],
+    links: [{ label: "Coming Soon...", href: siteConfig.proOctacn }],
   },
   {
     title: "Templates",
     links: [
-      { label: "Dashboard", href: "/" },
-      { label: "Landing", href: "/" },
-      { label: "E-commerce", href: "/" },
-      { label: "Blog", href: "/" },
-      { label: "Portfolio", href: "/" },
-      { label: "Pricing", href: "/" },
+      {
+        label: "Custom Phone Case",
+        href: "/components/templates/custom-phone-case",
+      },
     ],
   },
   {
     title: "Blocks",
     links: [
-      { label: "Hero", href: "/" },
-      { label: "Header", href: "/" },
-      { label: "Footer", href: "/" },
-      { label: "Pricing", href: "/" },
-      { label: "Accordion", href: "/" },
-      { label: "Form", href: "/" },
+      { label: "Header", href: "/blocks/headers/header-v1" },
+      { label: "Footer", href: "/blocks/footers/footer-v1" },
+      { label: "Pricing", href: "/blocks/pricings/pricing-v1" },
+      { label: "Form", href: "/blocks/forms/form-v1" },
     ],
   },
 ];
-
 const socialMediaLinks: SocialMediaLink[] = [
   {
     label: "Github",
     href: siteConfig.links.github,
     icon: (
-      <Icons.gitHub className="hover:text-foreground text-muted-foreground h-6 w-6" />
+      <Icons.gitHub className="hover:text-white text-muted-foreground h-6 w-6" />
     ),
   },
   {
     label: "Twitter",
     href: siteConfig.links.twitter,
     icon: (
-      <Icons.twitter className="hover:text-blue-400 text-muted-foreground" />
+      <Icons.twitter className="hover:text-[#1DA1F2] text-muted-foreground" />
     ),
   },
   {
     label: "Instagram",
-    href: "/",
+    href: siteConfig.links.instagram,
     icon: (
-      <Icons.instagram className="hover:text-red-300 text-muted-foreground" />
+      <Icons.instagram className="hover:text-[#E4405F] text-muted-foreground" />
     ),
   },
   {
     label: "LinkedIn",
-    href: "/",
+    href: siteConfig.links.linkedin,
     icon: (
-      <Icons.linkedin className="hover:text-blue-400 text-muted-foreground " />
+      <Icons.linkedin className="hover:text-[#0077B5] text-muted-foreground " />
     ),
   },
   {
     label: "Discord",
-    href: "/",
+    href: siteConfig.links.discord,
     icon: (
-      <Icons.discord className="hover:text-blue-400 text-muted-foreground " />
+      <Icons.discord className="hover:text-[#5865F2] text-muted-foreground " />
     ),
   },
 ];
@@ -152,7 +143,20 @@ export function SiteFooter() {
         <Separator className="border-1" />
 
         <section className="py-6 sm:py-8 lg:py-10">
-          <NavigationLinksGrid />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 lg:gap-10">
+            {footerNavigation.map((section) => (
+              <div key={section.title}>
+                <h4 className="text-sm sm:text-base font-inter tracking-wider text-foreground/90 underline underline-offset-5 decoration-1 mb-1.5">
+                  {section.title}
+                </h4>
+                {section.links.map((link, idx) => (
+                  <div key={idx}>
+                    <ExternalLink text={link.label} href={link.href} />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </section>
 
         <Separator className="border-1 border-muted-foreground/20" />
@@ -191,25 +195,6 @@ export default function ExternalLink({
         size={16}
       />
     </Link>
-  );
-}
-
-function NavigationLinksGrid() {
-  return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 lg:gap-10">
-      {footerNavigation.map((section) => (
-        <div key={section.title}>
-          <h4 className="text-sm sm:text-base font-inter tracking-wider text-foreground/90 underline underline-offset-5 decoration-1 mb-1.5">
-            {section.title}
-          </h4>
-          {section.links.map((link, idx) => (
-            <div key={idx}>
-              <ExternalLink text={link.label} href={link.href} />
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
   );
 }
 

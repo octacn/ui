@@ -5,6 +5,7 @@ import { Badge } from "@/registry/ui/badge";
 import { Icons } from "@/components/icons";
 import { ArrowRight } from "lucide-react";
 import React from "react";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -32,16 +33,20 @@ export default function HeroSection() {
           audience.
         </h2>
         <div className="flex flex-col md:flex-row items-center justify-center gap-y-4 gap-x-8 mt-4 md:my-2 w-full px-4 md:w-fit">
-          <Button className="font-inter has-[>svg]:px-8 h-10 w-full md:w-fit px-10 py-6 rounded-2xl">
-            Browser Components
-          </Button>
-          <Button
-            className="font-inter has-[>svg]:px-8 h-10 hover:translate-y-[-2px] transition-all duration-300 w-full md:w-fit px-10 py-6 rounded-2xl"
-            variant={"outline"}
-          >
-            Explore Templates
-            <ArrowRight />
-          </Button>
+          <Link href={"/components/components"}>
+            <Button className="font-inter has-[>svg]:px-8 h-10 w-full md:w-fit px-10 py-6 rounded-2xl">
+              Browser Components
+            </Button>
+          </Link>
+          <Link href={"/components/templates"}>
+            <Button
+              className="font-inter has-[>svg]:px-8 h-10 hover:translate-y-[-2px] transition-all duration-300 w-full md:w-fit px-10 py-6 rounded-2xl"
+              variant={"outline"}
+            >
+              Explore Templates
+              <ArrowRight />
+            </Button>
+          </Link>
         </div>
       </div>
     </BoxWrapper>
@@ -50,7 +55,7 @@ export default function HeroSection() {
 
 function ChangelogBadge() {
   return (
-    <HoverAnimation href={"/changelog"}>
+    <HoverAnimation href={"/docs/changelog"}>
       <Badge
         variant={"outline"}
         className="mb-8 md:mt-6 md:mb-2 rounded-full border hover:border-muted-foreground/20 hover:bg-muted-foreground/10 text-muted-foreground px-3 py-1.5 hover:text-foreground/80 font-inter text-xs font-normal tracking-wider gap-1.5 [&>svg]:size-3.5"
@@ -61,7 +66,7 @@ function ChangelogBadge() {
         </span>
 
         <span className="pointer-events-none select-none">
-          Changelog 15th Sept - 4 new Navbar
+          Changelog 15th Oct - Version 1.0.0 Released!
         </span>
 
         <Icons.ArrowRight className="stroke-1 ml-0.5" />

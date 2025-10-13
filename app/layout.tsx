@@ -1,7 +1,7 @@
 import MaxWidthWrapper from "@/registry/ui/max-width-wrapper";
 import { ThemeProvider } from "@/registry/ui/theme-provider";
 import { Geist, Inter, Space_Grotesk } from "next/font/google";
-import { META_THEME_COLORS } from "@/lib/config";
+import { META_THEME_COLORS, siteConfig } from "@/lib/config";
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
@@ -23,8 +23,56 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Home Page",
-  description: "This is description.",
+  title: {
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`,
+  },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
+  description: siteConfig.description,
+  keywords: [
+    "Tailwind CSS",
+    "Components",
+    "ui.octacn",
+    "Next.js",
+    "octacn",
+    "React",
+  ],
+  authors: [
+    {
+      name: "octacn",
+      url: "https://octacn.com",
+    },
+  ],
+  creator: "sahilkumardev",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: process.env.NEXT_PUBLIC_APP_URL!,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_APP_URL}/og.png`,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [`${process.env.NEXT_PUBLIC_APP_URL}/og.png`],
+    creator: "@sahilkumardev",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: `${siteConfig.url}/site.webmanifest`,
 };
 
 export default function RootLayout({
@@ -66,9 +114,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <MaxWidthWrapper>
-            {children}
-          </MaxWidthWrapper>
+          <MaxWidthWrapper>{children}</MaxWidthWrapper>
         </ThemeProvider>
         <Toaster />
       </body>

@@ -1,15 +1,19 @@
 export const siteConfig = {
   name: "octacn/ui",
   url: "https://ui.octacn.com",
+  proOctacn: "https://pro.octacn.com/waitlist",
   base: "https://octacn.com",
   ogImage: "https://ui.octacn.com/og.jpg",
+  meeting: "https://axisbuddy.com/meeting",
+  agency: "https://axisbuddy.com",
   description:
     "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
   links: {
-    twitter: "https://twitter.com/",
-    github: "https://github.com/",
-    linkedin: "https://linkedin.com/",
-    discord: "https://discord.com/",
+    twitter: "https://twitter.com/sahilkumardev",
+    github: "https://github.com/octacn/ui",
+    linkedin: "https://linkedin.com/in/sahil-kumar-dev",
+    discord: "https://discord.gg/X5TSMHqc",
+    instagram: "https://instagram.com/sahilkumardev",
   },
   navItems: [
     {
@@ -32,14 +36,10 @@ export const siteConfig = {
       href: "/authentication",
       label: "Auth",
     },
-    {
-      href: "/illustration",
-      label: "Illustration",
-    },
-    {
-      href: "/blocks-test",
-      label: "Test-Route",
-    },
+    // {
+    //   href: "/illustration",
+    //   label: "Illustration",
+    // },
   ],
 };
 

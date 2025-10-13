@@ -122,7 +122,7 @@ function ImageViewerView() {
               <Button className="w-full">Live Preview</Button>
             </Link>
 
-            <Link href={item.docs}>
+            <Link href={`/blocks/${item.docs}`}>
               <Button className="w-full" variant="outline">
                 View Docs
               </Button>

@@ -23,10 +23,10 @@ const examples = [
   //   name: "Playground",
   //   href: "/example/playground",
   // },
-  {
-    name: "Authentication",
-    href: "/example/authentication",
-  },
+  // {
+  //   name: "Authentication",
+  //   href: "/example/authentication",
+  // },
   {
     name: "Templates",
     href: "/example/templates",

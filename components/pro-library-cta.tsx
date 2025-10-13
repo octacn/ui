@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { createBorder } from "@/components/create-border";
 import HoverAnimation from "@/components/animation/hover-animation";
 import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-button";
+import { siteConfig } from "@/lib/config";
 
 export default function ProLibraryCta({
   className,
@@ -35,13 +36,21 @@ export default function ProLibraryCta({
           </p>
 
           <div className="mt-4 flex gap-4 items-center sm:gap-2">
-            <HoverAnimation href="/" rel="noopener noreferrer" target="_blank">
+            <HoverAnimation
+              href={siteConfig.proOctacn}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <button className="inline-flex items-center justify-center px-6 py-3 rounded-full font-medium shadow-sm bg-background border text-base font-inter tracking-wide hover:cursor-pointer">
                 Upgrade to Pro
               </button>
             </HoverAnimation>
 
-            <Link target="_blank" href="/" rel="noopener noreferrer">
+            <Link
+              target="_blank"
+              href={siteConfig.meeting}
+              rel="noopener noreferrer"
+            >
               <MagneticShimmerButton>Talk to me</MagneticShimmerButton>
             </Link>
           </div>

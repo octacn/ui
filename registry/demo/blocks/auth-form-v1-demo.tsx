@@ -3,7 +3,7 @@ import React from "react";
 
 export default function AuthFormV1Demo() {
   return (
-    <div className="py-12 px-10">
+    <div className="py-12 px-10 flex items-center justify-center min-h-screen">
       <AuthForm />
     </div>
   );

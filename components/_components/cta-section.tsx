@@ -9,6 +9,7 @@ import Image from "next/image";
 import React from "react";
 import { Loading } from "@/registry/components/loading";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/lib/config";
 
 interface ComponentPackCardProps {
   title: string;
@@ -114,5 +115,33 @@ function ProductCards({
         </p>
       </div>
     </div>
+  );
+}
+
+export function WaitListCta() {
+  return (
+    <BoxWrapper className="py-10">
+      <Heading
+        heading="Join the waitlist for Octacn Pro"
+        description="Get early access to premium components, templates, and exclusive features. Join our community of developers and designers who are building the future of web design with Octacn UI Pro."
+      />
+
+      <Box>
+        <div className="flex items-center justify-center py-10">
+          <HoverAnimation
+            href={siteConfig.proOctacn}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button
+              className="py-6 px-8 font-inter text-base font-medium rounded-full text-background/80"
+              size={"lg"}
+            >
+              Join the PRO components and templates waitlist
+            </Button>
+          </HoverAnimation>
+        </div>
+      </Box>
+    </BoxWrapper>
   );
 }

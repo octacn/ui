@@ -1,8 +1,10 @@
 {
-  "name": "new-lib",
-  "version": "0.1.0",
+  "name": "ui.octacn",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
+  "author": "sahilkumardev",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",

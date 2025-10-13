@@ -1,6 +1,7 @@
 import { Button } from "@/registry/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { siteConfig } from "@/lib/config";
 
 export function OpenInAgency({ className }: React.ComponentProps<"div">) {
   return (
@@ -22,7 +23,7 @@ export function OpenInAgency({ className }: React.ComponentProps<"div">) {
       </Button>
 
       <Link
-        href="https://axisbuddy.com/"
+        href={siteConfig.agency}
         target="_blank"
         rel="noreferrer"
         className="absolute inset-0 group-hover:cursor-default cursor-default"

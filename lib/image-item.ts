@@ -35,6 +35,12 @@ export const ImageCardItem: Record<string, ImageCard> = {
     docs: "pricings/pricing-v1",
     title: "Pricing",
   },
+  "auth-form-v1": {
+    type: "block",
+    name: "auth-form-v1-demo",
+    docs: "forms/auth-form-v1",
+    title: "Auth Form",
+  },
 };
 
 export const ImageCarouselItem: Record<string, ImageCarousel> = {
