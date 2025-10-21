@@ -7,12 +7,18 @@ import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-bu
 import { siteConfig } from "@/lib/config";
 
 export default function ProLibraryCta({
+  marginBottom,
   className,
   show,
-}: ComponentProps<"div"> & { show?: boolean }) {
+}: ComponentProps<"div"> & { show?: boolean; marginBottom?: boolean }) {
   return (
     <div className={cn("relative overflow-hidden", className)}>
-      <section className="relative z-20 mx-auto w-full max-w-7xl bg-gradient-to-br from-gray-100 to-white  dark:from-neutral-900 dark:to-neutral-950 mt-12 flex items-center justify-between">
+      <section
+        className={cn(
+          "relative z-20 mx-auto w-full max-w-7xl bg-gradient-to-br from-gray-100 to-white  dark:from-neutral-900 dark:to-neutral-950 mt-12 flex items-center justify-between",
+          marginBottom && "mb-12"
+        )}
+      >
         <>
           {createBorder("horizontal", "top")}
           {createBorder("horizontal", "bottom")}

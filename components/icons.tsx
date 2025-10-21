@@ -33,7 +33,6 @@ export const Icons = {
     </svg>
   ),
   nameLogo: (props: IconProps) => (
-    
     <svg
       width="324"
       height="90"
@@ -108,19 +107,19 @@ export const Icons = {
       />
       <path
         d="M84.4541 32.5H19.3115L22.5859 25.5H87.7207L84.4541 32.5Z"
-        fill="white"
+        fill="currentColor"
       />
       <path
         d="M84.4287 55.4932H19.3008L22.5439 48.4932H87.6729L84.4287 55.4932Z"
-        fill="white"
+        fill="currentColor"
       />
       <path
         d="M32.4434 70.5479L24.8086 70.5479L52.7744 10L60.4092 10L32.4434 70.5479Z"
-        fill="white"
+        fill="currentColor"
       />
       <path
         d="M53.6807 71.5293L46.0449 71.5293L74.5586 10L82.1953 10L53.6807 71.5293Z"
-        fill="white"
+        fill="currentColor"
       />
       <defs>
         <linearGradient

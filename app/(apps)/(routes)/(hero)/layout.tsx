@@ -8,6 +8,7 @@ import { WaitListCta } from "@/components/_components/cta-section";
 // import FaqSection from "@/components/_components/faq-section";
 import { PageNav } from "@/components/page-nav";
 import { BoxWrapper } from "@/components/box";
+import ProLibraryCta from "@/components/pro-library-cta";
 
 export default function HeroLayout({
   children,
@@ -27,10 +28,9 @@ export default function HeroLayout({
           <div className="hidden md:block">{children}</div>
         </BoxWrapper>
         {/* <PremiumShowcase /> */}
-        {/* <TestimonialsSection />
-        <FaqSection /> */}
         {/* <CtaSection /> */}
-        <WaitListCta />
+        {/* <WaitListCta /> */}
+        <ProLibraryCta  className="mb-10" marginBottom/>
       </>
     </main>
   );

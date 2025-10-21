@@ -90,4 +90,14 @@ export const componentsDemo: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "interactive-background-demo",
+    type: "registry:component",
+    files: [
+      {
+        path: "demo/components/interactive-background-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

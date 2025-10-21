@@ -91,4 +91,16 @@ export const components: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "interactive-background",
+    type: "registry:component",
+    dependencies: ["lucide-react", "motion"],
+    registryDependencies: ["utils"],
+    files: [
+      {
+        path: "components/interactive-background.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

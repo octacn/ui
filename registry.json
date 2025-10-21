@@ -903,6 +903,23 @@
       ]
     },
     {
+      "name": "interactive-background",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/components/interactive-background.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "accordion-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -3132,6 +3149,16 @@
       "files": [
         {
           "path": "registry/demo/components/pinterest-layout-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "interactive-background-demo",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/demo/components/interactive-background-demo.tsx",
           "type": "registry:component"
         }
       ]

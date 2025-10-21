@@ -11,6 +11,7 @@ export const newPages = [
   /**
    * Badge for blocks-docs
    */
+  "/components/backgrounds/interactive-background"
 
   /**
    * Badge for auth-docs
