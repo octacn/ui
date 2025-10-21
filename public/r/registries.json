@@ -772,6 +772,31 @@
       ]
     },
     {
+      "name": "auth-form-v1",
+      "type": "registry:block",
+      "description": "A Authentication form with sign up and sign in section.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "card",
+        "utils",
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth-form-v1.tsx",
+          "type": "registry:block",
+          "target": "components/auth-form.tsx"
+        }
+      ],
+      "categories": [
+        "authentication"
+      ]
+    },
+    {
       "name": "file-uploader",
       "type": "registry:component",
       "files": [
@@ -873,6 +898,23 @@
       "files": [
         {
           "path": "registry/components/pinterest-layout.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "interactive-background",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/components/interactive-background.tsx",
           "type": "registry:component"
         }
       ]
@@ -2790,7 +2832,7 @@
         {
           "path": "registry/demo/blocks/pricing-v1-demo.tsx",
           "type": "registry:block",
-          "target": "components/pricing-demo.tsx"
+          "target": "app/page.tsx"
         },
         {
           "path": "registry/blocks/pricing-v1.tsx",
@@ -2800,6 +2842,36 @@
       ],
       "categories": [
         "pricing"
+      ]
+    },
+    {
+      "name": "auth-form-v1-demo",
+      "type": "registry:block",
+      "description": "A Authentication form with sign up and sign in section.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "card",
+        "utils",
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/auth-form-v1-demo.tsx",
+          "type": "registry:block",
+          "target": "app/page.tsx"
+        },
+        {
+          "path": "registry/blocks/auth-form-v1.tsx",
+          "type": "registry:block",
+          "target": "components/auth-form.tsx"
+        }
+      ],
+      "categories": [
+        "authentication"
       ]
     },
     {
@@ -3077,6 +3149,16 @@
       "files": [
         {
           "path": "registry/demo/components/pinterest-layout-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "interactive-background-demo",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/demo/components/interactive-background-demo.tsx",
           "type": "registry:component"
         }
       ]

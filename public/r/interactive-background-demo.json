@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/demo/components/interactive-background-demo.tsx",
-      "content": "import { InteractiveBackground } from \"@/registry/components/interactive-background\";\r\nimport React from \"react\";\r\n\r\nexport default function InteractiveBackgroundDemo() {\r\n  return (\r\n    <>\r\n      <InteractiveBackground />\r\n    </>\r\n  );\r\n}\r\n",
+      "content": "import { InteractiveBackground } from \"@/registry/components/interactive-background\";\r\nimport React from \"react\";\r\n\r\nexport default function InteractiveBackgroundDemo() {\r\n  return (\r\n    <>\r\n      <InteractiveBackground\r\n        interactive\r\n        className=\"absolute inset-0 rounded-lg\"\r\n      />\r\n    </>\r\n  );\r\n}\r\n",
       "type": "registry:component"
     }
   ]
