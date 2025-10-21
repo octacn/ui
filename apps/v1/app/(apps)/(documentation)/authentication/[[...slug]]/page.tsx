@@ -22,9 +22,9 @@ interface PageProps {
   params: Promise<{ slug?: string[] }>;
 }
 
-export const revalidate = false;
-export const dynamic = "force-static";
-export const dynamicParams = false;
+// export const revalidate = false;
+// export const dynamic = "force-static";
+// export const dynamicParams = false;
 
 // export function generateStaticParams() {
 //   return authenticationSource.generateParams();
