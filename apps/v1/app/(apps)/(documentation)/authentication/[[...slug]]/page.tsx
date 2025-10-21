@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { mdxComponents } from "@/mdx-components";
-// import { absoluteUrl } from "@/lib/utils";
+import { absoluteUrl } from "@/lib/utils";
 
 import {
   IconArrowLeft,
@@ -9,11 +9,13 @@ import {
 } from "@tabler/icons-react";
 import { findNeighbour } from "fumadocs-core/server";
 
-import { blocksSource } from "@/lib/source";
+import { authenticationSource } from "@/lib/source";
 import { Button } from "@/registry/ui/button";
 import Link from "next/link";
 import { Badge } from "@/registry/ui/badge";
+import { DocsTableOfContents } from "@/components/docs-toc";
 import { DocsEditButton } from "@/components/docs-edit-button";
+import { OpenInAgency } from "@/components/open-in-agency";
 import ProLibraryCta from "@/components/pro-library-cta";
 
 interface PageProps {
@@ -25,21 +27,12 @@ export const dynamic = "force-static";
 export const dynamicParams = false;
 
 // export function generateStaticParams() {
-//   return blocksSource.generateParams();
+//   return authenticationSource.generateParams();
 // }
 
 // export async function generateMetadata(props: PageProps) {
 //   const params = await props.params;
-//   let page;
-//   try {
-//     page = blocksSource.getPage(params.slug);
-//   } catch (err) {
-//     // Provide clearer logs during build so we can see the root cause
-//     // of failures when Next.js collects page data.
-//     // eslint-disable-next-line no-console
-//     console.error("Error while collecting blocks page for generateMetadata:", err);
-//     throw err;
-//   }
+//   const page = authenticationSource.getPage(params.slug);
 
 //   if (!page) {
 //     notFound();
@@ -86,15 +79,7 @@ export const dynamicParams = false;
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
-  let page;
-  try {
-    page = blocksSource.getPage(params.slug);
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error("Error while collecting blocks page for Page():", err);
-    throw err;
-  }
-s
+  const page = authenticationSource.getPage(params.slug);
   if (!page) {
     notFound();
   }
@@ -103,14 +88,10 @@ s
   const path = page.path;
 
   const MDX = doc.body;
-  let neighbours;
-  try {
-    neighbours = await findNeighbour(blocksSource.pageTree, page.url);
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error("Error while finding neighbours for page", page?.url, err);
-    throw err;
-  }
+  const neighbours = await findNeighbour(
+    authenticationSource.pageTree,
+    page.url
+  );
 
   const links = doc.links;
 
@@ -121,15 +102,15 @@ s
     >
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
-        <div className="mx-auto flex w-full min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:pl-10 md:pr-8 lg:py-8 dark:text-neutral-300">
-          <div className="flex flex-col gap-2 mr-5">
+        <div className="mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
+          <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-start justify-between">
                 <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
                   {doc.title}
                 </h1>
                 <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
-                  <DocsEditButton docs="blocks-docs" path={path} />
+                  <DocsEditButton docs="auth-docs" path={path} />
                   {neighbours.previous && (
                     <Button
                       variant="secondary"
@@ -186,7 +167,7 @@ s
           <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
             <MDX components={mdxComponents} />
           </div>
-          <ProLibraryCta show />
+          <ProLibraryCta />
         </div>
         <div className="mx-auto hidden h-16 w-full max-w-3xl items-center gap-2 px-4 sm:flex md:px-0">
           {neighbours.previous && (
@@ -213,6 +194,19 @@ s
               </Link>
             </Button>
           )}
+        </div>
+      </div>
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
+        <div className="h-(--top-spacing) shrink-0" />
+
+        {doc.toc?.length ? (
+          <div className="no-scrollbar overflow-y-auto px-6">
+            <DocsTableOfContents toc={doc.toc} />
+            <div className="h-12" />
+          </div>
+        ) : null}
+        <div className="flex flex-1 flex-col gap-12 px-6">
+          <OpenInAgency />
         </div>
       </div>
     </div>
