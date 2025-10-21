@@ -79,7 +79,16 @@ interface PageProps {
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
-  const page = authenticationSource.getPage(params.slug);
+  // const page = authenticationSource.getPage(params.slug);
+  let page;
+    try {
+      page = blocksSource.getPage(params.slug);
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error("Error while collecting blocks page for Page():", err);
+      throw err;
+    }
+  s
   if (!page) {
     notFound();
   }
