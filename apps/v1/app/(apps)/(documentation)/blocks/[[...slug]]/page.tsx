@@ -94,7 +94,7 @@ export default async function Page(props: PageProps) {
     console.error("Error while collecting blocks page for Page():", err);
     throw err;
   }
-s
+
   if (!page) {
     notFound();
   }
