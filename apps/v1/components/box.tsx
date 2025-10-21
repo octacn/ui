@@ -1,22 +1,21 @@
-import { Separator } from "@/registry/ui/separator";
-import ExternalLink from "@/components/site-footer";
-import { cn } from "@/lib/utils";
-import React from "react";
+import React from "react"
+
+import { cn } from "@/lib/utils"
+import ExternalLink from "@/components/site-footer"
+import { Separator } from "@/registry/ui/separator"
 
 interface BoxProps {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }
 
 interface CodePreviewBoxProps extends BoxProps {
-  link: string;
-  title: string;
+  link: string
+  title: string
 }
 
 export function Box({ className, children }: BoxProps) {
-  return (
-    <section className={cn("pt-6 md:pt-7", className)}>{children}</section>
-  );
+  return <section className={cn("pt-6 md:pt-7", className)}>{children}</section>
 }
 
 export function BoxWrapper({ className, children }: BoxProps) {
@@ -24,7 +23,7 @@ export function BoxWrapper({ className, children }: BoxProps) {
     <section className={cn("pt-12 lg:pt-10 px-4 lg:px-10", className)}>
       {children}
     </section>
-  );
+  )
 }
 
 export function CodePreviewBox({
@@ -50,5 +49,19 @@ export function CodePreviewBox({
       <Separator />
       <div className="px-6 py-2">{children}</div>
     </section>
-  );
+  )
+}
+
+export function LayoutBox({ children, className }: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "relative border border-dashed bg-surface rounded-lg px-4 py-8 overflow-hidden",
+        "grid place-items-center content-center justify-items-center",
+        className
+      )}
+    >
+      {children}
+    </div>
+  )
 }

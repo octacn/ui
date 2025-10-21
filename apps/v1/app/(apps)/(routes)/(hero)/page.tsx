@@ -1,16 +1,17 @@
-import React, { ComponentProps, memo, Suspense } from "react";
+import React, { memo } from "react"
+
+import { LayoutBox } from "@/components/box"
+import AnimatedConnectLine from "@/registry/components/animated-connect-line"
+
 import {
-  ScaleHoverAnimationButton,
+  AuthForm,
   InteractiveGradientText,
   MagneticShimmerButton,
-  PinterestLayoutDemo,
-  TypewriterEffect,
   PaperBackground,
-  AuthForm,
-} from "./example";
-import AnimatedConnectLine from "@/registry/components/animated-connect-line";
-import { cn } from "@/lib/utils";
-import { Loading } from "@/registry/components/loading";
+  PinterestLayoutDemo,
+  ScaleHoverAnimationButton,
+  TypewriterEffect,
+} from "./example"
 
 export default function Page() {
   return (
@@ -25,60 +26,60 @@ export default function Page() {
         <MobileLayout />
       </div>
     </section>
-  );
+  )
 }
 
 const TopLayout = memo(() => {
   return (
     <div className="grid grid-cols-3 gap-6">
-      <Box className="col-span-2">
+      <LayoutBox className="col-span-2">
         <h4 className="absolute top-5 left-0 right-0 text-center text-xl font-inter text-muted-foreground">
           Hover Over Text to see Animation
         </h4>
 
         <InteractiveGradientText text="octacn" />
-      </Box>
+      </LayoutBox>
 
       <div className="space-y-6">
-        <Box>
+        <LayoutBox>
           <MagneticShimmerButton>Hover Near Me!</MagneticShimmerButton>
-        </Box>
+        </LayoutBox>
 
-        <Box className="py-12">
+        <LayoutBox className="py-12">
           <ScaleHoverAnimationButton>Hover On Me!</ScaleHoverAnimationButton>
-        </Box>
+        </LayoutBox>
       </div>
     </div>
-  );
-});
-TopLayout.displayName = "TopLayout";
+  )
+})
+TopLayout.displayName = "TopLayout"
 
 const MiddleLayout = memo(() => {
   return (
     <div className="grid grid-cols-3 gap-6">
       <div className="flex flex-col gap-6">
-        <Box className="h-full">
+        <LayoutBox className="h-full">
           <AnimatedConnectLine />
-        </Box>
-        <Box>
+        </LayoutBox>
+        <LayoutBox>
           <TypewriterEffect className="py-2">
             https://ui.octacn.com
           </TypewriterEffect>
-        </Box>
+        </LayoutBox>
       </div>
 
-      <Box className="col-span-2">
+      <LayoutBox className="col-span-2">
         <PinterestLayoutDemo />
-      </Box>
+      </LayoutBox>
     </div>
-  );
-});
-MiddleLayout.displayName = "MiddleLayout";
+  )
+})
+MiddleLayout.displayName = "MiddleLayout"
 
 const BottomLayout = memo(() => {
   return (
     <div className="grid grid-cols-3 gap-6">
-      <Box className="col-span-2">
+      <LayoutBox className="col-span-2">
         <div className="absolute top-0 right-0 left-0 bottom-0 z-10">
           <div className="flex items-center justify-center h-full text-center">
             <h4 className="whitespace-nowrap text-center w-full text-3xl font-medium font-inter tracking-wide">
@@ -88,72 +89,56 @@ const BottomLayout = memo(() => {
         </div>
 
         <PaperBackground className="rounded-lg" />
-      </Box>
+      </LayoutBox>
 
       <AuthForm />
     </div>
-  );
-});
-BottomLayout.displayName = "BottomLayout";
+  )
+})
+BottomLayout.displayName = "BottomLayout"
 
 const MobileLayout = memo(() => {
   return (
     <div className="space-y-4">
-      <Box className="text-center">
+      <LayoutBox className="text-center">
         <h4 className="text-lg font-inter text-muted-foreground mb-4">
           Tap to see Animation
         </h4>
 
         <InteractiveGradientText text="octacn" />
-      </Box>
+      </LayoutBox>
 
       <div className="grid grid-cols-1 gap-4">
-        <Box>
+        <LayoutBox>
           <MagneticShimmerButton>Hover Near Me!</MagneticShimmerButton>
-        </Box>
+        </LayoutBox>
 
-        <Box>
+        <LayoutBox>
           <ScaleHoverAnimationButton>Hover On Me!</ScaleHoverAnimationButton>
-        </Box>
+        </LayoutBox>
       </div>
 
-      <Box>
+      <LayoutBox>
         <TypewriterEffect className="py-2">
           https://ui.octacn.com
         </TypewriterEffect>
-      </Box>
+      </LayoutBox>
 
-      <Box>
+      <LayoutBox>
         <PinterestLayoutDemo />
-      </Box>
+      </LayoutBox>
 
-      <Box className="relative min-h-[200px]">
+      <LayoutBox className="relative min-h-[200px]">
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <h4 className="text-xl font-medium font-inter tracking-wide text-center">
             Zoom to see background
           </h4>
         </div>
         <PaperBackground className="rounded-lg" />
-      </Box>
+      </LayoutBox>
 
       <AuthForm />
     </div>
-  );
-});
-MobileLayout.displayName = "MobileLayout";
-
-export function Box({ children, className }: ComponentProps<"div">) {
-  return (
-    <Suspense fallback={<Loading />}>
-      <div
-        className={cn(
-          "relative border border-dashed bg-surface rounded-lg px-4 py-8 overflow-hidden",
-          "grid place-items-center content-center justify-items-center",
-          className
-        )}
-      >
-        {children}
-      </div>
-    </Suspense>
-  );
-}
+  )
+})
+MobileLayout.displayName = "MobileLayout"
