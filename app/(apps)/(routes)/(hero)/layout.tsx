@@ -4,7 +4,7 @@ import { ExampleSection } from "@/components/_components/example-section";
 import { ShootingStars } from "@/registry/components/shooting-stars";
 import HeroSection from "@/components/_components/hero-section";
 import LogoSection from "@/components/_components/logo-section";
-import { WaitListCta } from "@/components/_components/cta-section";
+// import { WaitListCta } from "@/components/_components/cta-section";
 // import FaqSection from "@/components/_components/faq-section";
 import { PageNav } from "@/components/page-nav";
 import { BoxWrapper } from "@/components/box";

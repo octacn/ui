@@ -88,13 +88,13 @@ export function CommandMenu({
     [setSelectedType, setCopyPayload]
   );
 
-  const handleBlockHighlight = React.useCallback(
-    (block: { name: string; description: string; categories: string[] }) => {
-      setSelectedType("block");
-      setCopyPayload(`${packageManager} dlx shadcn@latest add ${block.name}`);
-    },
-    [setSelectedType, setCopyPayload, packageManager]
-  );
+  // const handleBlockHighlight = React.useCallback(
+  //   (block: { name: string; description: string; categories: string[] }) => {
+  //     setSelectedType("block");
+  //     setCopyPayload(`${packageManager} dlx shadcn@latest add ${block.name}`);
+  //   },
+  //   [setSelectedType, setCopyPayload, packageManager]
+  // );
 
   const runCommand = React.useCallback((command: () => unknown) => {
     setOpen(false);
