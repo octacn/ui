@@ -1,8 +1,9 @@
+import type { NextConfig } from "next"
 import { createMDX } from "fumadocs-mdx/next"
 
 const withMDX = createMDX()
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   devIndicators: false,
   typescript: {
     ignoreBuildErrors: true,
@@ -22,7 +23,6 @@ const nextConfig = {
       },
     ],
   },
-
 }
 
 export default withMDX(nextConfig)
