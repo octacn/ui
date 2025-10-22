@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Page = () => {
+function Page() {
   return (
-    <div>Docs route</div>
+    <div>Testing Page</div>
   )
 }
 
