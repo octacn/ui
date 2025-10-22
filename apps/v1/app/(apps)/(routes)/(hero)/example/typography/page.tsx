@@ -12,13 +12,13 @@ import TypographyList from "@/registry/demo/ui/typography-list";
 import TypographyMuted from "@/registry/demo/ui/typography-muted";
 import { PDemo } from "@/registry/demo/ui/typography-p";
 import TypographySmall from "@/registry/demo/ui/typography-small";
-import React, { ComponentProps, Suspense } from "react";
+import React, { ComponentProps } from "react";
 
 export default function Page() {
   return (
-    <Suspense fallback={<Loading />}>
       <Typography />
-    </Suspense>
+    // <Suspense fallback={<Loading />}>
+    // </Suspense>
   );
 }
 

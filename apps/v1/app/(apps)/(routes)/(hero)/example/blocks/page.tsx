@@ -1,11 +1,8 @@
-import { BlockDisplay } from "@/components/block-display";
-import { Loading } from "@/registry/components/loading";
-import React, { Suspense } from "react";
+import React, { Suspense } from "react"
+
+import { BlockDisplay } from "@/components/block-display"
+// import { Loading } from "@/registry/components/loading"
 
 export default function Page() {
-  return (
-    <Suspense fallback={<Loading className="h-[700px]" />}>
-      <BlockDisplay name="header-v1" />
-    </Suspense>
-  );
+  return <BlockDisplay name="header-v1" />
 }
