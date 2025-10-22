@@ -14,7 +14,7 @@ export default function DocsLayout({
           tree={componentsSource.pageTree}
           docs={docsSource.pageTree}
         />
-        <div className="h-full w-full">{children}</div>
+        <div className="h-full w-full">helloo</div>
       </SidebarProvider>
     </div>
   );
