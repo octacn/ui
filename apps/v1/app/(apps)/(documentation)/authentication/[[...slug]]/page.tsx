@@ -16,65 +16,71 @@
 // import ProLibraryCta from "@/components/pro-library-cta"
 // import { Badge } from "@/registry/ui/badge"
 // import { Button } from "@/registry/ui/button"
+import React from 'react'
+
+import { authenticationSource } from '@/lib/source';
+import { notFound } from 'next/navigation';
+import { absoluteUrl } from '@/lib/utils';
+
 
 interface PageProps {
   params: Promise<{ slug?: string[] }>
 }
 
-// export const revalidate = false;
-// export const dynamic = "force-static";
-// export const dynamicParams = false;
+export const revalidate = false;
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
-// export function generateStaticParams() {
-//   return authenticationSource.generateParams();
-// }
+export function generateStaticParams() {
+  return authenticationSource.generateParams();
+}
 
-// export async function generateMetadata(props: PageProps) {
-//   const params = await props.params;
-//   const page = authenticationSource.getPage(params.slug);
+export async function generateMetadata(props: PageProps) {
+  const params = await props.params;
+  const page = authenticationSource.getPage(params.slug);
 
-//   if (!page) {
-//     notFound();
-//   }
+  if (!page) {
+    notFound();
+  }
 
-//   const doc = page.data;
+  const doc = page.data;
 
-//   if (!doc.title || !doc.description) {
-//     notFound();
-//   }
+  if (!doc.title || !doc.description) {
+    notFound();
+  }
 
-//   return {
-//     title: doc.title,
-//     description: doc.description,
-//     metadataBase: new URL("https://yourdomain.com"), // TODO :- Change it after
-//     openGraph: {
-//       title: doc.title,
-//       description: doc.description,
-//       type: "article",
-//       url: absoluteUrl(page.url),
-//       images: [
-//         {
-//           url: `/og?title=${encodeURIComponent(
-//             doc.title
-//           )}&description=${encodeURIComponent(doc.description)}`,
-//         },
-//       ],
-//     },
-//     twitter: {
-//       card: "summary_large_image",
-//       title: doc.title,
-//       description: doc.description,
-//       images: [
-//         {
-//           url: `/og?title=${encodeURIComponent(
-//             doc.title
-//           )}&description=${encodeURIComponent(doc.description)}`,
-//         },
-//       ],
-//       creator: "@",
-//     },
-//   };
-// }
+  return {
+    title: doc.title,
+    description: doc.description,
+    metadataBase: new URL("https://yourdomain.com"), // TODO :- Change it after
+    openGraph: {
+      title: doc.title,
+      description: doc.description,
+      type: "article",
+      url: absoluteUrl(page.url),
+      images: [
+        {
+          url: `/og?title=${encodeURIComponent(
+            doc.title
+          )}&description=${encodeURIComponent(doc.description)}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: doc.title,
+      description: doc.description,
+      images: [
+        {
+          url: `/og?title=${encodeURIComponent(
+            doc.title
+          )}&description=${encodeURIComponent(doc.description)}`,
+        },
+      ],
+      creator: "@",
+    },
+  };
+}
 
 // export default async function Page(props: PageProps) {
 //   const params = await props.params
@@ -222,7 +228,6 @@ interface PageProps {
 // }
 
 
-import React from 'react'
 
 function Page(props: PageProps) {
   return (
