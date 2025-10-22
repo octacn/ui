@@ -1,17 +1,18 @@
-import { InteractiveGradientText } from "@/registry/components/interactive-gradient-text";
-import HoverAnimation from "@/components/animation/hover-animation";
-import { Separator } from "@/registry/ui/separator";
-import { RiArrowRightUpLine } from "react-icons/ri";
-import { GiWideArrowDunk } from "react-icons/gi";
-import { Badge } from "@/registry/ui/badge";
-import { Icons } from "@/components/icons";
-import { siteConfig } from "@/lib/config";
-import Link from "next/link";
+import Link from "next/link"
+import { GiWideArrowDunk } from "react-icons/gi"
+import { RiArrowRightUpLine } from "react-icons/ri"
+
+import { siteConfig } from "@/lib/config"
+import HoverAnimation from "@/components/animation/hover-animation"
+import { Icons } from "@/components/icons"
+import { InteractiveGradientText } from "@/registry/components/interactive-gradient-text"
+import { Badge } from "@/registry/ui/badge"
+import { Separator } from "@/registry/ui/separator"
 
 interface SocialMediaLink {
-  href: string;
-  label: string;
-  icon: React.ReactNode;
+  href: string
+  label: string
+  icon: React.ReactNode
 }
 
 const footerNavigation = [
@@ -48,7 +49,7 @@ const footerNavigation = [
       { label: "Form", href: "/blocks/forms/form-v1" },
     ],
   },
-];
+]
 const socialMediaLinks: SocialMediaLink[] = [
   {
     label: "Github",
@@ -85,7 +86,7 @@ const socialMediaLinks: SocialMediaLink[] = [
       <Icons.discord className="hover:text-[#5865F2] text-muted-foreground " />
     ),
   },
-];
+]
 
 export function SiteFooter() {
   return (
@@ -169,7 +170,7 @@ export function SiteFooter() {
         <InteractiveGradientText text="Octacn" />
       </div>
     </footer>
-  );
+  )
 }
 
 export default function ExternalLink({
@@ -177,9 +178,9 @@ export default function ExternalLink({
   href,
   isExternal = false,
 }: {
-  text: string;
-  href: string;
-  isExternal?: boolean;
+  text: string
+  href: string
+  isExternal?: boolean
 }) {
   return (
     <Link
@@ -195,7 +196,7 @@ export default function ExternalLink({
         size={16}
       />
     </Link>
-  );
+  )
 }
 
 function SocialMediaIcons({ href, label, icon }: SocialMediaLink) {
@@ -207,7 +208,7 @@ function SocialMediaIcons({ href, label, icon }: SocialMediaLink) {
     >
       {icon}
     </HoverAnimation>
-  );
+  )
 }
 
 export function DocsFooter() {
@@ -245,5 +246,5 @@ export function DocsFooter() {
         </p>
       </div>
     </div>
-  );
+  )
 }
