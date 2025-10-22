@@ -91,7 +91,7 @@ const socialMediaLinks: SocialMediaLink[] = [
 export function SiteFooter() {
   return (
     <footer className="bg-code">
-      <div className="before:bg-[linear-gradient(to_bottom,--theme(--color-border/.3),--theme(--color-border)_200px,--theme(--color-border)_calc(100%-200px),--theme(--color-border/.3))] before:absolute before:inset-x-0 before:-top-0 before:h-px relative w-full" />
+      <div className="before:bg-[linear-gradient(to_bottom,--theme(--color-border/.3),--theme(--color-border)_200px,--theme(--color-border)_calc(100%-200px),--theme(--color-border/.3))] before:absolute before:inset-x-0 before:top-0 before:h-px relative w-full" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-12">
         <section className="pb-6 sm:pb-8 lg:pb-10">
@@ -141,7 +141,7 @@ export function SiteFooter() {
           </div>
         </section>
 
-        <Separator className="border-1" />
+        <Separator className="border" />
 
         <section className="py-6 sm:py-8 lg:py-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 lg:gap-10">
@@ -160,7 +160,7 @@ export function SiteFooter() {
           </div>
         </section>
 
-        <Separator className="border-1 border-muted-foreground/20" />
+        <Separator className="border border-muted-foreground/20" />
 
         <section className="pt-4 sm:pt-6">
           <p className="font-inter text-muted-foreground text-xs sm:text-sm">
@@ -214,7 +214,7 @@ function SocialMediaIcons({ href, label, icon }: SocialMediaLink) {
 export function DocsFooter() {
   return (
     <div className="mt-2">
-      <div className="before:bg-[linear-gradient(to_bottom,--theme(--color-border/.3),--theme(--color-border)_200px,--theme(--color-border)_calc(100%-200px),--theme(--color-border/.3))] before:absolute before:inset-x-0 before:-top-0 before:h-px relative w-full" />
+      <div className="before:bg-[linear-gradient(to_bottom,--theme(--color-border/.3),--theme(--color-border)_200px,--theme(--color-border)_calc(100%-200px),--theme(--color-border/.3))] before:absolute before:inset-x-0 before:top-0 before:h-px relative w-full" />
 
       <div className="py-4 px-6 md:py-5 md:px-14 text-center space-y-2 md:space-y-0 md:flex items-center justify-between">
         <p className="font-inter text-muted-foreground text-xs sm:text-sm">
