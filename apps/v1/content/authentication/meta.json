@@ -1,7 +1,0 @@
-{
-  "root": true,
-  "title": "authentication",
-  "pages": [
-    "mongo-db"
-  ]
-}

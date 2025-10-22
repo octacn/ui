@@ -1,9 +1,0 @@
-{
-  "root": true,
-  "title": "blocks",
-  "pages": [
-    "headers",
-    "pricings",
-    "forms"
-  ]
-}

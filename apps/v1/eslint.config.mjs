@@ -21,9 +21,13 @@ const eslintConfig = [
       "**/.source"
     ],
   },
+
   {
     rules: {
       "@typescript-eslint/no-explicit-any": "warn",
+      "@next/next/no-html-link-for-pages": "off",
+      "tailwindcss/no-custom-classname": "off",
+      "tailwindcss/classnames-order": "error"
     },
   },
 ];

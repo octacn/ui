@@ -7,14 +7,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev --turbopack --port 3000",
+    "postinstall": "fumadocs-mdx",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "registry:build": "shadcn build",
     "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registry.mts",
     "build:registry:internal": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts",
-    "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
-    "postinstall": "fumadocs-mdx"
+    "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts"
   },
   "dependencies": {
     "@9d8/router-start": "^1.0.3",
@@ -54,8 +54,8 @@
     "date-fns": "^4.1.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
-    "fumadocs-core": "^15.7.2",
-    "fumadocs-mdx": "^11.8.0",
+    "fumadocs-core": "^16.0.1",
+    "fumadocs-mdx": "^13.0.0",
     "input-otp": "^1.4.2",
     "jotai": "^2.15.0",
     "lucide-react": "^0.541.0",

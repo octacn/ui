@@ -1,9 +1,13 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { RiArrowRightUpLine } from "react-icons/ri"
 
-import type { docsSource } from "@/lib/source";
+import { siteConfig } from "@/lib/config"
+import { newPages, proPages } from "@/lib/page-type"
+import type { source } from "@/lib/source"
+import { Badge } from "@/registry/ui/badge"
 import {
   Sidebar,
   SidebarContent,
@@ -13,12 +17,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/registry/ui/sidebar";
-import { Badge } from "@/registry/ui/badge";
-import { newPages, proPages } from "@/lib/page-type";
-import { siteConfig } from "@/lib/config";
-import { RiArrowRightUpLine } from "react-icons/ri";
-import { Icons } from "./icons";
+} from "@/registry/ui/sidebar"
+
+import { Icons } from "./icons"
 
 const socialItems = [
   {
@@ -33,17 +34,15 @@ const socialItems = [
     title: "Twitter",
     icon: <Icons.x className="text-foreground size-5 mr-0.5" />,
   },
-];
+]
 
 export function DocsSidebar({
   tree,
-  docs,
   ...props
 }: React.ComponentProps<typeof Sidebar> & {
-  tree: typeof docsSource.pageTree;
-  docs: typeof docsSource.pageTree;
+  tree: typeof source.pageTree
 }) {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
     <Sidebar
@@ -66,69 +65,6 @@ export function DocsSidebar({
           </SidebarGroupContent>
         </SidebarGroup>
 
-        {docs.children.map((item) => (
-          <SidebarGroup key={item.$id}>
-            <SidebarGroupLabel className="text-muted-foreground font-inter text-sm tracking-wide">
-              {item.name}
-            </SidebarGroupLabel>
-            <SidebarGroupContent>
-              {item.type === "folder" && (
-                <SidebarMenu className="gap-0.5">
-                  {item.children.map((item) => {
-                    const isNew = newPages.includes(item.url);
-                    const isPro = proPages.includes(item.url);
-                    // const isComingSoonPages = comingSoonPages.includes(
-                    //   item.url
-                    // );
-
-                    return (
-                      item.type === "page" && (
-                        <SidebarMenuItem
-                          key={item.url}
-                          className="flex items-center justify-between"
-                        >
-                          <SidebarMenuButton
-                            asChild
-                            isActive={item.url === pathname}
-                            className="data-[active=true]:bg-accent data-[active=true]:border-accent hover:bg- 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] overflow-visible border border-transparent text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:text-orange-400 hover:text-orange-400/90 font-inter tracking-wide font-normal capitalize w-fit group whitespace-nowrap inline-flex items-center gap-0.5 transition-colors duration-200 active:text-orange-400/90"
-                          >
-                            <Link href={item.url}>
-                              {item.name}
-                              <RiArrowRightUpLine
-                                className="text-orange-400/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 data-[active=true]:group-hover:opacity-0"
-                                aria-hidden="true"
-                                size={16}
-                              />
-                            </Link>
-                          </SidebarMenuButton>
-                          {isNew && (
-                            <Badge className="capitalize bg-yellow-500 text-black py-0.5 rounded-md tracking-wide font-semibold select-none">
-                              new
-                            </Badge>
-                          )}
-                          {isPro && (
-                            <Badge className="capitalize bg-green-500 text-black py-0.5 rounded-md tracking-wide font-semibold select-none">
-                              Pro
-                            </Badge>
-                          )}
-                          {/* {isComingSoonPages && (
-                            <Badge
-                              variant={"secondary"}
-                              className="bg-transparent capitalize text-muted-foreground tracking-wide font-semibold select-none font-inter italic"
-                            >
-                              Coming Soon
-                            </Badge>
-                          )} */}
-                        </SidebarMenuItem>
-                      )
-                    );
-                  })}
-                </SidebarMenu>
-              )}
-            </SidebarGroupContent>
-          </SidebarGroup>
-        ))}
-
         {tree.children.map((item) => (
           <SidebarGroup key={item.$id}>
             <SidebarGroupLabel className="text-muted-foreground font-inter text-sm tracking-wide">
@@ -138,8 +74,8 @@ export function DocsSidebar({
               {item.type === "folder" && (
                 <SidebarMenu className="gap-0.5">
                   {item.children.map((item) => {
-                    const isNew = newPages.includes(item.url);
-                    const isPro = proPages.includes(item.url);
+                    // const isNew = newPages.includes(item.url)
+                    // const isPro = proPages.includes(item.url)
                     // const isComingSoonPages = comingSoonPages.includes(
                     //   item.url
                     // );
@@ -164,7 +100,7 @@ export function DocsSidebar({
                               />
                             </Link>
                           </SidebarMenuButton>
-                          {isNew && (
+                          {/* {isNew && (
                             <Badge className="capitalize bg-yellow-500 text-black py-0.5 rounded-md tracking-wide font-semibold select-none">
                               new
                             </Badge>
@@ -173,7 +109,7 @@ export function DocsSidebar({
                             <Badge className="capitalize bg-green-500 text-black py-0.5 rounded-md tracking-wide font-semibold select-none">
                               Pro
                             </Badge>
-                          )}
+                          )} */}
                           {/* {isComingSoonPages && (
                             <Badge
                               variant={"secondary"}
@@ -184,7 +120,7 @@ export function DocsSidebar({
                           )} */}
                         </SidebarMenuItem>
                       )
-                    );
+                    )
                   })}
                 </SidebarMenu>
               )}
@@ -193,15 +129,15 @@ export function DocsSidebar({
         ))}
       </SidebarContent>
     </Sidebar>
-  );
+  )
 }
 
 function SocialLinks({
   href,
   icon,
 }: {
-  href: string;
-  icon: React.ReactElement;
+  href: string
+  icon: React.ReactElement
 }) {
   return (
     <Link
@@ -219,5 +155,5 @@ function SocialLinks({
         aria-hidden="true"
       />
     </Link>
-  );
+  )
 }

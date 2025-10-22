@@ -5,7 +5,7 @@ import {
   frontmatterSchema
 } from "fumadocs-mdx/config";
 import rehypePrettyCode from "rehype-pretty-code";
-import { z } from "zod";
+import z from "zod";
 
 // lib/highlight-code.ts
 import { codeToHtml } from "shiki";
@@ -63,6 +63,17 @@ var transformers = [
 ];
 
 // source.config.ts
+var docs = defineDocs({
+  dir: "content/docs",
+  docs: {
+    schema: frontmatterSchema.extend({
+      links: z.object({
+        doc: z.string().optional(),
+        api: z.string().optional()
+      }).optional()
+    })
+  }
+});
 var source_config_default = defineConfig({
   mdxOptions: {
     rehypePlugins: (plugins) => {
@@ -81,54 +92,7 @@ var source_config_default = defineConfig({
     }
   }
 });
-var docs = defineDocs({
-  dir: "content/docs",
-  docs: {
-    schema: frontmatterSchema.extend({
-      links: z.object({
-        doc: z.string().optional(),
-        api: z.string().optional()
-      }).optional()
-    })
-  }
-});
-var blocksDocs = defineDocs({
-  dir: "content/blocks",
-  docs: {
-    schema: frontmatterSchema.extend({
-      links: z.object({
-        doc: z.string().optional(),
-        api: z.string().optional()
-      }).optional()
-    })
-  }
-});
-var authenticationDocs = defineDocs({
-  dir: "content/authentication",
-  docs: {
-    schema: frontmatterSchema.extend({
-      links: z.object({
-        doc: z.string().optional(),
-        api: z.string().optional()
-      }).optional()
-    })
-  }
-});
-var componentsDocs = defineDocs({
-  dir: "content/components",
-  docs: {
-    schema: frontmatterSchema.extend({
-      links: z.object({
-        doc: z.string().optional(),
-        api: z.string().optional()
-      }).optional()
-    })
-  }
-});
 export {
-  authenticationDocs,
-  blocksDocs,
-  componentsDocs,
   source_config_default as default,
   docs
 };

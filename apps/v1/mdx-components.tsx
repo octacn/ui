@@ -1,36 +1,30 @@
-import * as React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import * as React from "react"
+import Image from "next/image"
+import Link from "next/link"
 
-import { cn } from "@/lib/utils";
-import { getIconForLanguageExtension } from "@/components/icons";
-
-import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
-import { CodeBlockCommand } from "@/components/code-block-command";
-import { ComponentPreview } from "@/components/component-preview";
-import { ComponentSource } from "@/components/component-source";
-import {
-  ComponentsList,
-  FullComponentsList,
-} from "@/components/components-list";
-import { CarouselDisplay } from "@/components/carousel-display";
-import { TechStack } from "@/components/tech-stack-icon";
-import { BlockDisplay } from "@/components/block-display";
-import { ImageDisplay } from "@/components/image-display";
-import { CopyButton } from "@/components/copy-button";
-import { CodeTabs } from "@/components/code-tabs";
-import { Callout } from "@/components/callout";
-
+import { cn } from "@/lib/utils"
+import { BlockDisplay } from "@/components/block-display"
+import { Callout } from "@/components/callout"
+import { CarouselDisplay } from "@/components/carousel-display"
+import { CodeBlockCommand } from "@/components/code-block-command"
+import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
+import { CodeTabs } from "@/components/code-tabs"
+import { ComponentPreview } from "@/components/component-preview"
+import { ComponentSource } from "@/components/component-source"
+import { CopyButton } from "@/components/copy-button"
+import { getIconForLanguageExtension } from "@/components/icons"
+import { ImageDisplay } from "@/components/image-display"
+import { TechStack } from "@/components/tech-stack-icon"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/registry/ui/accordion";
-import { Alert, AlertDescription, AlertTitle } from "@/registry/ui/alert";
-import { AspectRatio } from "@/registry/ui/aspect-ratio";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/ui/tabs";
-import { Button } from "@/registry/ui/button";
+} from "@/registry/ui/accordion"
+import { Alert, AlertDescription, AlertTitle } from "@/registry/ui/alert"
+import { AspectRatio } from "@/registry/ui/aspect-ratio"
+import { Button } from "@/registry/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/ui/tabs"
 
 export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
@@ -57,7 +51,7 @@ export const mdxComponents = {
         )}
         {...props}
       />
-    );
+    )
   },
   h3: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
@@ -175,10 +169,10 @@ export const mdxComponents = {
       >
         {children}
       </pre>
-    );
+    )
   },
   figure: ({ className, ...props }: React.ComponentProps<"figure">) => {
-    return <figure className={cn(className)} {...props} />;
+    return <figure className={cn(className)} {...props} />
   },
   figcaption: ({
     className,
@@ -188,7 +182,7 @@ export const mdxComponents = {
     const iconExtension =
       "data-language" in props && typeof props["data-language"] === "string"
         ? getIconForLanguageExtension(props["data-language"])
-        : null;
+        : null
 
     return (
       <figcaption
@@ -201,7 +195,7 @@ export const mdxComponents = {
         {iconExtension}
         {children}
       </figcaption>
-    );
+    )
   },
   code: ({
     className,
@@ -213,12 +207,12 @@ export const mdxComponents = {
     __bun__,
     ...props
   }: React.ComponentProps<"code"> & {
-    __raw__?: string;
-    __src__?: string;
-    __npm__?: string;
-    __yarn__?: string;
-    __pnpm__?: string;
-    __bun__?: string;
+    __raw__?: string
+    __src__?: string
+    __npm__?: string
+    __yarn__?: string
+    __pnpm__?: string
+    __bun__?: string
   }) => {
     // Inline Code.
     if (typeof props.children === "string") {
@@ -230,11 +224,11 @@ export const mdxComponents = {
           )}
           {...props}
         />
-      );
+      )
     }
 
     // npm command.
-    const isNpmCommand = __npm__ && __yarn__ && __pnpm__ && __bun__;
+    const isNpmCommand = __npm__ && __yarn__ && __pnpm__ && __bun__
     if (isNpmCommand) {
       return (
         <CodeBlockCommand
@@ -243,7 +237,7 @@ export const mdxComponents = {
           __pnpm__={__pnpm__}
           __bun__={__bun__}
         />
-      );
+      )
     }
 
     // Default codeblock.
@@ -252,7 +246,7 @@ export const mdxComponents = {
         {__raw__ && <CopyButton value={__raw__} src={__src__} />}
         <code {...props} />
       </>
-    );
+    )
   },
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
@@ -292,7 +286,7 @@ export const mdxComponents = {
         className={cn("relative mt-6 w-full bg-red-200", className)}
         {...props}
       />
-    );
+    )
   },
   TabsList: ({
     className,
@@ -350,8 +344,8 @@ export const mdxComponents = {
   ImageDisplay,
   CarouselDisplay,
   TechStack,
-  ComponentsList,
-  FullComponentsList,
+  // ComponentsList,
+  // FullComponentsList,
   BlockDisplay,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
@@ -368,4 +362,4 @@ export const mdxComponents = {
       {...props}
     />
   ),
-};
+}
