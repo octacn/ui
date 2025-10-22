@@ -25,7 +25,7 @@ import Link from "next/link";
 import Highlighter from "@/registry/components/highlighter";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
-import { submitWaitlistForm } from "@/app/waitlist/waitlist-action";
+import { submitWaitlistForm } from "@/documentation/waitlist/waitlist-action";
 
 type FormValues = z.infer<typeof waitlistSchema>;
 
