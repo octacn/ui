@@ -17,6 +17,10 @@
 /.next/
 /out/
 
+
+# Source file maps
+
+
 # production
 /build
 
@@ -46,5 +50,4 @@ styles.d.ts
 documentation*
 styles/new-globals.css
 
-
-# some local files
+.source
