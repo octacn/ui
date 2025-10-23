@@ -22,11 +22,11 @@ export const siteConfig = {
       label: "Docs",
     },
     {
-      href: "/components/components",
-      label: "Components",
+      href: "/kit",
+      label: "Kit",
     },
     {
-      href: "/components/templates",
+      href: "/templates",
       label: "Templates",
     },
     {
@@ -37,6 +37,7 @@ export const siteConfig = {
       href: "/authentication",
       label: "Auth",
     },
+
     // {
     //   href: "/illustration",
     //   label: "Illustration",

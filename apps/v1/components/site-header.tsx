@@ -1,10 +1,8 @@
 import Link from "next/link"
 
-import { getColors } from "@/lib/colors"
 import { siteConfig } from "@/lib/config"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
-// import { CommandMenu } from "@/components/command-menu"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
@@ -12,9 +10,9 @@ import { ModeSwitcher } from "@/components/mode-switcher"
 import { DiscordLink, GitHubLink } from "@/components/social-icon"
 import { Separator } from "@/registry/ui/separator"
 
-export function SiteHeader() {
-  const colors = getColors()
+import { CommandMenu } from "./command-menu"
 
+export function SiteHeader() {
   const pageTree = source.pageTree
 
   return (
@@ -35,15 +33,7 @@ export function SiteHeader() {
           <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
-              {/* <CommandMenu
-                tree={pageTree}
-                components={componentsTree}
-                authentication={authenticationTree}
-                blocks={blocksTree}
-                colors={colors}
-                navItems={siteConfig.navItems}
-              /> */}
-              search menu
+              <CommandMenu navItems={siteConfig.navItems} />
             </div>
             <Separator
               orientation="vertical"
