@@ -1,0 +1,76 @@
+---
+title: Typography
+description: Styles for headings, paragraphs, lists...etc
+component: true
+---
+
+We have ship typography styles by default. This page is an example of how you can use utility classes to style your text.
+
+<ComponentPreview
+  className="[&_.preview]:!h-auto"
+  name="typography-demo"
+  align="start"
+  hideCode
+/>
+
+## h1
+
+<ComponentPreview name="typography-h1"/>
+
+## h2
+
+<ComponentPreview name="typography-h2"/>
+
+## h3
+
+<ComponentPreview name="typography-h3" />
+
+## h4
+
+<ComponentPreview name="typography-h4"/>
+
+## h5
+
+<ComponentPreview name="typography-h5"/>
+
+## h6
+
+<ComponentPreview name="typography-h4"/>
+
+## p
+
+<ComponentPreview name="typography-p"/>
+
+## blockquote
+
+<ComponentPreview name="typography-blockquote"/>
+
+## list
+
+<ComponentPreview name="typography-list"/>
+
+## Inline code
+
+<ComponentPreview name="typography-inline-code"/>
+
+| Component  | Accepts                                    | Description                                                                 | Required Props |
+| ---------- | ------------------------------------------ | --------------------------------------------------------------------------- | -------------- |
+| H1         | `h1` element                               | Main heading, extra-bold and large font size.                               | children       |
+| H2         | `h2` element                               | Secondary heading, slightly smaller and semibold.                           | children       |
+| H3         | `h3` element                               | Tertiary heading, smaller font and semibold.                                | children       |
+| H4         | `h4` element                               | Subheading, medium font size.                                               | children       |
+| H5         | `h5` element                               | Smaller subheading.                                                         | children       |
+| H6         | `h6` element                               | Smallest heading.                                                           | children       |
+| P          | `p` element                                | Standard paragraph text with proper line height and spacing.                | children       |
+| Lead       | `p` element                                | Larger paragraph text for emphasis.                                         | children       |
+| Large      | `div` element                              | Div with large, bold text.                                                  | children       |
+| Small      | `p` element                                | Small paragraph text, lighter emphasis.                                     | children       |
+| Muted      | `p` element                                | Small paragraph text with muted color.                                      | children       |
+| Blockquote | `blockquote` element                       | Styled blockquote with left border and italic text.                         | children       |
+| InlineCode | `code` element                             | Inline code snippet with monospace font and background.                     | children       |
+| Kbd        | `kbd` element                              | Keyboard key representation with border and background.                     | children       |
+| UL         | `ul` element                               | Unordered list with spacing and list styling.                               | children       |
+| OL         | `ol` element                               | Ordered list with spacing and numbering.                                    | children       |
+| LI         | `li` element                               | List item with proper line height and spacing.                              | children       |
+| HR         | `hr` element                               | Horizontal rule with muted border for separation.                           | -              |
+| Prose      | `div` element containing styled typography | Container for styled content with typography, code, lists, and blockquote. | children       |

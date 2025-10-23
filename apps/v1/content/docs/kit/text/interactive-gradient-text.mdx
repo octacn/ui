@@ -1,0 +1,67 @@
+---
+title: Interactive Gradient Text
+description: A customizable and visually engaging text component that applies a smooth, interactive gradient animation to any text.
+---
+
+<ComponentPreview
+  name="interactive-gradient-text-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://ui.octacn.com/r/interactive-gradient-text.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion clsx tailwind-merge
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="utils" title="lib/utils.ts" />
+<ComponentSource name="file-uploader" title="components/interactive-gradient-text.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { InteractiveGradientText } from "@/components/interactive-gradient-text"
+```
+
+```tsx showLineNumbers
+<InteractiveGradientText text="Octacn"/>
+```
+
+## Props
+| Prop      | Accepts   | Description                                                       | Required |
+| --------- | --------- | ----------------------------------------------------------------- | -------- |
+| text      | `string`  | The text content to display inside the gradient animation.        | Yes      |
+| duration  | `number`  | Transition duration (in seconds) for the mask movement animation. | No       |
+| automatic | `boolean` | (Reserved) Determines if animation should play automatically.     | No       |
+| className | `string`  | Additional class names for custom styling of the SVG wrapper.     | No       |

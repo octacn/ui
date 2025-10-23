@@ -1,30 +1,21 @@
-import { ModeSwitcher } from "@/components/mode-switcher";
-import { CommandMenu } from "@/components/command-menu";
-import { MobileNav } from "@/components/mobile-nav";
-import { Separator } from "@/registry/ui/separator";
-import { MainNav } from "@/components/main-nav";
-import { Icons } from "@/components/icons";
-import {
-  authenticationSource,
-  blocksSource,
-  componentsSource,
-  docsSource,
-} from "@/lib/source";
-import { siteConfig } from "@/lib/config";
-import { getColors } from "@/lib/colors";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
+import Link from "next/link"
 
-import React from "react";
-import { DiscordLink, GitHubLink } from "@/components/social-icon";
+import { getColors } from "@/lib/colors"
+import { siteConfig } from "@/lib/config"
+import { source } from "@/lib/source"
+import { cn } from "@/lib/utils"
+// import { CommandMenu } from "@/components/command-menu"
+import { Icons } from "@/components/icons"
+import { MainNav } from "@/components/main-nav"
+import { MobileNav } from "@/components/mobile-nav"
+import { ModeSwitcher } from "@/components/mode-switcher"
+import { DiscordLink, GitHubLink } from "@/components/social-icon"
+import { Separator } from "@/registry/ui/separator"
 
 export function SiteHeader() {
-  const colors = getColors();
+  const colors = getColors()
 
-  const pageTree = docsSource.pageTree;
-  const componentsTree = componentsSource.pageTree;
-  const authenticationTree = authenticationSource.pageTree;
-  const blocksTree = blocksSource.pageTree;
+  const pageTree = source.pageTree
 
   return (
     <header
@@ -44,14 +35,15 @@ export function SiteHeader() {
           <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
-              <CommandMenu
+              {/* <CommandMenu
                 tree={pageTree}
                 components={componentsTree}
                 authentication={authenticationTree}
                 blocks={blocksTree}
                 colors={colors}
                 navItems={siteConfig.navItems}
-              />
+              /> */}
+              search menu
             </div>
             <Separator
               orientation="vertical"
@@ -72,5 +64,5 @@ export function SiteHeader() {
         </div>
       </div>
     </header>
-  );
+  )
 }

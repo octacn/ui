@@ -1,8 +1,15 @@
 {
   "root": true,
-  "page": [
-    "index",
-    "separator",
-    "data"
+  "pages": [
+    "(root)",
+    "templates",
+    "blocks",
+    "kit/backgrounds",
+    "kit/buttons",
+    "kit/cards",
+    "kit/text",
+    "components",
+    "installation",
+    "dark-mode"
   ]
 }

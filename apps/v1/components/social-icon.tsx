@@ -29,16 +29,17 @@ export function DiscordLink() {
 }
 
 export async function StarsCount() {
-  const res = await fetch("https://api.github.com/repos/octacn/ui", {
-    next: { revalidate: 86400 },
-  });
-  const json = await res.json();
+  // const res = await fetch("https://api.github.com/octacn/ui", {
+  //   next: { revalidate: 86400 },
+  // });
+  // const json = await res.json();
 
   return (
     <span className="text-muted-foreground text-base font-inter mt-0.5">
-      {json.stargazers_count >= 1000
+      10k
+      {/* {json.stargazers_count >= 1000
         ? `${(json.stargazers_count / 1000).toFixed(1)}k`
-        : json.stargazers_count.toLocaleString()}
+        : json.stargazers_count.toLocaleString()} */}
     </span>
   );
 }

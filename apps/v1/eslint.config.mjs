@@ -21,15 +21,15 @@ const eslintConfig = [
       "**/.source"
     ],
   },
-
   {
     rules: {
+      'react/no-unescaped-entities': 'off',
+      '@next/next/no-page-custom-font': 'off',
       "@typescript-eslint/no-explicit-any": "warn",
-      "@next/next/no-html-link-for-pages": "off",
-      "tailwindcss/no-custom-classname": "off",
-      "tailwindcss/classnames-order": "error"
+      "@next/next/no-html-link-for-pages": "off"
     },
   },
 ];
+
 
 export default eslintConfig;
