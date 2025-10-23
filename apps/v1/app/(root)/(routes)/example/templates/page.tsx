@@ -1,5 +1,5 @@
 // import { CarouselDisplay } from "@/components/carousel-display";
-import React from "react";
+import React from "react"
 
 export default function Page() {
   return (
@@ -8,5 +8,5 @@ export default function Page() {
       <CarouselDisplay name="case-cobra-view" /> */}
       te
     </div>
-  );
+  )
 }

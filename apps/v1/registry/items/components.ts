@@ -1,4 +1,4 @@
-import { type Registry } from "@/schema/shadcn";
+import { type Registry } from "@/schema/shadcn"
 
 export const components: Registry["items"] = [
   {
@@ -103,4 +103,4 @@ export const components: Registry["items"] = [
       },
     ],
   },
-];
+]

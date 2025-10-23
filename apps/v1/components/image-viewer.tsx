@@ -1,35 +1,34 @@
-"use client";
+"use client"
 
-import { imageCardSchema } from "@/schema/image-schema";
-import { Button } from "@/registry/ui/button";
-import React, { ComponentProps } from "react";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
-import z from "zod";
-import { Loading } from "@/registry/components/loading";
+import React, { ComponentProps } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { imageCardSchema } from "@/schema/image-schema"
+import z from "zod"
+
+import { cn } from "@/lib/utils"
+import { Loading } from "@/registry/components/loading"
+import { Button } from "@/registry/ui/button"
 
 type ImageCardContext = {
-  item: z.infer<typeof imageCardSchema>;
-};
+  item: z.infer<typeof imageCardSchema>
+}
 
-const ImageViewerContext = React.createContext<ImageCardContext | null>(null);
+const ImageViewerContext = React.createContext<ImageCardContext | null>(null)
 
 function useImageViewer() {
-  const context = React.useContext(ImageViewerContext);
+  const context = React.useContext(ImageViewerContext)
   if (!context) {
-    throw new Error(
-      "useImageViewer must be used within a ImageViewerProvider."
-    );
+    throw new Error("useImageViewer must be used within a ImageViewerProvider.")
   }
-  return context;
+  return context
 }
 
 function ImageViewerProvider({
   item,
   children,
 }: Pick<ImageCardContext, "item"> & {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <ImageViewerContext.Provider
@@ -39,7 +38,7 @@ function ImageViewerProvider({
     >
       {children}
     </ImageViewerContext.Provider>
-  );
+  )
 }
 
 function ImageViewer({ item }: Pick<ImageCardContext, "item">) {
@@ -47,12 +46,12 @@ function ImageViewer({ item }: Pick<ImageCardContext, "item">) {
     <ImageViewerProvider item={item}>
       <ImageViewerView />
     </ImageViewerProvider>
-  );
+  )
 }
 
 function ImageViewerView() {
-  const { item } = useImageViewer();
-  const [loading, setLoading] = React.useState(true);
+  const { item } = useImageViewer()
+  const [loading, setLoading] = React.useState(true)
 
   return (
     <>
@@ -131,7 +130,7 @@ function ImageViewerView() {
         </div>
       </section>
     </>
-  );
+  )
 }
 
 function Suggestion({ children, className }: ComponentProps<"div">) {
@@ -144,7 +143,7 @@ function Suggestion({ children, className }: ComponentProps<"div">) {
     >
       {children}
     </div>
-  );
+  )
 }
 
-export { ImageViewer, Suggestion };
+export { ImageViewer, Suggestion }

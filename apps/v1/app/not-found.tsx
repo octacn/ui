@@ -1,9 +1,10 @@
-import { MdKeyboardArrowRight, MdSecurity } from "react-icons/md";
-import { ArrowLeft, Book, LucideBlocks } from "lucide-react";
-import { Badge } from "@/registry/ui/badge";
-import { Icons } from "@/components/icons";
-import { FaTwitter } from "react-icons/fa6";
-import Link from "next/link";
+import Link from "next/link"
+import { ArrowLeft, Book, LucideBlocks } from "lucide-react"
+import { FaTwitter } from "react-icons/fa6"
+import { MdKeyboardArrowRight, MdSecurity } from "react-icons/md"
+
+import { Icons } from "@/components/icons"
+import { Badge } from "@/registry/ui/badge"
 
 const docsItems = [
   {
@@ -30,7 +31,7 @@ const docsItems = [
     icon: FaTwitter,
     href: "https://pro.octacn.com",
   },
-];
+]
 
 export default function NotFound() {
   return (
@@ -58,7 +59,7 @@ export default function NotFound() {
         <ContentLinks />
       </div>
     </section>
-  );
+  )
 }
 
 function ContentLinks() {
@@ -93,5 +94,5 @@ function ContentLinks() {
         </Link>
       </div>
     </div>
-  );
+  )
 }

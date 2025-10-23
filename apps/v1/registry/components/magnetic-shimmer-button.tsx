@@ -1,18 +1,19 @@
-"use client";
+"use client"
 
-import React, { CSSProperties, ComponentPropsWithoutRef, useRef } from "react";
-import { cn } from "@/lib/utils";
+import React, { ComponentPropsWithoutRef, CSSProperties, useRef } from "react"
+
+import { cn } from "@/lib/utils"
 
 export interface MagneticShimmerButtonProps
   extends ComponentPropsWithoutRef<"button"> {
-  shimmerColor?: string;
-  shimmerSize?: string;
-  borderRadius?: string;
-  shimmerDuration?: string;
-  background?: string;
-  strength?: number;
-  className?: string;
-  children?: React.ReactNode;
+  shimmerColor?: string
+  shimmerSize?: string
+  borderRadius?: string
+  shimmerDuration?: string
+  background?: string
+  strength?: number
+  className?: string
+  children?: React.ReactNode
 }
 
 export const MagneticShimmerButton = React.forwardRef<
@@ -32,35 +33,35 @@ export const MagneticShimmerButton = React.forwardRef<
     },
     ref
   ) => {
-    const btnRef = useRef<HTMLButtonElement | null>(null);
+    const btnRef = useRef<HTMLButtonElement | null>(null)
 
     const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-      const btn = btnRef.current;
-      if (!btn) return;
+      const btn = btnRef.current
+      if (!btn) return
 
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
+      const rect = btn.getBoundingClientRect()
+      const x = e.clientX - rect.left - rect.width / 2
+      const y = e.clientY - rect.top - rect.height / 2
 
-      btn.style.transform = `translate(${x / strength}px, ${y / strength}px)`;
-    };
+      btn.style.transform = `translate(${x / strength}px, ${y / strength}px)`
+    }
 
     const handleMouseLeave = () => {
-      const btn = btnRef.current;
-      if (!btn) return;
+      const btn = btnRef.current
+      if (!btn) return
 
-      btn.style.transform = "translate(0,0)";
-    };
+      btn.style.transform = "translate(0,0)"
+    }
 
     return (
       <button
         className="px-4 py-3 cursor-pointer"
         ref={(node) => {
-          btnRef.current = node;
-          if (typeof ref === "function") ref(node);
+          btnRef.current = node
+          if (typeof ref === "function") ref(node)
           else if (ref)
             (ref as React.MutableRefObject<HTMLButtonElement | null>).current =
-              node;
+              node
         }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -107,8 +108,8 @@ export const MagneticShimmerButton = React.forwardRef<
           />
         </div>
       </button>
-    );
+    )
   }
-);
+)
 
-MagneticShimmerButton.displayName = "MagneticShimmerButton";
+MagneticShimmerButton.displayName = "MagneticShimmerButton"

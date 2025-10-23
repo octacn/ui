@@ -1,16 +1,17 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { Button } from "@/registry/ui/button";
+import Link from "next/link"
+import { Briefcase, FileText, HelpCircle, Info, Menu, Tag } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/ui/button"
 import {
   Sheet,
   SheetContent,
   SheetFooter,
   SheetTitle,
   SheetTrigger,
-} from "@/registry/ui/sheet";
-import { Menu, Briefcase, Tag, HelpCircle, FileText, Info } from "lucide-react";
-import { cn } from "@/lib/utils";
+} from "@/registry/ui/sheet"
 
 const Logo = ({ className }: { className?: string }) => (
   <svg
@@ -168,7 +169,7 @@ const Logo = ({ className }: { className?: string }) => (
       </radialGradient>
     </defs>
   </svg>
-);
+)
 
 const navLinks = [
   { href: "#home", label: "Home", icon: Briefcase },
@@ -176,14 +177,14 @@ const navLinks = [
   { href: "#faq", label: "FAQ", icon: HelpCircle },
   { href: "#blog", label: "Blog", icon: FileText },
   { href: "#about", label: "About", icon: Info },
-];
+]
 
 const NavLinks = ({
   className,
   onClick,
 }: {
-  className?: string;
-  onClick?: () => void;
+  className?: string
+  onClick?: () => void
 }) => (
   <nav className={className}>
     {navLinks.map(({ href, label, icon: Icon }) => (
@@ -198,7 +199,7 @@ const NavLinks = ({
       </Link>
     ))}
   </nav>
-);
+)
 
 export function Header() {
   return (
@@ -235,7 +236,7 @@ export function Header() {
         </div>
       </div>
     </header>
-  );
+  )
 }
 
 function CTAButton({ className }: { className?: string }) {
@@ -249,5 +250,5 @@ function CTAButton({ className }: { className?: string }) {
     >
       <Link href="#contact">Get a Quote</Link>
     </Button>
-  );
+  )
 }

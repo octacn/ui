@@ -1,5 +1,4 @@
-import { AppSidebar } from "@/registry/demo/sidebars/sidebar-07/components/app-sidebar";
-
+import { AppSidebar } from "@/registry/demo/sidebars/sidebar-07/components/app-sidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,13 +6,13 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/ui/breadcrumb";
-import { Separator } from "@/registry/ui/separator";
+} from "@/registry/ui/breadcrumb"
+import { Separator } from "@/registry/ui/separator"
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/registry/ui/sidebar";
+} from "@/registry/ui/sidebar"
 
 export default function Page() {
   return (
@@ -52,5 +51,5 @@ export default function Page() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  );
+  )
 }

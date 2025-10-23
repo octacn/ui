@@ -19,11 +19,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/registry/ui/form"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/ui/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover"
 
 const FormSchema = z.object({
   dob: z.date({

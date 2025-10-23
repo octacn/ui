@@ -1,7 +1,8 @@
-import { Button } from "@/registry/ui/button";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { siteConfig } from "@/lib/config";
+import Link from "next/link"
+
+import { siteConfig } from "@/lib/config"
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/ui/button"
 
 export function OpenInAgency({ className }: React.ComponentProps<"div">) {
   return (
@@ -31,5 +32,5 @@ export function OpenInAgency({ className }: React.ComponentProps<"div">) {
         <span className="sr-only">Connect</span>
       </Link>
     </div>
-  );
+  )
 }

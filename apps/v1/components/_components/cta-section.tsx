@@ -1,23 +1,24 @@
-"use client";
+"use client"
 
-import HoverAnimation from "@/components/animation/hover-animation";
-import { Box, BoxWrapper } from "@/components/box";
-import { Heading } from "@/components/heading";
-import { Button } from "@/registry/ui/button";
-import { Badge } from "@/registry/ui/badge";
-import Image from "next/image";
-import React from "react";
-import { Loading } from "@/registry/components/loading";
-import { cn } from "@/lib/utils";
-import { siteConfig } from "@/lib/config";
+import React from "react"
+import Image from "next/image"
+
+import { siteConfig } from "@/lib/config"
+import { cn } from "@/lib/utils"
+import HoverAnimation from "@/components/animation/hover-animation"
+import { Box, BoxWrapper } from "@/components/box"
+import { Heading } from "@/components/heading"
+import { Loading } from "@/registry/components/loading"
+import { Badge } from "@/registry/ui/badge"
+import { Button } from "@/registry/ui/button"
 
 interface ComponentPackCardProps {
-  title: string;
-  count: string | number;
-  description: string;
-  imageUrl: string;
-  imageAlt?: string;
-  href?: string;
+  title: string
+  count: string | number
+  description: string
+  imageUrl: string
+  imageAlt?: string
+  href?: string
 }
 
 export default function CtaSection() {
@@ -49,7 +50,7 @@ export default function CtaSection() {
       imageAlt: "Navigation Bars Preview",
       href: "/packs/navbars",
     },
-  ];
+  ]
   return (
     <BoxWrapper className="pb-10">
       <Heading
@@ -73,7 +74,7 @@ export default function CtaSection() {
         </HoverAnimation>
       </div>
     </BoxWrapper>
-  );
+  )
 }
 
 function ProductCards({
@@ -82,7 +83,7 @@ function ProductCards({
   description,
   imageUrl,
 }: ComponentPackCardProps) {
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState(true)
   return (
     <div className="group overflow-hidden rounded-2xl border bg-surface">
       <div className="relative overflow-hidden rounded-2xl transition duration-200 group-hover:shadow-xl border-b h-52">
@@ -115,7 +116,7 @@ function ProductCards({
         </p>
       </div>
     </div>
-  );
+  )
 }
 
 export function WaitListCta() {
@@ -143,5 +144,5 @@ export function WaitListCta() {
         </div>
       </Box>
     </BoxWrapper>
-  );
+  )
 }

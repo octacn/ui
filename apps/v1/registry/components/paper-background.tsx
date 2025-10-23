@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 export default function PaperBackground({
   className,
@@ -61,5 +61,5 @@ export default function PaperBackground({
         </g>
       </svg>
     </div>
-  );
+  )
 }

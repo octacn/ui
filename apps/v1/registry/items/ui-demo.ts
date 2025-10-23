@@ -1,4 +1,4 @@
-import { type Registry } from "@/schema/shadcn";
+import { type Registry } from "@/schema/shadcn"
 
 export const uiDemo: Registry["items"] = [
   {
@@ -426,7 +426,7 @@ export const uiDemo: Registry["items"] = [
       },
     ],
   },
-   {
+  {
     name: "chart-bar-interactive",
     type: "registry:example",
     files: [
@@ -1506,7 +1506,7 @@ export const uiDemo: Registry["items"] = [
       },
     ],
   },
-    {
+  {
     name: "typography-h5",
     type: "registry:example",
     files: [
@@ -1516,7 +1516,7 @@ export const uiDemo: Registry["items"] = [
       },
     ],
   },
-    {
+  {
     name: "typography-h6",
     type: "registry:example",
     files: [
@@ -1596,4 +1596,4 @@ export const uiDemo: Registry["items"] = [
       },
     ],
   },
-];
+]

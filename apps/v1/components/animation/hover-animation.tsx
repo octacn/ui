@@ -1,12 +1,13 @@
-import { cn } from "@/lib/utils";
-import Link, { LinkProps } from "next/link";
-import React from "react";
+import React from "react"
+import Link, { LinkProps } from "next/link"
+
+import { cn } from "@/lib/utils"
 
 interface HoverAnimationProps
   extends LinkProps,
     Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href"> {
-  className?: string;
-  children: React.ReactNode;
+  className?: string
+  children: React.ReactNode
 }
 
 export default function HoverAnimation({
@@ -24,5 +25,5 @@ export default function HoverAnimation({
     >
       {children}
     </Link>
-  );
+  )
 }

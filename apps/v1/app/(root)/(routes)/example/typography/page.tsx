@@ -1,25 +1,26 @@
-import { Loading } from "@/registry/components/loading";
-import { BlockquoteDemo } from "@/registry/demo/ui/typography-blockquote";
-import { H1Demo } from "@/registry/demo/ui/typography-h1";
-import { H2Demo } from "@/registry/demo/ui/typography-h2";
-import { H3Demo } from "@/registry/demo/ui/typography-h3";
-import { H4Demo } from "@/registry/demo/ui/typography-h4";
-import { H5Demo } from "@/registry/demo/ui/typography-h5";
-import { H6Demo } from "@/registry/demo/ui/typography-h6";
-import { InlineCodeDemo } from "@/registry/demo/ui/typography-inline-code";
-import TypographyLarge from "@/registry/demo/ui/typography-large";
-import TypographyList from "@/registry/demo/ui/typography-list";
-import TypographyMuted from "@/registry/demo/ui/typography-muted";
-import { PDemo } from "@/registry/demo/ui/typography-p";
-import TypographySmall from "@/registry/demo/ui/typography-small";
-import React, { ComponentProps } from "react";
+import React, { ComponentProps } from "react"
+
+import { Loading } from "@/registry/components/loading"
+import { BlockquoteDemo } from "@/registry/demo/ui/typography-blockquote"
+import { H1Demo } from "@/registry/demo/ui/typography-h1"
+import { H2Demo } from "@/registry/demo/ui/typography-h2"
+import { H3Demo } from "@/registry/demo/ui/typography-h3"
+import { H4Demo } from "@/registry/demo/ui/typography-h4"
+import { H5Demo } from "@/registry/demo/ui/typography-h5"
+import { H6Demo } from "@/registry/demo/ui/typography-h6"
+import { InlineCodeDemo } from "@/registry/demo/ui/typography-inline-code"
+import TypographyLarge from "@/registry/demo/ui/typography-large"
+import TypographyList from "@/registry/demo/ui/typography-list"
+import TypographyMuted from "@/registry/demo/ui/typography-muted"
+import { PDemo } from "@/registry/demo/ui/typography-p"
+import TypographySmall from "@/registry/demo/ui/typography-small"
 
 export default function Page() {
   return (
-      <Typography />
+    <Typography />
     // <Suspense fallback={<Loading />}>
     // </Suspense>
-  );
+  )
 }
 
 function Typography() {
@@ -37,7 +38,7 @@ function Typography() {
     { component: <TypographyList />, label: "List Text" },
     { component: <BlockquoteDemo />, label: "Blockquote" },
     { component: <InlineCodeDemo />, label: "Inline Code" },
-  ];
+  ]
 
   return (
     <div className="border bg-surface rounded-lg relative grid grid-cols-2 gap-0">
@@ -47,14 +48,14 @@ function Typography() {
         </DemoBox>
       ))}
     </div>
-  );
+  )
 }
 
 function DemoBox({
   children,
   label,
 }: ComponentProps<"div"> & {
-  label: string;
+  label: string
 }) {
   return (
     <div className="relative border-r border-b border-dashed last:border-r-0">
@@ -65,5 +66,5 @@ function DemoBox({
         <div className="text-center truncate max-w-full">{children}</div>
       </div>
     </div>
-  );
+  )
 }

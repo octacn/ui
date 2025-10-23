@@ -1,4 +1,4 @@
-import { Li, Ul } from "@/registry/ui/typography";
+import { Li, Ul } from "@/registry/ui/typography"
 
 export default function TypographyList() {
   return (
@@ -7,5 +7,5 @@ export default function TypographyList() {
       <Li>2nd level of jokes: 10 gold coins</Li>
       <Li>3rd level of one-liners : 20 gold coins</Li>
     </Ul>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import z from "zod";
+import z from "zod"
 
 export const imageCardSchema = z.object({
   docs: z.string(),
@@ -7,7 +7,7 @@ export const imageCardSchema = z.object({
   name: z.string().optional(),
   image: z.string().optional(),
   preview: z.string().optional(),
-});
+})
 
 export const imageCarouselSchema = z.object({
   images: z.array(z.object({ image: z.string() })),
@@ -17,4 +17,4 @@ export const imageCarouselSchema = z.object({
   repository: z.string(),
   owner: z.string().optional(),
   branch: z.string().optional(),
-});
+})

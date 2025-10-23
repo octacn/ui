@@ -1,5 +1,6 @@
-import PaperBackground from "@/registry/components/paper-background";
-import React from "react";
+import React from "react"
+
+import PaperBackground from "@/registry/components/paper-background"
 
 export default function PaperBackgroundDemo() {
   return (
@@ -13,5 +14,5 @@ export default function PaperBackgroundDemo() {
       </div>
       <PaperBackground className="rounded-lg" />
     </div>
-  );
+  )
 }

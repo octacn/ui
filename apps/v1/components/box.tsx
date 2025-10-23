@@ -52,7 +52,10 @@ export function CodePreviewBox({
   )
 }
 
-export function LayoutBox({ children, className }: React.ComponentProps<"div">) {
+export function LayoutBox({
+  children,
+  className,
+}: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(

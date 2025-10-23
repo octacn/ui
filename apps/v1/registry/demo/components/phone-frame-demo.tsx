@@ -1,5 +1,6 @@
-import { AndroidFrame, IphoneFrame } from "@/registry/components/phone-frame";
-import React from "react";
+import React from "react"
+
+import { AndroidFrame, IphoneFrame } from "@/registry/components/phone-frame"
 
 export const PhoneFrameDemo = () => {
   return (
@@ -15,5 +16,5 @@ export const PhoneFrameDemo = () => {
         src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/b0f3222371106db366a14ca1c29cef55-1b1EWVSa4w3FL2zslcaCGYTy9vcxjF.mp4"
       />
     </div>
-  );
-};
+  )
+}

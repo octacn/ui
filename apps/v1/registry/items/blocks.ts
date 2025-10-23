@@ -1,4 +1,4 @@
-import { type Registry } from "@/schema/shadcn";
+import { type Registry } from "@/schema/shadcn"
 
 export const blocks: Registry["items"] = [
   {
@@ -61,4 +61,4 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication"],
   },
-];
+]

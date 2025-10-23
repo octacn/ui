@@ -1,12 +1,11 @@
-import ScaleHoverAnimationButton from "@/registry/components/scale-hover-animation-button";
-import React from "react";
+import React from "react"
+
+import ScaleHoverAnimationButton from "@/registry/components/scale-hover-animation-button"
 
 export default function ScaleHoverAnimationButtonDemo() {
   return (
     <>
-      <ScaleHoverAnimationButton>
-        Get Started
-      </ScaleHoverAnimationButton>
+      <ScaleHoverAnimationButton>Get Started</ScaleHoverAnimationButton>
     </>
-  );
+  )
 }

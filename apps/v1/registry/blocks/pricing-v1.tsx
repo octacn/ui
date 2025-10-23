@@ -1,20 +1,21 @@
-import { Card, CardContent, CardFooter, CardHeader } from "@/registry/ui/card";
-import { Button } from "@/registry/ui/button";
-import { CheckCircle2 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { CheckCircle2 } from "lucide-react"
 
-const ACCENT = "#C6FF3A";
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/ui/button"
+import { Card, CardContent, CardFooter, CardHeader } from "@/registry/ui/card"
+
+const ACCENT = "#C6FF3A"
 
 interface PricingCardProps {
-  id: string;
-  name: string;
-  time: string;
-  prices: string;
-  discount?: string;
-  features: string[];
-  className?: string;
-  isPopular?: boolean;
-  description?: string;
+  id: string
+  name: string
+  time: string
+  prices: string
+  discount?: string
+  features: string[]
+  className?: string
+  isPopular?: boolean
+  description?: string
 }
 
 export default function PricingCard({
@@ -113,5 +114,5 @@ export default function PricingCard({
         </Button>
       </CardFooter>
     </Card>
-  );
+  )
 }

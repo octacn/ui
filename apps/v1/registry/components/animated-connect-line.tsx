@@ -1,9 +1,6 @@
-"use client";
+"use client"
 
-import { AnimatedPath } from "@/registry/components/animated-path";
-import React, { ComponentProps, useRef } from "react";
-import { Card, CardContent } from "@/registry/ui/card";
-import { cn } from "@/lib/utils";
+import React, { ComponentProps, useRef } from "react"
 import {
   Chrome,
   Facebook,
@@ -14,19 +11,23 @@ import {
   Slack,
   Twitter,
   Youtube,
-} from "lucide-react";
+} from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { AnimatedPath } from "@/registry/components/animated-path"
+import { Card, CardContent } from "@/registry/ui/card"
 
 export default function AnimatedConnectLine() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const div1Ref = useRef<HTMLDivElement>(null);
-  const div2Ref = useRef<HTMLDivElement>(null);
-  const div3Ref = useRef<HTMLDivElement>(null);
-  const div4Ref = useRef<HTMLDivElement>(null);
-  const div5Ref = useRef<HTMLDivElement>(null);
-  const div6Ref = useRef<HTMLDivElement>(null);
-  const div7Ref = useRef<HTMLDivElement>(null);
-  const div8Ref = useRef<HTMLDivElement>(null);
-  const div9Ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null)
+  const div1Ref = useRef<HTMLDivElement>(null)
+  const div2Ref = useRef<HTMLDivElement>(null)
+  const div3Ref = useRef<HTMLDivElement>(null)
+  const div4Ref = useRef<HTMLDivElement>(null)
+  const div5Ref = useRef<HTMLDivElement>(null)
+  const div6Ref = useRef<HTMLDivElement>(null)
+  const div7Ref = useRef<HTMLDivElement>(null)
+  const div8Ref = useRef<HTMLDivElement>(null)
+  const div9Ref = useRef<HTMLDivElement>(null)
   return (
     <Card className="relative w-full max-w-sm bg-surface" ref={containerRef}>
       <CardContent className="grid grid-cols-3 place-items-center justify-items-center gap-x-8 gap-y-12 py-8">
@@ -101,7 +102,7 @@ export default function AnimatedConnectLine() {
         toRef={div9Ref}
       />
     </Card>
-  );
+  )
 }
 
 function Box({
@@ -123,5 +124,5 @@ function Box({
       </div>
       <h4 className="text-xs text-muted-foreground">{label}</h4>
     </div>
-  );
+  )
 }

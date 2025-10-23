@@ -1,26 +1,29 @@
-import MaxWidthWrapper from "@/registry/ui/max-width-wrapper";
-import { ThemeProvider } from "@/registry/ui/theme-provider";
-import { Geist, Inter, Space_Grotesk } from "next/font/google";
-import { META_THEME_COLORS, siteConfig } from "@/lib/config";
-import type { Metadata } from "next";
-import { cn } from "@/lib/utils";
-import "@/styles/globals.css";
-import { Toaster } from "@/registry/ui/sonner";
+import type { Metadata } from "next"
+import { Geist, Inter, Space_Grotesk } from "next/font/google"
+
+import { META_THEME_COLORS, siteConfig } from "@/lib/config"
+import { cn } from "@/lib/utils"
+import MaxWidthWrapper from "@/registry/ui/max-width-wrapper"
+import { ThemeProvider } from "@/registry/ui/theme-provider"
+
+import "@/styles/globals.css"
+
+import { Toaster } from "@/registry/ui/sonner"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
+})
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
+})
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-});
+})
 
 export const metadata: Metadata = {
   title: {
@@ -73,12 +76,12 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -119,5 +122,5 @@ export default function RootLayout({
         <Toaster />
       </body>
     </html>
-  );
+  )
 }

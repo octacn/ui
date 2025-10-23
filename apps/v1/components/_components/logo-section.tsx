@@ -1,5 +1,6 @@
-import { Icons } from "@/components/icons";
-import React from "react";
+import React from "react"
+
+import { Icons } from "@/components/icons"
 
 export default function LogoSection() {
   return (
@@ -14,7 +15,7 @@ export default function LogoSection() {
         <LogoCard />
       </div>
     </section>
-  );
+  )
 }
 function LogoCard() {
   const techStackItems = [
@@ -34,7 +35,7 @@ function LogoCard() {
       icon: Icons.motion,
       name: "Motion",
     },
-  ];
+  ]
 
   return (
     <div className="no-visible-scrollbar relative flex flex-wrap items-center justify-center gap-4 mt-4">
@@ -50,5 +51,5 @@ function LogoCard() {
         </div>
       ))}
     </div>
-  );
+  )
 }

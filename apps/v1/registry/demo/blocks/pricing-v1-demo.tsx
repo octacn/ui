@@ -1,4 +1,4 @@
-import PricingCard from "@/registry/blocks/pricing-v1";
+import PricingCard from "@/registry/blocks/pricing-v1"
 
 export default function PricingV1Demo() {
   const pricingPlans = [
@@ -55,7 +55,7 @@ export default function PricingV1Demo() {
       description:
         "Enterprise-grade solution with premium features and dedicated support",
     },
-  ];
+  ]
 
   return (
     <div className="grid md:grid-cols-3 gap-8 px-10 py-20">
@@ -69,5 +69,5 @@ export default function PricingV1Demo() {
         />
       ))}
     </div>
-  );
+  )
 }

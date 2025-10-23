@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod"
 
 export const waitlistSchema = z.object({
   email: z.email({
@@ -7,4 +7,4 @@ export const waitlistSchema = z.object({
   name: z.string({
     message: "Please enter your name.",
   }),
-});
+})

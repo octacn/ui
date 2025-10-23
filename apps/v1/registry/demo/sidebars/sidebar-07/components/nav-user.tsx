@@ -9,11 +9,7 @@ import {
   Sparkles,
 } from "lucide-react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,

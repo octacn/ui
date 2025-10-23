@@ -1,13 +1,14 @@
-import { ComponentProps, useMemo } from "react";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { ComponentProps, useMemo } from "react"
+import Link from "next/link"
+
+import { cn } from "@/lib/utils"
 
 interface GithubDownloadButtonProps
   extends Omit<ComponentProps<"a">, "children"> {
-  children: React.ReactNode;
-  repository: string;
-  branch?: string;
-  owner?: string;
+  children: React.ReactNode
+  repository: string
+  branch?: string
+  owner?: string
 }
 
 export default function GithubDownloadButton({
@@ -22,9 +23,9 @@ export default function GithubDownloadButton({
     () =>
       `https://github.com/${owner}/${repository}/archive/refs/heads/${branch}.zip`,
     [owner, repository, branch]
-  );
+  )
 
-  const fileName = `${repository}-${branch}.zip`;
+  const fileName = `${repository}-${branch}.zip`
 
   return (
     <Link
@@ -40,5 +41,5 @@ export default function GithubDownloadButton({
     >
       {children}
     </Link>
-  );
+  )
 }

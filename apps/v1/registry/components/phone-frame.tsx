@@ -4,10 +4,10 @@ export function AndroidFrame({
   badge,
   description,
 }: {
-  src: string;
-  title: string;
-  badge?: string;
-  description: string;
+  src: string
+  title: string
+  badge?: string
+  description: string
 }) {
   return (
     <div className="relative rounded-4xl glass-border bg-neutral-900 p-3.5 pt-7 h-fit border-3 select-none">
@@ -38,7 +38,7 @@ export function AndroidFrame({
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export function IphoneFrame({
@@ -47,10 +47,10 @@ export function IphoneFrame({
   badge,
   description,
 }: {
-  src: string;
-  title: string;
-  badge?: string;
-  description: string;
+  src: string
+  title: string
+  badge?: string
+  description: string
 }) {
   return (
     <div className="relative rounded-[58px] glass-border bg-neutral-900 py-5 px-5 h-fit border-3 select-none">
@@ -84,5 +84,5 @@ export function IphoneFrame({
         </div>
       </div>
     </div>
-  );
+  )
 }

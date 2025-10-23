@@ -11,12 +11,12 @@ export const newPages = [
   /**
    * Badge for blocks-docs
    */
-  "/components/backgrounds/interactive-background"
+  "/components/backgrounds/interactive-background",
 
   /**
    * Badge for auth-docs
    */
-];
+]
 
 export const proPages = [
   /**
@@ -31,7 +31,7 @@ export const proPages = [
   /**
    * Badge for auth-docs
    */
-];
+]
 
 export const comingSoonPages = [
   /**
@@ -46,4 +46,4 @@ export const comingSoonPages = [
   /**
    * Badge for auth-docs
    */
-];
+]

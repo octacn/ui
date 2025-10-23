@@ -1,11 +1,12 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import { RoughNotation, RoughNotationProps } from "react-rough-notation";
+import { RoughNotation, RoughNotationProps } from "react-rough-notation"
+
+import { cn } from "@/lib/utils"
 
 interface HighlighterProps extends Omit<RoughNotationProps, "type"> {
-  type?: RoughNotationProps["type"];
-  className?: string;
+  type?: RoughNotationProps["type"]
+  className?: string
 }
 
 export default function Highlighter({
@@ -20,5 +21,5 @@ export default function Highlighter({
         {children}
       </RoughNotation>
     </span>
-  );
+  )
 }

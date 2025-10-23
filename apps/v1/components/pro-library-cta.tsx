@@ -1,10 +1,11 @@
-import React, { ComponentProps } from "react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { createBorder } from "@/components/create-border";
-import HoverAnimation from "@/components/animation/hover-animation";
-import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-button";
-import { siteConfig } from "@/lib/config";
+import React, { ComponentProps } from "react"
+import Link from "next/link"
+
+import { siteConfig } from "@/lib/config"
+import { cn } from "@/lib/utils"
+import HoverAnimation from "@/components/animation/hover-animation"
+import { createBorder } from "@/components/create-border"
+import { MagneticShimmerButton } from "@/registry/components/magnetic-shimmer-button"
 
 export default function ProLibraryCta({
   marginBottom,
@@ -88,5 +89,5 @@ export default function ProLibraryCta({
         )}
       </section>
     </div>
-  );
+  )
 }

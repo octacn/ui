@@ -1,17 +1,17 @@
 interface PinterestLayoutProps {
-  images?: string[];
+  images?: string[]
 }
 
 export function PinterestLayout({ images = [] }: PinterestLayoutProps) {
   const getColumnClasses = () => {
-    const imageCount = images?.length || 0;
+    const imageCount = images?.length || 0
 
-    if (imageCount <= 2) return "columns-1";
-    if (imageCount <= 4) return "columns-1 sm:columns-2";
-    if (imageCount <= 6) return "columns-1 sm:columns-2 md:columns-3";
-    if (imageCount <= 9) return "columns-2 sm:columns-3 md:columns-4";
-    return "columns-2 sm:columns-3 md:columns-4 lg:columns-5";
-  };
+    if (imageCount <= 2) return "columns-1"
+    if (imageCount <= 4) return "columns-1 sm:columns-2"
+    if (imageCount <= 6) return "columns-1 sm:columns-2 md:columns-3"
+    if (imageCount <= 9) return "columns-2 sm:columns-3 md:columns-4"
+    return "columns-2 sm:columns-3 md:columns-4 lg:columns-5"
+  }
 
   // Early return if no images
   if (!images || images.length === 0) {
@@ -21,7 +21,7 @@ export function PinterestLayout({ images = [] }: PinterestLayoutProps) {
           No images to display
         </div>
       </section>
-    );
+    )
   }
 
   return (
@@ -36,5 +36,5 @@ export function PinterestLayout({ images = [] }: PinterestLayoutProps) {
         />
       ))}
     </section>
-  );
+  )
 }

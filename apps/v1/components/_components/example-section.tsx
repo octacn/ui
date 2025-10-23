@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
-import { cn } from "@/lib/utils";
-import { ScrollArea, ScrollBar } from "@/registry/ui/scroll-area";
+import { cn } from "@/lib/utils"
+import { ScrollArea, ScrollBar } from "@/registry/ui/scroll-area"
 
 const examples = [
   {
@@ -31,13 +31,13 @@ const examples = [
     name: "Templates",
     href: "/example/templates",
   },
-];
+]
 
 export function ExampleSection({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
     <div className={cn("flex items-center", className)} {...props}>
@@ -58,15 +58,15 @@ export function ExampleSection({
         <ScrollBar orientation="horizontal" className="invisible" />
       </ScrollArea>
     </div>
-  );
+  )
 }
 
 function ExampleLink({
   example,
   isActive,
 }: {
-  example: (typeof examples)[number];
-  isActive: boolean;
+  example: (typeof examples)[number]
+  isActive: boolean
 }) {
   return (
     <Link
@@ -77,5 +77,5 @@ function ExampleLink({
     >
       {example.name}
     </Link>
-  );
+  )
 }

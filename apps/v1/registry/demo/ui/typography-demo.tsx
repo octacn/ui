@@ -1,5 +1,6 @@
-import { H1, H2, H3, H4, H5, H6 } from "@/registry/ui/typography";
-import React from "react";
+import React from "react"
+
+import { H1, H2, H3, H4, H5, H6 } from "@/registry/ui/typography"
 
 export const TypographyDemo = () => {
   return (
@@ -11,5 +12,5 @@ export const TypographyDemo = () => {
       <H5>This is h5 Heading</H5>
       <H6>This is h6 Heading</H6>
     </div>
-  );
-};
+  )
+}

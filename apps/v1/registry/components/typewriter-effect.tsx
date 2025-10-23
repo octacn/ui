@@ -1,19 +1,19 @@
-"use client";
+"use client"
 
-import { useEffect, useRef, useState } from "react";
-import { motion, MotionProps, useInView } from "motion/react";
+import { useEffect, useRef, useState } from "react"
+import { motion, MotionProps, useInView } from "motion/react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 interface TypingAnimationProps extends MotionProps {
-  children: string;
-  className?: string;
-  duration?: number;
-  delay?: number;
-  as?: React.ElementType;
-  startOnView?: boolean;
-  repeat?: boolean;
-  repeatDelay?: number;
+  children: string
+  className?: string
+  duration?: number
+  delay?: number
+  as?: React.ElementType
+  startOnView?: boolean
+  repeat?: boolean
+  repeatDelay?: number
 }
 
 export function TypewriterEffect({
@@ -29,77 +29,77 @@ export function TypewriterEffect({
 }: TypingAnimationProps) {
   const MotionComponent = motion.create(Component, {
     forwardMotionProps: true,
-  });
+  })
 
-  const [displayedText, setDisplayedText] = useState<string>("");
-  const [started, setStarted] = useState(false);
-  const elementRef = useRef<HTMLElement | null>(null);
+  const [displayedText, setDisplayedText] = useState<string>("")
+  const [started, setStarted] = useState(false)
+  const elementRef = useRef<HTMLElement | null>(null)
   const isInView = useInView(elementRef as React.RefObject<Element>, {
     amount: 0.3,
     once: true,
-  });
+  })
 
   useEffect(() => {
     if (!startOnView) {
       const startTimeout = setTimeout(() => {
-        setStarted(true);
-      }, delay);
-      return () => clearTimeout(startTimeout);
+        setStarted(true)
+      }, delay)
+      return () => clearTimeout(startTimeout)
     }
 
-    if (!isInView) return;
+    if (!isInView) return
 
     const startTimeout = setTimeout(() => {
-      setStarted(true);
-    }, delay);
+      setStarted(true)
+    }, delay)
 
-    return () => clearTimeout(startTimeout);
-  }, [delay, startOnView, isInView]);
+    return () => clearTimeout(startTimeout)
+  }, [delay, startOnView, isInView])
 
   useEffect(() => {
-    if (!started) return;
+    if (!started) return
 
-    let currentInterval: NodeJS.Timeout | null = null;
-    let currentTimeout: NodeJS.Timeout | null = null;
+    let currentInterval: NodeJS.Timeout | null = null
+    let currentTimeout: NodeJS.Timeout | null = null
 
     const runTypewriterAnimation = () => {
-      const graphemes = Array.from(children);
-      let i = 0;
+      const graphemes = Array.from(children)
+      let i = 0
 
       // Reset displayed text
-      setDisplayedText("");
+      setDisplayedText("")
 
       currentInterval = setInterval(() => {
         if (i < graphemes.length) {
-          setDisplayedText(graphemes.slice(0, i + 1).join(""));
-          i++;
+          setDisplayedText(graphemes.slice(0, i + 1).join(""))
+          i++
         } else {
           if (currentInterval) {
-            clearInterval(currentInterval);
-            currentInterval = null;
+            clearInterval(currentInterval)
+            currentInterval = null
           }
 
           // If repeat is enabled, schedule the next iteration
           if (repeat) {
             currentTimeout = setTimeout(() => {
-              runTypewriterAnimation();
-            }, repeatDelay);
+              runTypewriterAnimation()
+            }, repeatDelay)
           }
         }
-      }, duration);
-    };
+      }, duration)
+    }
 
-    runTypewriterAnimation();
+    runTypewriterAnimation()
 
     return () => {
       if (currentInterval) {
-        clearInterval(currentInterval);
+        clearInterval(currentInterval)
       }
       if (currentTimeout) {
-        clearTimeout(currentTimeout);
+        clearTimeout(currentTimeout)
       }
-    };
-  }, [children, duration, started, repeat, repeatDelay]);
+    }
+  }, [children, duration, started, repeat, repeatDelay])
 
   return (
     <MotionComponent
@@ -126,5 +126,5 @@ export function TypewriterEffect({
         className={cn("inline-block rounded-sm w-1 h-12 bg-foreground ml-2")}
       ></motion.span>
     </MotionComponent>
-  );
+  )
 }

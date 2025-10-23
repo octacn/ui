@@ -12,16 +12,8 @@ import {
   CommandItem,
   CommandList,
 } from "@/registry/ui/command"
-import {
-  Drawer,
-  DrawerContent,
-  DrawerTrigger,
-} from "@/registry/ui/drawer"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/ui/popover"
+import { Drawer, DrawerContent, DrawerTrigger } from "@/registry/ui/drawer"
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover"
 
 type Status = {
   value: string

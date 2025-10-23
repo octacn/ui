@@ -1,24 +1,24 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import Link, { LinkProps } from "next/link";
-import { useRouter } from "next/navigation";
+import * as React from "react"
+import Link, { LinkProps } from "next/link"
+import { useRouter } from "next/navigation"
 
-import { docsSource } from "@/lib/source";
-import { cn } from "@/lib/utils";
-import { Button } from "@/registry/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover";
+import { docsSource } from "@/lib/source"
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/ui/button"
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover"
 
 export function MobileNav({
   tree,
   items,
   className,
 }: {
-  tree: typeof docsSource.pageTree;
-  items: { href: string; label: string }[];
-  className?: string;
+  tree: typeof docsSource.pageTree
+  items: { href: string; label: string }[]
+  className?: string
 }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -97,19 +97,19 @@ export function MobileNav({
                             >
                               {item.name}
                             </MobileLink>
-                          );
+                          )
                         }
                       })}
                     </div>
                   </div>
-                );
+                )
               }
             })}
           </div>
         </div>
       </PopoverContent>
     </Popover>
-  );
+  )
 }
 
 function MobileLink({
@@ -119,22 +119,22 @@ function MobileLink({
   children,
   ...props
 }: LinkProps & {
-  onOpenChange?: (open: boolean) => void;
-  children: React.ReactNode;
-  className?: string;
+  onOpenChange?: (open: boolean) => void
+  children: React.ReactNode
+  className?: string
 }) {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <Link
       href={href}
       onClick={() => {
-        router.push(href.toString());
-        onOpenChange?.(false);
+        router.push(href.toString())
+        onOpenChange?.(false)
       }}
       className={cn("text-lg font-inter font-medium", className)}
       {...props}
     >
       {children}
     </Link>
-  );
+  )
 }

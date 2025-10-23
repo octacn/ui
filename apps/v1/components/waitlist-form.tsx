@@ -1,14 +1,22 @@
-"use client";
+"use client"
 
-import { useForm } from "react-hook-form";
 import {
   ComponentProps,
   useActionState,
   useEffect,
   useRef,
   useTransition,
-} from "react";
-import * as z from "zod";
+} from "react"
+import Link from "next/link"
+import { submitWaitlistForm } from "@/documentation/waitlist/waitlist-action"
+import { waitlistSchema } from "@/schema/waitlist-schema"
+import { useForm } from "react-hook-form"
+import { RiArrowRightUpLine } from "react-icons/ri"
+import { toast } from "sonner"
+import * as z from "zod"
+
+import { cn } from "@/lib/utils"
+import Highlighter from "@/registry/components/highlighter"
 import {
   Form,
   FormControl,
@@ -17,17 +25,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/registry/ui/form";
-import { Input } from "@/registry/ui/input";
-import { waitlistSchema } from "@/schema/waitlist-schema";
-import { RiArrowRightUpLine } from "react-icons/ri";
-import Link from "next/link";
-import Highlighter from "@/registry/components/highlighter";
-import { cn } from "@/lib/utils";
-import { toast } from "sonner";
-import { submitWaitlistForm } from "@/documentation/waitlist/waitlist-action";
+} from "@/registry/ui/form"
+import { Input } from "@/registry/ui/input"
 
-type FormValues = z.infer<typeof waitlistSchema>;
+type FormValues = z.infer<typeof waitlistSchema>
 
 const linkItems = [
   {
@@ -106,34 +107,34 @@ const linkItems = [
     name: "Tooltips",
     href: "/docs/tooltips",
   },
-];
+]
 
 export function WaitlistForm() {
   const [state, formAction] = useActionState(submitWaitlistForm, {
     message: "",
-  });
+  })
 
   const form = useForm<FormValues>({
     defaultValues: {
       email: "",
       name: "",
     },
-  });
+  })
 
   useEffect(() => {
-    toast.success(state.message);
-  }, [state]);
+    toast.success(state.message)
+  }, [state])
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault()
     startTransition(() => {
-      formAction(new FormData(formRef.current!));
-      form.reset();
-    });
-  };
+      formAction(new FormData(formRef.current!))
+      form.reset()
+    })
+  }
 
-  const formRef = useRef<HTMLFormElement>(null);
-  const [isPending, startTransition] = useTransition();
+  const formRef = useRef<HTMLFormElement>(null)
+  const [isPending, startTransition] = useTransition()
 
   return (
     <div className="w-full flex flex-col gap-y-14 justify-center items-center font-inter font-medium tracking-wide text-base">
@@ -248,7 +249,7 @@ export function WaitlistForm() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function ExternalLink({
@@ -272,5 +273,5 @@ function ExternalLink({
         aria-hidden="true"
       />
     </Link>
-  );
+  )
 }

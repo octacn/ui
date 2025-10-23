@@ -1,9 +1,10 @@
-import { Skeleton } from "@/registry/ui/skeleton";
-import { Button } from "@/registry/ui/button";
-import { Icons } from "@/components/icons";
-import { siteConfig } from "@/lib/config";
-import * as React from "react";
-import Link from "next/link";
+import * as React from "react"
+import Link from "next/link"
+
+import { siteConfig } from "@/lib/config"
+import { Icons } from "@/components/icons"
+import { Button } from "@/registry/ui/button"
+import { Skeleton } from "@/registry/ui/skeleton"
 
 export function GitHubLink() {
   return (
@@ -15,7 +16,7 @@ export function GitHubLink() {
         </React.Suspense>
       </Link>
     </Button>
-  );
+  )
 }
 
 export function DiscordLink() {
@@ -25,7 +26,7 @@ export function DiscordLink() {
         <Icons.discord />
       </Link>
     </Button>
-  );
+  )
 }
 
 export async function StarsCount() {
@@ -41,5 +42,5 @@ export async function StarsCount() {
         ? `${(json.stargazers_count / 1000).toFixed(1)}k`
         : json.stargazers_count.toLocaleString()} */}
     </span>
-  );
+  )
 }

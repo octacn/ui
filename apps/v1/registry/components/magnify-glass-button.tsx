@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import { useEffect, useRef, useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react"
 
 interface MagnifyGlassProps {
-  children: React.ReactNode;
-  zoom?: number;
-  glassSize?: number;
-  width?: number;
-  height?: number;
+  children: React.ReactNode
+  zoom?: number
+  glassSize?: number
+  width?: number
+  height?: number
 }
 
 export default function MagnifyGlassButton({
@@ -17,66 +17,66 @@ export default function MagnifyGlassButton({
   width = 600,
   height = 350,
 }: MagnifyGlassProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const glassRef = useRef<HTMLDivElement>(null);
-  const targetRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null)
+  const glassRef = useRef<HTMLDivElement>(null)
+  const targetRef = useRef<HTMLDivElement>(null)
 
   const getCursorPos = useCallback((e: MouseEvent, container: HTMLElement) => {
-    const rect = container.getBoundingClientRect();
+    const rect = container.getBoundingClientRect()
     return {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
-    };
-  }, []);
+    }
+  }, [])
 
   const moveGlass = useCallback(
     (e: MouseEvent) => {
-      const container = containerRef.current;
-      const glass = glassRef.current;
-      const target = targetRef.current;
+      const container = containerRef.current
+      const glass = glassRef.current
+      const target = targetRef.current
 
-      if (!container || !glass || !target) return;
+      if (!container || !glass || !target) return
 
-      const pos = getCursorPos(e, container);
-      const { x, y } = pos;
+      const pos = getCursorPos(e, container)
+      const { x, y } = pos
 
       // Position the magnifying glass
-      glass.style.left = `${x}px`;
-      glass.style.top = `${y}px`;
+      glass.style.left = `${x}px`
+      glass.style.top = `${y}px`
 
       // Find the image element
-      const targetEl = target.querySelector("img") as HTMLImageElement;
+      const targetEl = target.querySelector("img") as HTMLImageElement
 
       if (targetEl && targetEl.complete && targetEl.naturalWidth > 0) {
-        const rect = targetEl.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
+        const rect = targetEl.getBoundingClientRect()
+        const containerRect = container.getBoundingClientRect()
 
         // Calculate relative position within the image
-        const relativeX = x - (rect.left - containerRect.left);
-        const relativeY = y - (rect.top - containerRect.top);
+        const relativeX = x - (rect.left - containerRect.left)
+        const relativeY = y - (rect.top - containerRect.top)
 
-        glass.style.backgroundImage = `url("${targetEl.src}")`;
+        glass.style.backgroundImage = `url("${targetEl.src}")`
         glass.style.backgroundSize = `${rect.width * zoom}px ${
           rect.height * zoom
-        }px`;
+        }px`
         glass.style.backgroundPosition = `-${
           relativeX * zoom - glassSize / 2
-        }px -${relativeY * zoom - glassSize / 2}px`;
+        }px -${relativeY * zoom - glassSize / 2}px`
       }
     },
     [zoom, glassSize, getCursorPos]
-  );
+  )
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
-    container.addEventListener("mousemove", moveGlass);
+    container.addEventListener("mousemove", moveGlass)
 
     return () => {
-      container.removeEventListener("mousemove", moveGlass);
-    };
-  }, [moveGlass]);
+      container.removeEventListener("mousemove", moveGlass)
+    }
+  }, [moveGlass])
 
   return (
     <div
@@ -100,5 +100,5 @@ export default function MagnifyGlassButton({
         className="absolute pointer-events-none rounded-full border-4 border-white opacity-0 group-hover:opacity-100 transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 shadow-2xl backdrop-blur-sm bg-transparent"
       />
     </div>
-  );
+  )
 }

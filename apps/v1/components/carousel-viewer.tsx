@@ -1,14 +1,17 @@
-"use client";
+"use client"
 
-import GithubDownloadButton from "@/components/github-download-button";
-import { imageCarouselSchema } from "@/schema/image-schema";
-import Autoplay from "embla-carousel-autoplay";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import z from "zod";
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { imageCarouselSchema } from "@/schema/image-schema"
+import Autoplay from "embla-carousel-autoplay"
+import { ArrowLeft, ArrowRight } from "lucide-react"
+import z from "zod"
 
+import { cn } from "@/lib/utils"
+import GithubDownloadButton from "@/components/github-download-button"
+import { Loading } from "@/registry/components/loading"
+import { Button } from "@/registry/ui/button"
 import {
   Carousel,
   CarouselApi,
@@ -16,80 +19,75 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/registry/ui/carousel";
-import { Loading } from "@/registry/components/loading";
-import { Button } from "@/registry/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+} from "@/registry/ui/carousel"
 
-type ImageCarouselItem = z.infer<typeof imageCarouselSchema>;
+type ImageCarouselItem = z.infer<typeof imageCarouselSchema>
 
 type ImageCarouselContext = {
-  item: ImageCarouselItem;
-};
+  item: ImageCarouselItem
+}
 
 const ImageViewerContext = React.createContext<ImageCarouselContext | null>(
   null
-);
+)
 
 function useImageViewer() {
-  const context = React.useContext(ImageViewerContext);
+  const context = React.useContext(ImageViewerContext)
   if (!context) {
-    throw new Error(
-      "useImageViewer must be used within a ImageViewerProvider."
-    );
+    throw new Error("useImageViewer must be used within a ImageViewerProvider.")
   }
-  return context;
+  return context
 }
 
 const ImageViewerProvider = React.memo<
   Pick<ImageCarouselContext, "item"> & {
-    children: React.ReactNode;
+    children: React.ReactNode
   }
 >(({ item, children }) => {
-  const contextValue = React.useMemo(() => ({ item }), [item]);
+  const contextValue = React.useMemo(() => ({ item }), [item])
 
   return (
     <ImageViewerContext.Provider value={contextValue}>
       {children}
     </ImageViewerContext.Provider>
-  );
-});
+  )
+})
 
-ImageViewerProvider.displayName = "ImageViewerProvider";
+ImageViewerProvider.displayName = "ImageViewerProvider"
 
 const CarouselViewer = ({ item }: Pick<ImageCarouselContext, "item">) => {
   return (
     <ImageViewerProvider item={item}>
       <ImageCarouselContent />
     </ImageViewerProvider>
-  );
-};
+  )
+}
 
 function ImageCarouselContent() {
-  const [api, setApi] = React.useState<CarouselApi>();
-  const [current, setCurrent] = React.useState<number>(0);
-  const [count, setCount] = React.useState<number>(0);
-  const [loading, setLoading] = React.useState(true);
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [current, setCurrent] = React.useState<number>(0)
+  const [count, setCount] = React.useState<number>(0)
+  const [loading, setLoading] = React.useState(true)
 
-  const { item } = useImageViewer();
+  const { item } = useImageViewer()
 
   React.useEffect(() => {
     if (!api) {
-      return;
+      return
     }
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap() + 1)
 
     const handleSelect = () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    };
+      setCurrent(api.selectedScrollSnap() + 1)
+    }
 
-    api.on("select", handleSelect);
+    api.on("select", handleSelect)
 
     return () => {
-      api.off("select", handleSelect);
-    };
-  }, [api]);
+      api.off("select", handleSelect)
+    }
+  }, [api])
 
   if (item.type === "view") {
     return (
@@ -175,7 +173,7 @@ function ImageCarouselContent() {
           ))}
         </CarouselContent>
       </Carousel>
-    );
+    )
   }
 
   return (
@@ -251,7 +249,7 @@ function ImageCarouselContent() {
         </GithubDownloadButton>
       </div>
     </section>
-  );
+  )
 }
 
-export { CarouselViewer };
+export { CarouselViewer }

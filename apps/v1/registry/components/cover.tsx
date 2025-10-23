@@ -1,35 +1,35 @@
-"use client";
+"use client"
 
-import React, { useEffect, useId, useState } from "react";
-import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
-import { useRef } from "react";
+import React, { useEffect, useId, useRef, useState } from "react"
+import { motion } from "motion/react"
+
+import { cn } from "@/lib/utils"
 
 export const Cover = ({
   children,
   className,
 }: {
-  children?: React.ReactNode;
-  className?: string;
+  children?: React.ReactNode
+  className?: string
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null)
 
-  const [containerWidth, setContainerWidth] = useState(0);
-  const [beamPositions, setBeamPositions] = useState<number[]>([]);
+  const [containerWidth, setContainerWidth] = useState(0)
+  const [beamPositions, setBeamPositions] = useState<number[]>([])
 
   useEffect(() => {
     if (ref.current) {
-      setContainerWidth(ref.current?.clientWidth ?? 0);
+      setContainerWidth(ref.current?.clientWidth ?? 0)
 
-      const height = ref.current?.clientHeight ?? 0;
-      const numberOfBeams = Math.floor(height / 10);
+      const height = ref.current?.clientHeight ?? 0
+      const numberOfBeams = Math.floor(height / 10)
       const positions = Array.from(
         { length: numberOfBeams },
         (_, i) => (i + 1) * (height / (numberOfBeams + 1))
-      );
-      setBeamPositions(positions);
+      )
+      setBeamPositions(positions)
     }
-  }, []);
+  }, [])
 
   return (
     <div
@@ -81,8 +81,8 @@ export const Cover = ({
         {children}
       </motion.span>
     </div>
-  );
-};
+  )
+}
 
 export const Beam = ({
   className,
@@ -92,13 +92,13 @@ export const Beam = ({
   width = 600,
   ...svgProps
 }: {
-  className?: string;
-  delay?: number;
-  duration?: number;
-  hovered?: boolean;
-  width?: number;
+  className?: string
+  delay?: number
+  duration?: number
+  hovered?: boolean
+  width?: number
 } & React.ComponentProps<typeof motion.svg>) => {
-  const id = useId();
+  const id = useId()
 
   return (
     <motion.svg
@@ -133,11 +133,11 @@ export const Beam = ({
             y2: 0,
           }}
           transition={{
-            duration: hovered ? 0.5 : duration ?? 2,
+            duration: hovered ? 0.5 : (duration ?? 2),
             ease: "linear",
             repeat: Infinity,
             delay: hovered ? Math.random() * (1 - 0.2) + 0.2 : 0,
-            repeatDelay: hovered ? Math.random() * (2 - 1) + 1 : delay ?? 1,
+            repeatDelay: hovered ? Math.random() * (2 - 1) + 1 : (delay ?? 1),
           }}
         >
           <stop stopColor="#2EB9DF" stopOpacity="0" />
@@ -146,5 +146,5 @@ export const Beam = ({
         </motion.linearGradient>
       </defs>
     </motion.svg>
-  );
-};
+  )
+}

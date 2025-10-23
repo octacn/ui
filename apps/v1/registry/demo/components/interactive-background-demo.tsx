@@ -1,5 +1,6 @@
-import { InteractiveBackground } from "@/registry/components/interactive-background";
-import React from "react";
+import React from "react"
+
+import { InteractiveBackground } from "@/registry/components/interactive-background"
 
 export default function InteractiveBackgroundDemo() {
   return (
@@ -9,5 +10,5 @@ export default function InteractiveBackgroundDemo() {
         className="absolute inset-0 rounded-lg"
       />
     </>
-  );
+  )
 }

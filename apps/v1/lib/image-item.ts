@@ -1,8 +1,8 @@
-import { imageCardSchema, imageCarouselSchema } from "@/schema/image-schema";
-import { z } from "zod";
+import { imageCardSchema, imageCarouselSchema } from "@/schema/image-schema"
+import { z } from "zod"
 
-type ImageCard = z.infer<typeof imageCardSchema>;
-type ImageCarousel = z.infer<typeof imageCarouselSchema>;
+type ImageCard = z.infer<typeof imageCardSchema>
+type ImageCarousel = z.infer<typeof imageCarouselSchema>
 
 export const ImageCardItem: Record<string, ImageCard> = {
   /**
@@ -41,7 +41,7 @@ export const ImageCardItem: Record<string, ImageCard> = {
     docs: "forms/auth-form-v1",
     title: "Auth Form",
   },
-};
+}
 
 export const ImageCarouselItem: Record<string, ImageCarousel> = {
   "case-cobra": {
@@ -65,4 +65,4 @@ export const ImageCarouselItem: Record<string, ImageCarousel> = {
     preview: "https://casecobracase.vercel.app/",
     repository: "case-cobra",
   },
-};
+}

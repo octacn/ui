@@ -1,29 +1,30 @@
-import { Suggestion, ImageViewer } from "@/components/image-viewer";
-import { imageCardSchema } from "@/schema/image-schema";
-import { ImageCardItem } from "@/lib/image-item";
-import { cn } from "@/lib/utils";
-import React from "react";
+import React from "react"
+import { imageCardSchema } from "@/schema/image-schema"
+
+import { ImageCardItem } from "@/lib/image-item"
+import { cn } from "@/lib/utils"
+import { ImageViewer, Suggestion } from "@/components/image-viewer"
 
 export async function ImageDisplay({
   name,
   title,
   grid = false,
 }: {
-  name: string[];
-  grid?: boolean;
-  title: string;
+  name: string[]
+  grid?: boolean
+  title: string
 }) {
   if (!Array.isArray(name)) {
-    return <Suggestion>Please pass the name as an array</Suggestion>;
+    return <Suggestion>Please pass the name as an array</Suggestion>
   }
 
   if (name.length == 0) {
-    return <Suggestion>No name added right now</Suggestion>;
+    return <Suggestion>No name added right now</Suggestion>
   }
 
   const items = await Promise.all(
     name.map((name) => getCachedImageCardItem(name))
-  );
+  )
 
   return (
     <section>
@@ -38,36 +39,36 @@ export async function ImageDisplay({
         )}
       >
         {name.map((name, idx) => {
-          const item = items[idx];
+          const item = items[idx]
 
           return item ? (
             <ImageViewer key={name} item={item} />
           ) : (
             <Suggestion key={name}>Item not found: {name}</Suggestion>
-          );
+          )
         })}
       </div>
     </section>
-  );
+  )
 }
 
 const getCachedImageCardItem = React.cache(async (name: string) => {
-  return await getImageCardItem(name);
-});
+  return await getImageCardItem(name)
+})
 
 async function getImageCardItem(name: string) {
-  const item = ImageCardItem[name];
+  const item = ImageCardItem[name]
 
   if (!item) {
-    return null;
+    return null
   }
 
-  const result = imageCardSchema.safeParse(item);
+  const result = imageCardSchema.safeParse(item)
 
   if (!result.success) {
-    console.error(`Failed to parse item "${name}":`, result.error.message);
-    return null;
+    console.error(`Failed to parse item "${name}":`, result.error.message)
+    return null
   }
 
-  return result.data;
+  return result.data
 }

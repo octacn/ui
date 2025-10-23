@@ -14,10 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/registry/ui/form"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/registry/ui/radio-group"
+import { RadioGroup, RadioGroupItem } from "@/registry/ui/radio-group"
 
 const FormSchema = z.object({
   type: z.enum(["all", "mentions", "none"], {

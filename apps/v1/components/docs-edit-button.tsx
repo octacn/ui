@@ -1,15 +1,16 @@
-"use client";
+"use client"
 
-import { IconEdit } from "@tabler/icons-react";
-import { Button } from "@/registry/ui/button";
-import Link from "next/link";
+import Link from "next/link"
+import { IconEdit } from "@tabler/icons-react"
+
+import { Button } from "@/registry/ui/button"
 
 export function DocsEditButton({
   path,
   docs = "docs",
 }: {
-  path: string;
-  docs?: "docs" | "auth-docs" | "blocks-docs";
+  path: string
+  docs?: "docs" | "auth-docs" | "blocks-docs"
 }) {
   return (
     <Link
@@ -25,5 +26,5 @@ export function DocsEditButton({
         Edit on GitHub
       </Button>
     </Link>
-  );
+  )
 }

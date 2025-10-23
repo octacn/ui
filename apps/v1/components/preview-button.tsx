@@ -1,11 +1,12 @@
-import { Button } from "@/registry/ui/button";
-import { Fullscreen } from "lucide-react";
-import Link from "next/link";
+import Link from "next/link"
+import { Fullscreen } from "lucide-react"
+
+import { Button } from "@/registry/ui/button"
 
 interface PreviewButtonProps {
-  name: string;
-  src: string;
-  slug?: string;
+  name: string
+  src: string
+  slug?: string
 }
 
 export function PreviewButton({ name, src, slug }: PreviewButtonProps) {
@@ -21,5 +22,5 @@ export function PreviewButton({ name, src, slug }: PreviewButtonProps) {
         <Fullscreen />
       </Link>
     </Button>
-  );
+  )
 }

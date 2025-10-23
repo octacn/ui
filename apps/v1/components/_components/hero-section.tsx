@@ -1,11 +1,12 @@
-import HoverAnimation from "@/components/animation/hover-animation";
-import { Button } from "@/registry/ui/button";
-import { BoxWrapper } from "@/components/box";
-import { Badge } from "@/registry/ui/badge";
-import { Icons } from "@/components/icons";
-import { ArrowRight } from "lucide-react";
-import React from "react";
-import Link from "next/link";
+import React from "react"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
+
+import HoverAnimation from "@/components/animation/hover-animation"
+import { BoxWrapper } from "@/components/box"
+import { Icons } from "@/components/icons"
+import { Badge } from "@/registry/ui/badge"
+import { Button } from "@/registry/ui/button"
 
 export default function HeroSection() {
   return (
@@ -50,7 +51,7 @@ export default function HeroSection() {
         </div>
       </div>
     </BoxWrapper>
-  );
+  )
 }
 
 function ChangelogBadge() {
@@ -72,5 +73,5 @@ function ChangelogBadge() {
         <Icons.ArrowRight className="stroke-1 ml-0.5" />
       </Badge>
     </HoverAnimation>
-  );
+  )
 }

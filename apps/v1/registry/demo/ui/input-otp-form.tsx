@@ -15,11 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/registry/ui/form"
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/registry/ui/input-otp"
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/registry/ui/input-otp"
 
 const FormSchema = z.object({
   pin: z.string().min(6, {

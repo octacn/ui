@@ -1,11 +1,7 @@
 export default function PreviewLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  return (
-    <>
-      {children}
-    </>
-  );
+  return <>{children}</>
 }

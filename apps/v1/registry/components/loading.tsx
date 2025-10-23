@@ -1,5 +1,6 @@
-import { cn } from "@/lib/utils";
-import React, { ComponentProps } from "react";
+import React, { ComponentProps } from "react"
+
+import { cn } from "@/lib/utils"
 
 export const Loading = ({ className }: ComponentProps<"div">) => {
   return (
@@ -20,9 +21,9 @@ export const Loading = ({ className }: ComponentProps<"div">) => {
         strokeLinejoin="round"
       >
         <path d="M3 12a9 9 0 0 0 9 9a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9" />
-        <path d="M17 12a5 5 0 1 0 -5 5" className="opacity-75"/>
+        <path d="M17 12a5 5 0 1 0 -5 5" className="opacity-75" />
       </svg>
       Loading...
     </div>
-  );
-};
+  )
+}

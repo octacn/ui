@@ -1,37 +1,37 @@
-import * as React from "react";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { registryItemSchema } from "@/schema/shadcn";
-import { z } from "zod";
+import * as React from "react"
+import { Metadata } from "next"
+import { notFound } from "next/navigation"
+import { registryItemSchema } from "@/schema/shadcn"
+import { z } from "zod"
 
-import { siteConfig } from "@/lib/config";
-import { getRegistryComponent, getRegistryItem } from "@/lib/registry";
-import { absoluteUrl, cn } from "@/lib/utils";
+import { siteConfig } from "@/lib/config"
+import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
+import { absoluteUrl, cn } from "@/lib/utils"
 
-export const revalidate = false;
-export const dynamic = "force-static";
-export const dynamicParams = false;
+export const revalidate = false
+export const dynamic = "force-static"
+export const dynamicParams = false
 
 const getCachedRegistryItem = React.cache(async (name: string) => {
-  return await getRegistryItem(name);
-});
+  return await getRegistryItem(name)
+})
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{
-    name: string;
-  }>;
+    name: string
+  }>
 }): Promise<Metadata> {
-  const { name } = await params;
-  const item = await getCachedRegistryItem(name);
+  const { name } = await params
+  const item = await getCachedRegistryItem(name)
 
   if (!item) {
-    return {};
+    return {}
   }
 
-  const title = item.name;
-  const description = item.description;
+  const title = item.name
+  const description = item.description
 
   return {
     title: item.description,
@@ -57,39 +57,37 @@ export async function generateMetadata({
       images: [siteConfig.ogImage],
       creator: "@sahilkumardev",
     },
-  };
+  }
 }
 
 export async function generateStaticParams() {
-  const { Index } = await import("@/registry/__index__");
-  const index = z.record(z.string(), registryItemSchema).parse(Index);
+  const { Index } = await import("@/registry/__index__")
+  const index = z.record(z.string(), registryItemSchema).parse(Index)
 
   return Object.values(index)
     .filter((block) =>
-      [
-        "registry:block",
-        "registry:component",
-        "registry:example",
-      ].includes(block.type)
+      ["registry:block", "registry:component", "registry:example"].includes(
+        block.type
+      )
     )
     .map((block) => ({
       name: block.name,
-    }));
+    }))
 }
 
 export default async function PreviewPage({
   params,
 }: {
   params: Promise<{
-    name: string;
-  }>;
+    name: string
+  }>
 }) {
-  const { name } = await params;
-  const item = await getCachedRegistryItem(name);
-  const Component = getRegistryComponent(name);
+  const { name } = await params
+  const item = await getCachedRegistryItem(name)
+  const Component = getRegistryComponent(name)
 
   if (!item || !Component) {
-    return notFound();
+    return notFound()
   }
 
   return (
@@ -98,5 +96,5 @@ export default async function PreviewPage({
         <Component />
       </div>
     </>
-  );
+  )
 }

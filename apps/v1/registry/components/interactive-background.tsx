@@ -1,27 +1,27 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 import {
   motion,
-  type SpringOptions,
   useMotionValue,
   useSpring,
-} from "motion/react";
+  type SpringOptions,
+} from "motion/react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 type InteractiveBackgroundProps = React.ComponentProps<"div"> & {
-  interactive?: boolean;
-  transition?: SpringOptions;
+  interactive?: boolean
+  transition?: SpringOptions
   colors?: {
-    first: string;
-    second: string;
-    third: string;
-    fourth: string;
-    fifth: string;
-    sixth: string;
-  };
-};
+    first: string
+    second: string
+    third: string
+    fourth: string
+    fifth: string
+    sixth: string
+  }
+}
 function InteractiveBackground({
   ref,
   className,
@@ -38,27 +38,27 @@ function InteractiveBackground({
   },
   ...props
 }: InteractiveBackgroundProps) {
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, transition);
-  const springY = useSpring(mouseY, transition);
+  const containerRef = React.useRef<HTMLDivElement>(null)
+  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement)
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  const springX = useSpring(mouseX, transition)
+  const springY = useSpring(mouseY, transition)
   React.useEffect(() => {
-    if (!interactive) return;
-    const currentContainer = containerRef.current;
-    if (!currentContainer) return;
+    if (!interactive) return
+    const currentContainer = containerRef.current
+    if (!currentContainer) return
     const handleMouseMove = (e: MouseEvent) => {
-      const rect = currentContainer.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      mouseX.set(e.clientX - centerX);
-      mouseY.set(e.clientY - centerY);
-    };
-    currentContainer?.addEventListener("mousemove", handleMouseMove);
+      const rect = currentContainer.getBoundingClientRect()
+      const centerX = rect.left + rect.width / 2
+      const centerY = rect.top + rect.height / 2
+      mouseX.set(e.clientX - centerX)
+      mouseY.set(e.clientY - centerY)
+    }
+    currentContainer?.addEventListener("mousemove", handleMouseMove)
     return () =>
-      currentContainer?.removeEventListener("mousemove", handleMouseMove);
-  }, [interactive, mouseX, mouseY]);
+      currentContainer?.removeEventListener("mousemove", handleMouseMove)
+  }, [interactive, mouseX, mouseY])
   return (
     <div
       ref={containerRef}
@@ -154,6 +154,6 @@ function InteractiveBackground({
       </div>
       {children}
     </div>
-  );
+  )
 }
-export { InteractiveBackground, type InteractiveBackgroundProps };
+export { InteractiveBackground, type InteractiveBackgroundProps }

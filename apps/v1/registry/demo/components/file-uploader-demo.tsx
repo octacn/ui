@@ -1,19 +1,19 @@
 "use client"
 
-import { FileUploader } from "@/registry/components/file-uploader";
+import { FileUploader } from "@/registry/components/file-uploader"
 
 export default function FileUploaderDemo() {
   const handleUploadComplete = (files: File[]) => {
-    console.log("Upload complete:", files);
-  };
+    console.log("Upload complete:", files)
+  }
 
   const handleCancel = () => {
-    console.log("Upload cancelled");
-  };
+    console.log("Upload cancelled")
+  }
 
   const handlePublish = (files: File[]) => {
-    console.log("Publishing files:", files);
-  };
+    console.log("Publishing files:", files)
+  }
 
   return (
     <FileUploader
@@ -23,5 +23,5 @@ export default function FileUploaderDemo() {
       onCancel={handleCancel}
       onPublish={handlePublish}
     />
-  );
+  )
 }

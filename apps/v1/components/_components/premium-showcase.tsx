@@ -1,18 +1,20 @@
-import { Box, BoxWrapper } from "@/components/box";
-import { Badge } from "@/registry/ui/badge";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { HeadingWithLink } from "../heading";
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
+
+import { Box, BoxWrapper } from "@/components/box"
+import { Badge } from "@/registry/ui/badge"
+
+import { HeadingWithLink } from "../heading"
 
 interface CardsProps {
-  title: string;
-  blocksCount: number;
-  originalPrice: number;
-  currentPrice: number;
-  description: string;
-  imageUrl: string;
-  href: string;
+  title: string
+  blocksCount: number
+  originalPrice: number
+  currentPrice: number
+  description: string
+  imageUrl: string
+  href: string
 }
 
 export default function PremiumShowcase() {
@@ -77,7 +79,7 @@ export default function PremiumShowcase() {
       imageUrl: "/images/temp-2.avif",
       href: "/products/portfolio",
     },
-  ];
+  ]
 
   return (
     <BoxWrapper>
@@ -91,7 +93,7 @@ export default function PremiumShowcase() {
         ))}
       </Box>
     </BoxWrapper>
-  );
+  )
 }
 
 function ProductCards({
@@ -147,5 +149,5 @@ function ProductCards({
         </div>
       </Link>
     </div>
-  );
+  )
 }

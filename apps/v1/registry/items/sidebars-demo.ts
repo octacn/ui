@@ -1,4 +1,4 @@
-import { type Registry } from "@/schema/shadcn";
+import { type Registry } from "@/schema/shadcn"
 
 export const sidebarDemo: Registry["items"] = [
   {
@@ -172,4 +172,4 @@ export const sidebarDemo: Registry["items"] = [
     ],
     categories: ["sidebar", "dashboard"],
   },
-];
+]

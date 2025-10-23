@@ -1,25 +1,25 @@
-"use client";
+"use client"
 
-import React, { useState, useCallback, useMemo } from "react";
-
-import { Card, CardContent, CardFooter, CardHeader } from "@/registry/ui/card";
-import { Label } from "@/registry/ui/label";
-import { Button } from "@/registry/ui/button";
-import { Input } from "@/registry/ui/input";
-import { cn } from "@/lib/utils";
+import React, { useCallback, useMemo, useState } from "react"
 import {
-  X,
-  Mail,
   Eye,
   EyeOff,
-  Lock,
   Facebook,
   Github,
+  Lock,
+  Mail,
   Phone,
-} from "lucide-react";
+  X,
+} from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/ui/button"
+import { Card, CardContent, CardFooter, CardHeader } from "@/registry/ui/card"
+import { Input } from "@/registry/ui/input"
+import { Label } from "@/registry/ui/label"
 
 export function AuthForm() {
-  const [activeTab, setActiveTab] = useState("signup");
+  const [activeTab, setActiveTab] = useState("signup")
   const [formData, setFormData] = useState({
     firstName: "John",
     lastName: "",
@@ -27,55 +27,55 @@ export function AuthForm() {
     email: "",
     password: "",
     rememberMe: false,
-  });
-  const [showPassword, setShowPassword] = useState(false);
+  })
+  const [showPassword, setShowPassword] = useState(false)
 
-  const isSignUp = activeTab === "signup";
+  const isSignUp = activeTab === "signup"
 
   const handleInputChange = useCallback(
     (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+      setFormData((prev) => ({ ...prev, [field]: e.target.value }))
     },
     []
-  );
+  )
 
   const handleCheckboxChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      setFormData((prev) => ({ ...prev, rememberMe: e.target.checked }));
+      setFormData((prev) => ({ ...prev, rememberMe: e.target.checked }))
     },
     []
-  );
+  )
 
   const togglePassword = useCallback(() => {
-    setShowPassword((prev) => !prev);
-  }, []);
+    setShowPassword((prev) => !prev)
+  }, [])
 
   const handleSubmit = useCallback(
     (
       e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
     ) => {
-      e.preventDefault();
-      console.log("Form submitted:", formData);
+      e.preventDefault()
+      console.log("Form submitted:", formData)
     },
     [formData]
-  );
+  )
 
   // Memoized content
   const title = useMemo(
     () => (isSignUp ? "Create an account" : "Welcome back"),
     [isSignUp]
-  );
+  )
   const dividerText = useMemo(
     () => (isSignUp ? "OR SIGN IN WITH" : "OR CONTINUE WITH"),
     [isSignUp]
-  );
+  )
   const termsText = useMemo(
     () =>
       isSignUp
         ? "By creating an account, you agree to our Terms & Service"
         : "By signing in, you agree to our Terms & Service",
     [isSignUp]
-  );
+  )
 
   return (
     <Card className="w-full max-w-md mx-auto md:px-5 pt-10 rounded-4xl font-inter tracking-wide font-normal">
@@ -258,5 +258,5 @@ export function AuthForm() {
         {termsText}
       </p>
     </Card>
-  );
+  )
 }

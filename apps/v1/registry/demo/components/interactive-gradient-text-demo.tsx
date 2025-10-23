@@ -1,5 +1,6 @@
-import { InteractiveGradientText } from "@/registry/components/interactive-gradient-text";
-import React from "react";
+import React from "react"
+
+import { InteractiveGradientText } from "@/registry/components/interactive-gradient-text"
 
 export default function InteractiveGradientTextDemo() {
   return (
@@ -8,7 +9,7 @@ export default function InteractiveGradientTextDemo() {
         Hover Over Text to see Animation
       </h4>
 
-      <InteractiveGradientText text="octacn"/>
+      <InteractiveGradientText text="octacn" />
     </div>
-  );
+  )
 }

@@ -11,11 +11,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/registry/ui/command"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/ui/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover"
 
 type Status = {
   value: string

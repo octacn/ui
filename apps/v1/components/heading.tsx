@@ -1,17 +1,18 @@
-import HoverAnimation from "@/components/animation/hover-animation";
-import { Button } from "@/registry/ui/button";
-import { Icons } from "@/components/icons";
-import { cn } from "@/lib/utils";
-import React from "react";
+import React from "react"
+
+import { cn } from "@/lib/utils"
+import HoverAnimation from "@/components/animation/hover-animation"
+import { Icons } from "@/components/icons"
+import { Button } from "@/registry/ui/button"
 
 export function Heading({
   heading,
   className,
   description,
 }: {
-  heading: string;
-  className?: string;
-  description: string;
+  heading: string
+  className?: string
+  description: string
 }) {
   return (
     <div
@@ -27,7 +28,7 @@ export function Heading({
         {description}
       </p>
     </div>
-  );
+  )
 }
 
 export function SectionLink() {
@@ -38,7 +39,7 @@ export function SectionLink() {
         <Icons.ArrowRight />
       </Button>
     </HoverAnimation>
-  );
+  )
 }
 
 export function HeadingWithLink({ ...props }) {
@@ -47,5 +48,5 @@ export function HeadingWithLink({ ...props }) {
       <Heading heading={props.title} description={props.description} />
       <SectionLink />
     </div>
-  );
+  )
 }

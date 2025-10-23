@@ -1,19 +1,20 @@
-"use client";
+"use client"
 
-import { Card, CardContent, CardFooter, CardHeader } from "@/registry/ui/card";
-import { motion, AnimatePresence } from "motion/react";
-import { useState, useCallback } from "react";
-import { Button } from "@/registry/ui/button";
-import { useDropzone } from "react-dropzone";
-import { cn } from "@/lib/utils";
+import { useCallback, useState } from "react"
+import { AnimatePresence, motion } from "motion/react"
+import { useDropzone } from "react-dropzone"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/ui/button"
+import { Card, CardContent, CardFooter, CardHeader } from "@/registry/ui/card"
 
 interface UploadedFile {
-  id: string;
-  file: File;
-  preview: string;
-  progress: number;
-  isUploading: boolean;
-  isComplete: boolean;
+  id: string
+  file: File
+  preview: string
+  progress: number
+  isUploading: boolean
+  isComplete: boolean
 }
 
 /**
@@ -22,12 +23,12 @@ interface UploadedFile {
  * @public
  */
 interface ImageUploaderProps {
-  className?: string;
-  maxFiles?: number;
-  maxSize?: number;
-  onUploadComplete?: (files: File[]) => void;
-  onCancel?: () => void;
-  onPublish?: (files: File[]) => void;
+  className?: string
+  maxFiles?: number
+  maxSize?: number
+  onUploadComplete?: (files: File[]) => void
+  onCancel?: () => void
+  onPublish?: (files: File[]) => void
 }
 
 export const FileUploader: React.FC<ImageUploaderProps> = ({
@@ -47,43 +48,43 @@ export const FileUploader: React.FC<ImageUploaderProps> = ({
       isUploading: false,
       isComplete: true,
     },
-  ]);
+  ])
 
   const simulateUpload = useCallback((fileId: string) => {
     const updateProgress = () => {
       setUploadedFiles((prev) =>
         prev.map((file) => {
           if (file.id === fileId && file.isUploading) {
-            const increment = Math.random() * 15 + 5;
-            const newProgress = Math.min(file.progress + increment, 100);
-            const isComplete = newProgress >= 100;
+            const increment = Math.random() * 15 + 5
+            const newProgress = Math.min(file.progress + increment, 100)
+            const isComplete = newProgress >= 100
 
             return {
               ...file,
               progress: newProgress,
               isUploading: !isComplete,
               isComplete,
-            };
+            }
           }
-          return file;
+          return file
         })
-      );
-    };
+      )
+    }
 
     const interval = setInterval(() => {
       setUploadedFiles((prev) => {
-        const file = prev.find((f) => f.id === fileId);
+        const file = prev.find((f) => f.id === fileId)
         if (!file || !file.isUploading) {
-          clearInterval(interval);
-          return prev;
+          clearInterval(interval)
+          return prev
         }
-        updateProgress();
-        return prev;
-      });
-    }, 200);
+        updateProgress()
+        return prev
+      })
+    }, 200)
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(interval)
+  }, [])
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -94,38 +95,38 @@ export const FileUploader: React.FC<ImageUploaderProps> = ({
         progress: 0,
         isUploading: true,
         isComplete: false,
-      }));
+      }))
 
       setUploadedFiles((prev) => {
-        const filteredPrev = prev.filter((f) => !f.id.startsWith("demo-"));
+        const filteredPrev = prev.filter((f) => !f.id.startsWith("demo-"))
 
-        return [...newFiles, ...filteredPrev];
-      });
+        return [...newFiles, ...filteredPrev]
+      })
 
       newFiles.forEach((file) => {
-        setTimeout(() => simulateUpload(file.id), Math.random() * 500);
-      });
+        setTimeout(() => simulateUpload(file.id), Math.random() * 500)
+      })
 
       setTimeout(() => {
         setUploadedFiles((prev) => {
-          const allFiles = prev.map((f) => f.file);
-          onUploadComplete?.(allFiles);
-          return prev;
-        });
-      }, 3000);
+          const allFiles = prev.map((f) => f.file)
+          onUploadComplete?.(allFiles)
+          return prev
+        })
+      }, 3000)
     },
     [simulateUpload, onUploadComplete]
-  );
+  )
 
   const removeFile = useCallback((fileId: string) => {
     setUploadedFiles((prev) => {
-      const fileToRemove = prev.find((f) => f.id === fileId);
+      const fileToRemove = prev.find((f) => f.id === fileId)
       if (fileToRemove) {
-        URL.revokeObjectURL(fileToRemove.preview);
+        URL.revokeObjectURL(fileToRemove.preview)
       }
-      return prev.filter((f) => f.id !== fileId);
-    });
-  }, []);
+      return prev.filter((f) => f.id !== fileId)
+    })
+  }, [])
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -135,22 +136,22 @@ export const FileUploader: React.FC<ImageUploaderProps> = ({
     maxSize,
     maxFiles,
     multiple: true,
-  });
+  })
 
   const handleCancel = () => {
     uploadedFiles.forEach((file) => {
-      URL.revokeObjectURL(file.preview);
-    });
-    setUploadedFiles([]);
-    onCancel?.();
-  };
+      URL.revokeObjectURL(file.preview)
+    })
+    setUploadedFiles([])
+    onCancel?.()
+  }
 
   const handlePublish = () => {
     const completedFiles = uploadedFiles
       .filter((f) => f.isComplete)
-      .map((f) => f.file);
-    onPublish?.(completedFiles);
-  };
+      .map((f) => f.file)
+    onPublish?.(completedFiles)
+  }
 
   return (
     <Card className={cn("max-w-sm w-sm bg-surface", className)}>
@@ -278,8 +279,8 @@ export const FileUploader: React.FC<ImageUploaderProps> = ({
                         initial={{ opacity: 0 }}
                         animate={{ opacity: file.isComplete ? 1 : 0 }}
                         onClick={(e) => {
-                          e.stopPropagation();
-                          removeFile(file.id);
+                          e.stopPropagation()
+                          removeFile(file.id)
                         }}
                         className="absolute top-0 right-0 w-6 h-6 bg-red-500/90 flex items-center justify-center hover:bg-red-600 transition-colors"
                         aria-label={`Remove ${file.file.name}`}
@@ -344,5 +345,5 @@ export const FileUploader: React.FC<ImageUploaderProps> = ({
         </motion.div>
       </CardFooter>
     </Card>
-  );
-};
+  )
+}
