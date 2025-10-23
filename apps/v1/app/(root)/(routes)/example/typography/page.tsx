@@ -1,4 +1,4 @@
-import React, { ComponentProps } from "react"
+import * as React from "react"
 
 import { Loading } from "@/registry/components/loading"
 import { BlockquoteDemo } from "@/registry/demo/ui/typography-blockquote"
@@ -17,9 +17,9 @@ import TypographySmall from "@/registry/demo/ui/typography-small"
 
 export default function Page() {
   return (
-    <Typography />
-    // <Suspense fallback={<Loading />}>
-    // </Suspense>
+    <React.Suspense fallback={<Loading />}>
+      <Typography />
+    </React.Suspense>
   )
 }
 
@@ -54,7 +54,7 @@ function Typography() {
 function DemoBox({
   children,
   label,
-}: ComponentProps<"div"> & {
+}: React.ComponentProps<"div"> & {
   label: string
 }) {
   return (
