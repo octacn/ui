@@ -3,47 +3,9 @@
  */
 
 export const newPages = [
-  /**
-   * Badge for docs
-   */
-  "/components/templates/custom-phone-case",
-
-  /**
-   * Badge for blocks-docs
-   */
-  "/components/backgrounds/interactive-background",
-
-  /**
-   * Badge for auth-docs
-   */
+  "/docs/templates/custom-phone-case",
 ]
 
 export const proPages = [
-  /**
-   * Badge for docs
-   */
-  "",
-
-  /**
-   * Badge for blocks-docs
-   */
-
-  /**
-   * Badge for auth-docs
-   */
-]
-
-export const comingSoonPages = [
-  /**
-   * Badge for docs
-   */
   "/docs/changelog",
-
-  /**
-   * Badge for blocks-docs
-   */
-
-  /**
-   * Badge for auth-docs
-   */
 ]

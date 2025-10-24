@@ -19,7 +19,7 @@ export function MainNav({
     <nav className={cn("items-center gap-0.5", className)} {...props}>
       {items.map((item) => (
         <Button
-          className="font-inter font-light"
+          className="font-inter font-medium tracking-wider hover:cursor-default hover:text-orange-400"
           key={item.href}
           variant="ghost"
           asChild
