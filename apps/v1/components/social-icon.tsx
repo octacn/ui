@@ -8,7 +8,12 @@ import { Skeleton } from "@/registry/ui/skeleton"
 
 export function GitHubLink() {
   return (
-    <Button asChild size="sm" variant="ghost" className="h-8 shadow-none hover:cursor-default">
+    <Button
+      asChild
+      size="sm"
+      variant="ghost"
+      className="h-8 shadow-none hover:cursor-default"
+    >
       <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
         <Icons.gitHub />
         <React.Suspense fallback={<Skeleton className="h-4 w-8" />}>
@@ -21,7 +26,12 @@ export function GitHubLink() {
 
 export function DiscordLink() {
   return (
-    <Button asChild size="sm" variant="ghost" className="h-8 shadow-none -ml-2 hover:cursor-default">
+    <Button
+      asChild
+      size="sm"
+      variant="ghost"
+      className="h-8 shadow-none -ml-2 hover:cursor-default"
+    >
       <Link href={siteConfig.links.discord} target="_blank" rel="noreferrer">
         <Icons.discord />
       </Link>

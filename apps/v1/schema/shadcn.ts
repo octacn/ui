@@ -216,7 +216,6 @@ export const searchResultsSchema = z.object({
   items: z.array(searchResultItemSchema),
 })
 
-
 export const SearchableRegistryItem = z.object({
   name: z.string(),
   type: z.string(),
@@ -226,7 +225,6 @@ export const SearchableRegistryItem = z.object({
       url: z.string(),
     })
   ),
-});
-
+})
 
 export type SearchablePageItem = z.infer<typeof SearchableRegistryItem>
