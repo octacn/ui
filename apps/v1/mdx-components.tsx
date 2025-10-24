@@ -26,6 +26,11 @@ import { AspectRatio } from "@/registry/ui/aspect-ratio"
 import { Button } from "@/registry/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/ui/tabs"
 
+import {
+  ComponentsList,
+  FullComponentsList,
+} from "@/components/components-list"
+
 export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
     <h1
@@ -341,8 +346,8 @@ export const mdxComponents = {
   ImageDisplay,
   CarouselDisplay,
   TechStack,
-  // ComponentsList,
-  // FullComponentsList,
+  ComponentsList,
+  FullComponentsList,
   BlockDisplay,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link

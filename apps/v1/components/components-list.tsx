@@ -1,50 +1,75 @@
-// import Link from "next/link"
+import Link from "next/link"
 
-// import { docsSource } from "@/lib/source"
-// import GenerateList from "@/components/generate-list"
+import { source } from "@/lib/source"
 
-// export function ComponentsList() {
-//   return <GenerateList tree={docsSource.pageTree} />
-// }
+export function ComponentsList({ name }: { name: string }) {
+  const components = source.pageTree.children.find(
+    (page) => page.$id === name.toLowerCase()
+  )
 
-// export function FullComponentsList() {
-//   const folders = docsSource.pageTree.children.filter(
-//     (item) => item.type === "folder"
-//   )
+  if (components?.type !== "folder") {
+    return
+  }
 
-//   return (
-//     <div className="space-y-8">
-//       {folders.map((folder) => {
-//         const components = folder.children.filter(
-//           (component) => component.type === "page"
-//         )
+  const list = components.children.filter(
+    (component) => component.type === "page"
+  )
 
-//         if (components.length === 0) {
-//           return null
-//         }
+  return (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20 text-base/normal font-inter tracking-wide">
+      {list.map((component, idx) => (
+        <div key={component.$id} className="flex gap-1">
+          {1 + idx}.
+          <Link
+            href={component.url}
+            className="underline-offset-4 hover:underline hover:text-muted-foreground"
+          >
+            <span>{component.name}</span>
+          </Link>
+        </div>
+      ))}
+    </div>
+  )
+}
 
-//         return (
-//           <div key={folder.$id} className="space-y-3">
-//             <h3 className="text-lg font-semibold text-foreground">
-//               {folder.name}
-//             </h3>
+export function FullComponentsList() {
+  const folders = source.pageTree.children.filter(
+    (item) => item.type === "folder"
+  )
 
-//             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-5 xl:gap-x-20 text-base/normal font-inter tracking-wide">
-//               {components.map((component, idx) => (
-//                 <div key={idx} className="flex gap-1">
-//                   {1 + idx}.
-//                   <Link
-//                     href={component.url}
-//                     className="underline-offset-4 hover:underline hover:text-muted-foreground capitalize truncate"
-//                   >
-//                     <span>{component.name}</span>
-//                   </Link>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-//         )
-//       })}
-//     </div>
-//   )
-// }
+  return (
+    <div className="space-y-8">
+      {folders.map((folder) => {
+        const components = folder.children.filter(
+          (component) => component.type === "page"
+        )
+
+        if (components.length === 0) {
+          return null
+        }
+
+        return (
+          <div key={folder.$id} className="space-y-3">
+            <h3 className="text-lg font-semibold text-foreground">
+              {folder.name}
+            </h3>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-5 xl:gap-x-20 text-base/normal font-inter tracking-wide">
+              {components.map((component, idx) => (
+                <div key={idx} className="flex gap-1">
+                  {1 + idx}.
+                  <Link
+                    href={component.url}
+                    className="underline-offset-4 hover:underline hover:text-muted-foreground capitalize truncate"
+                  >
+                    <span>{component.name}</span>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
