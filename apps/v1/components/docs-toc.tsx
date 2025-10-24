@@ -1,16 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Logs } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/registry/ui/dropdown-menu"
 
 function useActiveItem(itemIds: string[]) {
   const [activeId, setActiveId] = React.useState<string | null>(null)
@@ -49,7 +41,6 @@ function useActiveItem(itemIds: string[]) {
 
 export function DocsTableOfContents({
   toc,
-  variant = "list",
   className,
 }: {
   toc: {
@@ -57,10 +48,8 @@ export function DocsTableOfContents({
     url: string
     depth: number
   }[]
-  variant?: "dropdown" | "list"
   className?: string
 }) {
-  const [open, setOpen] = React.useState(false)
   const itemIds = React.useMemo(
     () => toc.map((item) => item.url.replace("#", "")),
     [toc]
@@ -71,45 +60,12 @@ export function DocsTableOfContents({
     return null
   }
 
-  if (variant === "dropdown") {
-    return (
-      <DropdownMenu open={open} onOpenChange={setOpen}>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            size="sm"
-            className={cn("h-8 md:h-7", className)}
-          >
-            <Logs /> On This Page
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
-          align="start"
-          className="no-scrollbar max-h-[70svh]"
-        >
-          {toc.map((item) => (
-            <DropdownMenuItem
-              key={item.url}
-              asChild
-              onClick={() => {
-                setOpen(false)
-              }}
-              data-depth={item.depth}
-              className="data-[depth=3]:pl-6 data-[depth=4]:pl-8"
-            >
-              <a href={item.url}>{item.title}</a>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    )
-  }
-
   return (
-    <div className={cn("flex flex-col gap-1.5 p-4 pt-0", className)}>
-      <p className="text-muted-foreground bg-background sticky top-0 h-7.5 flex items-center gap-1.5 text-sm">
-        <Logs size={18} /> On This Page
+    <div className={cn("flex flex-col gap-1.5", className)}>
+      <p className="sticky top-0 mb-1 flex items-center gap-1.5 text-sm font-medium">
+        On This Page
       </p>
+
       {toc.map((item) => (
         <a
           key={item.url}

@@ -1,6 +1,5 @@
 import * as React from "react"
 
-import IssueButton from "@/components/issue-button"
 import { SiteHeader } from "@/components/site-header"
 
 export default function RootLayout({
@@ -10,7 +9,6 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <IssueButton />
       <SiteHeader />
       {children}
     </>

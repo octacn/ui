@@ -46,7 +46,7 @@ export const mdxComponents = {
           .replace(/\?/g, "")
           .toLowerCase()}
         className={cn(
-          "font-heading mt-4 scroll-m-28 text-2xl font-medium tracking-tight first:mt-0 lg:mt-10 [&+p]:!mt-4 *:[code]:text-2xl",
+          "font-heading mt-8 scroll-m-28 text-xl font-medium tracking-tight first:mt-0 lg:mt-8 [&+p]:!mt-4 *:[code]:text-xl",
           className
         )}
         {...props}
@@ -56,7 +56,7 @@ export const mdxComponents = {
   h3: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-28 text-xl font-semibold tracking-tight *:[code]:text-xl",
+        "font-heading mt-8 scroll-m-28 text-lg font-medium tracking-tight *:[code]:text-xl",
         className
       )}
       {...props}
@@ -74,7 +74,7 @@ export const mdxComponents = {
   h5: ({ className, ...props }: React.ComponentProps<"h5">) => (
     <h5
       className={cn(
-        "mt-8 scroll-m-28 text-lg font-medium tracking-tight",
+        "mt-8 scroll-m-28 text-base font-medium tracking-tight",
         className
       )}
       {...props}
@@ -97,10 +97,7 @@ export const mdxComponents = {
   ),
   p: ({ className, ...props }: React.ComponentProps<"p">) => (
     <p
-      className={cn(
-        "leading-relaxed [&:not(:first-child)]:mt-6 text-lg font-inter font-light tracking-wide",
-        className
-      )}
+      className={cn("leading-relaxed [&:not(:first-child)]:mt-6", className)}
       {...props}
     />
   ),
