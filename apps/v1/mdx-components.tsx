@@ -11,6 +11,11 @@ import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CodeTabs } from "@/components/code-tabs"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
+import {
+  ComponentsList,
+  FolderComponentsList,
+  FullComponentsList,
+} from "@/components/components-list"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
 import { ImageDisplay } from "@/components/image-display"
@@ -25,11 +30,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/registry/ui/alert"
 import { AspectRatio } from "@/registry/ui/aspect-ratio"
 import { Button } from "@/registry/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/ui/tabs"
-
-import {
-  ComponentsList,
-  FullComponentsList,
-} from "@/components/components-list"
 
 export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
@@ -348,6 +348,7 @@ export const mdxComponents = {
   TechStack,
   ComponentsList,
   FullComponentsList,
+  FolderComponentsList,
   BlockDisplay,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
