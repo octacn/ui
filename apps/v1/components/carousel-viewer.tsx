@@ -4,11 +4,24 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { imageCarouselSchema } from "@/schema/image-schema"
+import { TabsTrigger } from "@radix-ui/react-tabs"
 import Autoplay from "embla-carousel-autoplay"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  Fullscreen,
+  Monitor,
+  RotateCw,
+  Smartphone,
+  Tablet,
+  Terminal,
+} from "lucide-react"
+import { ImperativePanelHandle } from "react-resizable-panels"
 import z from "zod"
 
 import { cn } from "@/lib/utils"
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import GithubDownloadButton from "@/components/github-download-button"
 import { Loading } from "@/registry/components/loading"
 import { Button } from "@/registry/ui/button"
@@ -20,11 +33,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/registry/ui/carousel"
+import { Separator } from "@/registry/ui/separator"
+import { Tabs, TabsList } from "@/registry/ui/tabs"
+import { ToggleGroup, ToggleGroupItem } from "@/registry/ui/toggle-group"
 
 type ImageCarouselItem = z.infer<typeof imageCarouselSchema>
 
 type ImageCarouselContext = {
   item: ImageCarouselItem
+  resizablePanelRef: React.RefObject<ImperativePanelHandle | null> | null
+  iframeKey?: number
+  setIframeKey?: React.Dispatch<React.SetStateAction<number>>
 }
 
 const ImageViewerContext = React.createContext<ImageCarouselContext | null>(
@@ -44,10 +63,21 @@ const ImageViewerProvider = React.memo<
     children: React.ReactNode
   }
 >(({ item, children }) => {
-  const contextValue = React.useMemo(() => ({ item }), [item])
+  // const contextValue = React.useMemo(() => ({ item }), [item])
+
+  const resizablePanelRef = React.useRef<ImperativePanelHandle>(null)
+  const [iframeKey, setIframeKey] = React.useState(0)
 
   return (
-    <ImageViewerContext.Provider value={contextValue}>
+    <ImageViewerContext.Provider
+      value={{
+        item,
+
+        resizablePanelRef,
+        iframeKey,
+        setIframeKey,
+      }}
+    >
       {children}
     </ImageViewerContext.Provider>
   )
@@ -232,6 +262,9 @@ function ImageCarouselContent() {
         </div>
       </div>
 
+      <ViewerToolbar />
+      <IframeViewer />
+
       <div className="grid grid-cols-2 pt-6 gap-4">
         <Link
           href={item.preview}
@@ -249,6 +282,106 @@ function ImageCarouselContent() {
         </GithubDownloadButton>
       </div>
     </section>
+  )
+}
+
+function ViewerToolbar() {
+  const { item, resizablePanelRef, setIframeKey } = useImageViewer()
+  const { copyToClipboard, isCopied } = useCopyToClipboard()
+
+  return (
+    <div className="hidden w-full items-center gap-2 pl-1 md:pr-5 lg:flex">
+      <Tabs value={"preview"}>
+        <TabsList className="grid h-8 grid-cols-2 items-center rounded-md p-1 *:data-[slot=tabs-trigger]:h-6 *:data-[slot=tabs-trigger]:rounded-sm *:data-[slot=tabs-trigger]:px-2 *:data-[slot=tabs-trigger]:text-xs font-inter">
+          <TabsTrigger value="preview">Preview</TabsTrigger>
+          <TabsTrigger value="code">Code</TabsTrigger>
+        </TabsList>
+      </Tabs>
+      <Separator orientation="vertical" className="!h-4" />
+
+      <h4 className="font-inter capitalize font-medium truncate max-w-48">
+        {item.name}
+      </h4>
+
+      <div className="ml-auto flex items-center gap-2">
+        <div className="h-8 items-center gap-1.5 rounded-md border p-1 shadow-none">
+          <ToggleGroup
+            type="single"
+            defaultValue="100"
+            onValueChange={(value) => {
+              if (resizablePanelRef?.current) {
+                resizablePanelRef.current.resize(parseInt(value))
+              }
+            }}
+            className="gap-1 *:data-[slot=toggle-group-item]:!size-6 *:data-[slot=toggle-group-item]:!rounded-sm"
+          >
+            <ToggleGroupItem value="100" title="Desktop">
+              <Monitor />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="60" title="Tablet">
+              <Tablet />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="30" title="Mobile">
+              <Smartphone />
+            </ToggleGroupItem>
+            <Separator orientation="vertical" className="!h-4" />
+            <Button
+              size="icon"
+              variant="ghost"
+              className="size-6 rounded-sm p-0"
+              asChild
+              title="Open in New Tab"
+            >
+              <Link href={`/preview/${item.name}`} target="_blank">
+                <span className="sr-only">Open in New Tab</span>
+                <Fullscreen />
+              </Link>
+            </Button>
+            <Separator orientation="vertical" className="!h-4" />
+            <Button
+              size="icon"
+              variant="ghost"
+              className="size-6 rounded-sm p-0"
+              title="Refresh Preview"
+              onClick={() => {
+                if (setIframeKey) {
+                  setIframeKey((k) => k + 1)
+                }
+              }}
+            >
+              <RotateCw />
+              <span className="sr-only">Refresh Preview</span>
+            </Button>
+          </ToggleGroup>
+        </div>
+        <Separator orientation="vertical" className="!h-4" />
+        <Button
+          variant="outline"
+          className="w-fit gap-1 px-2 shadow-none max-w-50"
+          size="sm"
+          onClick={() => {
+            copyToClipboard(
+              `npx shadcn@latest add https://ui.octacn.com/r/${item.name}.json`
+            )
+          }}
+        >
+          {isCopied ? <Check /> : <Terminal />}
+          <span className="truncate">npx shadcn add {item.name}</span>
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+function IframeViewer() {
+  const { item } = useImageViewer()
+
+  return (
+    <iframe
+      src={item.preview}
+      loading="lazy"
+      className={cn("relative z-20 w-full h-[28rem] no-scrollbar rounded-md")}
+    />
   )
 }
 
