@@ -64,25 +64,23 @@ export default function ProLibraryCta({
         </div>
 
         {show && (
-          <div className="md:flex h-72 min-w-sm flex-1 hidden">
-            <div className="border-l h-full w-px" />
+          <div className="md:flex h-72 min-w-md flex-1 hidden border-l">
             <div className="flex flex-col items-center justify-center pr-10 pl-16 font-inter tracking-wide text-base text-muted-foreground">
               <div>
-                <p className="">
-                  I take every requirement seriously and turn it into a
-                  polished, high-quality result. To anyone reading this – I
-                  always strive to deliver work that exceeds expectations. You
-                  can count on me to get the job done exceptionally well,
-                  leaving you more than satisfied with the outcome.
-                </p>
-
-                <h4 className="mt-2 text-lg flex items-center gap-x-2 text-foreground/90">
+                <h4 className="mb-2 text-lg flex items-center gap-x-2 text-foreground/90">
                   <span className="relative inline-flex h-2.5 w-2.5">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-500/70 opacity-75" />
                     <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-orange-500" />
                   </span>
                   Sahilkumardev
                 </h4>
+                <p>
+                  I take every requirement seriously and turn it into a
+                  polished, high-quality result. To anyone reading this – I
+                  always strive to deliver work that exceeds expectations. You
+                  can count on me to get the job done exceptionally well,
+                  leaving you more than satisfied with the outcome.
+                </p>
               </div>
             </div>
           </div>

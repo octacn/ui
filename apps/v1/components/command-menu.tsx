@@ -7,7 +7,6 @@ import { SearchablePageItem } from "@/schema/shadcn"
 import { IconArrowRight } from "@tabler/icons-react"
 import { CornerDownLeftIcon, LucideBlocks, SearchIcon } from "lucide-react"
 import { LuLayoutTemplate } from "react-icons/lu"
-import z from "zod"
 
 import { cn } from "@/lib/utils"
 import {
@@ -47,15 +46,26 @@ export function CommandMenu({
     const grouped: Record<string, SearchablePageItem["items"]> = {}
 
     items.forEach((item) => {
-      const category = item.type.replace("page:", "")
+      const category = item.type.replace("registry:", "")
 
       if (!grouped[category]) {
         grouped[category] = []
       }
 
+      const filterUrl =
+        category === "ui"
+          ? "components"
+          : category === "block"
+            ? "blocks"
+            : "kit"
+
+      if (!filterUrl) {
+        return
+      }
+
       grouped[category].push({
         name: item.name,
-        url: `/products/${category}s/${item.name}`,
+        url: `/docs/${filterUrl}/${item.name}`,
       })
     })
 
@@ -152,8 +162,8 @@ export function CommandMenu({
                   ? "Components"
                   : type === "block"
                     ? "Blocks"
-                    : type === "template"
-                      ? "Templates"
+                    : type === "ui"
+                      ? "Ui"
                       : type.charAt(0).toUpperCase() + type.slice(1) + "s"
 
               return (
@@ -174,10 +184,12 @@ export function CommandMenu({
                           <IconArrowRight />
                         ) : type === "block" ? (
                           <LucideBlocks />
+                        ) : type === "ui" ? (
+                          <div className="border-muted-foreground aspect-square size-4 rounded-full border border-dashed" />
                         ) : (
                           <LuLayoutTemplate />
                         )}
-                        {item.name}
+                        {item.name.replaceAll("-", " ")}
                       </CommandMenuItem>
                     ))
                   )}

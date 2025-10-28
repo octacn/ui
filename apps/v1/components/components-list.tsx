@@ -91,12 +91,14 @@ function ComponentLink({ ...props }: { component: any; idx: number }) {
       href={props.component.url}
       className={cn(
         "inline-flex group items-center gap-0.5",
-        "font-inter tracking-wide font-normal capitalize whitespace-nowrap hover:text-muted-foreground",
+        "font-inter tracking-wide font-normal capitalize whitespace-nowrap",
         "transition-colors duration-200 w-fit"
       )}
     >
       <span className="mr-0.5">{1 + props.idx}.</span>
-      {props.component.name}
+      <span className="hover:text-muted-foreground">
+        {props.component.name}
+      </span>
       <span className="inline-flex overflow-hidden max-w-0 group-hover:max-w-[1.25rem] transition-[max-width] duration-200 ease-out align-middle data-[active=true]:group-hover:max-w-0 pr-0.5">
         <RiArrowRightUpLine
           className="text-muted-foreground size-4.5 opacity-0 group-hover:opacity-100 transition-opacity duration-150"

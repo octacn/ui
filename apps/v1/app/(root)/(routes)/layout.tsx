@@ -24,7 +24,7 @@ export default function RouteLayout({
           </PageNav>
           <div className="hidden md:block">{children}</div>
         </BoxWrapper>
-        <ProLibraryCta className="mb-10" marginBottom show />
+        <ProLibraryCta className="mb-10" marginBottom show />      
         <SiteFooter />
       </>
     </main>
