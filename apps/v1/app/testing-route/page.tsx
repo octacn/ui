@@ -1,8 +1,11 @@
-import Eyes from "@/components/eye"
-import React from "react"
+"use client"
 
 function Page() {
-  return <Eyes />
+  return (
+    <>
+      <div>Hello</div>
+    </>
+  )
 }
 
 export default Page

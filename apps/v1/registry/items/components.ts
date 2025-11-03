@@ -2,6 +2,24 @@ import { type Registry } from "@/schema/shadcn"
 
 export const components: Registry["items"] = [
   {
+    name: "animated-connect-line",
+    type: "registry:component",
+    dependencies: ["motion"],
+    registryDependencies: ["card", "utils"],
+    files: [
+      {
+        path: "components/animated-path.tsx",
+        type: "registry:component",
+        target: "components/animated-path.tsx",
+      },
+      {
+        path: "components/animated-connect-line.tsx",
+        type: "registry:component",
+        target: "components/animated-connect-line.tsx",
+      },
+    ],
+  },
+  {
     name: "file-uploader",
     type: "registry:component",
     files: [
