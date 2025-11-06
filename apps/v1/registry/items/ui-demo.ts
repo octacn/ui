@@ -1197,6 +1197,133 @@ export const uiDemo: Registry["items"] = [
     ],
   },
   {
+    name: "input-group-demo",
+    type: "registry:example",
+    registryDependencies: ["input-group"],
+    files: [
+      {
+        path: "demo/ui/input-group-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-group-label",
+    type: "registry:example",
+    registryDependencies: ["input-group", "label"],
+    files: [
+      {
+        path: "demo/ui/input-group-label.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-group-text",
+    type: "registry:example",
+    registryDependencies: ["input-group"],
+    files: [
+      {
+        path: "demo/ui/input-group-text.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-group-tooltip",
+    type: "registry:example",
+    registryDependencies: ["input-group", "tooltip"],
+    files: [
+      {
+        path: "demo/ui/input-group-tooltip.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-group-button",
+    type: "registry:example",
+    registryDependencies: ["input-group"],
+    files: [
+      {
+        path: "demo/ui/input-group-button.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-group-button-group",
+    type: "registry:example",
+    registryDependencies: ["input-group", "button-group"],
+    files: [
+      {
+        path: "demo/ui/input-group-button-group.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-group-dropdown",
+    type: "registry:example",
+    registryDependencies: ["input-group", "dropdown-menu", "button"],
+    files: [
+      {
+        path: "demo/ui/input-group-dropdown.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-group-spinner",
+    type: "registry:example",
+    registryDependencies: ["input-group", "spinner"],
+    files: [
+      {
+        path: "demo/ui/input-group-spinner.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-group-textarea",
+    type: "registry:example",
+    registryDependencies: ["input-group", "textarea"],
+    files: [
+      {
+        path: "demo/ui/input-group-textarea.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-group-icon",
+    type: "registry:example",
+    registryDependencies: ["input-group"],
+    files: [
+      {
+        path: "demo/ui/input-group-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-group-custom",
+    type: "registry:example",
+    registryDependencies: [
+      "input-group",
+      "badge",
+      "progress",
+      "dropdown-menu",
+      "tooltip",
+    ],
+    files: [
+      {
+        path: "demo/ui/input-group-custom.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "input-otp-demo",
     type: "registry:example",
     registryDependencies: ["input-otp"],
@@ -1686,6 +1813,116 @@ export const uiDemo: Registry["items"] = [
     files: [
       {
         path: "demo/ui/sonner-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "spinner-demo",
+    type: "registry:example",
+    registryDependencies: ["spinner"],
+    files: [
+      {
+        path: "demo/ui/spinner-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "spinner-basic",
+    type: "registry:example",
+    registryDependencies: ["spinner", "button"],
+    files: [
+      {
+        path: "demo/ui/spinner-basic.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "spinner-button",
+    type: "registry:example",
+    registryDependencies: ["spinner", "button"],
+    files: [
+      {
+        path: "demo/ui/spinner-button.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "spinner-badge",
+    type: "registry:example",
+    registryDependencies: ["spinner", "badge"],
+    files: [
+      {
+        path: "demo/ui/spinner-badge.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "spinner-input-group",
+    type: "registry:example",
+    registryDependencies: ["spinner", "button", "input"],
+    files: [
+      {
+        path: "demo/ui/spinner-input-group.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "spinner-empty",
+    type: "registry:example",
+    registryDependencies: ["spinner"],
+    files: [
+      {
+        path: "demo/ui/spinner-empty.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "spinner-color",
+    type: "registry:example",
+    registryDependencies: ["spinner"],
+    files: [
+      {
+        path: "demo/ui/spinner-color.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "spinner-custom",
+    type: "registry:example",
+    registryDependencies: ["spinner"],
+    files: [
+      {
+        path: "demo/ui/spinner-custom.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "spinner-size",
+    type: "registry:example",
+    registryDependencies: ["spinner"],
+    files: [
+      {
+        path: "demo/ui/spinner-size.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "spinner-item",
+    type: "registry:example",
+    registryDependencies: ["spinner"],
+    files: [
+      {
+        path: "demo/ui/spinner-item.tsx",
         type: "registry:example",
       },
     ],
