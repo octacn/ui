@@ -897,6 +897,225 @@ export const uiDemo: Registry["items"] = [
       },
     ],
   },
+  
+
+
+
+  {
+    name: "empty-demo",
+    type: "registry:example",
+    registryDependencies: ["empty", "button"],
+    files: [
+      {
+        path: "demo/ui/empty-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "empty-icon",
+    type: "registry:example",
+    registryDependencies: ["empty"],
+    files: [
+      {
+        path: "demo/ui/empty-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "empty-avatar",
+    type: "registry:example",
+    registryDependencies: ["empty", "button", "avatar"],
+    files: [
+      {
+        path: "demo/ui/empty-avatar.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "empty-avatar-group",
+    type: "registry:example",
+    registryDependencies: ["empty", "button", "avatar"],
+    files: [
+      {
+        path: "demo/ui/empty-avatar-group.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "empty-input-group",
+    type: "registry:example",
+    registryDependencies: ["empty", "button", "input"],
+    files: [
+      {
+        path: "demo/ui/empty-input-group.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "empty-outline",
+    type: "registry:example",
+    registryDependencies: ["empty", "button"],
+    files: [
+      {
+        path: "demo/ui/empty-outline.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "empty-background",
+    type: "registry:example",
+    registryDependencies: ["empty"],
+    files: [
+      {
+        path: "demo/ui/empty-background.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+
+
+  {
+    name: "field-demo",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "demo/ui/field-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "field-input",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "demo/ui/field-input.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "field-textarea",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "demo/ui/field-textarea.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "field-fieldset",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "demo/ui/field-fieldset.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "field-radio",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "demo/ui/field-radio.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "field-checkbox",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "demo/ui/field-checkbox.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "field-switch",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "demo/ui/field-switch.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "field-slider",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "demo/ui/field-slider.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "field-select",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "demo/ui/field-select.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "field-choice-card",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "demo/ui/field-choice-card.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "field-group",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "demo/ui/field-group.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "field-responsive",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "demo/ui/field-responsive.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+
+
   {
     name: "hover-card-demo",
     type: "registry:example",
