@@ -897,10 +897,6 @@ export const uiDemo: Registry["items"] = [
       },
     ],
   },
-  
-
-
-
   {
     name: "empty-demo",
     type: "registry:example",
@@ -978,8 +974,6 @@ export const uiDemo: Registry["items"] = [
       },
     ],
   },
-
-
 
   {
     name: "field-demo",
@@ -1113,8 +1107,6 @@ export const uiDemo: Registry["items"] = [
       },
     ],
   },
-
-
 
   {
     name: "hover-card-demo",
@@ -1255,6 +1247,171 @@ export const uiDemo: Registry["items"] = [
     files: [
       {
         path: "demo/ui/input-otp-form.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "item-demo",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [
+      {
+        path: "demo/ui/item-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "item-size",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [
+      {
+        path: "demo/ui/item-size.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "item-variant",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [
+      {
+        path: "demo/ui/item-variant.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "item-icon",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [
+      {
+        path: "demo/ui/item-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "item-image",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [
+      {
+        path: "demo/ui/item-image.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "item-avatar",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [
+      {
+        path: "demo/ui/item-avatar.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "item-group",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [
+      {
+        path: "demo/ui/item-group.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "item-header",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [
+      {
+        path: "demo/ui/item-header.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "item-dropdown",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [
+      {
+        path: "demo/ui/item-dropdown.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "item-link",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [
+      {
+        path: "demo/ui/item-link.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "kbd-demo",
+    type: "registry:example",
+    registryDependencies: ["kbd"],
+    files: [
+      {
+        path: "demo/ui/kbd-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "kbd-tooltip",
+    type: "registry:example",
+    registryDependencies: ["kbd", "tooltip", "button"],
+    files: [
+      {
+        path: "demo/ui/kbd-tooltip.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "kbd-input-group",
+    type: "registry:example",
+    registryDependencies: ["kbd", "input", "button", "label"],
+    files: [
+      {
+        path: "demo/ui/kbd-input-group.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "kbd-button",
+    type: "registry:example",
+    registryDependencies: ["kbd", "button"],
+    files: [
+      {
+        path: "demo/ui/kbd-button.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "kbd-group",
+    type: "registry:example",
+    registryDependencies: ["kbd"],
+    files: [
+      {
+        path: "demo/ui/kbd-group.tsx",
         type: "registry:example",
       },
     ],
