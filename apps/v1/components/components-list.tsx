@@ -78,7 +78,7 @@ export function FolderComponentsList({ names }: { names: string[] }) {
     <div className="space-y-8">
       {names.map((name) => (
         <div className="space-y-3" key={name}>
-          <ComponentsList name={`kit/${name}`} folder grid />
+          <ComponentsList name={`components/${name}`} folder grid />
         </div>
       ))}
     </div>

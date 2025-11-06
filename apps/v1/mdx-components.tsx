@@ -30,6 +30,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/registry/ui/alert"
 import { AspectRatio } from "@/registry/ui/aspect-ratio"
 import { Button } from "@/registry/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/ui/tabs"
+import { Kbd } from "@/registry/ui/kbd"
 
 export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
@@ -350,6 +351,7 @@ export const mdxComponents = {
   FullComponentsList,
   FolderComponentsList,
   BlockDisplay,
+  Kbd,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn("font-medium underline underline-offset-4", className)}

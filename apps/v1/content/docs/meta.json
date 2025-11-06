@@ -4,11 +4,11 @@
     "(root)",
     "templates",
     "blocks",
-    "kit/backgrounds",
-    "kit/buttons",
-    "kit/cards",
-    "kit/text",
-    "components",
+    "components/backgrounds",
+    "components/buttons",
+    "components/cards",
+    "components/text",
+    "ui",
     "installation",
     "dark-mode"
   ]

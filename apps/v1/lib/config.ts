@@ -22,8 +22,8 @@ export const siteConfig = {
       label: "Docs",
     },
     {
-      href: "/kit",
-      label: "Kit",
+      href: "/components",
+      label: "Components",
     },
     {
       href: "/templates",
