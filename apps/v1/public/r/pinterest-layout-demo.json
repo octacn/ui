@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/demo/components/pinterest-layout-demo.tsx",
-      "content": "import { PinterestLayout } from \"@/registry/components/pinterest-layout\";\r\nimport React from \"react\";\r\n\r\nexport default function PinterestLayoutDemo() {\r\n  const defaultImages = Array.from({ length: 15 }, (_, i) => {\r\n    const isLandscape = i % 2 === 0;\r\n    const width = isLandscape ? 800 : 600;\r\n    const height = isLandscape ? 600 : 800;\r\n    return `https://picsum.photos/seed/${i + 1}/${width}/${height}`;\r\n  });\r\n  return <PinterestLayout images={defaultImages} />;\r\n}\r\n",
+      "content": "import React from \"react\"\n\nimport { PinterestLayout } from \"@/registry/components/pinterest-layout\"\n\nexport default function PinterestLayoutDemo() {\n  const defaultImages = Array.from({ length: 15 }, (_, i) => {\n    const isLandscape = i % 2 === 0\n    const width = isLandscape ? 800 : 600\n    const height = isLandscape ? 600 : 800\n    return `https://picsum.photos/seed/${i + 1}/${width}/${height}`\n  })\n  return <PinterestLayout images={defaultImages} />\n}\n",
       "type": "registry:component"
     }
   ]

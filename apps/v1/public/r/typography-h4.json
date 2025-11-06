@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/demo/ui/typography-h4.tsx",
-      "content": "import { H4 } from \"@/components/ui/typography\";\r\nimport React from \"react\";\r\n\r\nexport const H4Demo = () => {\r\n  return (\r\n     <H4>\r\n      Taxing Laughter: The Joke Tax Chronicles.\r\n    </H4>\r\n  )\r\n}\r\n",
+      "content": "import React from \"react\"\n\nimport { H4 } from \"@/components/ui/typography\"\n\nexport const H4Demo = () => {\n  return <H4>Taxing Laughter: The Joke Tax Chronicles.</H4>\n}\n",
       "type": "registry:example"
     }
   ]

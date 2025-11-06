@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/demo/ui/typography-p.tsx",
-      "content": "import { P } from \"@/components/ui/typography\";\r\nimport React from \"react\";\r\n\r\nexport const PDemo = () => {\r\n  return (\r\n     <P>\r\n      Taxing Laughter: The Joke Tax Chronicles.\r\n    </P>\r\n  )\r\n}\r\n",
+      "content": "import React from \"react\"\n\nimport { P } from \"@/components/ui/typography\"\n\nexport const PDemo = () => {\n  return <P>Taxing Laughter: The Joke Tax Chronicles.</P>\n}\n",
       "type": "registry:example"
     }
   ]

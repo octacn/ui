@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/demo/ui/typography-h6.tsx",
-      "content": "import { H6 } from \"@/components/ui/typography\";\r\nimport React from \"react\";\r\n\r\nexport const H6Demo = () => {\r\n  return (\r\n     <H6>\r\n      Taxing Laughter: The Joke Tax Chronicles.\r\n    </H6>\r\n  )\r\n}\r\n",
+      "content": "import React from \"react\"\n\nimport { H6 } from \"@/components/ui/typography\"\n\nexport const H6Demo = () => {\n  return <H6>Taxing Laughter: The Joke Tax Chronicles.</H6>\n}\n",
       "type": "registry:example"
     }
   ]

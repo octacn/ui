@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/demo/components/magnetic-shimmer-button-demo.tsx",
-      "content": "import { MagneticShimmerButton } from \"@/registry/components/magnetic-shimmer-button\";\r\nimport React from \"react\";\r\n\r\nexport default function MagneticShimmerButtonDemo() {\r\n  return (\r\n    <>\r\n      <MagneticShimmerButton>\r\n        Hover Near Me...\r\n      </MagneticShimmerButton>\r\n    </>\r\n  );\r\n}\r\n",
+      "content": "import React from \"react\"\n\nimport { MagneticShimmerButton } from \"@/registry/components/magnetic-shimmer-button\"\n\nexport default function MagneticShimmerButtonDemo() {\n  return (\n    <>\n      <MagneticShimmerButton>Hover Near Me...</MagneticShimmerButton>\n    </>\n  )\n}\n",
       "type": "registry:component"
     }
   ]

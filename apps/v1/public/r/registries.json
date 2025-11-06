@@ -797,6 +797,29 @@
       ]
     },
     {
+      "name": "animated-connect-line",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "card",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/components/animated-path.tsx",
+          "type": "registry:component",
+          "target": "components/animated-path.tsx"
+        },
+        {
+          "path": "registry/components/animated-connect-line.tsx",
+          "type": "registry:component",
+          "target": "components/animated-connect-line.tsx"
+        }
+      ]
+    },
+    {
       "name": "file-uploader",
       "type": "registry:component",
       "files": [
@@ -1254,6 +1277,149 @@
       "files": [
         {
           "path": "registry/demo/ui/button-as-child.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-nested",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-group-nested.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-size",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-group-size.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-separator",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-group-separator.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-split",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-group-split.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-input",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-group-input.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-dropdown",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-group-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-select",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-group-select.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-popover",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-group-popover.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-input-group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-group-input-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-orientation",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ui/button-group-orientation.tsx",
           "type": "registry:example"
         }
       ]

@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/demo/components/file-uploader-demo.tsx",
-      "content": "\"use client\"\r\n\r\nimport { FileUploader } from \"@/registry/components/file-uploader\";\r\n\r\nexport default function FileUploaderDemo() {\r\n  const handleUploadComplete = (files: File[]) => {\r\n    console.log(\"Upload complete:\", files);\r\n  };\r\n\r\n  const handleCancel = () => {\r\n    console.log(\"Upload cancelled\");\r\n  };\r\n\r\n  const handlePublish = (files: File[]) => {\r\n    console.log(\"Publishing files:\", files);\r\n  };\r\n\r\n  return (\r\n    <FileUploader\r\n      maxFiles={10}\r\n      maxSize={20 * 1024 * 1024} // 20MB\r\n      onUploadComplete={handleUploadComplete}\r\n      onCancel={handleCancel}\r\n      onPublish={handlePublish}\r\n    />\r\n  );\r\n}\r\n",
+      "content": "\"use client\"\n\nimport { FileUploader } from \"@/registry/components/file-uploader\"\n\nexport default function FileUploaderDemo() {\n  const handleUploadComplete = (files: File[]) => {\n    console.log(\"Upload complete:\", files)\n  }\n\n  const handleCancel = () => {\n    console.log(\"Upload cancelled\")\n  }\n\n  const handlePublish = (files: File[]) => {\n    console.log(\"Publishing files:\", files)\n  }\n\n  return (\n    <FileUploader\n      maxFiles={10}\n      maxSize={20 * 1024 * 1024} // 20MB\n      onUploadComplete={handleUploadComplete}\n      onCancel={handleCancel}\n      onPublish={handlePublish}\n    />\n  )\n}\n",
       "type": "registry:component"
     }
   ]

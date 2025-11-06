@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/demo/ui/typography-inline-code.tsx",
-      "content": "import { InlineCode } from \"@/components/ui/typography\";\r\nimport React from \"react\";\r\n\r\nexport const InlineCodeDemo = () => {\r\n  return (\r\n     <InlineCode>\r\n      npm run dev\r\n    </InlineCode>\r\n  )\r\n}\r\n",
+      "content": "import React from \"react\"\n\nimport { InlineCode } from \"@/components/ui/typography\"\n\nexport const InlineCodeDemo = () => {\n  return <InlineCode>npm run dev</InlineCode>\n}\n",
       "type": "registry:example"
     }
   ]

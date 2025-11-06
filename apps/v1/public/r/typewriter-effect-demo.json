@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "registry/demo/components/typewriter-effect-demo.tsx",
-      "content": "import { TypewriterEffect } from \"@/registry/components/typewriter-effect\";\r\nimport React from \"react\";\r\n\r\nexport default function TypewriterEffectDemo() {\r\n  return (\r\n    <>\r\n      <TypewriterEffect>\r\n        https://ui.octacn.com\r\n      </TypewriterEffect>\r\n    </>\r\n  );\r\n}\r\n",
+      "content": "import React from \"react\"\n\nimport { TypewriterEffect } from \"@/registry/components/typewriter-effect\"\n\nexport default function TypewriterEffectDemo() {\n  return (\n    <>\n      <TypewriterEffect>https://ui.octacn.com</TypewriterEffect>\n    </>\n  )\n}\n",
       "type": "registry:component"
     }
   ]

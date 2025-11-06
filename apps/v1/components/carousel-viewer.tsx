@@ -99,12 +99,13 @@ function ImageCarouselContent() {
   const [count, setCount] = React.useState<number>(0)
   const [loading, setLoading] = React.useState(true)
 
-  const { item } = useImageViewer()
+  const { item, resizablePanelRef, setIframeKey } = useImageViewer()
 
   React.useEffect(() => {
     if (!api) {
       return
     }
+
     setCount(api.scrollSnapList().length)
     setCurrent(api.selectedScrollSnap() + 1)
 
@@ -208,7 +209,52 @@ function ImageCarouselContent() {
 
   return (
     <section className="pt-3">
-      <div>
+      {/* <div>
+        <div className="hidden w-full items-center gap-2 pl-1 md:pr-5 lg:flex">
+        
+
+          <div className="h-8 items-center gap-1.5 rounded-md border p-1 shadow-none">
+            <ToggleGroup
+              type="single"
+              defaultValue="100"
+              onValueChange={(value) => {
+                if (resizablePanelRef?.current) {
+                  resizablePanelRef.current.resize(parseInt(value))
+                }
+              }}
+              className="gap-1 *:data-[slot=toggle-group-item]:!size-6 *:data-[slot=toggle-group-item]:!rounded-sm"
+            >
+              <Button
+                size="icon"
+                variant="ghost"
+                className="size-6 rounded-sm p-0"
+                asChild
+                title="Open in New Tab"
+              >
+                <Link href={`/preview/${item.name}`} target="_blank">
+                  <span className="sr-only">Open in New Tab</span>
+                  <Fullscreen />
+                </Link>
+              </Button>
+              <Separator orientation="vertical" className="!h-4" />
+              <Button
+                size="icon"
+                variant="ghost"
+                className="size-6 rounded-sm p-0"
+                title="Refresh Preview"
+                onClick={() => {
+                  if (setIframeKey) {
+                    setIframeKey((k) => k + 1)
+                  }
+                }}
+              >
+                <RotateCw />
+                <span className="sr-only">Refresh Preview</span>
+              </Button>
+            </ToggleGroup>
+          </div>
+        </div>
+
         <Carousel
           setApi={setApi}
           opts={{
@@ -247,23 +293,56 @@ function ImageCarouselContent() {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
+        
+      </div> */}
 
-        <div className="flex justify-center space-x-2 mt-2">
-          {Array.from({ length: count }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => api?.scrollTo(index)}
-              className={cn(
-                "h-2 w-2 rounded-full transition-colors",
-                current === index + 1 ? "bg-primary" : "bg-muted"
-              )}
-            />
+      <Carousel
+        setApi={setApi}
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        plugins={[
+          Autoplay({
+            delay: 4000,
+          }),
+        ]}
+        className="rounded-md overflow-hidden"
+      >
+        <CarouselContent className="max-h-[46rem]">
+          {item.images.map((item, index) => (
+            <CarouselItem className="overflow-hidden" key={index}>
+              {loading && <Loading />}
+
+              <Image
+                src={`/images/templates/${item.image}`}
+                width={1000}
+                height={1000}
+                alt={item.image.toLowerCase()}
+                loading="lazy"
+                onLoad={() => setLoading(false)}
+                className={cn(
+                  "w-full object-cover rounded-md",
+                  loading ? "opacity-0" : "opacity-100"
+                )}
+              />
+            </CarouselItem>
           ))}
-        </div>
-      </div>
+        </CarouselContent>
+      </Carousel>
 
-      <ViewerToolbar />
-      <IframeViewer />
+      <div className="flex justify-center space-x-2 mt-2">
+        {Array.from({ length: count }).map((_, index) => (
+          <button
+            key={index}
+            onClick={() => api?.scrollTo(index)}
+            className={cn(
+              "h-2 w-2 rounded-full transition-colors",
+              current === index + 1 ? "bg-primary" : "bg-muted"
+            )}
+          />
+        ))}
+      </div>
 
       <div className="grid grid-cols-2 pt-6 gap-4">
         <Link
@@ -282,106 +361,6 @@ function ImageCarouselContent() {
         </GithubDownloadButton>
       </div>
     </section>
-  )
-}
-
-function ViewerToolbar() {
-  const { item, resizablePanelRef, setIframeKey } = useImageViewer()
-  const { copyToClipboard, isCopied } = useCopyToClipboard()
-
-  return (
-    <div className="hidden w-full items-center gap-2 pl-1 md:pr-5 lg:flex">
-      <Tabs value={"preview"}>
-        <TabsList className="grid h-8 grid-cols-2 items-center rounded-md p-1 *:data-[slot=tabs-trigger]:h-6 *:data-[slot=tabs-trigger]:rounded-sm *:data-[slot=tabs-trigger]:px-2 *:data-[slot=tabs-trigger]:text-xs font-inter">
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="code">Code</TabsTrigger>
-        </TabsList>
-      </Tabs>
-      <Separator orientation="vertical" className="!h-4" />
-
-      <h4 className="font-inter capitalize font-medium truncate max-w-48">
-        {item.name}
-      </h4>
-
-      <div className="ml-auto flex items-center gap-2">
-        <div className="h-8 items-center gap-1.5 rounded-md border p-1 shadow-none">
-          <ToggleGroup
-            type="single"
-            defaultValue="100"
-            onValueChange={(value) => {
-              if (resizablePanelRef?.current) {
-                resizablePanelRef.current.resize(parseInt(value))
-              }
-            }}
-            className="gap-1 *:data-[slot=toggle-group-item]:!size-6 *:data-[slot=toggle-group-item]:!rounded-sm"
-          >
-            <ToggleGroupItem value="100" title="Desktop">
-              <Monitor />
-            </ToggleGroupItem>
-            <ToggleGroupItem value="60" title="Tablet">
-              <Tablet />
-            </ToggleGroupItem>
-            <ToggleGroupItem value="30" title="Mobile">
-              <Smartphone />
-            </ToggleGroupItem>
-            <Separator orientation="vertical" className="!h-4" />
-            <Button
-              size="icon"
-              variant="ghost"
-              className="size-6 rounded-sm p-0"
-              asChild
-              title="Open in New Tab"
-            >
-              <Link href={`/preview/${item.name}`} target="_blank">
-                <span className="sr-only">Open in New Tab</span>
-                <Fullscreen />
-              </Link>
-            </Button>
-            <Separator orientation="vertical" className="!h-4" />
-            <Button
-              size="icon"
-              variant="ghost"
-              className="size-6 rounded-sm p-0"
-              title="Refresh Preview"
-              onClick={() => {
-                if (setIframeKey) {
-                  setIframeKey((k) => k + 1)
-                }
-              }}
-            >
-              <RotateCw />
-              <span className="sr-only">Refresh Preview</span>
-            </Button>
-          </ToggleGroup>
-        </div>
-        <Separator orientation="vertical" className="!h-4" />
-        <Button
-          variant="outline"
-          className="w-fit gap-1 px-2 shadow-none max-w-50"
-          size="sm"
-          onClick={() => {
-            copyToClipboard(
-              `npx shadcn@latest add https://ui.octacn.com/r/${item.name}.json`
-            )
-          }}
-        >
-          {isCopied ? <Check /> : <Terminal />}
-          <span className="truncate">npx shadcn add {item.name}</span>
-        </Button>
-      </div>
-    </div>
-  )
-}
-
-function IframeViewer() {
-  const { item } = useImageViewer()
-
-  return (
-    <iframe
-      src={item.preview}
-      loading="lazy"
-      className={cn("relative z-20 w-full h-[28rem] no-scrollbar rounded-md")}
-    />
   )
 }
 

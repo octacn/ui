@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/demo/components/paper-background-demo.tsx",
-      "content": "import PaperBackground from \"@/registry/components/paper-background\";\r\nimport React from \"react\";\r\n\r\nexport default function PaperBackgroundDemo() {\r\n  return (\r\n    <div className=\"relative w-full h-full\">\r\n      <div className=\"absolute top-0 right-0 left-0 bottom-0 z-10\">\r\n        <div className=\"flex items-center justify-centers h-full text-center\">\r\n          <h4 className=\"whitespace-nowrap text-center w-full text-3xl font-medium font-inter tracking-wide\">\r\n            Zoom to see background\r\n          </h4>\r\n        </div>\r\n      </div>\r\n      <PaperBackground className=\"rounded-lg\" />\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "import React from \"react\"\n\nimport PaperBackground from \"@/registry/components/paper-background\"\n\nexport default function PaperBackgroundDemo() {\n  return (\n    <div className=\"relative w-full h-full\">\n      <div className=\"absolute top-0 right-0 left-0 bottom-0 z-10\">\n        <div className=\"flex items-center justify-centers h-full text-center\">\n          <h4 className=\"whitespace-nowrap text-center w-full text-3xl font-medium font-inter tracking-wide\">\n            Zoom to see background\n          </h4>\n        </div>\n      </div>\n      <PaperBackground className=\"rounded-lg\" />\n    </div>\n  )\n}\n",
       "type": "registry:component",
       "target": "components/paper-background.tsx"
     }

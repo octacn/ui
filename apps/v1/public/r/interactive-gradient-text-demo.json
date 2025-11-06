@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "registry/demo/components/interactive-gradient-text-demo.tsx",
-      "content": "import { InteractiveGradientText } from \"@/registry/components/interactive-gradient-text\";\r\nimport React from \"react\";\r\n\r\nexport default function InteractiveGradientTextDemo() {\r\n  return (\r\n    <div>\r\n      <h4 className=\"absolute top-10 left-0 right-0 text-center text-2xl font-inter text-muted-foreground\">\r\n        Hover Over Text to see Animation\r\n      </h4>\r\n\r\n      <InteractiveGradientText text=\"octacn\"/>\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "import React from \"react\"\n\nimport { InteractiveGradientText } from \"@/registry/components/interactive-gradient-text\"\n\nexport default function InteractiveGradientTextDemo() {\n  return (\n    <div>\n      <h4 className=\"absolute top-10 left-0 right-0 text-center text-2xl font-inter text-muted-foreground\">\n        Hover Over Text to see Animation\n      </h4>\n\n      <InteractiveGradientText text=\"octacn\" />\n    </div>\n  )\n}\n",
       "type": "registry:component"
     }
   ]
