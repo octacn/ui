@@ -1,0 +1,28 @@
+{
+  "name": "octacn",
+  "version": "1.0.0",
+  "description": "This is cli for the octacn.",
+  "author": "sahil kumar dev",
+  "license": "ISC",
+  "bin": {
+    "octacn": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "cli",
+    "octacn",
+    "octacn cli",
+    "cli octacn",
+    "npx octacn@latest"
+  ],
+  "dependencies": {
+    "typescript": "^5.9.3"
+  }
+}
