@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-// import { add } from "@/src/commands/add"
 // import { build } from "@/src/commands/build"
 // import { create } from "@/src/commands/create"
 // import { diff } from "@/src/commands/diff"
@@ -12,7 +11,9 @@
 // import { mcp as registryMcp } from "@/src/commands/registry/mcp"
 // import { search } from "@/src/commands/search"
 // import { view } from "@/src/commands/view"
+import { create } from "@/src/commands/create"
 import { Command } from "commander"
+
 
 // import packageJson from "../package.json"
 
@@ -23,24 +24,19 @@ async function main() {
   const program = new Command()
     .name("shadcn")
     .description("add items from registries to your project")
-    .version(
-      // packageJson.version || "1.0.0",
-      "-v, --version",
-      "display the version number"
-    )
+    .version("1.0.0", "-v, --version", "display the version number")
 
-  // program
-  //   .addCommand(init)
-  //   .addCommand(create)
-  //   .addCommand(add)
-  //   .addCommand(diff)
-  //   .addCommand(view)
-  //   .addCommand(search)
-  //   .addCommand(migrate)
-  //   .addCommand(info)
-  //   .addCommand(build)
-  //   .addCommand(mcp)
-  // // Registry commands
+  program.addCommand(create)
+  // .addCommand(init)
+  // .addCommand(add)
+  // .addCommand(diff)
+  // .addCommand(view)
+  // .addCommand(search)
+  // .addCommand(migrate)
+  // .addCommand(info)
+  // .addCommand(build)
+  // .addCommand(mcp)
+  // Registry commands
   // program.addCommand(registryBuild).addCommand(registryMcp)
 
   program.parse()

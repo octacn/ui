@@ -6,8 +6,8 @@ export default defineConfig({
     exclude: [
       ...configDefaults.exclude,
       "**/node_modules/**",
-      "**/fixtures/**",
-      "**/templates/**",
+      // "**/fixtures/**",
+      // "**/templates/**",
     ],
     testTimeout: 8000,
   },
