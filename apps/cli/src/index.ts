@@ -4,16 +4,15 @@
 // import { create } from "@/src/commands/create"
 // import { diff } from "@/src/commands/diff"
 // import { info } from "@/src/commands/info"
-// import { init } from "@/src/commands/init"
 // import { mcp } from "@/src/commands/mcp"
 // import { migrate } from "@/src/commands/migrate"
 // import { build as registryBuild } from "@/src/commands/registry/build"
 // import { mcp as registryMcp } from "@/src/commands/registry/mcp"
 // import { search } from "@/src/commands/search"
 // import { view } from "@/src/commands/view"
-import { create } from "@/src/commands/create"
+// import { create } from "@/src/commands/create"
+import { init } from "@/src/commands/init"
 import { Command } from "commander"
-
 
 // import packageJson from "../package.json"
 
@@ -26,8 +25,8 @@ async function main() {
     .description("add items from registries to your project")
     .version("1.0.0", "-v, --version", "display the version number")
 
-  program.addCommand(create)
-  // .addCommand(init)
+  program.addCommand(init)
+  // addCommand(create)
   // .addCommand(add)
   // .addCommand(diff)
   // .addCommand(view)

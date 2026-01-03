@@ -46,7 +46,7 @@
     "start": "node dist/index.js",
     "build": "tsup",
     "typecheck": "tsc --noEmit",
-    "run-dev": "tsup && npx octacn create",
+    "run-dev": "tsup && npx octacn init",
     
     
     "clean": "rimraf dist && rimraf components",
